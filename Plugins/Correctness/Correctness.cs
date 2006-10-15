@@ -19,7 +19,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.2"; }
 		}
 
 		public override string Author
@@ -135,7 +135,6 @@ namespace Eithne
 					double scale;
 					IImage img = null;
 
-
 					for(int j=0; j<r.OriginalBaseImages.Length; j++)
 						if(r.BaseCategory(j) == tc)
 						{
@@ -145,7 +144,7 @@ namespace Eithne
 						}
 
 					if(img == null)
-						cat[tc].image = new Gdk.Pixbuf(Assembly.GetExecutingAssembly(), "no-base.png");
+						cat[tc].image = new Gdk.Pixbuf(Assembly.GetEntryAssembly(), "no-base.png");
 					else
 					{
 						if(img.W > img.H)
@@ -159,7 +158,7 @@ namespace Eithne
 					}
 				}
 
-				if(tc == bc)
+				if(tc == bc && r.Match[i])
 				{
 					cat[tc].matched++;
 					matched++;

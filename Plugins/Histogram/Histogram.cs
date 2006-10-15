@@ -111,15 +111,15 @@ namespace Eithne
 			for(int y=0; y<img.H; y++)
 				for(int x=0; x<img.W; x++)
 				{
-					counter[img[x, y] / div]++;
+					counter[(byte)img[x, y] / div]++;
 					
-					int tmp = counter[img[x, y] / div];
+					int tmp = counter[(byte)img[x, y] / div];
 					
 					if(max < tmp)
 						max = tmp;
 				}
 
-			IImage res = new IImage(1, num, 1, new byte[num]);
+			IImage res = new IImage(1, num, 1);
 
 			for(int i=0; i<num; i++)
 				res.Data[i] = (byte)(((double)counter[i] / max) * 255);

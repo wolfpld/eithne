@@ -83,8 +83,10 @@ namespace Eithne
 
 		public override void Work()
 		{
-			int tcount = (_in[0] as ICommResult).Length;
-			int bcount = (_in[0] as ICommResult)[0].Length;
+			ICommResult ires = _in[0] as ICommResult;
+
+			int tcount = ires.Length;
+			int bcount = ires[0].Length;
 
 			double[][] points = new double[tcount][];
 			for(int i=0; i<tcount; i++)
@@ -122,9 +124,8 @@ namespace Eithne
 				resarray[i] = new IResult(points[i]);
 
 			_out = new CommSocket(1);
-			_out[0] = new ICommResult(resarray, num, (_in[0] as ICommResult).OriginalBaseImages,
-					(_in[0] as ICommResult).OriginalTestImages, (_in[0] as ICommResult).BaseCategories,
-					(_in[0] as ICommResult).TestCategories);
+			_out[0] = new ICommResult(resarray, num, ires.OriginalBaseImages, ires.OriginalTestImages, ires.BaseCategories,
+					ires.TestCategories, ires.Match);
 
 			_workdone = true;
 		}

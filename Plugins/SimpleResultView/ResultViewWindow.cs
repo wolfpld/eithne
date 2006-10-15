@@ -34,16 +34,21 @@ namespace Eithne
 		[Widget] Label		BaseCategory;
 		[Widget] ScrolledWindow	ImageListSocket;
 
+		private static Gdk.Pixbuf NoMatchIcon = new Gdk.Pixbuf(Assembly.GetEntryAssembly(), "no-base.png");
+
 		private Gdk.Pixbuf[] img1, img2;
 		private int[] res, cat1, cat2;
+		private bool[] match;
 
-		public ResultView(Gdk.Pixbuf[] img1, Gdk.Pixbuf[] img2, Gdk.Pixbuf[] thumbs, int[] res, int[] cat1, int[] cat2)
+		public ResultView(Gdk.Pixbuf[] img1, Gdk.Pixbuf[] img2, Gdk.Pixbuf[] thumbs, int[] res, int[] cat1, int[] cat2,
+				bool[] match)
 		{
 			this.img1 = img1;
 			this.img2 = img2;
 			this.res = res;
 			this.cat1 = cat1;
 			this.cat2 = cat2;
+			this.match = match;
 
 			Glade.XML gxml = new Glade.XML(Assembly.GetExecutingAssembly(), "ResultView.glade", "ResultViewWindow", null);
 			gxml.BindFields(this);
@@ -77,10 +82,18 @@ namespace Eithne
 		private void SetDisplay(int n)
 		{
 			CurrentImage.FromPixbuf = img2[n];
-			RecognizedImage.FromPixbuf = img1[res[n]];
-
 			TestCategory.Text = String.Format(Catalog.GetString("Category: {0}"), cat2[n]);
-			BaseCategory.Text = String.Format(Catalog.GetString("Category: {0}"), cat1[res[n]]);
+
+			if(match[n])
+			{
+				RecognizedImage.FromPixbuf = img1[res[n]];
+				BaseCategory.Text = String.Format(Catalog.GetString("Category: {0}"), cat1[res[n]]);
+			}
+			else
+			{
+				RecognizedImage.FromPixbuf = NoMatchIcon;
+				BaseCategory.Text = Catalog.GetString("No match found");
+			}
 		}
 
 		private void OnClicked(object o, EventArgs args)

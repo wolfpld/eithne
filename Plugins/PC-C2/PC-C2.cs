@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.2"; }
 		}
 
 		public override string Author
@@ -101,25 +101,40 @@ namespace Eithne
 
 		private double Compare(IImage img1, IImage img2)
 		{
-			if(img1.BPP != 1 || img2.BPP != 1)
-				throw new PluginException(Catalog.GetString("Image is not in greyscale."));
+			if(img1.BPP != 1 && img1.BPP != 4)
+				throw new PluginException(Catalog.GetString("Image is not greyscale or floating point."));
+			if(img1.BPP != img2.BPP)
+				throw new PluginException(Catalog.GetString("Images BPP do not match."));
 			if(img1.H != img2.H || img1.W != img2.W)
 				throw new PluginException(Catalog.GetString("Images dimensions do not match."));
 
 			double sum = 0;
 
-			for(int i=0; i<img1.Data.Length; i++)
-			{
-				double l = Math.Abs(img1.Data[i] - img2.Data[i]);
-				double m = img1.Data[i] + img2.Data[i];
+			if(img1.BPP == 1)
+				for(int i=0; i<img1.Data.Length; i++)
+				{
+					double l = Math.Abs(img1.Data[i] - img2.Data[i]);
+					double m = img1.Data[i] + img2.Data[i];
 
-				if(m == 0)
-					sum += 1;
-				else
-					sum += 1 - l/m;
-			}
+					if(m == 0)
+						sum += 1;
+					else
+						sum += 1 - l/m;
+				}
+			else
+				for(int y=0; y<img1.H; y++)
+					for(int x=0; x<img1.W; x++)
+					{
+						double l = Math.Abs((float)img1[x, y] - (float)img2[x, y]);
+						double m = (float)img1[x, y] + (float)img2[x, y];
 
-			return sum / img1.Data.Length;
+						if(m == 0)
+							sum += 1;
+						else
+							sum += 1 - l/m;
+					}
+
+			return sum / (img1.H * img1.W);
 		}
 
 		public override int NumIn		{ get { return 2; } }

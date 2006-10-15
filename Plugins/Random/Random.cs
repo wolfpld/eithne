@@ -103,7 +103,7 @@ namespace Eithne
 
 		private IImage RandomPixels(IImage img)
 		{
-			IImage res = new IImage(img.BPP, x, y, new byte[x*y*img.BPP]);
+			IImage res = new IImage(img.BPP, x, y);
 			Random rand = new Random(seed);
 
 			for(int iy=0; iy<y; iy++)

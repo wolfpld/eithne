@@ -6,6 +6,7 @@ IPLUGIN = \
 EITHNE = \
 	About.cs \
 	Block.cs \
+	Config.cs \
 	Connector.cs \
 	Engine.cs \
 	FatalError.cs \
@@ -67,8 +68,9 @@ RESOURCES = \
 	pixmaps/image-test.png \
 	pixmaps/list-add.png \
 	pixmaps/list-remove.png \
-	pixmaps/media-playback-start.png \
 	pixmaps/media-playback-start-22.png \
+	pixmaps/media-playback-start.png \
+	pixmaps/no-base.png \
 	pixmaps/plugin-16.png \
 	pixmaps/plugin-48.png \
 	pixmaps/preferences-desktop.png \
@@ -88,17 +90,17 @@ all: eithne.exe
 	make -C locale
 
 eithne.exe: IPlugin.dll gdk-cairo.dll Utility.dll $(EITHNE) $(RESFILES)
-	$(MCS) $(EITHNE) -out:eithne.exe -r:IPlugin -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0 -r:Mono.Cairo -r:gdk-cairo -r:Mono.Posix -r:Utility $(RESCMD) -win32icon:resources/pixmaps/icon.ico -debug -target:winexe
+	$(MCS) $(EITHNE) -out:eithne.exe -r:IPlugin -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0 -pkg:gconf-sharp-2.0 -r:Mono.Cairo -r:gdk-cairo -r:Mono.Posix -r:Utility $(RESCMD) -win32icon:resources/pixmaps/icon.ico -debug -target:winexe
 
 IPlugin.dll: $(IPLUGIN)
-	$(MCS) $(IPLUGIN) -target:library
+	$(MCS) $(IPLUGIN) -target:library -r:Mono.Posix -unsafe -debug
 
 gdk-cairo.dll: $(GDKCAIRO)
-	$(MCS) $(GDKCAIRO) -target:library -r:Mono.Cairo -pkg:gtk-sharp-2.0
+	$(MCS) $(GDKCAIRO) -target:library -r:Mono.Cairo -pkg:gtk-sharp-2.0 -debug
 
-Utility.dll: $(UTILITY) $(URESFILES)
-	$(MCS) $(UTILITY) -target:library -out:Utility.dll -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0 -r:IPlugin -r:Mono.Posix -unsafe $(URESCMD)
+Utility.dll: $(UTILITY) $(URESFILES) IPlugin.dll
+	$(MCS) $(UTILITY) -target:library -out:Utility.dll -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0 -r:IPlugin -r:Mono.Posix -unsafe $(URESCMD) -debug
 
 clean:
-	rm -f *.dll eithne.exe eithne.exe.mdb
+	rm -f *.dll eithne.exe *.mdb
 	make -C Plugins clean

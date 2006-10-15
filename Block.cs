@@ -153,6 +153,11 @@ namespace Eithne
 		private static ImageSurface StateReady = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-ready.png"));
 		private static ImageSurface Clock = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/clock.png"));
 
+		private static bool ConfigGradient = Config.Get("block/gradient", true);
+		private static bool ConfigInner = Config.Get("block/innerpath", true);
+		private static bool ConfigRound = Config.Get("block/round", true);
+		private static bool ConfigSmoothConnections = Config.Get("block/smoothconnections", true);
+
 		public enum State
 		{
 			Good,
@@ -430,7 +435,7 @@ namespace Eithne
 			c.Restore();
 		}
 
-		private void DrawBlock(Context c, bool IsSelected)
+		private void DrawBlockGradient(Context c)
 		{
 			LinearGradient g = new LinearGradient(0, y, 0, y+h);
 			if(plugin is IInPlugin)
@@ -473,6 +478,33 @@ namespace Eithne
 			DrawPath(c);
 			c.Pattern = g;
 			c.FillPreserve();
+		}
+
+		private void DrawBlockNoGradient(Context c)
+		{
+			if(plugin is IInPlugin)
+				c.Color = new Color(0.35, 0.55, 0.95, 0.85);
+			else if(plugin is IOutPlugin)
+				c.Color = new Color(0.95, 0.55, 0.95, 0.85);
+			else if(plugin is IImgProcPlugin)
+				c.Color = new Color(0.45, 0.95, 0.45, 0.85);
+			else if(plugin is IResProcPlugin)
+				c.Color = new Color(0.95, 0.45, 0.45, 0.85);
+			else if(plugin is IComparatorPlugin)
+				c.Color = new Color(0.95, 0.95, 0.45, 0.85);
+			else if(plugin is IOtherPlugin)
+				c.Color = new Color(0.5, 0.5, 0.5, 0.85);
+
+			DrawPath(c);
+			c.FillPreserve();
+		}
+
+		private void DrawBlock(Context c, bool IsSelected)
+		{
+			if(ConfigGradient)
+				DrawBlockGradient(c);
+			else
+				DrawBlockNoGradient(c);
 
 			if(showerror)
 				c.Color = new Color(1, 0, 0);
@@ -485,10 +517,13 @@ namespace Eithne
 
 			c.Stroke();
 
-			c.Color = new Color(1, 1, 1, 0.5);
-			c.LineWidth = 1;
-			DrawPathInner(c);
-			c.Stroke();
+			if(ConfigInner)
+			{
+				c.Color = new Color(1, 1, 1, 0.5);
+				c.LineWidth = 1;
+				DrawPathInner(c);
+				c.Stroke();
+			}
 
 			c.Color = new Color(0, 0, 0);
 
@@ -518,7 +553,16 @@ namespace Eithne
 				{
 					c.LineWidth = 2.0;
 					c.MoveTo(x+w, curpos);
-					c.CurveTo(x+w-10, curpos, x+w-10, curpos+10, x+w, curpos+10);
+
+					if(ConfigRound)
+						c.CurveTo(x+w-10, curpos, x+w-10, curpos+10, x+w, curpos+10);
+					else
+					{
+						c.LineTo(x+w-8, curpos);
+						c.LineTo(x+w-8, curpos+10);
+						c.LineTo(x+w, curpos+10);
+					}
+
 					c.LineTo(x+w, curpos);
 					c.Color = new Color(1, 1, 1, 0.8);
 					c.Fill();
@@ -539,7 +583,16 @@ namespace Eithne
 				{
 					c.LineWidth = 2.0;
 					c.MoveTo(x, curpos);
-					c.CurveTo(x+10, curpos, x+10, curpos+10, x, curpos+10);
+
+					if(ConfigRound)
+						c.CurveTo(x+10, curpos, x+10, curpos+10, x, curpos+10);
+					else
+					{
+						c.LineTo(x+8, curpos);
+						c.LineTo(x+8, curpos+10);
+						c.LineTo(x, curpos+10);
+					}
+
 					c.LineTo(x, curpos);
 					c.Color = new Color(1, 1, 1, 0.8);
 					c.Fill();
@@ -564,7 +617,12 @@ namespace Eithne
 				if(socketout[i].Other != null)
 				{
 					c.MoveTo(x+w, curpos);
-					c.CurveTo(x+w+10, curpos, socketout[i].Other.PX-10, socketout[i].Other.PY+5, socketout[i].Other.PX, socketout[i].Other.PY+5);
+
+					if(ConfigSmoothConnections)
+						c.CurveTo(x+w+10, curpos, socketout[i].Other.PX-10, socketout[i].Other.PY+5, socketout[i].Other.PX, socketout[i].Other.PY+5);
+					else
+						c.LineTo(socketout[i].Other.PX, socketout[i].Other.PY+5);
+
 					c.Stroke();
 				}
 
@@ -578,6 +636,14 @@ namespace Eithne
 		}
 
 		private void DrawPath(Context c)
+		{
+			if(ConfigRound)
+				DrawPathRound(c);
+			else
+				DrawPathSquare(c);
+		}
+
+		private void DrawPathRound(Context c)
 		{
 			//	1-------2
 			//	|	|
@@ -648,7 +714,92 @@ namespace Eithne
 			c.CurveTo(x, y, x, y, x+10, y);
 		}
 
+		private void DrawPathSquare(Context c)
+		{
+			//	1-------2
+			//	|	|
+			//	|	|
+			//	4-------3
+
+			// 1
+			c.MoveTo(x, y);
+			c.LineTo(x+w, y);
+
+			// 2
+			// gniazda wyjściowe
+			if(socketout.Length == 0)
+				c.LineTo(x+w, y+h);
+			else
+			{
+				int curpos = y+10+(h-20-CalcHeight(socketout.Length))/2;
+
+				c.LineTo(x+w, curpos);
+
+				for(int i=0; i<socketout.Length; i++)
+				{
+					if(i!=0)
+					{
+						curpos += 5;
+						c.LineTo(x+w, curpos);
+					}
+					
+					c.LineTo(x+w-8, curpos);
+					c.LineTo(x+w-8, curpos+10);
+					c.LineTo(x+w, curpos+10);
+
+					curpos += 10;
+				}
+
+				c.LineTo(x+w,y+h);
+			}
+
+			// 3
+			c.LineTo(x, y+h);
+
+			// 4
+			// gniazda wejściowe
+			if(socketin.Length == 0)
+				c.LineTo(x, y);
+			else
+			{
+				int curpos = y+h-10-(h-20-CalcHeight(socketin.Length))/2;
+
+				c.LineTo(x, curpos);
+
+				for(int i=0; i<socketin.Length; i++)
+				{
+					if(i!=0)
+					{
+						curpos -= 5;
+						c.LineTo(x, curpos);
+					}
+					
+					c.LineTo(x+8, curpos);
+					c.LineTo(x+8, curpos-10);
+					c.LineTo(x, curpos-10);
+
+					curpos -= 10;
+				}
+
+				c.LineTo(x,y+10);
+			}
+
+			//1
+			c.LineTo(x, y);
+			c.LineTo(x+1, y);
+		}
+
 		private void DrawPathInner(Context c)
+		{
+			if(ConfigRound)
+				DrawPathInnerRound(c);
+//			TODO
+//			else
+//				DrawPathInnerSquare(c);
+
+		}
+
+		private void DrawPathInnerRound(Context c)
 		{
 			//	1-------2
 			//	|	|

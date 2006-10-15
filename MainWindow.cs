@@ -210,6 +210,8 @@ namespace Eithne
 			Splash s = new Splash();
 			MainWindow mw = null;
 
+			Config.Init();
+
 			PluginDB.LoadPlugins(s);
 
 			s.Close();

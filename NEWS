@@ -1,5 +1,16 @@
+eithne 0.3.0
+------------
+
+- New result processing plugin: X of Y.
+- New image processing plugins: FFT and DCT.
+- Test images can now be matched to no category.
+- Possibility of floating point data for images.
+- Crop plugin.
+- Persistent configuration possibility (gconf or registry).
+- Ability to speed up drawing by reducing eyecandy of schematic.
+
 eithne 0.2.1
-____________
+------------
 
 - Blocks are now displayed much fancier than before.
 - Plugin choosing best results.

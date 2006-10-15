@@ -20,23 +20,20 @@ namespace Eithne
 		public static IImage CreateImage(Pixbuf buf, int bpp)
 		{
 			byte[] data = new byte[buf.Height * buf.Width * bpp];
+			IImage img = new IImage(bpp, buf.Width, buf.Height, data);
 
-			for(int y=0; y<buf.Height; y++)
-				for(int x=0; x<buf.Width; x++)
-				{
-					int color = Utility.GetPixel(buf, x, y);
+			if(bpp == 1)
+			{
+				for(int y=0; y<buf.Height; y++)
+					for(int x=0; x<buf.Width; x++)
+						img[x, y] = (byte)Utility.GetPixel(buf, x, y);
+			}
+			else
+				for(int y=0; y<buf.Height; y++)
+					for(int x=0; x<buf.Width; x++)
+						img[x, y] = Utility.GetPixel(buf, x, y);
 
-					if(bpp == 1)
-						data[y * buf.Width + x] = (byte)color;
-					else
-					{
-						data[(y * buf.Width + x) * 3] = (byte)((color & 0xFF0000) >> 16);
-						data[(y * buf.Width + x) * 3 + 1] = (byte)((color & 0x00FF00) >> 8);
-						data[(y * buf.Width + x) * 3 + 2] = (byte)((color & 0x0000FF));
-					}
-				}
-
-			return new IImage(bpp, buf.Width, buf.Height, data);
+			return img;
 		}
 
 		// strasznie durna metoda, ale pixbuf tylko rgb umie przechowywać
@@ -77,13 +74,35 @@ namespace Eithne
 						data[(x + y*img.W)*3 + 2] = color;
 					}
 			}
-			else
+			else if(img.BPP == 3)
+			{
 				data = img.Data;
+			}
+			else
+			{
+				data = new byte[img.H * img.W * 3];
+
+				for(int y=0; y<img.H; y++)
+					for(int x=0; x<img.W; x++)
+					{
+						float val = (float)img[x, y];
+
+						if(val>255f)
+							val = 255f;
+
+						byte color = (byte)val;
+
+						data[(x + y*img.W)*3] = color;
+						data[(x + y*img.W)*3 + 1] = color;
+						data[(x + y*img.W)*3 + 2] = color;
+					}
+			}
+
 
 			Pixbuf tmp = new Pixbuf(data, false, 8, img.W, img.H, img.W * 3, null);
 
 			// wyżej robiony jest wrapper na dane, dane po konwersji są tymczasowe, więc trzeba zrobić kopię
-			if(img.BPP == 1)
+			if(img.BPP == 1 || img.BPP == 4)
 				tmp = tmp.Copy();
 
 			return tmp;

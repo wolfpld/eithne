@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.2"; }
 		}
 
 		public override string Author
@@ -63,6 +63,7 @@ namespace Eithne
 		int[] res = null;
 		int[] cat1 = null;
 		int[] cat2 = null;
+		bool[] match = null;
 
 		public ResultViewPlugin()
 		{
@@ -74,7 +75,7 @@ namespace Eithne
 			if(!_workdone)
 				throw new PluginException(Catalog.GetString("Plugin is not ready to display results."));
 
-			new ResultView(ibase, itest, thumbs, res, cat1, cat2);
+			new ResultView(ibase, itest, thumbs, res, cat1, cat2, match);
 		}
 
 		public override void Work()
@@ -124,6 +125,8 @@ namespace Eithne
 
 			cat1 = r.BaseCategories;
 			cat2 = r.TestCategories;
+
+			match = r.Match;
 
 			_workdone = true;
 		}

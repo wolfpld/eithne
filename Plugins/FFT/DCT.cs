@@ -4,16 +4,16 @@ using Mono.Unix;
 
 namespace Eithne
 {
-	public class DesaturateInfo : IInfo
+	public class DCTInfo : IInfo
 	{
 		public override string Name
 		{
-			get { return Catalog.GetString("Desaturate"); }
+			get { return Catalog.GetString("Discrete Cosine Transform"); }
 		}
 
 		public override string ShortName
 		{
-			get { return "Desat"; }
+			get { return "DCT"; }
 		}
 
 		public override string Version
@@ -28,13 +28,13 @@ namespace Eithne
 
 		public override string Description
 		{
-			get { return Catalog.GetString("This plugin converts color image to greyscale."); }
+			get { return Catalog.GetString("This plugin performs discrete cosine transform."); }
 		}
 	}
 
-	public class DesaturateFactory : IFactory
+	public class DCTFactory : IFactory
 	{
-		IInfo _info = new DesaturateInfo();
+		IInfo _info = new DCTInfo();
 		public IInfo Info
 		{
 			get { return _info; }
@@ -51,15 +51,15 @@ namespace Eithne
 
 		public IPlugin Create()
 		{
-			return new DesaturatePlugin();
+			return new DCTPlugin();
 		}
 	}
 
-	public class DesaturatePlugin : IImgProcPlugin
+	public class DCTPlugin : IImgProcPlugin
 	{
-		public DesaturatePlugin()
+		public DCTPlugin()
 		{
-			_info = new DesaturateInfo();
+			_info = new DCTInfo();
 		}
 
 		public override void Setup()
@@ -79,33 +79,41 @@ namespace Eithne
 			_out = new CommSocket(1);
 
 			for(int i=0; i<img.Length; i++)
-				res[i] = Desaturate(img[i]);
+				res[i] = DCT(img[i]);
 
 			_out[0] = new ICommImage(res, socket.OriginalImages, socket.Categories);
+
+			FFTW.fftw_cleanup();
 
 			_workdone = true;
 		}
 
-		private IImage Desaturate(IImage img)
+		private IImage DCT(IImage img)
 		{
-			if(img.BPP == 1)
-				return img;
+			if(img.BPP != 1)
+				throw new PluginException(Catalog.GetString("Image is not in greyscale."));
 
-			if(img.BPP == 4)
-				throw new PluginException(Catalog.GetString("Cannot desaturate floating point data"));
+			double[] datain = new double[img.W * img.H];
+			double[] dataout = new double[img.W * img.H];
 
-			byte[] data = new byte[img.W * img.H];
+			for(int y=0; y<img.H; y++)
+				for(int x=0; x<img.W; x++)
+					datain[x + y*img.W] = (byte)img[x, y];
 
-			for(int i=0; i<img.W * img.H; i++)
-			{
-				double r = img.Data[i*3];
-				double g = img.Data[i*3 + 1];
-				double b = img.Data[i*3 + 2];
+			IntPtr plan = FFTW.fftw_plan_r2r_2d(img.H, img.W, datain, dataout, FFTW.Kind.FFTW_REDFT10,
+					FFTW.Kind.FFTW_REDFT10, 0);
 
-				data[i] = (byte)(0.3 * r + 0.59 * g + 0.11 * b);
-			}
+			FFTW.fftw_execute(plan);
 
-			return new IImage(1, img.W, img.H, data);
+			FFTW.fftw_destroy_plan(plan);
+
+			IImage ret = new IImage(4, img.W, img.H);
+
+			for(int y=0; y<img.H; y++)
+				for(int x=0; x<img.W; x++)
+					ret[x, y] = (float)dataout[x + y*img.W] / 255f;
+
+			return ret;
 		}
 
 		public override int NumIn		{ get { return 1; } }
@@ -118,7 +126,7 @@ namespace Eithne
 
 		public override string DescOut(int n)
 		{
-			return Catalog.GetString("Desaturated version of image.");
+			return Catalog.GetString("DCT of image.");
 		}
 	}
 }

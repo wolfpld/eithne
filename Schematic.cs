@@ -114,17 +114,6 @@ namespace Eithne
 			return true;
 		}
 
-		protected override bool OnLeaveNotifyEvent(Gdk.EventCrossing args)
-		{
-			if(Action.m == Action.Mode.Normal)
-			{
-				selected = null;
-				QueueDraw();
-			}
-
-			return true;
-		}
-
 		protected override bool OnMotionNotifyEvent(Gdk.EventMotion args)
 		{
 			if(Action.m == Action.Mode.Normal)
@@ -188,12 +177,17 @@ namespace Eithne
 		{
 			status.Pop(1);
 
+			Schematic _t = this;
+			object selected = _t.selected;
+
 			object tmp = CheckSelection((int)args.X, (int)args.Y);
 
 			if(selected != null && selected == tmp)
 			{
 				if(selected is Block)
 				{
+					Block b = selected as Block;
+
 					if(args.Button == 1)
 					{
 						if(args.Type == Gdk.EventType.ButtonPress)
@@ -216,31 +210,30 @@ namespace Eithne
 						{
 							Action.m = Action.Mode.Normal;
 
-							if((selected as Block).Plugin is IOutPlugin &&
-									(selected as Block).Plugin.WorkDone)
+							if(b.Plugin is IOutPlugin && b.Plugin.WorkDone)
 							{
 								try
 								{
-									((selected as Block).Plugin as IOutPlugin).DisplayResults();
+									(b.Plugin as IOutPlugin).DisplayResults();
 								}
 								catch(Exception e)
 								{
-									(selected as Block).ShowError = true;
+									b.ShowError = true;
 									QueueDraw();
-									new PluginError(e, selected as Block, this, true);
+									new PluginError(e, b, this, true);
 								}
 							}
-							else if((selected as Block).Plugin.HasSetup)
+							else if(b.Plugin.HasSetup)
 							{
 								try
 								{
-									(selected as Block).Plugin.Setup();
+									b.Plugin.Setup();
 								}
 								catch(Exception e)
 								{
-									(selected as Block).ShowError = true;
+									b.ShowError = true;
 									QueueDraw();
-									new PluginError(e, selected as Block, this, true);
+									new PluginError(e, b, this, true);
 								}
 							}
 						}
@@ -249,23 +242,23 @@ namespace Eithne
 					{
 						ImageMenuItem mi;
 
-						status.Push(1, String.Format(Catalog.GetString("{0} menu"), (selected as Block).Plugin.Info.Name));
+						status.Push(1, String.Format(Catalog.GetString("{0} menu"), b.Plugin.Info.Name));
 
 						Action.m = Action.Mode.Normal;
 
 						Menu m = new Menu();
 
-						if((selected as Block).Plugin is IOutPlugin)
+						if(b.Plugin is IOutPlugin)
 						{
 							mi = new ImageMenuItem(Catalog.GetString("Display _results"));
 							mi.Image = new Image(null, "system-search.png");
 							mi.Activated += PluginResults;
-							if(!(selected as Block).Plugin.WorkDone)
+							if(!b.Plugin.WorkDone)
 								mi.Sensitive = false;
 							m.Append(mi);
 						}
 
-						if((selected as Block).Plugin.HasSetup)
+						if(b.Plugin.HasSetup)
 						{
 							mi = new ImageMenuItem(Catalog.GetString("_Setup"));
 							mi.Image = new Image(null, "preferences-desktop.png");
@@ -273,14 +266,14 @@ namespace Eithne
 							m.Append(mi);
 						}
 
-						if((selected as Block).Plugin.HasSetup || (selected as Block).Plugin is IOutPlugin)
+						if(b.Plugin.HasSetup || b.Plugin is IOutPlugin)
 							m.Append(new SeparatorMenuItem());
 
 						mi = new ImageMenuItem(Catalog.GetString("D_isconnect all"));
 						mi.Image = new Image(null, "edit-cut.png");
 						mi.Activated += delegate(object sender, EventArgs args)
 							{
-								(selected as Block).Disconnect();
+								b.Disconnect();
 								QueueDraw();
 								status.Pop(1);
 								status.Push(1, Catalog.GetString("Removed all block's connections"));
@@ -289,11 +282,11 @@ namespace Eithne
 
 						mi = new ImageMenuItem(Catalog.GetString("In_validate"));
 						mi.Image = new Image(null, "user-trash-full.png");
-						if((selected as Block).CheckState() != Block.State.Good)
+						if(b.CheckState() != Block.State.Good)
 							mi.Sensitive = false;
 						mi.Activated += delegate(object sender, EventArgs args)
 							{
-								(selected as Block).Invalidate();
+								b.Invalidate();
 
 								status.Pop(1);
 								status.Push(1, Catalog.GetString("Invalidated results"));
@@ -304,12 +297,12 @@ namespace Eithne
 						mi.Image = new Image(null, "edit-delete.png");
 						mi.Activated += delegate(object sender, EventArgs args)
 							{
-								(selected as Block).Disconnect();
+								b.Disconnect();
 								blocks.Remove(selected);
 								QueueDraw();
 
 								status.Pop(1);
-								status.Push(1, String.Format(Catalog.GetString("Deleted {0} block"), (selected as Block).Plugin.Info.Name));
+								status.Push(1, String.Format(Catalog.GetString("Deleted {0} block"), b.Plugin.Info.Name));
 							};
 						m.Append(mi);
 
@@ -317,7 +310,7 @@ namespace Eithne
 
 						mi = new ImageMenuItem(Catalog.GetString("_About"));
 						mi.Image = new Image(null, "help-browser.png");
-						mi.Activated += delegate(object sender, EventArgs args) { new PluginAbout((selected as Block).Plugin); };
+						mi.Activated += delegate(object sender, EventArgs args) { new PluginAbout(b.Plugin); };
 						m.Append(mi);
 
 						m.ShowAll();
@@ -351,19 +344,16 @@ namespace Eithne
 						}
 						else if(args.Button == 3)
 						{
-							// bez tego hacku nie działa, co jest o tyle dziwne, że wyżej jest ok
-							Schematic hack = this;
-
 							Menu m = new Menu();
 							ImageMenuItem mi = new ImageMenuItem(Catalog.GetString("_Disconnect"));
 							mi.Image = new Image(null, "edit-cut.png");
 							mi.Activated += delegate(object sender, EventArgs args)
 							{
 								s.Disconnect();
-								hack.QueueDraw();
+								_t.QueueDraw();
 
-								hack.status.Pop(1);
-								hack.status.Push(1, Catalog.GetString("Removed connection"));
+								_t.status.Pop(1);
+								_t.status.Push(1, Catalog.GetString("Removed connection"));
 							};
 							m.Append(mi);
 
@@ -454,7 +444,7 @@ namespace Eithne
 			((IDisposable) c).Dispose();
 
 			aa += 50;
-			if(aa > 500)
+			if(aa > 400)
 				aa = 10;
 			QueueDraw();
 		}

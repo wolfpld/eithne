@@ -2,8 +2,10 @@ SUBDIRS = \
 	Best \
 	ClassDB \
 	Correctness \
+	Crop \
 	Desaturate \
 	Euclid \
+	FFT \
 	Histogram \
 	ImageView \
 	L0Mod \
@@ -16,7 +18,8 @@ SUBDIRS = \
 	ResultData \
 	RGBSplit \
 	SimpleDB \
-	SimpleResultView
+	SimpleResultView \
+	X-of-Y
 
 all: $(SUBDIRS)
 

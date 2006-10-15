@@ -120,7 +120,7 @@ namespace Eithne
 				for(int y=0; y<img.H; y++)
 					for(int x=0; x<img.W; x++)
 					{
-						int color = img[x, y];
+						int color = (int)img[x, y];
 						r[x + img.W*y] = (byte)((color & 0xFF0000) >> 16);
 						g[x + img.W*y] = (byte)((color & 0x00FF00) >> 8);
 						b[x + img.W*y] = (byte)(color & 0x0000FF);

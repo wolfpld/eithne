@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.2"; }
 		}
 
 		public override string Author
@@ -115,6 +115,10 @@ namespace Eithne
 				res[i] = r[i];
 
 			match = Utility.FindResultsSimple(r);
+
+			for(int i=0; i<r.Length; i++)
+				if(!r.Match[i])
+					match[i] = -1;
 
 			_workdone = true;
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Xml;
+using Mono.Unix;
 
 namespace Eithne
 {
@@ -52,7 +53,7 @@ namespace Eithne
 		protected IBlock _block = null;
 		protected CommSocket _in = null, _out = null;
 
-		public IInfo Info		{ get { return _info; } }
+		public virtual IInfo Info		{ get { return _info; } }
 		public XmlDocument XmlDoc	{ set { _xmldoc = value; } }
 
 		public object Source
@@ -195,13 +196,30 @@ namespace Eithne
 
 		public IImage(int bpp, int w, int h, byte[] data)
 		{
+			if(bpp != 1 && bpp != 3 && bpp != 4)
+				throw new Exception(Catalog.GetString("BPP must be 1, 3 or 4"));
+
 			this.bpp = bpp;
 			this.w = w;
 			this.h = h;
 			this.data = data;
 		}
 
-		public int this [int x, int y]
+		public IImage(int bpp, int w, int h)
+		{
+			if(bpp != 1 && bpp != 3 && bpp != 4)
+				throw new Exception(Catalog.GetString("BPP must be 1, 3 or 4"));
+
+			this.bpp = bpp;
+			this.w = w;
+			this.h = h;
+
+			data = new byte[w * h * bpp];
+		}
+
+		// zwracamy object, bo nie wiadomo czy będzie bajt, czy int, czy float, ale wewnątrz wszystko
+		// jest jako int traktowane
+		public object this [int x, int y]
 		{
 			get { return GetPixel(x, y); }
 			set { PutPixel(x, y, value); }
@@ -227,24 +245,34 @@ namespace Eithne
 			get { return data; }
 		}
 
-		private int GetPixel(int x, int y)
+		private unsafe object GetPixel(int x, int y)
 		{
 			if(bpp == 1)
 				return data[x + w*y];
-			else
+			else if(bpp == 3)
 				return (data[(x + w*y)*3] << 16) + (data[(x + w*y)*3 + 1] << 8) + data[(x + w*y)*3 + 2];
+			else
+				fixed(byte *ptr = data)
+				{
+					return *(((float*)ptr) + x + w*y);
+				}
 		}
 
-		private void PutPixel(int x, int y, int val)
+		private unsafe void PutPixel(int x, int y, object val)
 		{
 			if(bpp == 1)
 				data[x + w*y] = (byte)val;
-			else
+			else if (bpp == 3)
 			{
-				data[(x + w*y)*3] =	(byte)((val & 0xFF0000) >> 16);
-				data[(x + w*y)*3 + 1] =	(byte)((val & 0x00FF00) >> 8);
-				data[(x + w*y)*3 + 2] = (byte)(val & 0x0000FF);
+				data[(x + w*y)*3] =	(byte)(((int)val & 0xFF0000) >> 16);
+				data[(x + w*y)*3 + 1] =	(byte)(((int)val & 0x00FF00) >> 8);
+				data[(x + w*y)*3 + 2] = (byte)((int)val & 0x0000FF);
 			}
+			else
+				fixed(byte *ptr = data)
+				{
+					*(((float*)ptr) + x + w*y) = (float)val;
+				}
 		}
 	}
 
@@ -331,6 +359,7 @@ namespace Eithne
 		private readonly IResult[] res;
 		private readonly int[] catbase;
 		private readonly int[] cattest;
+		private readonly bool[] match;
 
 		public ICommResult(IResult[] res, double identity, IImage[] origbase, IImage[] origtest, int[] catbase, int[] cattest)
 		{
@@ -340,6 +369,23 @@ namespace Eithne
 			this.origtest = origtest;
 			this.catbase = catbase;
 			this.cattest = cattest;
+
+			match = new bool[res.Length];
+
+			for(int i=0; i<res.Length; i++)
+				match[i] = true;
+		}
+
+		public ICommResult(IResult[] res, double identity, IImage[] origbase, IImage[] origtest, int[] catbase, int[] cattest,
+				bool[] match)
+		{
+			this.identity = identity;
+			this.res = res;
+			this.origbase = origbase;
+			this.origtest = origtest;
+			this.catbase = catbase;
+			this.cattest = cattest;
+			this.match = match;
 		}
 
 		public double this [int itest, int ibase]
@@ -380,6 +426,11 @@ namespace Eithne
 		public int[] BaseCategories
 		{
 			get { return catbase; }
+		}
+
+		public bool[] Match
+		{
+			get { return match; }
 		}
 
 		public int TestCategory(int n)

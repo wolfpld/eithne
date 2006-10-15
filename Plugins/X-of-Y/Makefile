@@ -1,13 +1,13 @@
 MCS = mcs
 
-TARGET = SimpleResultView.dll
+TARGET = X-of-Y.dll
 
 SRC = \
-	ResultView.cs \
-	ResultViewWindow.cs
+	X-of-Y.cs \
+	X-of-YSetup.cs
 
 RESOURCES = \
-	ResultView.glade
+	X-of-Y.glade
 
 RESFILES = $(addprefix resources/,$(RESOURCES))
 RESCMD = $(addprefix -resource:,$(RESFILES))

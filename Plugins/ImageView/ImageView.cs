@@ -76,7 +76,7 @@ namespace Eithne
 
 		public override void Work()
 		{
-			ICommImage socket = _in[0] as ICommImage;
+			ICommImage socket = (ICommImage)_in[0];
 			IImage[] img = socket.Images;
 
 			images = new Gdk.Pixbuf[img.Length];
