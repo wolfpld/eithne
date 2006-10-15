@@ -1,0 +1,896 @@
+# Eithne
+# Copyright (C) 2005-2006 Bartosz Taudul
+# This file is distributed under the same license as the eithne package.
+# Bartosz Taudul <bartosz.taudul@gmail.com>, 2006.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-02-01 18:46+0100\n"
+"PO-Revision-Date: 2006-01-25 18:12+0100\n"
+"Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+
+#: Connector.cs:11
+msgid "Connector"
+msgstr "Łącznik"
+
+#: Connector.cs:31
+msgid "Connector between blocks."
+msgstr "Łącznik między blokami."
+
+#: Connector.cs:88 Plugins/Multiplier/Multiplier.cs:113
+msgid "Input signal."
+msgstr "Sygnał wejściowy."
+
+#: Connector.cs:93
+msgid "Copied signal."
+msgstr "Skopiowany sygnał."
+
+#: DialogQuestion.cs:26
+msgid "Question"
+msgstr "Pytanie"
+
+#: Engine.cs:50
+msgid "Plugin has no data on output sockets."
+msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
+
+#: LoadError.cs:23
+msgid "Plugin name"
+msgstr "Nazwa wtyczki"
+
+#: LoadError.cs:26
+msgid "Source assembly"
+msgstr "Źródłowy pakiet"
+
+#: LoadError.cs:28
+msgid "Class"
+msgstr "Klasa"
+
+#: LoadError.cs:58
+#, csharp-format
+msgid ""
+"File <i>{0}</i> cannot be open because the following plugins are not "
+"available:"
+msgstr ""
+"Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
+"dostępne:"
+
+#: MainWindow.cs:55
+msgid "Welcome to Eithne!"
+msgstr "Witamy w Eithne!"
+
+#: MainWindow.cs:102
+msgid "Do you really want to discard old schematic?"
+msgstr "Czy na pewno odrzucić stary schemat?"
+
+#: MainWindow.cs:110
+msgid "New system schematic ready"
+msgstr "Nowy schemat systemu gotowy"
+
+#: MainWindow.cs:116
+msgid "Select file to load..."
+msgstr "Wybór pliku do załadowania..."
+
+#: MainWindow.cs:117 MainWindow.cs:151 Plugins/SimpleDB/SimpleDBWindow.cs:47
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: MainWindow.cs:118
+msgid "Load"
+msgstr "Ładuj"
+
+#: MainWindow.cs:121 MainWindow.cs:155
+msgid "Eithne system schematic"
+msgstr "Schemat systemu Eithne"
+
+#: MainWindow.cs:125 MainWindow.cs:159 Plugins/SimpleDB/SimpleDBWindow.cs:55
+msgid "All files"
+msgstr "Wszystkie pliki"
+
+#: MainWindow.cs:140
+#, csharp-format
+msgid "{0} loaded"
+msgstr "Załadowano {0}"
+
+#: MainWindow.cs:150
+msgid "Save as..."
+msgstr "Zapisz jako..."
+
+#: MainWindow.cs:151
+msgid "Save"
+msgstr "Zapisz"
+
+#: MainWindow.cs:175 MainWindow.cs:191
+#, csharp-format
+msgid "{0} saved"
+msgstr "Zapisano {0}"
+
+#: PluginAbout.cs:25
+#, csharp-format
+msgid "About {0}"
+msgstr "O wtyczce \"{0}\""
+
+#: PluginAbout.cs:30 PluginList.cs:84
+msgid "Author: "
+msgstr "Autor: "
+
+#: PluginAbout.cs:46 PluginAbout.cs:68 PluginToolbox.cs:104
+msgid "Input"
+msgstr "Wejście"
+
+#: PluginAbout.cs:48 PluginAbout.cs:72 PluginToolbox.cs:116
+msgid "Output"
+msgstr "Wyjście"
+
+#: PluginAbout.cs:50 PluginAbout.cs:76 PluginToolbox.cs:107
+msgid "Image processing"
+msgstr "Obróbka obrazów"
+
+#: PluginAbout.cs:52 PluginAbout.cs:80 PluginToolbox.cs:113
+msgid "Result processing"
+msgstr "Obróbka wyników"
+
+#: PluginAbout.cs:54 PluginAbout.cs:84 PluginToolbox.cs:110
+msgid "Comparator"
+msgstr "Komparator"
+
+#: PluginAbout.cs:56 PluginAbout.cs:88 PluginToolbox.cs:119
+msgid "Other"
+msgstr "Inne"
+
+#: PluginDB.cs:78
+msgid "Inspecting "
+msgstr "Inspekcja "
+
+#: PluginDB.cs:79
+#, csharp-format
+msgid "Inspecting {0}"
+msgstr "Inspekcja {0}"
+
+#: PluginDB.cs:89
+#, csharp-format
+msgid "Found {0} plugin {1}"
+msgstr "Znaleziono wtyczkę {1} typu {0}"
+
+#: PluginDB.cs:120
+#, csharp-format
+msgid "Error while processing {0}: {1}"
+msgstr "Błąd podczas przetwarzania {0}: {1}"
+
+#: PluginError.cs:43
+msgid ""
+"<big><big><b>Eithne encountered error while trying to configure plugin.</b></"
+"big></big>"
+msgstr ""
+"<big><big><b>Eithne napotkało błąd próbując skonfigurować wtyczkę.</b></"
+"big></big>"
+
+#: PluginError.cs:44
+msgid "Please report bug to plugin's author."
+msgstr "Proszę zgłosić błąd do autora wtyczki."
+
+#: PluginList.cs:18
+msgid "Input plugins\n"
+msgstr "Wtyczki wejściowe\n"
+
+#: PluginList.cs:21
+msgid ""
+"\n"
+"Image processing plugins\n"
+msgstr ""
+"\n"
+"Wtyczki przetwarzające obrazy\n"
+
+#: PluginList.cs:24
+msgid ""
+"\n"
+"Comparator plugins\n"
+msgstr ""
+"\n"
+"Wtyczki komparatora\n"
+
+#: PluginList.cs:27
+msgid ""
+"\n"
+"Result processing plugins\n"
+msgstr ""
+"\n"
+"Wtyczki przetwarzające wyniki\n"
+
+#: PluginList.cs:30
+msgid ""
+"\n"
+"Output plugins\n"
+msgstr ""
+"\n"
+"Wtyczki wyjściowe\n"
+
+#: PluginList.cs:33
+msgid ""
+"\n"
+"Other plugins\n"
+msgstr ""
+"\n"
+"Inne wtyczki\n"
+
+#: PluginList.cs:73
+msgid "No plugins available.\n"
+msgstr "Brak dostępnych wtyczek.\n"
+
+#: PluginToolbox.cs:66
+#, csharp-format
+msgid "{0} plugin selected"
+msgstr "Wtyczka \"{0}\" wybrana"
+
+#: PluginToolbox.cs:71
+msgid "A_dd"
+msgstr "_Dodaj"
+
+#: PluginToolbox.cs:84 Schematic.cs:301
+msgid "_About"
+msgstr "O wtyczce"
+
+#: Plugins/Desaturate/Desaturate.cs:11
+msgid "Desaturate"
+msgstr "Desaturacja"
+
+#: Plugins/Desaturate/Desaturate.cs:31
+msgid "This plugin converts color image to greyscale."
+msgstr "Ta wtyczka konwertuje kolorowe obrazy do skali szarości."
+
+#: Plugins/Desaturate/Desaturate.cs:113 Plugins/Histogram/Histogram.cs:180
+#: Plugins/NewSourceImages/NewSourceImages.cs:89
+#: Plugins/RGBSplit/RGBSplit.cs:143 Plugins/Random/Random.cs:152
+#: Plugins/Resize/Resize.cs:111
+msgid "Input image."
+msgstr "Obraz wejściowy."
+
+#: Plugins/Desaturate/Desaturate.cs:118
+msgid "Desaturated version of image."
+msgstr "Zdesaturowana wersja obrazu."
+
+#: Plugins/Euclid/Euclid.cs:11
+msgid "Euclid metric"
+msgstr "Metryka Euklidesa"
+
+#: Plugins/Euclid/Euclid.cs:31
+msgid "This plugin calculates Euclid metric between images."
+msgstr "Ta wtyczka oblicza metrykę Euklidesa pomiędzy obrazami."
+
+#: Plugins/Euclid/Euclid.cs:104 Plugins/Histogram/Histogram.cs:102
+#: Plugins/L0Mod/L0Mod.cs:114 Plugins/PC-C1/PC-C1.cs:104
+#: Plugins/PC-C2/PC-C2.cs:104
+msgid "Image is not in greyscale."
+msgstr "Obraz nie jest w skali szarości."
+
+#: Plugins/Euclid/Euclid.cs:106 Plugins/L0Mod/L0Mod.cs:116
+#: Plugins/PC-C1/PC-C1.cs:106 Plugins/PC-C2/PC-C2.cs:106
+msgid "Images dimensions do not match."
+msgstr "Wymiary obrazów nie pasują do siebie."
+
+#: Plugins/Euclid/Euclid.cs:125 Plugins/L0Mod/L0Mod.cs:150
+#: Plugins/PC-C1/PC-C1.cs:129 Plugins/PC-C2/PC-C2.cs:130
+msgid "Base images."
+msgstr "Obrazy bazowe."
+
+#: Plugins/Euclid/Euclid.cs:127 Plugins/L0Mod/L0Mod.cs:152
+#: Plugins/PC-C1/PC-C1.cs:131 Plugins/PC-C2/PC-C2.cs:132
+msgid "Test images."
+msgstr "Obrazy testowe."
+
+#: Plugins/Euclid/Euclid.cs:132
+msgid "Calculated Euclid metric."
+msgstr "Obliczona metryka Euklidesa."
+
+#: Plugins/Histogram/Histogram.cs:11
+#: Plugins/Histogram/resources/Histogram.glade:8
+#: Plugins/L0Mod/resources/L0Mod.glade:8
+msgid "Histogram"
+msgstr "Histogram"
+
+#: Plugins/Histogram/Histogram.cs:31
+msgid "This plugin calculates histogram of image."
+msgstr "Ta wtyczka oblicza histogram obrazu."
+
+#: Plugins/Histogram/Histogram.cs:185
+msgid "Histogram of image."
+msgstr "Histogram obrazu."
+
+#: Plugins/Histogram/resources/Histogram.glade:33
+msgid "<big><big><b>Histogram</b></big></big>"
+msgstr "<big><big><b>Histogram</b></big></big>"
+
+#: Plugins/Histogram/resources/Histogram.glade:58
+msgid "Number of bins:"
+msgstr "Liczba przedziałów:"
+
+#: Plugins/ImageView/ImageView.cs:11
+#: Plugins/ImageView/resources/ImageView.glade:8
+msgid "Image View"
+msgstr "Podgląd obrazów"
+
+#: Plugins/ImageView/ImageView.cs:31
+msgid "This plugin displays images it receives on input."
+msgstr "Ta wtyczka wyświetla obrazy otrzymane na wejściu."
+
+#: Plugins/ImageView/ImageView.cs:71
+msgid "Plugin is not ready to display images."
+msgstr "Wtyczka nie jest gotowa wyświetlać obrazy."
+
+#: Plugins/ImageView/ImageView.cs:115
+msgid "Images to be viewed."
+msgstr "Obrazy, które będą oglądane."
+
+#: Plugins/ImageView/ImageViewWindow.cs:44
+#, csharp-format
+msgid "<i>Viewing {0} image</i>"
+msgid_plural "<i>Viewing {0} images</i>"
+msgstr[0] "<i>{0} obraz</i>"
+msgstr[1] "<i>{0} obrazy</i>"
+msgstr[2] "<i>{0} obrazów</i>"
+
+#: Plugins/ImageView/resources/ImageView.glade:33
+msgid "<big><big><b>Image View</b></big></big>"
+msgstr "<big><big><b>Podgląd Obrazów</b></big></big>"
+
+#: Plugins/ImageView/resources/ImageView.glade:111
+#: Plugins/SimpleResultView/resources/ResultView.glade:231
+msgid "label2"
+msgstr ""
+
+#: Plugins/L0Mod/L0Mod.cs:11
+msgid "Modified L<sub>0</sub> metric"
+msgstr "Zmodyfikowana metryka L<sub>0</sub>"
+
+#: Plugins/L0Mod/L0Mod.cs:31
+msgid "This plugin calculates modified L<sub>0</sub> metric between images."
+msgstr ""
+"Ta wtyczka oblicza zmodyfikowaną metrykę L<sub>0</sub> pomiędzy obrazami."
+
+#: Plugins/L0Mod/L0Mod.cs:157
+msgid "Calculated modified L0 metric."
+msgstr "Obliczona zmodyfikowana metryka L0."
+
+#: Plugins/L0Mod/resources/L0Mod.glade:33
+msgid "<big><big><b>Modified L<sub>0</sub> metric</b></big></big>"
+msgstr "<big><big><b>Zmodyfikowana metryka L<sub>0</sub></b></big></big>"
+
+#: Plugins/L0Mod/resources/L0Mod.glade:58
+msgid "Cut-off δ:"
+msgstr "δ odcięcia:"
+
+#: Plugins/Multiplier/Multiplier.cs:11
+#: Plugins/Multiplier/resources/Multiplier.glade:8
+msgid "Multiplier"
+msgstr "Powielacz"
+
+#: Plugins/Multiplier/Multiplier.cs:31
+msgid "This plugin multiplies input signal on several output sockets."
+msgstr "Ta wtyczka powiela sygnał wejściowy na kilku gniazdach wyjściowych."
+
+#: Plugins/Multiplier/Multiplier.cs:118
+#, csharp-format
+msgid "{0}. copy of signal."
+msgstr "{0}. kopia sygnału."
+
+#: Plugins/Multiplier/resources/Multiplier.glade:33
+msgid "<big><big><b>Multiplier</b></big></big>"
+msgstr "<big><big><b>Powielacz</b></big></big>"
+
+#: Plugins/Multiplier/resources/Multiplier.glade:58
+msgid "Number of output sockets:"
+msgstr "Liczba gniazd wyjściowych:"
+
+#: Plugins/NewSourceImages/NewSourceImages.cs:11
+msgid "New Source Images"
+msgstr "Nowe Źródłowe Obrazy"
+
+#: Plugins/NewSourceImages/NewSourceImages.cs:31
+msgid ""
+"This plugin sets source images of data stream to current images in stream."
+msgstr ""
+"Ta wtyczka ustawia źródłowe obrazy strumienia danych na aktualne obrazy w "
+"strumieniu."
+
+#: Plugins/NewSourceImages/NewSourceImages.cs:94
+msgid "Copy of image with original image changed."
+msgstr "Kopia obrazu ze zmienionym obrazem źródłowym."
+
+#: Plugins/PC-C1/PC-C1.cs:11
+msgid "Pseudo-correlative C<sub>1</sub> metric"
+msgstr "Pseudokorel. metryka C<sub>1</sub>"
+
+#: Plugins/PC-C1/PC-C1.cs:31
+msgid ""
+"This plugin calculates pseudo-correlative C<sub>1</sub> metric between "
+"images."
+msgstr ""
+"Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>1</sub> pomiędzy obrazami."
+
+#: Plugins/PC-C1/PC-C1.cs:136
+msgid "Calculated C1 metric."
+msgstr "Obliczone metryka C1."
+
+#: Plugins/PC-C2/PC-C2.cs:11
+msgid "Pseudo-correlative C<sub>2</sub> metric"
+msgstr "Pseudokorel. metryka C<sub>2</sub>"
+
+#: Plugins/PC-C2/PC-C2.cs:31
+msgid ""
+"This plugin calculates pseudo-correlative C<sub>2</sub> metric between "
+"images."
+msgstr ""
+"Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>2</sub> pomiędzy obrazami."
+
+#: Plugins/PC-C2/PC-C2.cs:137
+msgid "Calculated C2 metric."
+msgstr "Obliczona metryka C2."
+
+#: Plugins/RGBSplit/RGBSplit.cs:11
+msgid "RGB Split"
+msgstr "Rozbicie RGB"
+
+#: Plugins/RGBSplit/RGBSplit.cs:31
+msgid "This plugin splits image to 3 color subchannels. (Red, Green, Blue)"
+msgstr ""
+"Ta wtyczka wykonuje rozbicie obrazu na 3 podkanały. (czerwony, zielony, "
+"niebieski)"
+
+#: Plugins/RGBSplit/RGBSplit.cs:149
+msgid "Red subchannel."
+msgstr "Podkanał czerwony."
+
+#: Plugins/RGBSplit/RGBSplit.cs:151
+msgid "Green subchannel."
+msgstr "Podkanał zielony."
+
+#: Plugins/RGBSplit/RGBSplit.cs:153
+msgid "Blue subchannel."
+msgstr "Podkanał niebieski."
+
+#: Plugins/Random/Random.cs:11
+msgid "Random pixels"
+msgstr "Losowe piksele"
+
+#: Plugins/Random/Random.cs:31
+msgid "This plugin gets random pixels from image and forms a new one."
+msgstr ""
+"Ten plugin losuje piksele z obrazu i na ich podstawie tworzy nowy obraz."
+
+#: Plugins/Random/Random.cs:157
+msgid "Random pixels."
+msgstr "Losowe piksele."
+
+#: Plugins/Random/resources/Random.glade:8
+msgid "Random Pixels"
+msgstr "Losowe Piksele"
+
+#: Plugins/Random/resources/Random.glade:33
+msgid "<big><big><b>Random Pixels</b></big></big>"
+msgstr "<big><big><b>Losowe Piksele</b></big></big>"
+
+#: Plugins/Random/resources/Random.glade:67
+msgid "<b>Random seed</b>"
+msgstr "<b>Ziarno losowe</b>"
+
+#: Plugins/Random/resources/Random.glade:95
+msgid "<b>Image size</b>"
+msgstr "<b>Rozmiar</b>"
+
+#: Plugins/Random/resources/Random.glade:149
+msgid "Generate new"
+msgstr "Generuj nowe"
+
+#: Plugins/Random/resources/Random.glade:198
+msgid "x"
+msgstr "x"
+
+#: Plugins/Resize/Resize.cs:11
+msgid "Resize Image"
+msgstr "Skalowanie Obrazu"
+
+#: Plugins/Resize/Resize.cs:31
+msgid "This plugin changes size of images"
+msgstr "Ta wtyczka zmienia rozmiar obrazów."
+
+#: Plugins/Resize/Resize.cs:116
+msgid "Scaled image."
+msgstr "Przeskalowane obrazy."
+
+#: Plugins/Resize/resources/ResizeSetup.glade:9
+msgid "Resize preferences"
+msgstr "Ustawienia zmiany rozmiaru"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:34
+msgid "<big><big><b>Resize</b></big></big>"
+msgstr "<big><big><b>Zmiana rozmiaru</b></big></big>"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:65
+msgid "<b>Size</b>"
+msgstr "<b>Rozmiar</b>"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:91
+msgid "Absolute"
+msgstr "Absolutny"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:110
+msgid "Relative"
+msgstr "Relatywny"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:142
+msgid "<b>X</b>"
+msgstr "<b>X</b>"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:217
+msgid "<b>Y</b>"
+msgstr "<b>Y</b>"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:297
+msgid "<b>Interpolation mode</b>"
+msgstr "<b>Tryb interpolacji</b>"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:384
+msgid "Nearest"
+msgstr "Najbliższy sąsiad"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:405
+msgid "Tiles"
+msgstr "Kafelki"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:427
+msgid "Bilinear"
+msgstr "Dwuliniowa"
+
+#: Plugins/Resize/resources/ResizeSetup.glade:449
+msgid "Hyper"
+msgstr "Hyper"
+
+#: Plugins/ResultData/ResultData.cs:11
+#: Plugins/ResultData/resources/ResultData.glade:8
+msgid "Result Data"
+msgstr "Dane Wynikowe"
+
+#: Plugins/ResultData/ResultData.cs:31
+msgid "This plugin shows raw data coming to block's input socket."
+msgstr ""
+"Wtyczka wyświetla surowe dane przychodzące do gniazda wejściowego bloku."
+
+#: Plugins/ResultData/ResultData.cs:72
+#: Plugins/SimpleResultView/ResultView.cs:73
+msgid "Plugin is not ready to display results."
+msgstr "Wtyczka nie jest gotowa wyświetlać wyniki."
+
+#: Plugins/ResultData/ResultData.cs:134
+msgid "Results to be displayed in raw form."
+msgstr "Wyniki do wyświetlenia w surowej formie."
+
+#: Plugins/ResultData/resources/ResultData.glade:33
+msgid "<big><big><b>Result Data</b></big></big>"
+msgstr "<big><big><b>Dane Wynikowe</b></big></big>"
+
+#: Plugins/SimpleDB/FileList.cs:42
+msgid ""
+"Cannot open specified image.\n"
+"<i>"
+msgstr ""
+"Nie można otworzyć podanego obrazu.\n"
+"<i>"
+
+#: Plugins/SimpleDB/Preview.cs:28
+msgid "Image <i>"
+msgstr "Obraz <i>"
+
+#: Plugins/SimpleDB/SimpleDB.cs:12 Plugins/SimpleDB/resources/SimpleDB.glade:8
+msgid "Simple Image Database"
+msgstr "Prosta Baza Obrazów"
+
+#: Plugins/SimpleDB/SimpleDB.cs:32
+msgid "This plugin allows to pass images to image recognition system."
+msgstr ""
+"Ta wtyczka umożliwia przekazanie obrazów do systemu rozpoznawania obrazów."
+
+#: Plugins/SimpleDB/SimpleDB.cs:82
+msgid "No images in list"
+msgstr "Brak obrazów na liście"
+
+#: Plugins/SimpleDB/SimpleDB.cs:143
+msgid "Images."
+msgstr "Obrazy."
+
+#: Plugins/SimpleDB/SimpleDBWindow.cs:46
+msgid "Select image to add..."
+msgstr "Wybór obrazu do dodania..."
+
+#: Plugins/SimpleDB/SimpleDBWindow.cs:48
+msgid "Add"
+msgstr "Dodaj"
+
+#: Plugins/SimpleDB/resources/LoadError.glade:8
+msgid "Some images not found"
+msgstr "Nie znaleziono części obrazów"
+
+#: Plugins/SimpleDB/resources/LoadError.glade:60
+msgid ""
+"<big><b>Simple Image Database could not find following images:</b></big>"
+msgstr ""
+"<big><b>Prosta Baza Obrazów nie mogła znaleźć następujących obrazów:</b></"
+"big>"
+
+#: Plugins/SimpleDB/resources/Preview.glade:8
+msgid "Preview"
+msgstr "Podgląd"
+
+#: Plugins/SimpleDB/resources/Preview.glade:33
+#: resources/DialogMessage.glade:54 resources/DialogQuestion.glade:54
+msgid "label1"
+msgstr ""
+
+#: Plugins/SimpleDB/resources/SimpleDB.glade:33
+msgid "<big><big><b>Simple Image Database</b></big></big>"
+msgstr "<big><big><b>Prosta Baza Obrazów</b></big></big>"
+
+#: Plugins/SimpleDB/resources/SimpleDB.glade:58
+msgid "<i>List of images</i>"
+msgstr "<i>Lista obrazów</i>"
+
+#: Plugins/SimpleResultView/ResultView.cs:11
+#: Plugins/SimpleResultView/resources/ResultView.glade:8
+msgid "Simple Result View"
+msgstr "Prosty Podgląd Wyników"
+
+#: Plugins/SimpleResultView/ResultView.cs:31
+msgid ""
+"This plugin displays which images from database were recognized for given "
+"test images."
+msgstr ""
+"Ta wtyczka wyświetla które obrazy z bazy danych zostały rozpoznane dla "
+"danych obrazów testowych."
+
+#: Plugins/SimpleResultView/ResultView.cs:155
+msgid "Results to be viewed."
+msgstr "Wyniki, które będą oglądane."
+
+#: Plugins/SimpleResultView/ResultViewWindow.cs:50
+#, csharp-format
+msgid "<i>Viewing results for {0} image</i>"
+msgid_plural "<i>Viewing results for {0} images</i>"
+msgstr[0] "<i>Wyniki dla {0} obrazu</i>"
+msgstr[1] "<i>Wyniki dla {0} obrazów</i>"
+msgstr[2] "<i>Wyniki dla {0} obrazów</i>"
+
+#: Plugins/SimpleResultView/resources/ResultView.glade:33
+msgid "<big><big><b>Simple Result View</b></big></big>"
+msgstr "<big><big><b>Prosty Podgląd Wyników</b></big></big>"
+
+#: Plugins/SimpleResultView/resources/ResultView.glade:67
+msgid "<b>Most similar image:</b>"
+msgstr "<b>Najbardziej podobny obraz:</b>"
+
+#: Plugins/SimpleResultView/resources/ResultView.glade:130
+msgid "<b>Current image:</b>"
+msgstr "<b>Aktualny obraz:</b>"
+
+#: SaveLoad.cs:251
+#, csharp-format
+msgid "File <i>{0}</i> is not an eithne system schematic!"
+msgstr "Plik <i>{0}</i> nie jest schematem systemu eithne!"
+
+#: Schematic.cs:141
+#, csharp-format
+msgid "{0} block selected"
+msgstr "Blok \"{0}\" wybrany"
+
+#: Schematic.cs:148
+#, csharp-format
+msgid "{0} block, input socket {1}. {2}"
+msgstr "Blok \"{0}\", gniazdo wejściowe {1}. {2}"
+
+#: Schematic.cs:151
+#, csharp-format
+msgid "{0} block, output socket {1}. {2}"
+msgstr "Blok \"{0}\", gniazdo wyjściowe {1}. {2}"
+
+#: Schematic.cs:201
+msgid "Move block to desired location"
+msgstr "Przenoszenie bloku na porządaną pozycję"
+
+#: Schematic.cs:238
+#, csharp-format
+msgid "{0} menu"
+msgstr "Menu bloku \"{0}\""
+
+#: Schematic.cs:248
+msgid "Display _results"
+msgstr "Wyświetl _wyniki"
+
+#: Schematic.cs:253
+msgid "_Setup"
+msgstr "U_stawienia"
+
+#: Schematic.cs:262
+msgid "D_isconnect all"
+msgstr "Rozłącz wszystk_ie"
+
+#: Schematic.cs:269
+msgid "Removed all block's connections"
+msgstr "Usunięto wszystkie połączenia bloku"
+
+#: Schematic.cs:273
+msgid "In_validate"
+msgstr "Unieważnij"
+
+#: Schematic.cs:282
+msgid "Invalidated results"
+msgstr "Unieważniono wyniki"
+
+#: Schematic.cs:286
+msgid "_Delete"
+msgstr "Usuń"
+
+#: Schematic.cs:295
+#, csharp-format
+msgid "Deleted {0} block"
+msgstr "Usunięto blok \"{0}\""
+
+#: Schematic.cs:320
+msgid "Connect block with another"
+msgstr "Łączenie bloku z innym blokiem"
+
+#: Schematic.cs:332 Schematic.cs:350
+msgid "Removed connection"
+msgstr "Usunięto połączenie"
+
+#: Schematic.cs:342
+msgid "_Disconnect"
+msgstr "Rozłącz"
+
+#: Schematic.cs:406
+msgid "Connected blocks"
+msgstr "Połączono bloki"
+
+#: resources/About.glade:8
+msgid "About Eithne"
+msgstr "O Eithne"
+
+#: resources/About.glade:49
+msgid "<big><big><b>Eithne v1.2.3</b></big></big>"
+msgstr ""
+
+#: resources/About.glade:74
+msgid "Extensible Image Recognition Systems modelling program"
+msgstr "Rozszerzalny program modelujący systemy rozpoznawania obrazów"
+
+#: resources/About.glade:99
+msgid "<small>Copyright © 2005 - 2006 Bartosz Taudul</small>"
+msgstr ""
+
+#: resources/FatalError.glade:8
+msgid "Fatal error encountered"
+msgstr "Napotkano krytyczny błąd"
+
+#: resources/FatalError.glade:60
+msgid ""
+"<big><big><b>Eithne has encountered a fatal error and cannot work correctly "
+"anymore.</b></big></big>"
+msgstr ""
+"<big><big><b>Eithne napotkało krytyczny błąd i nie jest w stanie pracować "
+"poprawnie.</b></big></big>"
+
+#: resources/FatalError.glade:114 resources/PluginError.glade:114
+msgid "full error"
+msgstr ""
+
+#: resources/FatalError.glade:123 resources/PluginError.glade:123
+msgid "error"
+msgstr ""
+
+#: resources/FatalError.glade:153
+msgid ""
+"Eithne will try to do a rescue save of system schematic to <i>rescue.xml</i>"
+msgstr ""
+"Eithne spróbuje zapisać ratunkową kopię schematu do pliku <i>rescue.xml</i>"
+
+#: resources/LoadError.glade:8
+msgid "Error loading schematic"
+msgstr "Błąd ładowania schematu"
+
+#: resources/LoadError.glade:60
+msgid "error message"
+msgstr ""
+
+#: resources/MainWindow.glade:7
+msgid "Eithne"
+msgstr ""
+
+#: resources/MainWindow.glade:38
+msgid "File"
+msgstr "Plik"
+
+#: resources/MainWindow.glade:98
+msgid "System"
+msgstr "System"
+
+#: resources/MainWindow.glade:107 resources/MainWindow.glade:244
+msgid "Run"
+msgstr "Uruchom"
+
+#: resources/MainWindow.glade:131
+msgid "Help"
+msgstr "Pomoc"
+
+#: resources/MainWindow.glade:140
+msgid "Plugin list"
+msgstr "Lista wtyczek"
+
+#: resources/MainWindow.glade:314
+msgid "System schematic"
+msgstr "Schemat systemu"
+
+#: resources/MainWindow.glade:379
+msgid "Plugin toolbox"
+msgstr "Narzędziówka"
+
+#: resources/PluginAbout.glade:40
+msgid "name version"
+msgstr ""
+
+#: resources/PluginAbout.glade:65
+msgid "type"
+msgstr ""
+
+#: resources/PluginAbout.glade:108
+msgid "author"
+msgstr ""
+
+#: resources/PluginAbout.glade:133
+msgid "desc"
+msgstr ""
+
+#: resources/PluginError.glade:8
+msgid "Plugin error"
+msgstr "Błąd wtyczki"
+
+#: resources/PluginError.glade:60
+msgid ""
+"<big><big><b>Eithne encountered error while trying to run plugin.</b></big></"
+"big>"
+msgstr ""
+"<big><big><b>Eithne napotkało błąd próbując uruchomić wtyczkę.</b></big></"
+"big>"
+
+#: resources/PluginError.glade:153
+msgid ""
+"Check if plugin is set up correctly. Check if plugin has correct input data. "
+"If this doesn't help, report bug to plugin's author."
+msgstr ""
+"Proszę sprawdzić czy wtyczka jest poprawnie skonfigurowa i czy przyjmuje "
+"prawidłowe dane wejściowe. Jeżeli wszystko jest w porządku, proszę zgłosić "
+"błąd do autora wtyczki."
+
+#: resources/PluginList.glade:7
+msgid "Plugin List"
+msgstr "Lista Wtyczek"
+
+#: resources/PluginList.glade:56
+msgid "<big><big><big><b>Plugin List</b></big></big></big>"
+msgstr "<big><big><big><b>Lista Wtyczek</b></big></big></big>"
+
+#: resources/Splash.glade:8
+msgid "Searching for plugins"
+msgstr "Szukanie wtyczek"
+
+#: resources/Splash.glade:54
+msgid "Searching for plugins..."
+msgstr "Szukanie wtyczek..."
+
+#: resources/Splash.glade:79
+msgid "Initializing..."
+msgstr "Inicjalizacja..."

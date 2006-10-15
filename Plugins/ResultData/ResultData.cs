@@ -1,0 +1,153 @@
+﻿using System;
+using System.Xml;
+using Mono.Unix;
+
+namespace Eithne
+{
+	public class ResultDataInfo : IInfo
+	{
+		public override string Name
+		{
+			get { return Catalog.GetString("Result Data"); }
+		}
+
+		public override string ShortName
+		{
+			get { return "ResData"; }
+		}
+
+		public override string Version
+		{
+			get { return "0.1"; }
+		}
+
+		public override string Author
+		{
+			get { return "Bartosz Taudul"; }
+		}
+
+		public override string Description
+		{
+			get { return Catalog.GetString("This plugin shows raw data coming to block's input socket."); }
+		}
+	}
+
+	public class ResultDataFactory : IFactory
+	{
+		IInfo _info = new ResultDataInfo();
+		public IInfo Info
+		{
+			get { return _info; }
+		}
+
+		public IType Type
+		{
+			get { return IType.Out; }
+		}
+
+		public void Initialize()
+		{
+		}
+
+		public IPlugin Create()
+		{
+			return new ResultDataPlugin();
+		}
+	}
+
+	public class ResultDataPlugin : IOutPlugin
+	{
+		Gdk.Pixbuf[] itest = null;
+		Gdk.Pixbuf[] ibase = null;
+		IResult[] res = null;
+		int[] match = null;
+
+		public ResultDataPlugin()
+		{
+			_info = new ResultDataInfo();
+		}
+
+		public override void Setup()
+		{
+			if(!_workdone)
+				throw new PluginException(Catalog.GetString("Plugin is not ready to display results."));
+
+			new ResultData(ibase, itest, res, match);
+		}
+
+		public override void Work()
+		{
+			ICommResult r = _in[0] as ICommResult;
+
+			itest = new Gdk.Pixbuf[r.Length];
+			ibase = new Gdk.Pixbuf[r.OriginalBaseImages.Length];
+
+			double scale;
+
+			for(int i=0; i<itest.Length; i++)
+			{
+				IImage img = r.OriginalTestImages[i];
+
+				if(img.W > img.H)
+					scale = img.W / 32.0;
+				else
+					scale = img.H / 32.0;
+
+				Gdk.Pixbuf tmp = Utility.CreatePixbuf(img);
+				itest[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
+			}
+
+			for(int i=0; i<ibase.Length; i++)
+			{
+				IImage img = r.OriginalBaseImages[i];
+
+				if(img.W > img.H)
+					scale = img.W / 32.0;
+				else
+					scale = img.H / 32.0;
+
+				Gdk.Pixbuf tmp = Utility.CreatePixbuf(img);
+				ibase[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
+			}
+
+			res = new IResult[r.Length];
+			match = new int[r.Length];
+
+			for(int i=0; i<r.Length; i++)
+			{
+				res[i] = r[i];
+
+				double min = r.Difference(i, 0);
+				int n = 0;
+
+				for(int j=1; j<r[i].Length; j++)
+					if(r.Difference(i, j) < min)
+					{
+						min = r.Difference(i, j);
+						n = j;
+					}
+
+				match[i] = n;
+			}
+
+			_workdone = true;
+		}
+
+		private int Scale(int s, double scale)
+		{
+			int val = (int)(s/scale);
+
+			if(val == 0)
+				return 1;
+			else
+				return val;
+		}
+
+		public override int NumIn		{ get { return 1; } }
+
+		public override string DescIn(int n)
+		{
+			return Catalog.GetString("Results to be displayed in raw form.");
+		}
+	}
+}
