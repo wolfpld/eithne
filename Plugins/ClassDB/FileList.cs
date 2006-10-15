@@ -44,7 +44,9 @@ namespace Eithne
 
 			foreach(Category c in cat)
 			{
-				TreeIter iter = (Model as TreeStore).AppendValues(c.Name);
+				Gdk.Pixbuf preview = Preview(((Img)c.Files[0]).Name);
+
+				TreeIter iter = (Model as TreeStore).AppendValues(c.Name, preview);
 
 				foreach(Img img in c.Files)
 					(Model as TreeStore).AppendValues(iter, System.IO.Path.GetFileName(img.Name),
@@ -69,9 +71,16 @@ namespace Eithne
 
 			foreach(string fn in files)
 			{
+				bool prv = false;
+
 				try
 				{
-					new Gdk.Pixbuf(fn);
+					Gdk.Pixbuf tmp = new Gdk.Pixbuf(fn);
+					if(!prv)
+					{
+						prv = true;
+						(Model as TreeStore).SetValue(iter, 1, Preview(tmp));
+					}
 
 					Img img = new Img(fn, false);
 					(Model as TreeStore).AppendValues(iter, System.IO.Path.GetFileName(fn), BaseIcon, false, fn, img);
@@ -107,6 +116,7 @@ namespace Eithne
 				(Model as TreeStore).GetIter(out iter, t);
 
 				// FIXME usuwa pierwsze wystąpienie elementu w liście, a nie wybrane
+				// FIXME usunięcie pierwszego elementu powinno zmienić miniaturkę wyświetlaną przy nazwie kategorii
 				if(HasParent(t))
 				{
 					TreePath parent = t.Copy();
@@ -239,6 +249,33 @@ namespace Eithne
 
 				return n;
 			}
+		}
+
+		private Gdk.Pixbuf Preview(Gdk.Pixbuf img)
+		{
+			double scale;
+
+			if(img.Width > img.Height)
+				scale = img.Width / 24.0;
+			else
+				scale = img.Height / 24.0;
+
+			return img.ScaleSimple(Scale(img.Width, scale), Scale(img.Height, scale), Gdk.InterpType.Bilinear);
+		}
+
+		private Gdk.Pixbuf Preview(string fn)
+		{
+			return Preview(new Gdk.Pixbuf(fn));
+		}
+
+		private int Scale(int s, double scale)
+		{
+			int val = (int)(s/scale);
+
+			if(val == 0)
+				return 1;
+			else
+				return val;
 		}
 	}
 }

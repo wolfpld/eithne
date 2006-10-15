@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-08 20:13+0200\n"
+"POT-Creation-Date: 2006-07-27 20:37+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
+
+#: About.cs:33
+#, csharp-format
+msgid "About {0}"
+msgstr "O {0}"
 
 #: Connector.cs:11
 msgid "Connector"
@@ -42,7 +47,23 @@ msgstr "Pytanie"
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
 
-#: IPlugin.cs:200
+#: FatalError.cs:39
+#, csharp-format
+msgid ""
+"<big><big><b>{0} has encountered a fatal error and cannot work correctly "
+"anymore.</b></big></big>"
+msgstr ""
+"<big><big><b>Program {0} napotkał krytyczny błąd i nie jest w stanie "
+"pracować poprawnie.</b></big></big>"
+
+#: FatalError.cs:41
+#, csharp-format
+msgid ""
+"{0} will try to do a rescue save of system schematic to <i>rescue.xml</i>"
+msgstr ""
+"{0} spróbuje zapisać ratunkową kopię schematu do pliku <i>rescue.xml</i>"
+
+#: IPlugin.cs:200 IPlugin.cs:211
 msgid "BPP must be 1, 3 or 4"
 msgstr "BPP musi wynosić 1, 3 lub 4"
 
@@ -67,60 +88,62 @@ msgstr ""
 "Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
 "dostępne:"
 
-#: MainWindow.cs:55
-msgid "Welcome to Eithne!"
-msgstr "Witamy w Eithne!"
+#: MainWindow.cs:59
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:102
+#: MainWindow.cs:106
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:110
+#: MainWindow.cs:114
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:116
+#: MainWindow.cs:120
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:117 MainWindow.cs:151 Plugins/ClassDB/ClassDBWindow.cs:67
+#: MainWindow.cs:121 MainWindow.cs:155 Plugins/ClassDB/ClassDBWindow.cs:67
 #: Plugins/SimpleDB/SimpleDBWindow.cs:59
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:118
+#: MainWindow.cs:122
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:121 MainWindow.cs:155
-msgid "Eithne system schematic"
-msgstr "Schemat systemu Eithne"
+#: MainWindow.cs:125 MainWindow.cs:159
+#, csharp-format
+msgid "{0} system schematic"
+msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:125 MainWindow.cs:159 Plugins/SimpleDB/SimpleDBWindow.cs:67
+#: MainWindow.cs:129 MainWindow.cs:163 Plugins/SimpleDB/SimpleDBWindow.cs:67
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:140
+#: MainWindow.cs:144
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:150
+#: MainWindow.cs:154
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:151
+#: MainWindow.cs:155
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:175 MainWindow.cs:191
+#: MainWindow.cs:179 MainWindow.cs:195
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
 
 #: PluginAbout.cs:25
 #, csharp-format
-msgid "About {0}"
+msgid "About plugin {0}"
 msgstr "O wtyczce \"{0}\""
 
 #: PluginAbout.cs:30 PluginList.cs:84
@@ -170,17 +193,27 @@ msgstr "Znaleziono wtyczkę {1} typu {0}"
 msgid "Error while processing {0}: {1}"
 msgstr "Błąd podczas przetwarzania {0}: {1}"
 
-#: PluginError.cs:43
+#: PluginError.cs:41
+#, csharp-format
 msgid ""
-"<big><big><b>Eithne encountered error while trying to configure plugin.</b></"
-"big></big>"
+"<big><big><b>{0} has encountered error while trying to configure plugin.</"
+"b></big></big>"
 msgstr ""
-"<big><big><b>Eithne napotkało błąd próbując skonfigurować wtyczkę.</b></"
+"<big><big><b>Program {0} napotkał błąd próbując skonfigurować wtyczkę.</b></"
 "big></big>"
 
-#: PluginError.cs:44
+#: PluginError.cs:42
 msgid "Please report bug to plugin's author."
 msgstr "Proszę zgłosić błąd do autora wtyczki."
+
+#: PluginError.cs:46
+#, csharp-format
+msgid ""
+"<big><big><b>{0} has encountered error while trying to run plugin.</b></"
+"big></big>"
+msgstr ""
+"<big><big><b>Program {0} napotkał błąd próbując uruchomić wtyczkę.</b></"
+"big></big>"
 
 #: PluginList.cs:18
 msgid "Input plugins\n"
@@ -239,7 +272,7 @@ msgstr "Wtyczka \"{0}\" wybrana"
 msgid "A_dd"
 msgstr "_Dodaj"
 
-#: PluginToolbox.cs:84 Schematic.cs:311
+#: PluginToolbox.cs:84 Schematic.cs:331
 msgid "_About"
 msgstr "O wtyczce"
 
@@ -285,30 +318,30 @@ msgstr ""
 "Ta wtyczka umożliwia kategoryzację obrazów i ich podział na obrazy bazowe i "
 "testowe."
 
-#: Plugins/ClassDB/ClassDB.cs:192
+#: Plugins/ClassDB/ClassDB.cs:227
 msgid "No categories in list"
 msgstr "Brak kategorii na liście"
 
-#: Plugins/ClassDB/ClassDB.cs:216
+#: Plugins/ClassDB/ClassDB.cs:251
 msgid "There are no test images selected"
 msgstr "Brak obrazów testowych"
 
-#: Plugins/ClassDB/ClassDB.cs:218
+#: Plugins/ClassDB/ClassDB.cs:253
 msgid "There are no base images selected"
 msgstr "Brak obrazów bazowych"
 
-#: Plugins/ClassDB/ClassDB.cs:305
+#: Plugins/ClassDB/ClassDB.cs:340
 #, csharp-format
 msgid "From category <b>{0}</b>: {1}"
 msgstr "Kategoria <b>{0}</b>: {1}"
 
-#: Plugins/ClassDB/ClassDB.cs:323 Plugins/Euclid/Euclid.cs:136
+#: Plugins/ClassDB/ClassDB.cs:358 Plugins/Euclid/Euclid.cs:136
 #: Plugins/L0Mod/L0Mod.cs:162 Plugins/PC-C1/PC-C1.cs:140
 #: Plugins/PC-C2/PC-C2.cs:146
 msgid "Base images."
 msgstr "Obrazy bazowe."
 
-#: Plugins/ClassDB/ClassDB.cs:325 Plugins/Euclid/Euclid.cs:138
+#: Plugins/ClassDB/ClassDB.cs:360 Plugins/Euclid/Euclid.cs:138
 #: Plugins/L0Mod/L0Mod.cs:164 Plugins/PC-C1/PC-C1.cs:142
 #: Plugins/PC-C2/PC-C2.cs:148
 msgid "Test images."
@@ -344,9 +377,9 @@ msgstr "Dodaj"
 
 #: Plugins/ClassDB/ClassDBWindow.cs:94
 msgid "<big><b>The following directories were empty:</b></big>"
-msgstr ""
+msgstr "<big><b>Następujące katalogi są puste:</b></big>"
 
-#: Plugins/ClassDB/FileList.cs:83 Plugins/SimpleDB/FileList.cs:42
+#: Plugins/ClassDB/FileList.cs:92 Plugins/SimpleDB/FileList.cs:42
 msgid ""
 "Cannot open specified image.\n"
 "<i>"
@@ -369,7 +402,7 @@ msgstr "<big><big><b>Baza Obrazów z Kategoriami</b></big></big>"
 #: Plugins/SimpleDB/resources/SimpleDB.glade:58
 #: resources/DialogMessage.glade:54 resources/DialogQuestion.glade:54
 msgid "label1"
-msgstr ""
+msgstr "x"
 
 #: Plugins/ClassDB/resources/ClassDB.glade:150
 msgid "Modify images partition"
@@ -419,10 +452,34 @@ msgstr "Pierwsza połowa testowa, druga bazowa"
 msgid "First half to base, second half to test"
 msgstr "Pierwsza połowa bazowa, druga testowa"
 
+#: Plugins/ClassDB/resources/Modify.glade:770
+msgid "Random split"
+msgstr "Losowy podział"
+
 #: Plugins/ClassDB/resources/Preview.glade:8
 #: Plugins/SimpleDB/resources/Preview.glade:8
 msgid "Preview"
 msgstr "Podgląd"
+
+#: Plugins/ClassDB/resources/Random.glade:8
+msgid "Random Split"
+msgstr "Losowy Podział"
+
+#: Plugins/ClassDB/resources/Random.glade:33
+msgid "<big><big><b>Random split</b></big></big>"
+msgstr "<big><big><b>Losowy podział</b></big></big>"
+
+#: Plugins/ClassDB/resources/Random.glade:58
+msgid "Test images percentage:"
+msgstr "Procent obrazów testowych:"
+
+#: Plugins/ClassDB/resources/Random.glade:138
+msgid "Exact number"
+msgstr "Dokładna liczba"
+
+#: Plugins/ClassDB/resources/Random.glade:212
+msgid "Split"
+msgstr "Podział"
 
 #: Plugins/Correctness/Correctness.cs:12
 #: Plugins/Correctness/resources/Correctness.glade:8
@@ -483,8 +540,8 @@ msgstr "Przycięcie"
 msgid "This plugin crops image."
 msgstr "Ta wtyczka przycina obrazy."
 
-#: Plugins/Crop/Crop.cs:150 Plugins/Desaturate/Desaturate.cs:116
-#: Plugins/FFT/DCT.cs:125 Plugins/FFT/FFT.cs:151
+#: Plugins/Crop/Crop.cs:183 Plugins/Desaturate/Desaturate.cs:116
+#: Plugins/FFT/DCT.cs:157 Plugins/FFT/FFT.cs:183
 #: Plugins/Histogram/Histogram.cs:180
 #: Plugins/NewSourceImages/NewSourceImages.cs:89
 #: Plugins/RGBSplit/RGBSplit.cs:143 Plugins/Random/Random.cs:152
@@ -492,7 +549,7 @@ msgstr "Ta wtyczka przycina obrazy."
 msgid "Input image."
 msgstr "Obraz wejściowy."
 
-#: Plugins/Crop/Crop.cs:155
+#: Plugins/Crop/Crop.cs:188
 msgid "Cropped image."
 msgstr "Przycięte obrazy."
 
@@ -518,7 +575,7 @@ msgstr "Rozmiar:"
 
 #: Plugins/Crop/resources/Crop.glade:183
 msgid "×"
-msgstr ""
+msgstr "x"
 
 #: Plugins/Desaturate/Desaturate.cs:11
 msgid "Desaturate"
@@ -571,12 +628,12 @@ msgstr "Dyskretna Transformata Kosinusowa"
 msgid "This plugin performs discrete cosine transform."
 msgstr "Ta wtyczka przeprowadza dyskretną transformatę kosinusową."
 
-#: Plugins/FFT/DCT.cs:94 Plugins/FFT/FFT.cs:109
+#: Plugins/FFT/DCT.cs:104 Plugins/FFT/FFT.cs:119
 #: Plugins/Histogram/Histogram.cs:102
 msgid "Image is not in greyscale."
 msgstr "Obraz nie jest w skali szarości."
 
-#: Plugins/FFT/DCT.cs:130
+#: Plugins/FFT/DCT.cs:162
 msgid "DCT of image."
 msgstr "DCT obrazu."
 
@@ -588,9 +645,21 @@ msgstr "Szybka Transformata Fouriera"
 msgid "This plugin performs fast fourier transform."
 msgstr "Ta wtyczka przeprowadza szybką transformatę Fouriera."
 
-#: Plugins/FFT/FFT.cs:156
+#: Plugins/FFT/FFT.cs:188
 msgid "FFT of image."
 msgstr "FFT obrazu."
+
+#: Plugins/FFT/resources/FFT.glade:8
+msgid "FFT"
+msgstr "FFT"
+
+#: Plugins/FFT/resources/FFT.glade:33
+msgid "<big><big><b>FFT</b></big></big>"
+msgstr "<big><big><b>FFT</b></big></big>"
+
+#: Plugins/FFT/resources/FFT.glade:59
+msgid "Zero most significant frequency"
+msgstr "Wyzeruj najbardziej znaczącą częstotliwość"
 
 #: Plugins/Histogram/Histogram.cs:11
 #: Plugins/Histogram/resources/Histogram.glade:8
@@ -648,13 +717,13 @@ msgid "<big><big><b>Image View</b></big></big>"
 msgstr "<big><big><b>Podgląd Obrazów</b></big></big>"
 
 #: Plugins/ImageView/resources/ImageView.glade:117
-#: Plugins/SimpleResultView/resources/ResultView.glade:351
+#: Plugins/SimpleResultView/resources/ResultView.glade:376
 msgid "label2"
-msgstr ""
+msgstr "x"
 
 #: Plugins/ImageView/resources/ImageView.glade:142
 msgid "label3"
-msgstr ""
+msgstr "x"
 
 #: Plugins/L0Mod/L0Mod.cs:11
 msgid "Modified L<sub>0</sub> metric"
@@ -938,7 +1007,7 @@ msgstr ""
 msgid "Results to be viewed."
 msgstr "Wyniki, które będą oglądane."
 
-#: Plugins/SimpleResultView/ResultViewWindow.cs:59
+#: Plugins/SimpleResultView/ResultViewWindow.cs:60
 #, csharp-format
 msgid "<i>Viewing results for {0} image</i>"
 msgid_plural "<i>Viewing results for {0} images</i>"
@@ -946,13 +1015,22 @@ msgstr[0] "<i>Wyniki dla {0} obrazu</i>"
 msgstr[1] "<i>Wyniki dla {0} obrazów</i>"
 msgstr[2] "<i>Wyniki dla {0} obrazów</i>"
 
-#: Plugins/SimpleResultView/ResultViewWindow.cs:85
-#: Plugins/SimpleResultView/ResultViewWindow.cs:90
+#: Plugins/SimpleResultView/ResultViewWindow.cs:86
+#: Plugins/SimpleResultView/ResultViewWindow.cs:91
 #, csharp-format
 msgid "Category: {0}"
 msgstr "Kategoria: {0}"
 
 #: Plugins/SimpleResultView/ResultViewWindow.cs:95
+msgid "Correct match"
+msgstr "Prawidłowe dopasowanie"
+
+#: Plugins/SimpleResultView/ResultViewWindow.cs:100
+msgid "Incorrect match"
+msgstr "Nieprawidłowe dopasowanie"
+
+#: Plugins/SimpleResultView/ResultViewWindow.cs:107
+#: Plugins/SimpleResultView/ResultViewWindow.cs:109
 msgid "No match found"
 msgstr "Brak podobnego obrazu"
 
@@ -970,11 +1048,12 @@ msgstr "<b>Aktualny obraz:</b>"
 
 #: Plugins/SimpleResultView/resources/ResultView.glade:189
 msgid "label5"
-msgstr ""
+msgstr "x"
 
 #: Plugins/SimpleResultView/resources/ResultView.glade:267
+#: Plugins/SimpleResultView/resources/ResultView.glade:320
 msgid "label4"
-msgstr ""
+msgstr "x"
 
 #: Plugins/X-of-Y/X-of-Y.cs:23 Plugins/X-of-Y/resources/X-of-Y.glade:8
 msgid "X of Y"
@@ -997,76 +1076,76 @@ msgstr "Minimalna liczba pasujących obrazów:"
 msgid "File <i>{0}</i> is not an eithne system schematic!"
 msgstr "Plik <i>{0}</i> nie jest schematem systemu eithne!"
 
-#: Schematic.cs:130
+#: Schematic.cs:150
 #, csharp-format
 msgid "{0} block selected"
 msgstr "Blok \"{0}\" wybrany"
 
-#: Schematic.cs:137
+#: Schematic.cs:157
 #, csharp-format
 msgid "{0} block, input socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wejściowe {1}. {2}"
 
-#: Schematic.cs:140
+#: Schematic.cs:160
 #, csharp-format
 msgid "{0} block, output socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wyjściowe {1}. {2}"
 
-#: Schematic.cs:195
+#: Schematic.cs:215
 msgid "Move block to desired location"
 msgstr "Przenoszenie bloku na porządaną pozycję"
 
-#: Schematic.cs:245
+#: Schematic.cs:265
 #, csharp-format
 msgid "{0} menu"
 msgstr "Menu bloku \"{0}\""
 
-#: Schematic.cs:253
+#: Schematic.cs:273
 msgid "Display _results"
 msgstr "Wyświetl _wyniki"
 
-#: Schematic.cs:263
+#: Schematic.cs:283
 msgid "_Setup"
 msgstr "U_stawienia"
 
-#: Schematic.cs:272
+#: Schematic.cs:292
 msgid "D_isconnect all"
 msgstr "Rozłącz wszystk_ie"
 
-#: Schematic.cs:279
+#: Schematic.cs:299
 msgid "Removed all block's connections"
 msgstr "Usunięto wszystkie połączenia bloku"
 
-#: Schematic.cs:283
+#: Schematic.cs:303
 msgid "In_validate"
 msgstr "Unieważnij"
 
-#: Schematic.cs:292
+#: Schematic.cs:312
 msgid "Invalidated results"
 msgstr "Unieważniono wyniki"
 
-#: Schematic.cs:296
+#: Schematic.cs:316
 msgid "_Delete"
 msgstr "Usuń"
 
-#: Schematic.cs:305
+#: Schematic.cs:325
 #, csharp-format
 msgid "Deleted {0} block"
 msgstr "Usunięto blok \"{0}\""
 
-#: Schematic.cs:329
+#: Schematic.cs:349
 msgid "Connect block with another"
 msgstr "Łączenie bloku z innym blokiem"
 
-#: Schematic.cs:341 Schematic.cs:356
+#: Schematic.cs:361 Schematic.cs:376
 msgid "Removed connection"
 msgstr "Usunięto połączenie"
 
-#: Schematic.cs:348
+#: Schematic.cs:368
 msgid "_Disconnect"
 msgstr "Rozłącz"
 
-#: Schematic.cs:426
+#: Schematic.cs:446
 msgid "Connected blocks"
 msgstr "Połączono bloki"
 
@@ -1076,7 +1155,7 @@ msgstr "O Eithne"
 
 #: resources/About.glade:49
 msgid "<big><big><b>Eithne v1.2.3</b></big></big>"
-msgstr ""
+msgstr "x"
 
 #: resources/About.glade:74
 msgid "Extensible Image Recognition Systems modelling program"
@@ -1084,7 +1163,7 @@ msgstr "Rozszerzalny program modelujący systemy rozpoznawania obrazów"
 
 #: resources/About.glade:99
 msgid "<small>Copyright © 2005 - 2006 Bartosz Taudul</small>"
-msgstr ""
+msgstr "<small>Copyright © 2005 - 2006 Bartosz Taudul</small>"
 
 #: resources/FatalError.glade:8
 msgid "Fatal error encountered"
@@ -1100,11 +1179,11 @@ msgstr ""
 
 #: resources/FatalError.glade:114 resources/PluginError.glade:114
 msgid "full error"
-msgstr ""
+msgstr "x"
 
 #: resources/FatalError.glade:123 resources/PluginError.glade:123
 msgid "error"
-msgstr ""
+msgstr "x"
 
 #: resources/FatalError.glade:153
 msgid ""
@@ -1118,11 +1197,11 @@ msgstr "Błąd ładowania schematu"
 
 #: resources/LoadError.glade:60
 msgid "error message"
-msgstr ""
+msgstr "x"
 
 #: resources/MainWindow.glade:7
 msgid "Eithne"
-msgstr ""
+msgstr "x"
 
 #: resources/MainWindow.glade:38
 msgid "File"
@@ -1154,19 +1233,19 @@ msgstr "Narzędziówka"
 
 #: resources/PluginAbout.glade:40
 msgid "name version"
-msgstr ""
+msgstr "x"
 
 #: resources/PluginAbout.glade:65
 msgid "type"
-msgstr ""
+msgstr "x"
 
 #: resources/PluginAbout.glade:108
 msgid "author"
-msgstr ""
+msgstr "x"
 
 #: resources/PluginAbout.glade:133
 msgid "desc"
-msgstr ""
+msgstr "x"
 
 #: resources/PluginError.glade:8
 msgid "Plugin error"
@@ -1208,3 +1287,16 @@ msgstr "Szukanie wtyczek..."
 #: resources/Splash.glade:79
 msgid "Initializing..."
 msgstr "Inicjalizacja..."
+
+#~ msgid ""
+#~ "<small>Copyright © 2005 - 2006 Bartosz Taudul\n"
+#~ "\n"
+#~ "in cooperation with:\n"
+#~ "Technical University of Szczecin\n"
+#~ "Faculty of Computer Science</small>"
+#~ msgstr ""
+#~ "<small>Copyright © 2005 - 2006 Bartosz Taudul\n"
+#~ "\n"
+#~ "we współpracy z:\n"
+#~ "Politechnika Szczecińska\n"
+#~ "Wydział Informatyki</small>"

@@ -231,6 +231,28 @@ namespace Eithne
 			}
 		}
 
+		public static void CheckGConf()
+		{
+			bool NewConfigGradient = Config.Get("block/gradient", true);
+			bool NewConfigInner = Config.Get("block/innerpath", true);
+			bool NewConfigRound = Config.Get("block/round", true);
+			bool NewConfigSmoothConnections = Config.Get("block/smoothconnections", true);
+
+			bool redraw =
+				ConfigGradient != NewConfigGradient ||
+				ConfigInner != NewConfigInner ||
+				ConfigRound != NewConfigRound ||
+				ConfigSmoothConnections != NewConfigSmoothConnections;
+
+			ConfigGradient = NewConfigGradient;
+			ConfigInner = NewConfigInner;
+			ConfigRound = NewConfigRound;
+			ConfigSmoothConnections = NewConfigSmoothConnections;
+
+			if(redraw)
+				MainWindow.RedrawSchematic();
+		}
+
 		public object Overlap(int x, int y)
 		{
 			if(x < this.x || x > this.x + w || y < this.y || y > this.y + h)

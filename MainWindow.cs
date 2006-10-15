@@ -29,6 +29,8 @@ namespace Eithne
 		private Schematic schematic;
 		private string filename = "";
 
+		private static MainWindow mw = null;
+
 		private string Filename
 		{
 			get { return filename; }
@@ -37,9 +39,9 @@ namespace Eithne
 				filename = value;
 
 				if(filename == "")
-					EithneWindow.Title = "Eithne";
+					EithneWindow.Title = About.Name;
 				else
-					EithneWindow.Title = "Eithne (" + filename + ")";
+					EithneWindow.Title = About.Name + " (" + filename + ")";
 			}
 		}
 
@@ -52,7 +54,9 @@ namespace Eithne
 
 			EithneWindow.DeleteEvent += OnWindowDelete;
 
-			StatusBar.Push(1, Catalog.GetString("Welcome to Eithne!"));
+			EithneWindow.Title = About.Name;
+
+			StatusBar.Push(1, String.Format(Catalog.GetString("Welcome to {0}!"), About.Name));
 
 			MenuFileNew.Image = new Image(null, "document-new.png");
 			MenuFileNew.Activated += OnNew;
@@ -118,7 +122,7 @@ namespace Eithne
 					Catalog.GetString("Load"), ResponseType.Accept});
 
 			FileFilter filter = new FileFilter();
-			filter.Name = Catalog.GetString("Eithne system schematic");
+			filter.Name = String.Format(Catalog.GetString("{0} system schematic"), About.Name);
 			filter.AddPattern("*.xml");
 			fs.AddFilter(filter);
 			filter = new FileFilter();
@@ -152,7 +156,7 @@ namespace Eithne
 					ResponseType.Accept});
 
 			FileFilter filter = new FileFilter();
-			filter.Name = Catalog.GetString("Eithne system schematic");
+			filter.Name = String.Format(Catalog.GetString("{0} system schematic"), About.Name);
 			filter.AddPattern("*.xml");
 			fs.AddFilter(filter);
 			filter = new FileFilter();
@@ -202,13 +206,17 @@ namespace Eithne
 			SaveLoad.Save("rescue.xml", schematic);
 		}
 
+		public static void RedrawSchematic()
+		{
+			mw.schematic.Redraw();
+		}
+
 		public static void Main(string[] args)
 		{
 			Catalog.Init("eithne", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "locale"));
 
 			Application.Init();
 			Splash s = new Splash();
-			MainWindow mw = null;
 
 			Config.Init();
 

@@ -21,6 +21,17 @@ namespace Eithne
 
 		static string path = "/apps/eithne/";
 
+		public GConfConfig()
+		{
+			c.AddNotify(path.TrimEnd(new char[] {'/'}), UpdateHandler);
+		}
+
+		private void UpdateHandler(object o, EventArgs args)
+		{
+			Block.CheckGConf();
+			Schematic.CheckGConf();
+		}
+
 		public void Set(string key, string val)
 		{
 			c.Set(path + key, val);

@@ -1,6 +1,7 @@
 ﻿using System;
 using Gtk;
 using Glade;
+using Mono.Unix;
 
 namespace Eithne
 {
@@ -13,7 +14,13 @@ namespace Eithne
 
 		public static string Version
 		{
-			get { return "0.3.0"; }
+			get { return "0.3.0+"; }
+		}
+
+		public static string Name
+		{
+//			get { return "Eithne"; }
+			get { return "FaRetSys"; }
 		}
 
 		public About()
@@ -23,11 +30,13 @@ namespace Eithne
 
 			AboutWindow.IconList = new Gdk.Pixbuf[2] {new Gdk.Pixbuf(null, "help-browser-48.png"), new Gdk.Pixbuf(null, "help-browser.png")};
 
+			AboutWindow.Title = String.Format(Catalog.GetString("About {0}"), Name);
+
 			AboutWindow.DeleteEvent += CloseWindow;
 			CloseButton.Clicked += CloseWindow;
 
 			LogoImage.FromPixbuf = new Gdk.Pixbuf(null, "zsrr.jpg");
-			ProgramVersion.Text = String.Format("<big><big><b>Eithne v{0}</b></big></big>", Version);
+			ProgramVersion.Text = String.Format("<big><big><b>{0} v{1}</b></big></big>", Name, Version);
 			ProgramVersion.UseMarkup = true;
 
 			AboutWindow.ShowAll();

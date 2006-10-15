@@ -22,7 +22,7 @@ namespace Eithne
 			PluginAboutWindow.DeleteEvent += CloseWindow;
 			CloseButton.Clicked += CloseWindow;
 
-			PluginAboutWindow.Title = String.Format(Catalog.GetString("About {0}"), info.Name);
+			PluginAboutWindow.Title = String.Format(Catalog.GetString("About plugin {0}"), info.Name);
 			PluginAboutWindow.IconList = new Gdk.Pixbuf[2] {new Gdk.Pixbuf(null, "plugin-48.png"), new Gdk.Pixbuf(null, "plugin-16.png")};
 
 			Name.Text = "<big><big><big><b>" + info.Name + " " + info.Version + "</b></big></big></big>";

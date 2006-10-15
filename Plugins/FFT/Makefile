@@ -5,12 +5,19 @@ TARGET = FFT.dll
 SRC = \
 	DCT.cs \
 	FFT.cs \
-	FFTW.cs
+	FFTW.cs \
+	Setup.cs
+
+RESOURCES = \
+	FFT.glade
+
+RESFILES = $(addprefix resources/,$(RESOURCES))
+RESCMD = $(addprefix -resource:,$(RESFILES))
 
 all: ../$(TARGET)
 
-../$(TARGET): ../../IPlugin.dll ../../Utility.dll $(SRC)
-	$(MCS) $(SRC) -out:../$(TARGET) -r:IPlugin -r:Utility -r:Mono.Posix -lib:../.. -target:library -debug
+../$(TARGET): ../../IPlugin.dll ../../Utility.dll $(SRC) $(RESFILES)
+	$(MCS) $(SRC) -out:../$(TARGET) -r:IPlugin -r:Utility -r:Mono.Posix -lib:../.. -target:library -debug $(RESCMD) -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0
 	cp -f $(TARGET).config ..
 
 clean:

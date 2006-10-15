@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.2"; }
 		}
 
 		public override string Author
@@ -57,18 +57,28 @@ namespace Eithne
 
 	public class DCTPlugin : IImgProcPlugin
 	{
+		private bool zero = true;
+
 		public DCTPlugin()
 		{
 			_info = new DCTInfo();
 		}
 
-		public override void Setup()
+		public override XmlNode Config
 		{
+			get { return GetConfig(); }
+			set { LoadConfig(value); }
 		}
 
-		public override bool HasSetup
+		private void UpdateValue(bool z)
 		{
-			get { return false; }
+			zero = z;
+			_block.SlotsChanged();
+		}
+
+		public override void Setup()
+		{
+			new FFTSetup(zero, UpdateValue, true);
 		}
 
 		public override void Work()
@@ -113,7 +123,30 @@ namespace Eithne
 				for(int x=0; x<img.W; x++)
 					ret[x, y] = (float)dataout[x + y*img.W] / 255f;
 
+			if(zero)
+				ret[0, 0] = 0f;
+
 			return ret;
+		}
+
+		private XmlNode GetConfig()
+		{
+			XmlNode root = _xmldoc.CreateNode(XmlNodeType.Element, "config", "");
+
+			if(zero)
+				root.InnerText = "1";
+			else
+				root.InnerText = "0";
+			
+			return root;
+		}
+
+		private void LoadConfig(XmlNode root)
+		{
+			if(root.InnerText == "1")
+				UpdateValue(true);
+			else
+				UpdateValue(false);
 		}
 
 		public override int NumIn		{ get { return 1; } }

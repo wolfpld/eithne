@@ -16,12 +16,10 @@ namespace Eithne
 		[Widget] TextView	FullErrorText;
 
 		private Block b;
-		private Schematic s;
 
-		public PluginError(Exception e, Block b, Schematic s, bool setup)
+		public PluginError(Exception e, Block b, bool setup)
 		{
 			this.b = b;
-			this.s = s;
 
 			Glade.XML gxml = new Glade.XML("PluginError.glade", "PluginErrorWindow");
 			gxml.BindFields(this);
@@ -40,8 +38,12 @@ namespace Eithne
 
 			if(setup)
 			{
-				TitleText.Text = Catalog.GetString("<big><big><b>Eithne encountered error while trying to configure plugin.</b></big></big>");
+				TitleText.Text = String.Format(Catalog.GetString("<big><big><b>{0} has encountered error while trying to configure plugin.</b></big></big>"), About.Name);
 				BottomText.Text = Catalog.GetString("Please report bug to plugin's author.");
+			}
+			else
+			{
+				TitleText.Text = String.Format(Catalog.GetString("<big><big><b>{0} has encountered error while trying to run plugin.</b></big></big>"), About.Name);
 			}
 			TitleText.UseMarkup = true;
 
@@ -53,7 +55,7 @@ namespace Eithne
 			PluginErrorWindow.Destroy();
 
 			b.ShowError = false;
-			s.Redraw();
+			MainWindow.RedrawSchematic();
 		}
 	}
 }

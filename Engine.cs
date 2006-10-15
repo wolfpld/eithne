@@ -48,7 +48,7 @@ namespace Eithne
 					if(b.CheckState() == Block.State.Ready)
 					{
 						b.Working = true;
-						s.Redraw();
+						MainWindow.RedrawSchematic();
 						ProcessEvents();
 						
 						try
@@ -85,15 +85,15 @@ namespace Eithne
 								throw Error;
 
 							b.Working = false;
-							s.Redraw();
+							MainWindow.RedrawSchematic();
 							ProcessEvents();
 						}
 						catch(Exception e)
 						{
 							b.Working = false;
 							b.ShowError = true;
-							s.Redraw();
-							new PluginError(e, b, s, false);
+							MainWindow.RedrawSchematic();
+							new PluginError(e, b, false);
 							return;
 						}
 

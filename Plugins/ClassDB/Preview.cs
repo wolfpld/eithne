@@ -28,7 +28,7 @@ namespace Eithne
 			PreviewLabel.Text = Catalog.GetString("Image <i>") + fn + "</i>";
 			PreviewLabel.UseMarkup = true;
 
-			PreviewImage.FromPixbuf = buf;;
+			PreviewImage.FromPixbuf = buf;
 
 			PreviewWindow.ShowAll();
 		}

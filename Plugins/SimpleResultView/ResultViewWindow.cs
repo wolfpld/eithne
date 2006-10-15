@@ -32,6 +32,7 @@ namespace Eithne
 		[Widget] Image		BaseIcon;
 		[Widget] Label		TestCategory;
 		[Widget] Label		BaseCategory;
+		[Widget] Label		MatchedLabel;
 		[Widget] ScrolledWindow	ImageListSocket;
 
 		private static Gdk.Pixbuf NoMatchIcon = new Gdk.Pixbuf(Assembly.GetEntryAssembly(), "no-base.png");
@@ -88,11 +89,25 @@ namespace Eithne
 			{
 				RecognizedImage.FromPixbuf = img1[res[n]];
 				BaseCategory.Text = String.Format(Catalog.GetString("Category: {0}"), cat1[res[n]]);
+
+				if(cat2[n] == cat1[res[n]])
+				{
+					MatchedLabel.Text = Catalog.GetString("Correct match");
+					MatchedLabel.ModifyFg(StateType.Normal, new Gdk.Color(0, 127, 0));
+				}
+				else
+				{
+					MatchedLabel.Text = Catalog.GetString("Incorrect match");
+					MatchedLabel.ModifyFg(StateType.Normal, new Gdk.Color(255, 0, 0));
+				}
 			}
 			else
 			{
 				RecognizedImage.FromPixbuf = NoMatchIcon;
 				BaseCategory.Text = Catalog.GetString("No match found");
+
+				MatchedLabel.Text = Catalog.GetString("No match found");
+				MatchedLabel.ModifyFg(StateType.Normal, new Gdk.Color(255, 0, 0));
 			}
 		}
 

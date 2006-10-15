@@ -19,7 +19,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.1.1"; }
 		}
 
 		public override string Author
@@ -164,6 +164,41 @@ namespace Eithne
 						((Img)c.Files[i]).IsTest = true;
 			}
 		}
+
+		public static void RandomSplit(ArrayList cat, double p, bool exact)
+		{
+			Random r = new Random();
+
+			if(!exact)
+				foreach(Category c in cat)
+					for(int i=0; i<c.Files.Count; i++)
+						if(r.NextDouble() < p)
+							((Img)c.Files[i]).IsTest = true;
+						else
+							((Img)c.Files[i]).IsTest = false;
+			else
+				foreach(Category c in cat)
+				{
+					ArrayList tmp = new ArrayList();
+
+					// ustawienie wszystkich obrazów na bazowe i dodanie ich do listy
+					for(int i=0; i<c.Files.Count; i++)
+					{
+						((Img)c.Files[i]).IsTest = false;
+						tmp.Add(i);
+					}
+					
+					// usunięcie z listy (100-p)% obrazów
+					int num = (int)(c.Files.Count * (1 - p));
+
+					while(num-- > 0)
+						tmp.RemoveAt(r.Next(tmp.Count));
+
+					// ustawienie tych które przetrwały na testowe
+					foreach(int i in tmp)
+						((Img)c.Files[i]).IsTest = true;
+				}
+		}
 	}
 
 	public class ClassDBPlugin : IInPlugin
@@ -300,7 +335,7 @@ namespace Eithne
 
 						c.Files.Add(new Img(file.InnerText, test));
 					}
-					catch(GLib.GException e)
+					catch(GLib.GException)
 					{
 						errors.Add(String.Format(Catalog.GetString("From category <b>{0}</b>: {1}"), n2.InnerText,
 								       System.IO.Path.GetFileName(file.InnerText)));

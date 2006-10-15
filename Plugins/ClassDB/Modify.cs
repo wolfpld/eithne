@@ -44,12 +44,19 @@ namespace Eithne
 		[Widget] Image		Last4;
 		[Widget] Image		Last5;
 		[Widget] Image		Last6;
+		[Widget] Image		Rand1;
+		[Widget] Image		Rand2;
+		[Widget] Image		Rand3;
+		[Widget] Image		Rand4;
+		[Widget] Image		Rand5;
+		[Widget] Image		Rand6;
 		[Widget] Button		InverseButton;
 		[Widget] Button		BaseButton;
 		[Widget] Button		TestButton;
 		[Widget] Button		OddEvenButton;
 		[Widget] Button		FirstHalfButton;
 		[Widget] Button		SecondHalfButton;
+		[Widget] Button		RandomButton;
 
 		private FileList	filelist;
 		private ArrayList	cat;
@@ -77,6 +84,7 @@ namespace Eithne
 			OddEvenButton.Clicked += OddEvenClicked;
 			FirstHalfButton.Clicked += FirstHalfClicked;
 			SecondHalfButton.Clicked += SecondHalfClicked;
+			RandomButton.Clicked += RandomClicked;
 
 			Inv1.FromPixbuf = TestIcon;
 			Inv2.FromPixbuf = BaseIcon;
@@ -116,6 +124,68 @@ namespace Eithne
 			Last4.FromPixbuf = TestIcon;
 			Last5.FromPixbuf = TestIcon;
 			Last6.FromPixbuf = TestIcon;
+
+			bool rbase = false, rtest = false;
+			Random r = new Random();
+
+			if(r.NextDouble() < 0.5)
+			{
+				rbase = true;
+				Rand1.FromPixbuf = BaseIcon;
+			}
+			else
+			{
+				rtest = true;
+				Rand1.FromPixbuf = TestIcon;
+			}
+			if(r.NextDouble() < 0.5)
+			{
+				rbase = true;
+				Rand2.FromPixbuf = BaseIcon;
+			}
+			else
+			{
+				rtest = true;
+				Rand2.FromPixbuf = TestIcon;
+			}
+			if(r.NextDouble() < 0.5)
+			{
+				rbase = true;
+				Rand3.FromPixbuf = BaseIcon;
+			}
+			else
+			{
+				rtest = true;
+				Rand3.FromPixbuf = TestIcon;
+			}
+			if(r.NextDouble() < 0.5)
+			{
+				rbase = true;
+				Rand4.FromPixbuf = BaseIcon;
+			}
+			else
+			{
+				rtest = true;
+				Rand4.FromPixbuf = TestIcon;
+			}
+			if(r.NextDouble() < 0.5)
+			{
+				rbase = true;
+				Rand5.FromPixbuf = BaseIcon;
+			}
+			else
+			{
+				rtest = true;
+				Rand5.FromPixbuf = TestIcon;
+			}
+			if(!rbase)
+				Rand6.FromPixbuf = BaseIcon;
+			else if(!rtest)
+				Rand6.FromPixbuf = TestIcon;
+			else if(r.NextDouble() < 0.5)
+				Rand6.FromPixbuf = BaseIcon;
+			else
+				Rand6.FromPixbuf = TestIcon;
 
 			ModifyWindow.ShowAll();
 		}
@@ -165,6 +235,19 @@ namespace Eithne
 			Category.SecondHalf(cat);
 			filelist.Update();
 			ModifyWindow.Destroy();
+			b.Invalidate();
+		}
+
+		private void RandomClicked(object o, EventArgs args)
+		{
+			new RandomSplit(RandomAction);
+			ModifyWindow.Destroy();
+		}
+
+		private void RandomAction(int percentage, bool exact)
+		{
+			Category.RandomSplit(cat, percentage/100f, exact);
+			filelist.Update();
 			b.Invalidate();
 		}
 

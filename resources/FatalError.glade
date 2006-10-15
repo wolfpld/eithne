@@ -55,7 +55,7 @@
 	      <property name="spacing">5</property>
 
 	      <child>
-		<widget class="GtkLabel" id="label3">
+		<widget class="GtkLabel" id="LabelUpper">
 		  <property name="visible">True</property>
 		  <property name="label" translatable="yes">&lt;big&gt;&lt;big&gt;&lt;b&gt;Eithne has encountered a fatal error and cannot work correctly anymore.&lt;/b&gt;&lt;/big&gt;&lt;/big&gt;</property>
 		  <property name="use_underline">False</property>
@@ -148,7 +148,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label4">
+		<widget class="GtkLabel" id="LabelLower">
 		  <property name="visible">True</property>
 		  <property name="label" translatable="yes">Eithne will try to do a rescue save of system schematic to &lt;i&gt;rescue.xml&lt;/i&gt;</property>
 		  <property name="use_underline">False</property>

@@ -1,6 +1,7 @@
 ﻿using System;
 using Gtk;
 using Glade;
+using Mono.Unix;
 
 namespace Eithne
 {
@@ -10,6 +11,8 @@ namespace Eithne
 		[Widget] Image		StopImage;
 		[Widget] Button		CloseButton;
 		[Widget] Label		ErrorText;
+		[Widget] Label		LabelUpper;
+		[Widget] Label		LabelLower;
 		[Widget] TextView	FullErrorText;
 
 		private MainWindow mw;
@@ -32,6 +35,11 @@ namespace Eithne
 			TextBuffer buf = new TextBuffer(null);
 			buf.Text = e.ToString();
 			FullErrorText.Buffer = buf;
+
+			LabelUpper.Text = String.Format(Catalog.GetString("<big><big><b>{0} has encountered a fatal error and cannot work correctly anymore.</b></big></big>"), About.Name);
+			LabelUpper.UseMarkup = true;
+			LabelLower.Text = String.Format(Catalog.GetString("{0} will try to do a rescue save of system schematic to <i>rescue.xml</i>"), About.Name);
+			LabelLower.UseMarkup = true;
 
 			FatalErrorWindow.ShowAll();
 

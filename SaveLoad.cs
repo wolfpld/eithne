@@ -164,7 +164,7 @@ namespace Eithne
 			x.AppendChild(n);
 
 			n = x.CreateNode(XmlNodeType.Comment, "", "");
-			n.InnerText = " Eithne saved schematic. Do not hand modify. ";
+			n.InnerText = String.Format(" {0} schematic. Do not hand modify. ", About.Name);
 			x.AppendChild(n);
 
 			n = x.CreateNode(XmlNodeType.Element, "eithne", "");

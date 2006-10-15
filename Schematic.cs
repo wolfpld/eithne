@@ -8,7 +8,9 @@ namespace Eithne
 {
 	class Schematic : DrawingArea
 	{
-		internal class Action
+		private static bool Antialias = Config.Get("schematic/antialias", true);
+
+		internal new class Action
 		{
 			public enum Mode
 			{
@@ -39,6 +41,19 @@ namespace Eithne
 			get { return blocks; }
 		}
 
+		public static void CheckGConf()
+		{
+			bool NewAntialias = Config.Get("schematic/antialias", true);
+
+			bool redraw =
+				Antialias != NewAntialias;
+
+			Antialias = NewAntialias;
+
+			if(redraw)
+				MainWindow.RedrawSchematic();
+		}
+
 		public Schematic(Statusbar status) : base()
 		{
 			this.status = status;
@@ -53,6 +68,11 @@ namespace Eithne
 		protected override bool OnExposeEvent(Gdk.EventExpose args)
 		{
 			Context c = Gdk.Context.CreateDrawable(this.GdkWindow);
+
+			if(Antialias)
+				c.Antialias = Cairo.Antialias.Gray;
+			else
+				c.Antialias = Cairo.Antialias.None;
 
 			Draw(c);
 
@@ -220,7 +240,7 @@ namespace Eithne
 								{
 									b.ShowError = true;
 									QueueDraw();
-									new PluginError(e, b, this, true);
+									new PluginError(e, b, true);
 								}
 							}
 							else if(b.Plugin.HasSetup)
@@ -233,7 +253,7 @@ namespace Eithne
 								{
 									b.ShowError = true;
 									QueueDraw();
-									new PluginError(e, b, this, true);
+									new PluginError(e, b, true);
 								}
 							}
 						}
@@ -383,7 +403,7 @@ namespace Eithne
 			{
 				(selected as Block).ShowError = true;
 				QueueDraw();
-				new PluginError(e, selected as Block, this, true);
+				new PluginError(e, selected as Block, true);
 			}
 		}
 
@@ -397,7 +417,7 @@ namespace Eithne
 			{
 				(selected as Block).ShowError = true;
 				QueueDraw();
-				new PluginError(e, selected as Block, this, true);
+				new PluginError(e, selected as Block, true);
 			}
 		}
 

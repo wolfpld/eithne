@@ -8,13 +8,15 @@ SRC = \
 	FileList.cs \
 	LoadError.cs \
 	Modify.cs \
-	Preview.cs
+	Preview.cs \
+	Random.cs
 
 RESOURCES = \
 	ClassDB.glade \
 	LoadError.glade \
 	Modify.glade \
 	Preview.glade \
+	Random.glade \
 	go-next.png
 
 RESFILES = $(addprefix resources/,$(RESOURCES))
