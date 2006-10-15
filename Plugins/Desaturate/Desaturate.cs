@@ -81,7 +81,7 @@ namespace Eithne
 			for(int i=0; i<img.Length; i++)
 				res[i] = Desaturate(img[i]);
 
-			_out[0] = new ICommImage(res, socket.OriginalImages);
+			_out[0] = new ICommImage(res, socket.OriginalImages, socket.Categories);
 
 			_workdone = true;
 		}

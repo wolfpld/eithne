@@ -86,5 +86,27 @@ namespace Eithne
 
 			return tmp;
 		}
+
+		public static int[] FindResults(ICommResult r)
+		{
+			int[] res = new int[r.Length];
+
+			for(int i=0; i<r.Length; i++)
+			{
+				double min = r.Difference(i, 0);
+				int n = 0;
+
+				for(int j=1; j<r[i].Length; j++)
+					if(r.Difference(i, j) < min)
+					{
+						min = r.Difference(i, j);
+						n = j;
+					}
+
+				res[i] = n;
+			}
+
+			return res;
+		}
 	}
 }

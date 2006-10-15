@@ -67,7 +67,7 @@ namespace Eithne
 			_info = new ResultDataInfo();
 		}
 
-		public override void Setup()
+		public override void DisplayResults()
 		{
 			if(!_workdone)
 				throw new PluginException(Catalog.GetString("Plugin is not ready to display results."));

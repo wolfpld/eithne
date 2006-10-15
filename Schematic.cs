@@ -216,7 +216,21 @@ namespace Eithne
 						{
 							Action.m = Action.Mode.Normal;
 
-							if((selected as Block).Plugin.HasSetup)
+							if((selected as Block).Plugin is IOutPlugin &&
+									(selected as Block).Plugin.WorkDone)
+							{
+								try
+								{
+									((selected as Block).Plugin as IOutPlugin).DisplayResults();
+								}
+								catch(Exception e)
+								{
+									(selected as Block).ShowError = true;
+									QueueDraw();
+									new PluginError(e, selected as Block, this, true);
+								}
+							}
+							else if((selected as Block).Plugin.HasSetup)
 							{
 								try
 								{
@@ -241,23 +255,26 @@ namespace Eithne
 
 						Menu m = new Menu();
 
+						if((selected as Block).Plugin is IOutPlugin)
+						{
+							mi = new ImageMenuItem(Catalog.GetString("Display _results"));
+							mi.Image = new Image(null, "system-search.png");
+							mi.Activated += PluginResults;
+							if(!(selected as Block).Plugin.WorkDone)
+								mi.Sensitive = false;
+							m.Append(mi);
+						}
+
 						if((selected as Block).Plugin.HasSetup)
 						{
-							if((selected as Block).Plugin is IOutPlugin)
-							{
-								mi = new ImageMenuItem(Catalog.GetString("Display _results"));
-								mi.Image = new Image(null, "system-search.png");
-							}
-							else
-							{
-								mi = new ImageMenuItem(Catalog.GetString("_Setup"));
-								mi.Image = new Image(null, "preferences-desktop.png");
-							}
+							mi = new ImageMenuItem(Catalog.GetString("_Setup"));
+							mi.Image = new Image(null, "preferences-desktop.png");
 							mi.Activated += PluginSetup;
 							m.Append(mi);
-
-							m.Append(new SeparatorMenuItem());
 						}
+
+						if((selected as Block).Plugin.HasSetup || (selected as Block).Plugin is IOutPlugin)
+							m.Append(new SeparatorMenuItem());
 
 						mi = new ImageMenuItem(Catalog.GetString("D_isconnect all"));
 						mi.Image = new Image(null, "edit-cut.png");
@@ -316,7 +333,6 @@ namespace Eithne
 						if(s.Type == Socket.T.Out)
 							if(args.Button == 1)
 							{
-								ClearConnectionState();
 								status.Push(1, Catalog.GetString("Connect block with another"));
 								Action.m = Action.Mode.Connect;
 								Action.data = Connection.None;
@@ -372,6 +388,20 @@ namespace Eithne
 			try
 			{
 				(selected as Block).Plugin.Setup();
+			}
+			catch(Exception e)
+			{
+				(selected as Block).ShowError = true;
+				QueueDraw();
+				new PluginError(e, selected as Block, this, true);
+			}
+		}
+
+		private void PluginResults(object sender, EventArgs args)
+		{
+			try
+			{
+				((selected as Block).Plugin as IOutPlugin).DisplayResults();
 			}
 			catch(Exception e)
 			{
@@ -505,12 +535,6 @@ namespace Eithne
 		public void Redraw()
 		{
 			QueueDraw();
-		}
-
-		private void ClearConnectionState()
-		{
-			foreach(Block b in blocks)
-				b.ConnState = Block.State.NotReady;
 		}
 	}
 }

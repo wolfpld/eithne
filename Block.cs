@@ -145,7 +145,6 @@ namespace Eithne
 		private Socket[] socketin = null;
 		private Socket[] socketout = null;
 		private bool working = false;
-		private State connstate = State.NotReady;
 		private bool showerror = false;
 
 		private static ImageSurface StateBad = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-bad.png"));
@@ -165,13 +164,6 @@ namespace Eithne
 		public bool ShowError
 		{
 			set { showerror = value; }
-		}
-
-		// FIXME niedokończone wyszukiwanie pętli w systemie
-		public State ConnState
-		{
-			get { return connstate; }
-			set { connstate = value; }
 		}
 
 		public IPlugin Plugin

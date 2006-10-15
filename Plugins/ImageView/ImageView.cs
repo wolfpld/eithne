@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.2"; }
 		}
 
 		public override string Author
@@ -59,18 +59,19 @@ namespace Eithne
 	{
 		Gdk.Pixbuf[] images = null;
 		Gdk.Pixbuf[] thumbs = null;
+		int[] cat = null;
 
 		public ImageViewPlugin()
 		{
 			_info = new ImageViewInfo();
 		}
 
-		public override void Setup()
+		public override void DisplayResults()
 		{
 			if(!_workdone)
 				throw new PluginException(Catalog.GetString("Plugin is not ready to display images."));
 
-			new ImageViewWindow(images, thumbs);
+			new ImageViewWindow(images, thumbs, cat);
 		}
 
 		public override void Work()
@@ -80,6 +81,7 @@ namespace Eithne
 
 			images = new Gdk.Pixbuf[img.Length];
 			thumbs = new Gdk.Pixbuf[img.Length];
+			cat = socket.Categories;
 
 			double scale;
 

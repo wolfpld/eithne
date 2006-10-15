@@ -30,16 +30,20 @@ namespace Eithne
 		[Widget] Image		RecognizedImage;
 		[Widget] Image		TestIcon;
 		[Widget] Image		BaseIcon;
+		[Widget] Label		TestCategory;
+		[Widget] Label		BaseCategory;
 		[Widget] ScrolledWindow	ImageListSocket;
 
 		private Gdk.Pixbuf[] img1, img2;
-		private int[] res;
+		private int[] res, cat1, cat2;
 
-		public ResultView(Gdk.Pixbuf[] img1, Gdk.Pixbuf[] img2, Gdk.Pixbuf[] thumbs, int[] res)
+		public ResultView(Gdk.Pixbuf[] img1, Gdk.Pixbuf[] img2, Gdk.Pixbuf[] thumbs, int[] res, int[] cat1, int[] cat2)
 		{
 			this.img1 = img1;
 			this.img2 = img2;
 			this.res = res;
+			this.cat1 = cat1;
+			this.cat2 = cat2;
 
 			Glade.XML gxml = new Glade.XML(Assembly.GetExecutingAssembly(), "ResultView.glade", "ResultViewWindow", null);
 			gxml.BindFields(this);
@@ -74,6 +78,9 @@ namespace Eithne
 		{
 			CurrentImage.FromPixbuf = img2[n];
 			RecognizedImage.FromPixbuf = img1[res[n]];
+
+			TestCategory.Text = String.Format(Catalog.GetString("Category: {0}"), cat2[n]);
+			BaseCategory.Text = String.Format(Catalog.GetString("Category: {0}"), cat1[res[n]]);
 		}
 
 		private void OnClicked(object o, EventArgs args)
@@ -86,6 +93,8 @@ namespace Eithne
 			img1 = null;
 			img2 = null;
 			res = null;
+			cat1 = null;
+			cat2 = null;
 			ResultViewWindow.Destroy();
 		}
 	}

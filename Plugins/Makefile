@@ -1,4 +1,6 @@
 SUBDIRS = \
+	ClassDB \
+	Correctness \
 	Desaturate \
 	Euclid \
 	Histogram \

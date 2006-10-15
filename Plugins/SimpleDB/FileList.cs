@@ -15,10 +15,10 @@ namespace Eithne
 			this.fl = fl;
 			this.b = b;
 
-			Model = new ListStore(typeof(string), typeof(object));
+			Model = new ListStore(typeof(string));
 
 			foreach(string s in fl)
-				(Model as ListStore).AppendValues(s, null);
+				(Model as ListStore).AppendValues(s);
 
 			HeadersVisible = false;
 			Selection.Mode = SelectionMode.Multiple;
@@ -33,7 +33,7 @@ namespace Eithne
 			{
 				new Gdk.Pixbuf(fn);
 
-				(Model as ListStore).AppendValues(fn, null);
+				(Model as ListStore).AppendValues(fn);
 				fl.Add(fn);
 				b.Invalidate();
 			}
@@ -66,6 +66,11 @@ namespace Eithne
 			(Model as ListStore).GetIter(out iter, path);
 			string s = (string)Model.GetValue(iter, 0);
 			new Preview(s);
+		}
+
+		public int Count
+		{
+			get { return fl.Count; }
 		}
 	}
 }

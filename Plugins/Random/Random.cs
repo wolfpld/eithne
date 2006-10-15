@@ -96,7 +96,7 @@ namespace Eithne
 				ret[i] = RandomPixels(img[i]);
 
 			_out = new CommSocket(1);
-			_out[0] = new ICommImage(ret, socket.OriginalImages);
+			_out[0] = new ICommImage(ret, socket.OriginalImages, socket.Categories);
 
 			_workdone = true;
 		}

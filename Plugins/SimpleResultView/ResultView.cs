@@ -61,18 +61,20 @@ namespace Eithne
 		Gdk.Pixbuf[] ibase = null;
 		Gdk.Pixbuf[] thumbs = null;
 		int[] res = null;
+		int[] cat1 = null;
+		int[] cat2 = null;
 
 		public ResultViewPlugin()
 		{
 			_info = new ResultViewInfo();
 		}
 
-		public override void Setup()
+		public override void DisplayResults()
 		{
 			if(!_workdone)
 				throw new PluginException(Catalog.GetString("Plugin is not ready to display results."));
 
-			new ResultView(ibase, itest, thumbs, res);
+			new ResultView(ibase, itest, thumbs, res, cat1, cat2);
 		}
 
 		public override void Work()
@@ -118,22 +120,10 @@ namespace Eithne
 				ibase[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
 			}
 
-			res = new int[r.Length];
+			res = Utility.FindResults(r);
 
-			for(int i=0; i<r.Length; i++)
-			{
-				double min = r.Difference(i, 0);
-				int n = 0;
-
-				for(int j=1; j<r[i].Length; j++)
-					if(r.Difference(i, j) < min)
-					{
-						min = r.Difference(i, j);
-						n = j;
-					}
-
-				res[i] = n;
-			}
+			cat1 = r.BaseCategories;
+			cat2 = r.TestCategories;
 
 			_workdone = true;
 		}

@@ -93,7 +93,7 @@ namespace Eithne
 				res[i] = new IResult(data);
 			}
 
-			_out[0] = new ICommResult(res, 0, socket1.OriginalImages, socket2.OriginalImages);
+			_out[0] = new ICommResult(res, 0, socket1.OriginalImages, socket2.OriginalImages, socket1.Categories, socket2.Categories);
 
 			_workdone = true;
 		}

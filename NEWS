@@ -1,3 +1,12 @@
+eithne 0.2.0
+------------
+
+- Support for image categories.
+- Plugin showing correctness of system.
+- Plugin allowing categorisation of images.
+- Possibility for output plugin to have settings.
+- Changed test image icon to more distinct one.
+
 eithne 0.1.1
 ------------
 

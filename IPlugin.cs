@@ -137,6 +137,16 @@ namespace Eithne
 
 	public abstract class IOutPlugin : IPlugin
 	{
+		public override void Setup()
+		{}
+
+		public override bool HasSetup
+		{
+			get { return false; }
+		}
+
+		public abstract void DisplayResults();
+
 		public override int NumOut			{ get { return 0; } }
 		public override string DescOut(int n)		{ return null; }
 	}
@@ -249,11 +259,13 @@ namespace Eithne
 	{
 		private readonly IImage[] images;
 		private readonly IImage[] orig;
+		private readonly int[] categories;
 
-		public ICommImage(IImage[] images, IImage[] orig)
+		public ICommImage(IImage[] images, IImage[] orig, int[] categories)
 		{
 			this.images = images;
 			this.orig = orig;
+			this.categories = categories;
 		}
 
 		public IImage this [int n]
@@ -280,6 +292,16 @@ namespace Eithne
 		public IImage OriginalImage(int n)
 		{
 			return orig[n];
+		}
+
+		public int[] Categories
+		{
+			get { return categories; }
+		}
+
+		public int Category(int n)
+		{
+			return categories[n];
 		}
 	}
 
@@ -309,13 +331,17 @@ namespace Eithne
 		private readonly IImage[] origbase;
 		private readonly IImage[] origtest;
 		private readonly IResult[] res;
+		private readonly int[] catbase;
+		private readonly int[] cattest;
 
-		public ICommResult(IResult[] res, double identity, IImage[] origbase, IImage[] origtest)
+		public ICommResult(IResult[] res, double identity, IImage[] origbase, IImage[] origtest, int[] catbase, int[] cattest)
 		{
 			this.identity = identity;
 			this.res = res;
 			this.origbase = origbase;
 			this.origtest = origtest;
+			this.catbase = catbase;
+			this.cattest = cattest;
 		}
 
 		public double this [int itest, int ibase]
@@ -346,6 +372,26 @@ namespace Eithne
 		public IImage[] OriginalTestImages
 		{
 			get { return origtest; }
+		}
+
+		public int[] TestCategories
+		{
+			get { return cattest; }
+		}
+
+		public int[] BaseCategories
+		{
+			get { return catbase; }
+		}
+
+		public int TestCategory(int n)
+		{
+			return cattest[n];
+		}
+
+		public int BaseCategory(int n)
+		{
+			return catbase[n];
 		}
 
 		public double Difference(int itest, int ibase)

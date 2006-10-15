@@ -90,9 +90,9 @@ namespace Eithne
 			}
 
 			_out = new CommSocket(3);
-			_out[0] = new ICommImage(res1, socket.OriginalImages);
-			_out[1] = new ICommImage(res2, socket.OriginalImages);
-			_out[2] = new ICommImage(res3, socket.OriginalImages);
+			_out[0] = new ICommImage(res1, socket.OriginalImages, socket.Categories);
+			_out[1] = new ICommImage(res2, socket.OriginalImages, socket.Categories);
+			_out[2] = new ICommImage(res3, socket.OriginalImages, socket.Categories);
 
 
 			_workdone = true;

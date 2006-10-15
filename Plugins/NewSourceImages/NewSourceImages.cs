@@ -76,7 +76,7 @@ namespace Eithne
 			ICommImage socket = _in[0] as ICommImage;
 			_out = new CommSocket(1);
 
-			_out[0] = new ICommImage(socket.Images, socket.Images);
+			_out[0] = new ICommImage(socket.Images, socket.Images, socket.Categories);
 
 			_workdone = true;
 		}

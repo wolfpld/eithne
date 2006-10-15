@@ -14,6 +14,7 @@ namespace Eithne
 		[Widget] Button		RemoveButton;
 		[Widget] Button		CloseButton;
 		[Widget] ScrolledWindow	FileListSocket;
+		[Widget] Label		ImageCount;
 
 		private FileList	filelist;
 
@@ -32,12 +33,23 @@ namespace Eithne
 			filelist = new FileList(fl, b);
 			FileListSocket.AddWithViewport(filelist);
 
+			UpdateCount();
+
 			SimpleDBWindow.ShowAll();
 		}
 
 		private void CloseWindow(object o, EventArgs args)
 		{
 			SimpleDBWindow.Destroy();
+		}
+
+		private void UpdateCount()
+		{
+			if(filelist.Count == 0)
+				ImageCount.Text = Catalog.GetString("No images");
+			else
+				ImageCount.Text = String.Format(Catalog.GetPluralString("{0} image", "{0} images", filelist.Count),
+						filelist.Count);
 		}
 
 		private void OnAdd(object o, EventArgs args)
@@ -71,11 +83,15 @@ namespace Eithne
 				};
 			fs.Run();
 			fs.Destroy();
+
+			UpdateCount();
 		}
 
 		private void OnRemove(object o, EventArgs args)
 		{
 			filelist.TryRemove();
+
+			UpdateCount();
 		}
 	}
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-01 18:46+0100\n"
+"POT-Creation-Date: 2006-02-13 22:02+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr "Skopiowany sygnał."
 msgid "Question"
 msgstr "Pytanie"
 
-#: Engine.cs:50
+#: Engine.cs:68
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
 
@@ -79,7 +79,8 @@ msgstr "Nowy schemat systemu gotowy"
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:117 MainWindow.cs:151 Plugins/SimpleDB/SimpleDBWindow.cs:47
+#: MainWindow.cs:117 MainWindow.cs:151 Plugins/ClassDB/ClassDBWindow.cs:67
+#: Plugins/SimpleDB/SimpleDBWindow.cs:59
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -91,7 +92,7 @@ msgstr "Ładuj"
 msgid "Eithne system schematic"
 msgstr "Schemat systemu Eithne"
 
-#: MainWindow.cs:125 MainWindow.cs:159 Plugins/SimpleDB/SimpleDBWindow.cs:55
+#: MainWindow.cs:125 MainWindow.cs:159 Plugins/SimpleDB/SimpleDBWindow.cs:67
 msgid "All files"
 msgstr "Wszystkie pliki"
 
@@ -234,9 +235,211 @@ msgstr "Wtyczka \"{0}\" wybrana"
 msgid "A_dd"
 msgstr "_Dodaj"
 
-#: PluginToolbox.cs:84 Schematic.cs:301
+#: PluginToolbox.cs:84 Schematic.cs:318
 msgid "_About"
 msgstr "O wtyczce"
+
+#: Plugins/ClassDB/ClassDB.cs:12 Plugins/ClassDB/resources/ClassDB.glade:8
+msgid "Categorised Image Database"
+msgstr "Baza Obrazów z Kategoriami"
+
+#: Plugins/ClassDB/ClassDB.cs:32
+msgid ""
+"This plugin allows categorization of images and splitting them into base and "
+"test images."
+msgstr ""
+"Ta wtyczka umożliwia kategoryzację obrazów i ich podział na obrazy bazowe i "
+"testowe."
+
+#: Plugins/ClassDB/ClassDB.cs:192
+msgid "No categories in list"
+msgstr "Brak kategorii na liście"
+
+#: Plugins/ClassDB/ClassDB.cs:216
+msgid "There are no test images selected"
+msgstr "Brak obrazów testowych"
+
+#: Plugins/ClassDB/ClassDB.cs:218
+msgid "There are no base images selected"
+msgstr "Brak obrazów bazowych"
+
+#: Plugins/ClassDB/ClassDB.cs:305
+#, csharp-format
+msgid "From category <b>{0}</b>: {1}"
+msgstr "Kategoria <b>{0}</b>: {1}"
+
+#: Plugins/ClassDB/ClassDB.cs:323 Plugins/Euclid/Euclid.cs:125
+#: Plugins/L0Mod/L0Mod.cs:151 Plugins/PC-C1/PC-C1.cs:130
+#: Plugins/PC-C2/PC-C2.cs:131
+msgid "Base images."
+msgstr "Obrazy bazowe."
+
+#: Plugins/ClassDB/ClassDB.cs:325 Plugins/Euclid/Euclid.cs:127
+#: Plugins/L0Mod/L0Mod.cs:153 Plugins/PC-C1/PC-C1.cs:132
+#: Plugins/PC-C2/PC-C2.cs:133
+msgid "Test images."
+msgstr "Obrazy testowe."
+
+#: Plugins/ClassDB/ClassDBWindow.cs:51
+msgid "No categories"
+msgstr "Brak kategorii"
+
+#: Plugins/ClassDB/ClassDBWindow.cs:54 Plugins/SimpleDB/SimpleDBWindow.cs:51
+#, csharp-format
+msgid "{0} image"
+msgid_plural "{0} images"
+msgstr[0] "{0} obraz"
+msgstr[1] "{0} obrazy"
+msgstr[2] "{0} obrazów"
+
+#: Plugins/ClassDB/ClassDBWindow.cs:56
+#, csharp-format
+msgid " in {0} category"
+msgid_plural " in {0} categories"
+msgstr[0] " w {0} kategorii"
+msgstr[1] " w {0} kategoriach"
+msgstr[2] " w {0} kategoriach"
+
+#: Plugins/ClassDB/ClassDBWindow.cs:66
+msgid "Select directory with images to add..."
+msgstr "Wybór katalogu z obrazami do dodania..."
+
+#: Plugins/ClassDB/ClassDBWindow.cs:68 Plugins/SimpleDB/SimpleDBWindow.cs:60
+msgid "Add"
+msgstr "Dodaj"
+
+#: Plugins/ClassDB/ClassDBWindow.cs:94
+msgid "<big><b>The following directories were empty:</b></big>"
+msgstr ""
+
+#: Plugins/ClassDB/FileList.cs:83 Plugins/SimpleDB/FileList.cs:42
+msgid ""
+"Cannot open specified image.\n"
+"<i>"
+msgstr ""
+"Nie można otworzyć podanego obrazu.\n"
+"<i>"
+
+#: Plugins/ClassDB/Preview.cs:28 Plugins/SimpleDB/Preview.cs:28
+msgid "Image <i>"
+msgstr "Obraz <i>"
+
+#: Plugins/ClassDB/resources/ClassDB.glade:33
+msgid "<big><big><b>Categorised Image Database</b></big></big>"
+msgstr "<big><big><b>Baza Obrazów z Kategoriami</b></big></big>"
+
+#: Plugins/ClassDB/resources/ClassDB.glade:58
+#: Plugins/ClassDB/resources/Preview.glade:33
+#: Plugins/Correctness/resources/Correctness.glade:33
+#: Plugins/SimpleDB/resources/Preview.glade:33
+#: Plugins/SimpleDB/resources/SimpleDB.glade:58
+#: resources/DialogMessage.glade:54 resources/DialogQuestion.glade:54
+msgid "label1"
+msgstr ""
+
+#: Plugins/ClassDB/resources/ClassDB.glade:150
+msgid "Modify images partition"
+msgstr "Zmiana podziału obrazów"
+
+#: Plugins/ClassDB/resources/LoadError.glade:8
+#: Plugins/SimpleDB/resources/LoadError.glade:8
+msgid "Some images not found"
+msgstr "Nie znaleziono części obrazów"
+
+#: Plugins/ClassDB/resources/LoadError.glade:60
+msgid ""
+"<big><b>Categorised Image Database could not find following images:</b></big>"
+msgstr ""
+"<big><b>Baza Obrazów z Kategoriami nie mogła znaleźć następujących obrazów:</"
+"b></big>"
+
+#: Plugins/ClassDB/resources/Modify.glade:8
+msgid "Choose modifiaction"
+msgstr "Wybór modyfikacji"
+
+#: Plugins/ClassDB/resources/Modify.glade:33
+msgid "<big><big><b>Choose modification</b></big></big>"
+msgstr "<big><big><b>Wybór modyfikacji</b></big></big>"
+
+#: Plugins/ClassDB/resources/Modify.glade:656
+msgid "Inversion"
+msgstr "Odwrócenie"
+
+#: Plugins/ClassDB/resources/Modify.glade:675
+msgid "All images to base"
+msgstr "Wszystkie obrazy na bazowe"
+
+#: Plugins/ClassDB/resources/Modify.glade:694
+msgid "All images to test"
+msgstr "Wszystkie obrazy na testowe"
+
+#: Plugins/ClassDB/resources/Modify.glade:713
+msgid "Odd images to base, even images to test"
+msgstr "Nieparzyste bazowe, parzyste testowe"
+
+#: Plugins/ClassDB/resources/Modify.glade:732
+msgid "First half to test, second half to base"
+msgstr "Pierwsza połowa testowa, druga bazowa"
+
+#: Plugins/ClassDB/resources/Modify.glade:751
+msgid "First half to base, second half to test"
+msgstr "Pierwsza połowa bazowa, druga testowa"
+
+#: Plugins/ClassDB/resources/Preview.glade:8
+#: Plugins/SimpleDB/resources/Preview.glade:8
+msgid "Preview"
+msgstr "Podgląd"
+
+#: Plugins/Correctness/Correctness.cs:12
+#: Plugins/Correctness/resources/Correctness.glade:8
+msgid "System Correctness"
+msgstr "Poprawność Systemu"
+
+#: Plugins/Correctness/Correctness.cs:32
+msgid "This plugin shows correctness of system."
+msgstr "Ta wtyczka pokazuje poprawność systemu."
+
+#: Plugins/Correctness/Correctness.cs:96 Plugins/ResultData/ResultData.cs:73
+#: Plugins/SimpleResultView/ResultView.cs:75
+msgid "Plugin is not ready to display results."
+msgstr "Wtyczka nie jest gotowa wyświetlać wyniki."
+
+#: Plugins/Correctness/Correctness.cs:212
+msgid "Results."
+msgstr "Wyniki."
+
+#: Plugins/Correctness/CorrectnessWindow.cs:24
+msgid "Category"
+msgstr "Kategoria"
+
+#: Plugins/Correctness/CorrectnessWindow.cs:25
+msgid "Correctness"
+msgstr "Poprawność"
+
+#: Plugins/Correctness/CorrectnessWindow.cs:45
+#, csharp-format
+msgid "Correctly recognized <b>{0}</b> image out of <b>{1}</b>. ({2:p})"
+msgid_plural ""
+"Correctly recognized <b>{0}</b> images out of <b>{1}</b>. ({2:p})"
+msgstr[0] "Poprawnie rozpoznano <b>{0}</b> obraz z <b>{1}</b>. ({2:p})"
+msgstr[1] "Poprawnie rozpoznano <b>{0}</b> obrazy z <b>{1}</b>. ({2:p})"
+msgstr[2] "Poprawnie rozpoznano <b>{0}</b> obrazów z <b>{1}</b>. ({2:p})"
+
+#: Plugins/Correctness/resources/Setup.glade:8
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: Plugins/Correctness/resources/Setup.glade:33
+msgid "<b>Choose which image will represent category</b>"
+msgstr "<b>Który obraz będzie reprezentował kategorię</b>"
+
+#: Plugins/Correctness/resources/Setup.glade:59
+msgid "First image in category"
+msgstr "Pierwszy obraz w kategorii"
+
+#: Plugins/Correctness/resources/Setup.glade:78
+msgid "Last image in category"
+msgstr "Ostatni obraz w kategorii"
 
 #: Plugins/Desaturate/Desaturate.cs:11
 msgid "Desaturate"
@@ -266,25 +469,15 @@ msgid "This plugin calculates Euclid metric between images."
 msgstr "Ta wtyczka oblicza metrykę Euklidesa pomiędzy obrazami."
 
 #: Plugins/Euclid/Euclid.cs:104 Plugins/Histogram/Histogram.cs:102
-#: Plugins/L0Mod/L0Mod.cs:114 Plugins/PC-C1/PC-C1.cs:104
-#: Plugins/PC-C2/PC-C2.cs:104
+#: Plugins/L0Mod/L0Mod.cs:115 Plugins/PC-C1/PC-C1.cs:105
+#: Plugins/PC-C2/PC-C2.cs:105
 msgid "Image is not in greyscale."
 msgstr "Obraz nie jest w skali szarości."
 
-#: Plugins/Euclid/Euclid.cs:106 Plugins/L0Mod/L0Mod.cs:116
-#: Plugins/PC-C1/PC-C1.cs:106 Plugins/PC-C2/PC-C2.cs:106
+#: Plugins/Euclid/Euclid.cs:106 Plugins/L0Mod/L0Mod.cs:117
+#: Plugins/PC-C1/PC-C1.cs:107 Plugins/PC-C2/PC-C2.cs:107
 msgid "Images dimensions do not match."
 msgstr "Wymiary obrazów nie pasują do siebie."
-
-#: Plugins/Euclid/Euclid.cs:125 Plugins/L0Mod/L0Mod.cs:150
-#: Plugins/PC-C1/PC-C1.cs:129 Plugins/PC-C2/PC-C2.cs:130
-msgid "Base images."
-msgstr "Obrazy bazowe."
-
-#: Plugins/Euclid/Euclid.cs:127 Plugins/L0Mod/L0Mod.cs:152
-#: Plugins/PC-C1/PC-C1.cs:131 Plugins/PC-C2/PC-C2.cs:132
-msgid "Test images."
-msgstr "Obrazy testowe."
 
 #: Plugins/Euclid/Euclid.cs:132
 msgid "Calculated Euclid metric."
@@ -292,7 +485,6 @@ msgstr "Obliczona metryka Euklidesa."
 
 #: Plugins/Histogram/Histogram.cs:11
 #: Plugins/Histogram/resources/Histogram.glade:8
-#: Plugins/L0Mod/resources/L0Mod.glade:8
 msgid "Histogram"
 msgstr "Histogram"
 
@@ -321,15 +513,15 @@ msgstr "Podgląd obrazów"
 msgid "This plugin displays images it receives on input."
 msgstr "Ta wtyczka wyświetla obrazy otrzymane na wejściu."
 
-#: Plugins/ImageView/ImageView.cs:71
+#: Plugins/ImageView/ImageView.cs:72
 msgid "Plugin is not ready to display images."
 msgstr "Wtyczka nie jest gotowa wyświetlać obrazy."
 
-#: Plugins/ImageView/ImageView.cs:115
+#: Plugins/ImageView/ImageView.cs:117
 msgid "Images to be viewed."
 msgstr "Obrazy, które będą oglądane."
 
-#: Plugins/ImageView/ImageViewWindow.cs:44
+#: Plugins/ImageView/ImageViewWindow.cs:47
 #, csharp-format
 msgid "<i>Viewing {0} image</i>"
 msgid_plural "<i>Viewing {0} images</i>"
@@ -337,13 +529,22 @@ msgstr[0] "<i>{0} obraz</i>"
 msgstr[1] "<i>{0} obrazy</i>"
 msgstr[2] "<i>{0} obrazów</i>"
 
+#: Plugins/ImageView/ImageViewWindow.cs:70
+#, csharp-format
+msgid "Image category: {0}"
+msgstr "Kategoria obrazu: {0}"
+
 #: Plugins/ImageView/resources/ImageView.glade:33
 msgid "<big><big><b>Image View</b></big></big>"
 msgstr "<big><big><b>Podgląd Obrazów</b></big></big>"
 
-#: Plugins/ImageView/resources/ImageView.glade:111
-#: Plugins/SimpleResultView/resources/ResultView.glade:231
+#: Plugins/ImageView/resources/ImageView.glade:117
+#: Plugins/SimpleResultView/resources/ResultView.glade:351
 msgid "label2"
+msgstr ""
+
+#: Plugins/ImageView/resources/ImageView.glade:142
+msgid "label3"
 msgstr ""
 
 #: Plugins/L0Mod/L0Mod.cs:11
@@ -355,9 +556,13 @@ msgid "This plugin calculates modified L<sub>0</sub> metric between images."
 msgstr ""
 "Ta wtyczka oblicza zmodyfikowaną metrykę L<sub>0</sub> pomiędzy obrazami."
 
-#: Plugins/L0Mod/L0Mod.cs:157
+#: Plugins/L0Mod/L0Mod.cs:158
 msgid "Calculated modified L0 metric."
 msgstr "Obliczona zmodyfikowana metryka L0."
+
+#: Plugins/L0Mod/resources/L0Mod.glade:8
+msgid "Modified L0 metric"
+msgstr "Zmodyfikowana metryka L0"
 
 #: Plugins/L0Mod/resources/L0Mod.glade:33
 msgid "<big><big><b>Modified L<sub>0</sub> metric</b></big></big>"
@@ -415,7 +620,7 @@ msgid ""
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>1</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C1/PC-C1.cs:136
+#: Plugins/PC-C1/PC-C1.cs:137
 msgid "Calculated C1 metric."
 msgstr "Obliczone metryka C1."
 
@@ -430,7 +635,7 @@ msgid ""
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>2</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C2/PC-C2.cs:137
+#: Plugins/PC-C2/PC-C2.cs:138
 msgid "Calculated C2 metric."
 msgstr "Obliczona metryka C2."
 
@@ -563,30 +768,13 @@ msgid "This plugin shows raw data coming to block's input socket."
 msgstr ""
 "Wtyczka wyświetla surowe dane przychodzące do gniazda wejściowego bloku."
 
-#: Plugins/ResultData/ResultData.cs:72
-#: Plugins/SimpleResultView/ResultView.cs:73
-msgid "Plugin is not ready to display results."
-msgstr "Wtyczka nie jest gotowa wyświetlać wyniki."
-
-#: Plugins/ResultData/ResultData.cs:134
+#: Plugins/ResultData/ResultData.cs:150
 msgid "Results to be displayed in raw form."
 msgstr "Wyniki do wyświetlenia w surowej formie."
 
 #: Plugins/ResultData/resources/ResultData.glade:33
 msgid "<big><big><b>Result Data</b></big></big>"
 msgstr "<big><big><b>Dane Wynikowe</b></big></big>"
-
-#: Plugins/SimpleDB/FileList.cs:42
-msgid ""
-"Cannot open specified image.\n"
-"<i>"
-msgstr ""
-"Nie można otworzyć podanego obrazu.\n"
-"<i>"
-
-#: Plugins/SimpleDB/Preview.cs:28
-msgid "Image <i>"
-msgstr "Obraz <i>"
 
 #: Plugins/SimpleDB/SimpleDB.cs:12 Plugins/SimpleDB/resources/SimpleDB.glade:8
 msgid "Simple Image Database"
@@ -601,21 +789,17 @@ msgstr ""
 msgid "No images in list"
 msgstr "Brak obrazów na liście"
 
-#: Plugins/SimpleDB/SimpleDB.cs:143
+#: Plugins/SimpleDB/SimpleDB.cs:145
 msgid "Images."
 msgstr "Obrazy."
 
-#: Plugins/SimpleDB/SimpleDBWindow.cs:46
+#: Plugins/SimpleDB/SimpleDBWindow.cs:49
+msgid "No images"
+msgstr "Brak obrazów"
+
+#: Plugins/SimpleDB/SimpleDBWindow.cs:58
 msgid "Select image to add..."
 msgstr "Wybór obrazu do dodania..."
-
-#: Plugins/SimpleDB/SimpleDBWindow.cs:48
-msgid "Add"
-msgstr "Dodaj"
-
-#: Plugins/SimpleDB/resources/LoadError.glade:8
-msgid "Some images not found"
-msgstr "Nie znaleziono części obrazów"
 
 #: Plugins/SimpleDB/resources/LoadError.glade:60
 msgid ""
@@ -624,22 +808,9 @@ msgstr ""
 "<big><b>Prosta Baza Obrazów nie mogła znaleźć następujących obrazów:</b></"
 "big>"
 
-#: Plugins/SimpleDB/resources/Preview.glade:8
-msgid "Preview"
-msgstr "Podgląd"
-
-#: Plugins/SimpleDB/resources/Preview.glade:33
-#: resources/DialogMessage.glade:54 resources/DialogQuestion.glade:54
-msgid "label1"
-msgstr ""
-
 #: Plugins/SimpleDB/resources/SimpleDB.glade:33
 msgid "<big><big><b>Simple Image Database</b></big></big>"
 msgstr "<big><big><b>Prosta Baza Obrazów</b></big></big>"
-
-#: Plugins/SimpleDB/resources/SimpleDB.glade:58
-msgid "<i>List of images</i>"
-msgstr "<i>Lista obrazów</i>"
 
 #: Plugins/SimpleResultView/ResultView.cs:11
 #: Plugins/SimpleResultView/resources/ResultView.glade:8
@@ -654,17 +825,23 @@ msgstr ""
 "Ta wtyczka wyświetla które obrazy z bazy danych zostały rozpoznane dla "
 "danych obrazów testowych."
 
-#: Plugins/SimpleResultView/ResultView.cs:155
+#: Plugins/SimpleResultView/ResultView.cs:145
 msgid "Results to be viewed."
 msgstr "Wyniki, które będą oglądane."
 
-#: Plugins/SimpleResultView/ResultViewWindow.cs:50
+#: Plugins/SimpleResultView/ResultViewWindow.cs:54
 #, csharp-format
 msgid "<i>Viewing results for {0} image</i>"
 msgid_plural "<i>Viewing results for {0} images</i>"
 msgstr[0] "<i>Wyniki dla {0} obrazu</i>"
 msgstr[1] "<i>Wyniki dla {0} obrazów</i>"
 msgstr[2] "<i>Wyniki dla {0} obrazów</i>"
+
+#: Plugins/SimpleResultView/ResultViewWindow.cs:82
+#: Plugins/SimpleResultView/ResultViewWindow.cs:83
+#, csharp-format
+msgid "Category: {0}"
+msgstr "Kategoria: {0}"
 
 #: Plugins/SimpleResultView/resources/ResultView.glade:33
 msgid "<big><big><b>Simple Result View</b></big></big>"
@@ -677,6 +854,14 @@ msgstr "<b>Najbardziej podobny obraz:</b>"
 #: Plugins/SimpleResultView/resources/ResultView.glade:130
 msgid "<b>Current image:</b>"
 msgstr "<b>Aktualny obraz:</b>"
+
+#: Plugins/SimpleResultView/resources/ResultView.glade:189
+msgid "label5"
+msgstr ""
+
+#: Plugins/SimpleResultView/resources/ResultView.glade:267
+msgid "label4"
+msgstr ""
 
 #: SaveLoad.cs:251
 #, csharp-format
@@ -702,57 +887,57 @@ msgstr "Blok \"{0}\", gniazdo wyjściowe {1}. {2}"
 msgid "Move block to desired location"
 msgstr "Przenoszenie bloku na porządaną pozycję"
 
-#: Schematic.cs:238
+#: Schematic.cs:252
 #, csharp-format
 msgid "{0} menu"
 msgstr "Menu bloku \"{0}\""
 
-#: Schematic.cs:248
+#: Schematic.cs:260
 msgid "Display _results"
 msgstr "Wyświetl _wyniki"
 
-#: Schematic.cs:253
+#: Schematic.cs:270
 msgid "_Setup"
 msgstr "U_stawienia"
 
-#: Schematic.cs:262
+#: Schematic.cs:279
 msgid "D_isconnect all"
 msgstr "Rozłącz wszystk_ie"
 
-#: Schematic.cs:269
+#: Schematic.cs:286
 msgid "Removed all block's connections"
 msgstr "Usunięto wszystkie połączenia bloku"
 
-#: Schematic.cs:273
+#: Schematic.cs:290
 msgid "In_validate"
 msgstr "Unieważnij"
 
-#: Schematic.cs:282
+#: Schematic.cs:299
 msgid "Invalidated results"
 msgstr "Unieważniono wyniki"
 
-#: Schematic.cs:286
+#: Schematic.cs:303
 msgid "_Delete"
 msgstr "Usuń"
 
-#: Schematic.cs:295
+#: Schematic.cs:312
 #, csharp-format
 msgid "Deleted {0} block"
 msgstr "Usunięto blok \"{0}\""
 
-#: Schematic.cs:320
+#: Schematic.cs:336
 msgid "Connect block with another"
 msgstr "Łączenie bloku z innym blokiem"
 
-#: Schematic.cs:332 Schematic.cs:350
+#: Schematic.cs:348 Schematic.cs:366
 msgid "Removed connection"
 msgstr "Usunięto połączenie"
 
-#: Schematic.cs:342
+#: Schematic.cs:358
 msgid "_Disconnect"
 msgstr "Rozłącz"
 
-#: Schematic.cs:406
+#: Schematic.cs:436
 msgid "Connected blocks"
 msgstr "Połączono bloki"
 

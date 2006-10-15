@@ -83,18 +83,20 @@ namespace Eithne
 
 			int i = 0;
 			IImage[] imgarray = new IImage[_fl.Count];
+			int[] categories = new int[_fl.Count];
 
 			foreach(string fn in _fl)
 			{
 				Gdk.Pixbuf buf = new Gdk.Pixbuf(fn);
 
 				imgarray[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? 1 : 3);
+				categories[i] = i;
 
 				i++;
 			}
 
 			_out = new CommSocket(1);
-			_out[0] = new ICommImage(imgarray, imgarray);
+			_out[0] = new ICommImage(imgarray, imgarray, categories);
 
 			_workdone = true;
 		}
