@@ -120,7 +120,7 @@ namespace Eithne
 				ibase[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
 			}
 
-			res = Utility.FindResults(r);
+			res = Utility.FindResultsSimple(r);
 
 			cat1 = r.BaseCategories;
 			cat2 = r.TestCategories;

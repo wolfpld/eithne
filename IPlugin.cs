@@ -161,14 +161,7 @@ namespace Eithne
 	{}
 
 	public abstract class IOtherPlugin : IPlugin
-	{
-		protected Cairo.Color _color = new Cairo.Color(0.5, 0.5, 0.5, 0.75);
-
-		public Cairo.Color Color
-		{
-			get { return _color; }
-		}
-	}
+	{}
 
 	public class CommSocket
 	{
@@ -322,6 +315,11 @@ namespace Eithne
 		public int Length
 		{
 			get { return data.Length; }
+		}
+
+		public double[] Data
+		{
+			get { return data; }
 		}
 	}
 

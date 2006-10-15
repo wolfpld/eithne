@@ -1,4 +1,6 @@
-﻿using Gdk;
+﻿using System;
+using System.Collections;
+using Gdk;
 
 namespace Eithne
 {
@@ -87,7 +89,7 @@ namespace Eithne
 			return tmp;
 		}
 
-		public static int[] FindResults(ICommResult r)
+		public static int[] FindResultsSimple(ICommResult r)
 		{
 			int[] res = new int[r.Length];
 
@@ -107,6 +109,49 @@ namespace Eithne
 			}
 
 			return res;
+		}
+
+		public static int[][] FindResults(ICommResult r)
+		{
+			int[][] res = new int[r.Length][];
+			
+			for(int i=0; i<r.Length; i++)
+			{
+				ResultSorter rs = new ResultSorter(r.Identity, r[i].Data);
+
+				res[i] = new int[r[i].Length];
+				for(int j=0; j<r[i].Length; j++)
+					res[i][j] = j;
+
+				Array.Sort(res[i], rs);
+			}
+
+			return res;
+		}
+	}
+
+	class ResultSorter : IComparer
+	{
+		private double identity;
+		private double[] res;
+
+		public ResultSorter(double identity, double[] res)
+		{
+			this.identity = identity;
+			this.res = res;
+		}
+
+		public int Compare(object x, object y)
+		{
+			double vx = Math.Abs(identity - res[(int)x]);
+			double vy = Math.Abs(identity - res[(int)y]);
+
+			if(vx < vy)
+				return -1;
+			else if(vx > vy)
+				return 1;
+			else
+				return 0;
 		}
 	}
 }

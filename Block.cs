@@ -432,38 +432,62 @@ namespace Eithne
 
 		private void DrawBlock(Context c, bool IsSelected)
 		{
+			LinearGradient g = new LinearGradient(0, y, 0, y+h);
 			if(plugin is IInPlugin)
-				c.Color = new Color(0.35, 0.55, 0.95, 0.75);
+			{
+				g.AddColorStop(0, new Color(0.65, 0.85, 1.00, 0.85));
+				g.AddColorStop(0.33, new Color(0.45, 0.65, 1.00, 0.85));
+				g.AddColorStop(1, new Color(0.20, 0.50, 0.80, 0.85));
+			}
 			else if(plugin is IOutPlugin)
-				c.Color = new Color(0.95, 0.55, 0.95, 0.75);
+			{
+				g.AddColorStop(0, new Color(1.00, 0.85, 1.00, 0.85));
+				g.AddColorStop(0.33, new Color(1.00, 0.65, 1.00, 0.85));
+				g.AddColorStop(1, new Color(0.80, 0.40, 0.80, 0.85));
+			}
 			else if(plugin is IImgProcPlugin)
-				c.Color = new Color(0.45, 0.95, 0.45, 0.75);
+			{
+				g.AddColorStop(0, new Color(0.75, 1.00, 0.75, 0.85));
+				g.AddColorStop(0.33, new Color(0.55, 1.00, 0.55, 0.85));
+				g.AddColorStop(1, new Color(0.30, 0.80, 0.30, 0.85));
+			}
 			else if(plugin is IResProcPlugin)
-				c.Color = new Color(0.95, 0.45, 0.45, 0.75);
+			{
+				g.AddColorStop(0, new Color(1.00, 0.75, 0.75, 0.85));
+				g.AddColorStop(0.33, new Color(1.00, 0.55, 0.55, 0.85));
+				g.AddColorStop(1, new Color(0.80, 0.30, 0.30, 0.85));
+			}
 			else if(plugin is IComparatorPlugin)
-				c.Color = new Color(0.95, 0.95, 0.45, 0.75);
+			{
+				g.AddColorStop(0, new Color(1.00, 1.00, 0.75, 0.85));
+				g.AddColorStop(0.33, new Color(1.00, 1.00, 0.55, 0.85));
+				g.AddColorStop(1, new Color(0.80, 0.80, 0.30, 0.85));
+			}
 			else if(plugin is IOtherPlugin)
-				c.Color = (plugin as IOtherPlugin).Color;
+			{
+				g.AddColorStop(0, new Color(0.7, 0.7, 0.7, 0.85));
+				g.AddColorStop(0.33, new Color(0.5, 0.5, 0.5, 0.85));
+				g.AddColorStop(1, new Color(0.35, 0.35, 0.35, 0.85));
+			}
 
 			DrawPath(c);
+			c.Pattern = g;
 			c.FillPreserve();
 
 			if(showerror)
-			{
 				c.Color = new Color(1, 0, 0);
-				c.LineWidth = 5.0;
-			}
 			else if(IsSelected)
-			{
 				c.Color = new Color(0.2, 0.2, 1);
-				c.LineWidth = 4.0;
-			}
 			else
-			{
 				c.Color = new Color(0, 0, 0);
-				c.LineWidth = 2.0;
-			}
 
+			c.LineWidth = 2.0;
+
+			c.Stroke();
+
+			c.Color = new Color(1, 1, 1, 0.5);
+			c.LineWidth = 1;
+			DrawPathInner(c);
 			c.Stroke();
 
 			c.Color = new Color(0, 0, 0);
@@ -622,6 +646,77 @@ namespace Eithne
 
 			// 1
 			c.CurveTo(x, y, x, y, x+10, y);
+		}
+
+		private void DrawPathInner(Context c)
+		{
+			//	1-------2
+			//	|	|
+			//	|	|
+			//	4-------3
+
+			// 1
+			c.MoveTo(x+11.5, y+1.5);
+			c.LineTo(x+w-11.5, y+1.5);
+			// 2
+			c.CurveTo(x+w-1.5, y+1.5, x+w-1.5, y+1.5, x+w-1.5, y+8.5);
+
+			// gniazda wyjściowe
+			if(socketout.Length == 0)
+				c.LineTo(x+w-1.5, y+h-11.5);
+			else
+			{
+				int curpos = y+10+(h-20-CalcHeight(socketout.Length))/2;
+
+				c.LineTo(x+w-1.5, curpos-1.5);
+
+				for(int i=0; i<socketout.Length; i++)
+				{
+					if(i!=0)
+					{
+						curpos += 5;
+						c.LineTo(x+w-1.5, curpos-1.5);
+					}
+					
+					c.CurveTo(x+w-11.5, curpos-1.5, x+w-11.5, curpos+11.5, x+w-1.5, curpos+11.5);
+					curpos += 10;
+				}
+
+				c.LineTo(x+w-1.5, y+h-8.5);
+			}
+
+			// 3
+			c.CurveTo(x+w-1.5, y+h-1.5, x+w-1.5, y+h-1.5, x+w-11.5, y+h-1.5);
+			c.LineTo(x+11.5, y+h-1.5);
+			// 4
+			c.CurveTo(x+1.5, y+h-1.5, x+1.5, y+h-1.5, x+1.5, y+h-8.5);
+
+			// gniazda wejściowe
+			if(socketin.Length == 0)
+				c.LineTo(x+1.5, y+11.5);
+			else
+			{
+				int curpos = y+h-10-(h-20-CalcHeight(socketin.Length))/2;
+
+				c.LineTo(x+1.5, curpos+1.5);
+
+				for(int i=0; i<socketin.Length; i++)
+				{
+					if(i!=0)
+					{
+						curpos -= 5;
+						c.LineTo(x+1.5, curpos+1.5);
+					}
+					
+					c.CurveTo(x+11.5, curpos+1.5, x+11.5, curpos-11.5, x+1.5, curpos-11.5);
+					curpos -= 10;
+				}
+
+				c.LineTo(x+1.5, y+8.5);
+			}
+
+			// 1
+			c.CurveTo(x+1.5, y+1.5, x+1.5, y+1.5, x+11.5, y+1.5);
 		}
 
 		private void Invalidate(bool x)

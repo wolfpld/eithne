@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-13 22:02+0100\n"
+"POT-Creation-Date: 2006-02-16 23:09+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -238,6 +238,35 @@ msgstr "_Dodaj"
 #: PluginToolbox.cs:84 Schematic.cs:318
 msgid "_About"
 msgstr "O wtyczce"
+
+#: Plugins/Best/Best.cs:11 Plugins/Best/resources/Best.glade:8
+msgid "Best-of"
+msgstr "Najlepsze-z"
+
+#: Plugins/Best/Best.cs:31
+msgid "This plugin selects best of results."
+msgstr "Ta wtyczka wybiera najlepsze wyniki."
+
+#: Plugins/Best/Best.cs:102
+msgid "Incompatible data on input."
+msgstr "Niekompatybilne ze sobą dane na wejściach"
+
+#: Plugins/Best/Best.cs:143
+#, csharp-format
+msgid "{0}. input signal."
+msgstr "{0}. sygnał wejściowy."
+
+#: Plugins/Best/Best.cs:148
+msgid "Best results."
+msgstr "Najlepsze wyniki."
+
+#: Plugins/Best/resources/Best.glade:33
+msgid "<big><big><b>Best-of</b></big></big>"
+msgstr "<big><big><b>Najlepsze-z</b></big></big>"
+
+#: Plugins/Best/resources/Best.glade:58
+msgid "Number of input sockets:"
+msgstr "Liczba gniazd wejściowych:"
 
 #: Plugins/ClassDB/ClassDB.cs:12 Plugins/ClassDB/resources/ClassDB.glade:8
 msgid "Categorised Image Database"

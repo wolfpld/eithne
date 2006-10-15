@@ -113,7 +113,7 @@ namespace Eithne
 		public override void Work()
 		{
 			ICommResult r = _in[0] as ICommResult;
-			int[] res = Utility.FindResults(r);
+			int[] res = Utility.FindResultsSimple(r);
 			int numcat = FindNumCategories(r.TestCategories);
 
 			cat = new Category[numcat+1];

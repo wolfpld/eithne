@@ -1,4 +1,5 @@
 SUBDIRS = \
+	Best \
 	ClassDB \
 	Correctness \
 	Desaturate \

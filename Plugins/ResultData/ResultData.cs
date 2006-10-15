@@ -111,24 +111,10 @@ namespace Eithne
 			}
 
 			res = new IResult[r.Length];
-			match = new int[r.Length];
-
 			for(int i=0; i<r.Length; i++)
-			{
 				res[i] = r[i];
 
-				double min = r.Difference(i, 0);
-				int n = 0;
-
-				for(int j=1; j<r[i].Length; j++)
-					if(r.Difference(i, j) < min)
-					{
-						min = r.Difference(i, j);
-						n = j;
-					}
-
-				match[i] = n;
-			}
+			match = Utility.FindResultsSimple(r);
 
 			_workdone = true;
 		}
