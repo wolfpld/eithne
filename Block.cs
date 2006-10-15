@@ -151,13 +151,15 @@ namespace Eithne
 		private static ImageSurface StateBad = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-bad.png"));
 		private static ImageSurface StateGood = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-good.png"));
 		private static ImageSurface StateNotReady = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-not-ready.png"));
+		private static ImageSurface StateReady = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-ready.png"));
 		private static ImageSurface Clock = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/clock.png"));
 
 		public enum State
 		{
 			Good,
 			Bad,
-			NotReady
+			NotReady,
+			Ready
 		}
 
 		public bool ShowError
@@ -165,6 +167,7 @@ namespace Eithne
 			set { showerror = value; }
 		}
 
+		// FIXME niedokończone wyszukiwanie pętli w systemie
 		public State ConnState
 		{
 			get { return connstate; }
@@ -390,7 +393,10 @@ namespace Eithne
 			if(Plugin.WorkDone)
 				return State.Good;
 			
-			return State.Bad;
+			if(WorkPossible())
+				return State.Ready;
+			else
+				return State.Bad;
 		}
 
 		public bool WorkPossible()
@@ -423,8 +429,10 @@ namespace Eithne
 				StateNotReady.Show(c, 0, 0);
 			else if(s == State.Bad)
 				StateBad.Show(c, 0, 0);
-			else
+			else if(s == State.Good)
 				StateGood.Show(c, 0, 0);
+			else
+				StateReady.Show(c, 0, 0);
 
 			c.Stroke();
 			c.Restore();
@@ -627,6 +635,7 @@ namespace Eithne
 		private void Invalidate(bool x)
 		{
 			Plugin.WorkDone = false;
+			Plugin.Invalidate();
 
 			for(int i=0; i<socketout.Length; i++)
 			{

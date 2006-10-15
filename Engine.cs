@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Threading;
 using Gtk;
 using Mono.Unix;
 
@@ -7,10 +8,27 @@ namespace Eithne
 {
 	class Engine
 	{
+		private static IPlugin Plugin;
+		private static Exception Error;
+
 		private static void ProcessEvents()
 		{
 			while(Application.EventsPending())
 				Application.RunIteration();
+		}
+
+		private static void ThreadedWork()
+		{
+			Error = null;
+
+			try
+			{
+				Plugin.Work();
+			}
+			catch(Exception e)
+			{
+				Error = e;
+			}
 		}
 
 		public static void Work(Schematic s)
@@ -27,7 +45,7 @@ namespace Eithne
 				{
 					b = (Block)l[j];
 
-					if(b.CheckState() == Block.State.Bad && b.WorkPossible())
+					if(b.CheckState() == Block.State.Ready)
 					{
 						b.Working = true;
 						s.Redraw();
@@ -56,7 +74,15 @@ namespace Eithne
 								b.Plugin.In = cs;
 							}
 
-							b.Plugin.Work();
+							Plugin = b.Plugin;
+							Thread t = new Thread(ThreadedWork);
+							t.Start();
+
+							while(!t.Join(25))
+								ProcessEvents();
+
+							if(Error != null)
+								throw Error;
 
 							b.Working = false;
 							s.Redraw();

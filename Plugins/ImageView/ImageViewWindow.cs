@@ -68,6 +68,7 @@ namespace Eithne
 
 		private void CloseWindow(object o, EventArgs args)
 		{
+			img = null;
 			IVWindow.Destroy();
 		}
 	}

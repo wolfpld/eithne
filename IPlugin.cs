@@ -81,6 +81,32 @@ namespace Eithne
 		public abstract void Setup();
 		public abstract void Work();
 
+		public virtual void Invalidate()
+		{
+			ClearInput();
+			ClearOutput();
+		}
+
+		protected void ClearInput()
+		{
+			if(_in != null)
+			{
+				for(int i=0; i<_in.Length; i++)
+					_in[i] = null;
+				_in = null;
+			}
+		}
+
+		protected void ClearOutput()
+		{
+			if(_out != null)
+			{
+				for(int i=0; i<_out.Length; i++)
+					_out[i] = null;
+				_out = null;
+			}
+		}
+
 		public virtual bool HasSetup
 		{
 			get { return true; }
@@ -147,6 +173,11 @@ namespace Eithne
 		{
 			get { return obj[n]; }
 			set { obj[n] = value; }
+		}
+
+		public int Length
+		{
+			get { return obj.Length; }
 		}
 	}
 

@@ -83,6 +83,9 @@ namespace Eithne
 
 		private void CloseWindow(object o, EventArgs args)
 		{
+			img1 = null;
+			img2 = null;
+			res = null;
 			ResultViewWindow.Destroy();
 		}
 	}

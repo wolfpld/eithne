@@ -1,0 +1,12 @@
+eithne 0.1.1
+------------
+
+- Visual indication of blocks ready for work.
+- Blocks' work is done in separate thread, so GUI is responsive when system is
+  running.
+- Be more friendly for garbage collector.
+
+eithne 0.1.0
+------------
+
+- Initial release.

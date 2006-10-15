@@ -13,7 +13,7 @@ namespace Eithne
 
 		public static string Version
 		{
-			get { return "0.1.0"; }
+			get { return "0.1.1"; }
 		}
 
 		public About()
