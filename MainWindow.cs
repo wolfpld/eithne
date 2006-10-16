@@ -71,9 +71,9 @@ namespace Eithne
 			MenuSystemRun.Image = new Image(null, "media-playback-start.png");
 			MenuSystemRun.Activated += OnRun;
 			MenuHelpPluginList.Image = new Image(null, "plugin-16.png");
-			MenuHelpPluginList.Activated += delegate(object o, EventArgs args) { new PluginList(); };
+			MenuHelpPluginList.Activated += delegate(object o, EventArgs eargs) { new PluginList(); };
 			MenuHelpAbout.Image = new Image(null, "help-browser.png");
-			MenuHelpAbout.Activated += delegate(object o, EventArgs args) { new About(); };
+			MenuHelpAbout.Activated += delegate(object o, EventArgs eargs) { new About(); };
 
 			ToolbarNew.IconWidget = new Image(null, "document-new-22.png");
 			ToolbarNew.Clicked += OnNew;
@@ -130,9 +130,9 @@ namespace Eithne
 			filter.AddPattern("*");
 			fs.AddFilter(filter);
 
-			fs.Response += delegate(object o, ResponseArgs args)
+			fs.Response += delegate(object obj, ResponseArgs eargs)
 				{
-					if(args.ResponseId == ResponseType.Accept)
+					if(eargs.ResponseId == ResponseType.Accept)
 					{
 						ArrayList tmp = SaveLoad.Load(fs.Filename, schematic);
 						if(tmp != null)
@@ -164,9 +164,9 @@ namespace Eithne
 			filter.AddPattern("*");
 			fs.AddFilter(filter);
 
-			fs.Response += delegate(object o, ResponseArgs args)
+			fs.Response += delegate(object obj, ResponseArgs eargs)
 				{
-					if(args.ResponseId == ResponseType.Accept)
+					if(eargs.ResponseId == ResponseType.Accept)
 					{
 						Filename = fs.Filename;
 

@@ -291,7 +291,7 @@ namespace Eithne
 
 						mi = new ImageMenuItem(Catalog.GetString("D_isconnect all"));
 						mi.Image = new Image(null, "edit-cut.png");
-						mi.Activated += delegate(object sender, EventArgs args)
+						mi.Activated += delegate(object sender, EventArgs eargs)
 							{
 								b.Disconnect();
 								QueueDraw();
@@ -304,7 +304,7 @@ namespace Eithne
 						mi.Image = new Image(null, "user-trash-full.png");
 						if(b.CheckState() != Block.State.Good)
 							mi.Sensitive = false;
-						mi.Activated += delegate(object sender, EventArgs args)
+						mi.Activated += delegate(object sender, EventArgs eargs)
 							{
 								b.Invalidate();
 
@@ -315,7 +315,7 @@ namespace Eithne
 
 						mi = new ImageMenuItem(Catalog.GetString("_Delete"));
 						mi.Image = new Image(null, "edit-delete.png");
-						mi.Activated += delegate(object sender, EventArgs args)
+						mi.Activated += delegate(object sender, EventArgs eargs)
 							{
 								b.Disconnect();
 								blocks.Remove(selected);
@@ -330,7 +330,7 @@ namespace Eithne
 
 						mi = new ImageMenuItem(Catalog.GetString("_About"));
 						mi.Image = new Image(null, "help-browser.png");
-						mi.Activated += delegate(object sender, EventArgs args) { new PluginAbout(b.Plugin); };
+						mi.Activated += delegate(object sender, EventArgs eargs) { new PluginAbout(b.Plugin); };
 						m.Append(mi);
 
 						m.ShowAll();
@@ -367,7 +367,7 @@ namespace Eithne
 							Menu m = new Menu();
 							ImageMenuItem mi = new ImageMenuItem(Catalog.GetString("_Disconnect"));
 							mi.Image = new Image(null, "edit-cut.png");
-							mi.Activated += delegate(object sender, EventArgs args)
+							mi.Activated += delegate(object sender, EventArgs eargs)
 							{
 								s.Disconnect();
 								_t.QueueDraw();

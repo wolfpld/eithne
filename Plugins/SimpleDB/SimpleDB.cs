@@ -128,7 +128,7 @@ namespace Eithne
 					
 					_fl.Add(n.InnerText);
 				}
-				catch(GLib.GException e)
+				catch(GLib.GException)
 				{
 					errors.Add(n.InnerText);
 				}

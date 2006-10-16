@@ -69,9 +69,9 @@ namespace Eithne
 
 			fs.SelectMultiple = true;
 
-			fs.Response += delegate(object o, ResponseArgs args)
+			fs.Response += delegate(object obj, ResponseArgs eargs)
 				{
-					if(args.ResponseId == ResponseType.Accept)
+					if(eargs.ResponseId == ResponseType.Accept)
 						foreach(string fn in fs.Filenames)
 						{
 							string file;

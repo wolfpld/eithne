@@ -54,7 +54,7 @@ namespace Eithne
 			{
 				seed = Int32.Parse(Seed.Text);
 			}
-			catch(FormatException e)
+			catch(FormatException)
 			{
 				if(Seed.Text.Length == 1)
 					Seed.Text = "";
