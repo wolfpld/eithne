@@ -18,18 +18,20 @@ namespace Eithne
 	internal class GConfConfig : IConfig
 	{
 		GConf.Client c = new GConf.Client();
+		Config.Callback UpdateCallback;
 
 		static string path = "/apps/eithne/";
 
-		public GConfConfig()
+		public GConfConfig(Config.Callback UpdateCallback)
 		{
+			this.UpdateCallback = UpdateCallback;
+
 			c.AddNotify(path.TrimEnd(new char[] {'/'}), UpdateHandler);
 		}
 
 		private void UpdateHandler(object o, EventArgs args)
 		{
-			Block.CheckGConf();
-			Schematic.CheckGConf();
+			UpdateCallback();
 		}
 
 		public void Set(string key, string val)
@@ -91,6 +93,13 @@ namespace Eithne
 	{
 		static string path = "Software/Eithne/";
 
+		Config.Callback UpdateHandler;
+
+		public RegistryConfig(Config.Callback UpdateHandler)
+		{
+			this.UpdateHandler = UpdateHandler;
+		}
+
 		private string[] Split(string key)
 		{
 			string[] ret = new string[2];
@@ -116,6 +125,8 @@ namespace Eithne
 
 			k.Flush();
 			k.Close();
+
+			UpdateHandler();
 		}
 
 		public void Set(string key, int val)
@@ -131,6 +142,8 @@ namespace Eithne
 
 			k.Flush();
 			k.Close();
+
+			UpdateHandler();
 		}
 
 		public void Set(string key, bool val)
@@ -149,6 +162,8 @@ namespace Eithne
 
 			k.Flush();
 			k.Close();
+
+			UpdateHandler();
 		}
 
 		public string Get(string key, string def)
@@ -234,13 +249,15 @@ namespace Eithne
 
 	public class Config
 	{
+		internal delegate void Callback();
+
 		private static IConfig cfg = null;
 
 		public static void Init()
 		{
 			try
 			{
-				cfg = new GConfConfig();
+				cfg = new GConfConfig(UpdateHandler);
 			}
 			catch(Exception e)
 			{
@@ -248,7 +265,7 @@ namespace Eithne
 				Console.WriteLine(e.Message);
 				Console.WriteLine("Trying to fall back to registry based config.");
 
-				cfg = new RegistryConfig();
+				cfg = new RegistryConfig(UpdateHandler);
 			}
 		}
 
@@ -279,6 +296,12 @@ namespace Eithne
 		public static bool Get(string key, bool def)
 		{
 			return cfg.Get(key, def);
+		}
+
+		private static void UpdateHandler()
+		{
+			Block.CheckGConf();
+			Schematic.CheckGConf();
 		}
 	}
 }
