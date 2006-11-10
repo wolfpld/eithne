@@ -20,7 +20,7 @@ namespace Eithne
 			Glade.XML gxml = new Glade.XML("Preferences.glade", "PreferencesWindow");
 			gxml.BindFields(this);
 
-//			PreferencesWindow.IconList = new Gdk.Pixbuf[2] {new Gdk.Pixbuf(null, "help-browser-48.png"), new Gdk.Pixbuf(null, "help-browser.png")};
+			PreferencesWindow.IconList = new Gdk.Pixbuf[2] {new Gdk.Pixbuf(null, "preferences-desktop-48.png"), new Gdk.Pixbuf(null, "preferences-desktop.png")};
 
 			PreferencesWindow.DeleteEvent += CloseWindow;
 			CloseButton.Clicked += CloseWindow;

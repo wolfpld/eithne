@@ -75,6 +75,7 @@ RESOURCES = \
 	pixmaps/no-base.png \
 	pixmaps/plugin-16.png \
 	pixmaps/plugin-48.png \
+	pixmaps/preferences-desktop-48.png \
 	pixmaps/preferences-desktop.png \
 	pixmaps/system-log-out.png \
 	pixmaps/system-search.png \
