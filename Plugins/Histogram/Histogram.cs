@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.1"; }
+			get { return "0.2"; }
 		}
 
 		public override string Author
@@ -58,6 +58,8 @@ namespace Eithne
 	public class HistogramPlugin : IImgProcPlugin
 	{
 		private int num = 256;
+		private bool black = false;
+		private bool white = false;
 
 		public HistogramPlugin()
 		{
@@ -70,15 +72,18 @@ namespace Eithne
 			set { LoadConfig(value); }
 		}
 
-		private void UpdateValue(int n)
+		private void UpdateValue(int num, bool black, bool white)
 		{
-			num = n;
+			this.num = num;
+			this.black = black;
+			this.white = white;
+
 			_block.Invalidate();
 		}
 
 		public override void Setup()
 		{
-			new HistogramSetup(num, UpdateValue);
+			new HistogramSetup(num, black, white, UpdateValue);
 		}
 
 		public override void Work()
@@ -111,12 +116,15 @@ namespace Eithne
 			for(int y=0; y<img.H; y++)
 				for(int x=0; x<img.W; x++)
 				{
-					counter[(byte)img[x, y] / div]++;
+					if(!(black && (byte)img[x, y] == 0) && !(white && (byte)img[x, y] == 255))
+					{
+						counter[(byte)img[x, y] / div]++;
 					
-					int tmp = counter[(byte)img[x, y] / div];
+						int tmp = counter[(byte)img[x, y] / div];
 					
-					if(max < tmp)
-						max = tmp;
+						if(max < tmp)
+							max = tmp;
+					}
 				}
 
 			IImage res = new IImage(1, num, 1);
@@ -162,14 +170,54 @@ namespace Eithne
 		{
 			XmlNode root = _xmldoc.CreateNode(XmlNodeType.Element, "config", "");
 
-			root.InnerText = num.ToString();
+			XmlNode n = _xmldoc.CreateNode(XmlNodeType.Element, "num", "");
+			n.InnerText = num.ToString();
+			root.AppendChild(n);
+
+			n = _xmldoc.CreateNode(XmlNodeType.Element, "black", "");
+			if(black)
+				n.InnerText = "true";
+			else
+				n.InnerText = "false";
+			root.AppendChild(n);
+
+			n = _xmldoc.CreateNode(XmlNodeType.Element, "white", "");
+			if(white)
+				n.InnerText = "true";
+			else
+				n.InnerText = "false";
+			root.AppendChild(n);
 			
 			return root;
 		}
 
 		private void LoadConfig(XmlNode root)
 		{
-			UpdateValue(Int32.Parse(root.InnerText));
+			// kompatybilność ze starszymi wersjami wtyczki
+			if(root.FirstChild is XmlText)
+				UpdateValue(Int32.Parse(root.InnerText), false, false);
+			else
+			{
+				int num;
+				bool black, white;
+
+				XmlNode n = root.SelectSingleNode("num");
+				num = Int32.Parse(n.InnerText);
+
+				n = root.SelectSingleNode("black");
+				if(n.InnerText == "true")
+					black = true;
+				else
+					black = false;
+
+				n = root.SelectSingleNode("white");
+				if(n.InnerText == "true")
+					white = true;
+				else
+					white = false;
+
+				UpdateValue(num, black, white);
+			}
 		}
 
 		public override int NumIn		{ get { return 1; } }

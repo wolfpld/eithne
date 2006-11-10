@@ -10,13 +10,15 @@ namespace Eithne
 		[Widget] Window		HistogramWindow;
 		[Widget] SpinButton	Spin;
 		[Widget] Button		CloseButton;
+		[Widget] CheckButton	BlackButton;
+		[Widget] CheckButton	WhiteButton;
 
 		private int num;
 		private Callback c;
 
-		public delegate void Callback(int n);
+		public delegate void Callback(int n, bool black, bool white);
 
-		public HistogramSetup(int num, Callback c)
+		public HistogramSetup(int num, bool black, bool white, Callback c)
 		{
 			this.c = c;
 
@@ -29,6 +31,11 @@ namespace Eithne
 			this.num = num;
 			Spin.Value = num;
 			Spin.ValueChanged += SpinChanged;
+
+			BlackButton.Active = black;
+			BlackButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active); };
+			WhiteButton.Active = white;
+			WhiteButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active); };
 
 			HistogramWindow.ShowAll();
 		}
@@ -61,7 +68,7 @@ namespace Eithne
 			}
 
 			num = val;
-			c(val);
+			c(val, BlackButton.Active, WhiteButton.Active);
 		}
 
 		private void CloseWindow(object o, EventArgs args)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-10 13:29+0100\n"
+"POT-Creation-Date: 2006-11-10 14:11+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,50 +93,50 @@ msgstr ""
 msgid "Welcome to {0}!"
 msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:108
+#: MainWindow.cs:109
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:116
+#: MainWindow.cs:117
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:122
+#: MainWindow.cs:123
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:123 MainWindow.cs:157 Plugins/ClassDB/ClassDBWindow.cs:67
+#: MainWindow.cs:124 MainWindow.cs:158 Plugins/ClassDB/ClassDBWindow.cs:67
 #: Plugins/SimpleDB/SimpleDBWindow.cs:59
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:124
+#: MainWindow.cs:125
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:127 MainWindow.cs:161
+#: MainWindow.cs:128 MainWindow.cs:162
 #, csharp-format
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:131 MainWindow.cs:165 Plugins/SimpleDB/SimpleDBWindow.cs:67
+#: MainWindow.cs:132 MainWindow.cs:166 Plugins/SimpleDB/SimpleDBWindow.cs:67
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:146
+#: MainWindow.cs:147
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:156
+#: MainWindow.cs:157
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:157
+#: MainWindow.cs:158
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:181 MainWindow.cs:197
+#: MainWindow.cs:182 MainWindow.cs:198
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
@@ -532,7 +532,7 @@ msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:183 Plugins/Desaturate/Desaturate.cs:116
 #: Plugins/FFT/DCT.cs:157 Plugins/FFT/FFT.cs:183
-#: Plugins/Histogram/Histogram.cs:180
+#: Plugins/Histogram/Histogram.cs:228
 #: Plugins/NewSourceImages/NewSourceImages.cs:89
 #: Plugins/RGBSplit/RGBSplit.cs:143 Plugins/Random/Random.cs:152
 #: Plugins/Resize/Resize.cs:111
@@ -619,7 +619,7 @@ msgid "This plugin performs discrete cosine transform."
 msgstr "Ta wtyczka przeprowadza dyskretną transformatę kosinusową."
 
 #: Plugins/FFT/DCT.cs:104 Plugins/FFT/FFT.cs:119
-#: Plugins/Histogram/Histogram.cs:102
+#: Plugins/Histogram/Histogram.cs:107
 msgid "Image is not in greyscale."
 msgstr "Obraz nie jest w skali szarości."
 
@@ -652,7 +652,7 @@ msgid "Zero most significant frequency"
 msgstr "Wyzeruj najbardziej znaczącą częstotliwość"
 
 #: Plugins/Histogram/Histogram.cs:11
-#: Plugins/Histogram/resources/Histogram.glade:8
+#: Plugins/Histogram/resources/Histogram.glade:7
 msgid "Histogram"
 msgstr "Histogram"
 
@@ -660,17 +660,25 @@ msgstr "Histogram"
 msgid "This plugin calculates histogram of image."
 msgstr "Ta wtyczka oblicza histogram obrazu."
 
-#: Plugins/Histogram/Histogram.cs:185
+#: Plugins/Histogram/Histogram.cs:233
 msgid "Histogram of image."
 msgstr "Histogram obrazu."
 
-#: Plugins/Histogram/resources/Histogram.glade:33
+#: Plugins/Histogram/resources/Histogram.glade:20
 msgid "<big><big><b>Histogram</b></big></big>"
 msgstr "<big><big><b>Histogram</b></big></big>"
 
-#: Plugins/Histogram/resources/Histogram.glade:58
+#: Plugins/Histogram/resources/Histogram.glade:36
 msgid "Number of bins:"
 msgstr "Liczba przedziałów:"
+
+#: Plugins/Histogram/resources/Histogram.glade:95
+msgid "Ignore pure black values"
+msgstr "Ignoruj zupełnie czarne wartości"
+
+#: Plugins/Histogram/resources/Histogram.glade:106
+msgid "Ignore pure white values"
+msgstr "Ignoruj zupełnie białe wartości"
 
 #: Plugins/ImageView/ImageView.cs:11
 #: Plugins/ImageView/resources/ImageView.glade:8

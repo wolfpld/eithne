@@ -5,7 +5,9 @@ eithne x.x.x
 - Handle GConf config change notifications.
 - Random base/test split in ClassDB plugin.
 - Miniature image preview shown next to category name in ClassDB.
-- Show if images are matching in SRV
+- Show if images are matching in SRV.
+- Preferences window.
+- Ability to ignore pure white or black values in histogram.
 
 eithne 0.3.0
 ------------
