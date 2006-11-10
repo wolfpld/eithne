@@ -78,7 +78,7 @@
             <child>
               <widget class="GtkLabel" id="label1">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">Speed</property>
+                <property name="label" translatable="yes">Look and feel</property>
               </widget>
               <packing>
                 <property name="type">tab</property>

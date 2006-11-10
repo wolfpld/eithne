@@ -67,6 +67,7 @@ namespace Eithne
 			MenuFileSave.Activated += OnSave;
 			MenuFileSaveAs.Image = new Image(null, "document-save-as.png");
 			MenuFileSaveAs.Activated += OnSaveAs;
+			MenuFilePreferences.Image = new Image(null, "preferences-desktop.png");
 			MenuFilePreferences.Activated += delegate(object o, EventArgs eargs) { new Preferences(); };
 			MenuFileQuit.Image = new Image(null, "system-log-out.png");
 			MenuFileQuit.Activated += OnWindowDelete;

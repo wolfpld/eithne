@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-10 02:01+0100\n"
+"POT-Creation-Date: 2006-11-10 13:29+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1205,7 +1205,7 @@ msgstr "gtk-preferences"
 msgid "System"
 msgstr "System"
 
-#: resources/MainWindow.glade:95
+#: resources/MainWindow.glade:95 resources/MainWindow.glade:184
 msgid "Run"
 msgstr "Uruchom"
 
@@ -1295,8 +1295,8 @@ msgid "Antialiasing"
 msgstr "Antyaliasing"
 
 #: resources/Preferences.glade:81
-msgid "Speed"
-msgstr "Szybkość"
+msgid "Look and feel"
+msgstr "Wygląd"
 
 #: resources/Preferences.glade:102
 msgid "gtk-close"
