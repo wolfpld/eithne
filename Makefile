@@ -17,6 +17,7 @@ EITHNE = \
 	PluginError.cs \
 	PluginList.cs \
 	PluginToolbox.cs \
+	Preferences.cs \
 	ReverseIterator.cs \
 	SaveLoad.cs \
 	Schematic.cs \
@@ -42,6 +43,7 @@ RESOURCES = \
 	PluginAbout.glade \
 	PluginError.glade \
 	PluginList.glade \
+	Preferences.glade \
 	Splash.glade \
 	pixmaps/dialog-error-16.png \
 	pixmaps/dialog-error.png \

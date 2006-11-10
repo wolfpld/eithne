@@ -15,6 +15,7 @@ namespace Eithne
 		[Widget] ImageMenuItem	MenuFileOpen;
 		[Widget] ImageMenuItem	MenuFileSave;
 		[Widget] ImageMenuItem	MenuFileSaveAs;
+		[Widget] ImageMenuItem	MenuFilePreferences;
 		[Widget] ImageMenuItem	MenuFileQuit;
 		[Widget] ImageMenuItem	MenuSystemRun;
 		[Widget] ImageMenuItem	MenuHelpPluginList;
@@ -66,6 +67,7 @@ namespace Eithne
 			MenuFileSave.Activated += OnSave;
 			MenuFileSaveAs.Image = new Image(null, "document-save-as.png");
 			MenuFileSaveAs.Activated += OnSaveAs;
+			MenuFilePreferences.Activated += delegate(object o, EventArgs eargs) { new Preferences(); };
 			MenuFileQuit.Image = new Image(null, "system-log-out.png");
 			MenuFileQuit.Activated += OnWindowDelete;
 			MenuSystemRun.Image = new Image(null, "media-playback-start.png");
