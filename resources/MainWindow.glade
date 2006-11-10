@@ -181,7 +181,7 @@
             <child>
               <widget class="GtkToolButton" id="ToolbarRun">
                 <property name="visible">True</property>
-                <property name="label">Run</property>
+                <property name="label" translatable="yes">Run</property>
                 <property name="use_underline">True</property>
               </widget>
             </child>

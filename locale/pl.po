@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-27 20:37+0200\n"
+"POT-Creation-Date: 2006-11-10 02:01+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,55 +88,55 @@ msgstr ""
 "Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
 "dostępne:"
 
-#: MainWindow.cs:59
+#: MainWindow.cs:60
 #, csharp-format
 msgid "Welcome to {0}!"
 msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:106
+#: MainWindow.cs:108
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:114
+#: MainWindow.cs:116
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:120
+#: MainWindow.cs:122
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:121 MainWindow.cs:155 Plugins/ClassDB/ClassDBWindow.cs:67
+#: MainWindow.cs:123 MainWindow.cs:157 Plugins/ClassDB/ClassDBWindow.cs:67
 #: Plugins/SimpleDB/SimpleDBWindow.cs:59
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:122
+#: MainWindow.cs:124
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:125 MainWindow.cs:159
+#: MainWindow.cs:127 MainWindow.cs:161
 #, csharp-format
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:129 MainWindow.cs:163 Plugins/SimpleDB/SimpleDBWindow.cs:67
+#: MainWindow.cs:131 MainWindow.cs:165 Plugins/SimpleDB/SimpleDBWindow.cs:67
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:144
+#: MainWindow.cs:146
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:154
+#: MainWindow.cs:156
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:155
+#: MainWindow.cs:157
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:179 MainWindow.cs:195
+#: MainWindow.cs:181 MainWindow.cs:197
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
@@ -177,16 +177,6 @@ msgstr "Inne"
 #: PluginDB.cs:78
 msgid "Inspecting "
 msgstr "Inspekcja "
-
-#: PluginDB.cs:79
-#, csharp-format
-msgid "Inspecting {0}"
-msgstr "Inspekcja {0}"
-
-#: PluginDB.cs:89
-#, csharp-format
-msgid "Found {0} plugin {1}"
-msgstr "Znaleziono wtyczkę {1} typu {0}"
 
 #: PluginDB.cs:120
 #, csharp-format
@@ -1199,35 +1189,39 @@ msgstr "Błąd ładowania schematu"
 msgid "error message"
 msgstr "x"
 
-#: resources/MainWindow.glade:7
+#: resources/MainWindow.glade:6
 msgid "Eithne"
 msgstr "x"
 
-#: resources/MainWindow.glade:38
+#: resources/MainWindow.glade:18
 msgid "File"
 msgstr "Plik"
 
-#: resources/MainWindow.glade:98
+#: resources/MainWindow.glade:62
+msgid "gtk-preferences"
+msgstr "gtk-preferences"
+
+#: resources/MainWindow.glade:88
 msgid "System"
 msgstr "System"
 
-#: resources/MainWindow.glade:107 resources/MainWindow.glade:244
+#: resources/MainWindow.glade:95
 msgid "Run"
 msgstr "Uruchom"
 
-#: resources/MainWindow.glade:131
+#: resources/MainWindow.glade:115
 msgid "Help"
 msgstr "Pomoc"
 
-#: resources/MainWindow.glade:140
+#: resources/MainWindow.glade:122
 msgid "Plugin list"
 msgstr "Lista wtyczek"
 
-#: resources/MainWindow.glade:314
+#: resources/MainWindow.glade:230
 msgid "System schematic"
 msgstr "Schemat systemu"
 
-#: resources/MainWindow.glade:379
+#: resources/MainWindow.glade:271
 msgid "Plugin toolbox"
 msgstr "Narzędziówka"
 
@@ -1276,6 +1270,38 @@ msgstr "Lista Wtyczek"
 msgid "<big><big><big><b>Plugin List</b></big></big></big>"
 msgstr "<big><big><big><b>Lista Wtyczek</b></big></big></big>"
 
+#: resources/Preferences.glade:6
+msgid "Preferences"
+msgstr "Preferencje"
+
+#: resources/Preferences.glade:22
+msgid "Draw rounded blocks"
+msgstr "Rysuj zaokrąglone bloki"
+
+#: resources/Preferences.glade:32
+msgid "Draw blocks with inner path"
+msgstr "Rysuj w blokach wewnętrzną ścieżkę"
+
+#: resources/Preferences.glade:43
+msgid "Draw blocks with gradient"
+msgstr "Rysuj bloki z gradientem"
+
+#: resources/Preferences.glade:54
+msgid "Draw smooth connections"
+msgstr "Rysuj gładkie połączenia"
+
+#: resources/Preferences.glade:65
+msgid "Antialiasing"
+msgstr "Antyaliasing"
+
+#: resources/Preferences.glade:81
+msgid "Speed"
+msgstr "Szybkość"
+
+#: resources/Preferences.glade:102
+msgid "gtk-close"
+msgstr "gtk-close"
+
 #: resources/Splash.glade:8
 msgid "Searching for plugins"
 msgstr "Szukanie wtyczek"
@@ -1287,16 +1313,3 @@ msgstr "Szukanie wtyczek..."
 #: resources/Splash.glade:79
 msgid "Initializing..."
 msgstr "Inicjalizacja..."
-
-#~ msgid ""
-#~ "<small>Copyright © 2005 - 2006 Bartosz Taudul\n"
-#~ "\n"
-#~ "in cooperation with:\n"
-#~ "Technical University of Szczecin\n"
-#~ "Faculty of Computer Science</small>"
-#~ msgstr ""
-#~ "<small>Copyright © 2005 - 2006 Bartosz Taudul\n"
-#~ "\n"
-#~ "we współpracy z:\n"
-#~ "Politechnika Szczecińska\n"
-#~ "Wydział Informatyki</small>"
