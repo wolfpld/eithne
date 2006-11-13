@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-10 14:11+0100\n"
+"POT-Creation-Date: 2006-11-13 16:59+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -531,7 +531,7 @@ msgid "This plugin crops image."
 msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:183 Plugins/Desaturate/Desaturate.cs:116
-#: Plugins/FFT/DCT.cs:157 Plugins/FFT/FFT.cs:183
+#: Plugins/Edge/Edge.cs:149 Plugins/FFT/DCT.cs:157 Plugins/FFT/FFT.cs:183
 #: Plugins/Histogram/Histogram.cs:228
 #: Plugins/NewSourceImages/NewSourceImages.cs:89
 #: Plugins/RGBSplit/RGBSplit.cs:143 Plugins/Random/Random.cs:152
@@ -583,6 +583,39 @@ msgstr "Nie można przeprowadzić desaturacji dla danych zmiennoprzecinkowych"
 msgid "Desaturated version of image."
 msgstr "Zdesaturowana wersja obrazu."
 
+#: Plugins/Edge/Edge.cs:11
+msgid "Edge detection"
+msgstr "Wykrywanie krawędzi"
+
+#: Plugins/Edge/Edge.cs:31
+msgid "This plugin detects edges in images."
+msgstr "Ta wtyczka wykrywa krawędzie na obrazach."
+
+#: Plugins/Edge/Edge.cs:103 Plugins/FFT/DCT.cs:104 Plugins/FFT/FFT.cs:119
+#: Plugins/Histogram/Histogram.cs:107
+msgid "Image is not in greyscale."
+msgstr "Obraz nie jest w skali szarości."
+
+#: Plugins/Edge/Edge.cs:154
+msgid "Detected edges."
+msgstr "Wykryte krawędzie."
+
+#: Plugins/Edge/resources/Edge.glade:7
+msgid "Edge Detection"
+msgstr "Wykrywanie Krawędzi"
+
+#: Plugins/Edge/resources/Edge.glade:17
+msgid "<big><big><b>Edge Detection</b></big></big>"
+msgstr "<big><big><b>Wykrywanie Krawędzi</b></big></big>"
+
+#: Plugins/Edge/resources/Edge.glade:28
+msgid "Calculate energy of difference"
+msgstr "Oblicz energię różnic"
+
+#: Plugins/Edge/resources/Edge.glade:57 resources/Preferences.glade:102
+msgid "gtk-close"
+msgstr "gtk-close"
+
 #: Plugins/Euclid/Euclid.cs:11
 msgid "Euclid metric"
 msgstr "Metryka Euklidesa"
@@ -617,11 +650,6 @@ msgstr "Dyskretna Transformata Kosinusowa"
 #: Plugins/FFT/DCT.cs:31
 msgid "This plugin performs discrete cosine transform."
 msgstr "Ta wtyczka przeprowadza dyskretną transformatę kosinusową."
-
-#: Plugins/FFT/DCT.cs:104 Plugins/FFT/FFT.cs:119
-#: Plugins/Histogram/Histogram.cs:107
-msgid "Image is not in greyscale."
-msgstr "Obraz nie jest w skali szarości."
 
 #: Plugins/FFT/DCT.cs:162
 msgid "DCT of image."
@@ -664,19 +692,19 @@ msgstr "Ta wtyczka oblicza histogram obrazu."
 msgid "Histogram of image."
 msgstr "Histogram obrazu."
 
-#: Plugins/Histogram/resources/Histogram.glade:20
+#: Plugins/Histogram/resources/Histogram.glade:19
 msgid "<big><big><b>Histogram</b></big></big>"
 msgstr "<big><big><b>Histogram</b></big></big>"
 
-#: Plugins/Histogram/resources/Histogram.glade:36
+#: Plugins/Histogram/resources/Histogram.glade:34
 msgid "Number of bins:"
 msgstr "Liczba przedziałów:"
 
-#: Plugins/Histogram/resources/Histogram.glade:95
+#: Plugins/Histogram/resources/Histogram.glade:93
 msgid "Ignore pure black values"
 msgstr "Ignoruj zupełnie czarne wartości"
 
-#: Plugins/Histogram/resources/Histogram.glade:106
+#: Plugins/Histogram/resources/Histogram.glade:104
 msgid "Ignore pure white values"
 msgstr "Ignoruj zupełnie białe wartości"
 
@@ -1305,10 +1333,6 @@ msgstr "Antyaliasing"
 #: resources/Preferences.glade:81
 msgid "Look and feel"
 msgstr "Wygląd"
-
-#: resources/Preferences.glade:102
-msgid "gtk-close"
-msgstr "gtk-close"
 
 #: resources/Splash.glade:8
 msgid "Searching for plugins"

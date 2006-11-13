@@ -4,6 +4,7 @@ SUBDIRS = \
 	Correctness \
 	Crop \
 	Desaturate \
+	Edge \
 	Euclid \
 	FFT \
 	Histogram \
