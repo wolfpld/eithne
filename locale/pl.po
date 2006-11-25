@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-13 16:59+0100\n"
+"POT-Creation-Date: 2006-11-25 16:11+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -532,7 +532,7 @@ msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:183 Plugins/Desaturate/Desaturate.cs:116
 #: Plugins/Edge/Edge.cs:149 Plugins/FFT/DCT.cs:157 Plugins/FFT/FFT.cs:183
-#: Plugins/Histogram/Histogram.cs:228
+#: Plugins/Histogram/Histogram.cs:279
 #: Plugins/NewSourceImages/NewSourceImages.cs:89
 #: Plugins/RGBSplit/RGBSplit.cs:143 Plugins/Random/Random.cs:152
 #: Plugins/Resize/Resize.cs:111
@@ -592,7 +592,7 @@ msgid "This plugin detects edges in images."
 msgstr "Ta wtyczka wykrywa krawędzie na obrazach."
 
 #: Plugins/Edge/Edge.cs:103 Plugins/FFT/DCT.cs:104 Plugins/FFT/FFT.cs:119
-#: Plugins/Histogram/Histogram.cs:107
+#: Plugins/Histogram/Histogram.cs:113 Plugins/Histogram/Histogram.cs:145
 msgid "Image is not in greyscale."
 msgstr "Obraz nie jest w skali szarości."
 
@@ -688,7 +688,7 @@ msgstr "Histogram"
 msgid "This plugin calculates histogram of image."
 msgstr "Ta wtyczka oblicza histogram obrazu."
 
-#: Plugins/Histogram/Histogram.cs:233
+#: Plugins/Histogram/Histogram.cs:284
 msgid "Histogram of image."
 msgstr "Histogram obrazu."
 
@@ -707,6 +707,10 @@ msgstr "Ignoruj zupełnie czarne wartości"
 #: Plugins/Histogram/resources/Histogram.glade:104
 msgid "Ignore pure white values"
 msgstr "Ignoruj zupełnie białe wartości"
+
+#: Plugins/Histogram/resources/Histogram.glade:115
+msgid "Calculate separate histograms for top and bottom part of image"
+msgstr "Obliczanie oddzielnych histogramów dla górnej i dolnej połowy obrazu"
 
 #: Plugins/ImageView/ImageView.cs:11
 #: Plugins/ImageView/resources/ImageView.glade:8

@@ -60,6 +60,7 @@ namespace Eithne
 		private int num = 256;
 		private bool black = false;
 		private bool white = false;
+		private bool splithalf = false;
 
 		public HistogramPlugin()
 		{
@@ -72,18 +73,19 @@ namespace Eithne
 			set { LoadConfig(value); }
 		}
 
-		private void UpdateValue(int num, bool black, bool white)
+		private void UpdateValue(int num, bool black, bool white, bool splithalf)
 		{
 			this.num = num;
 			this.black = black;
 			this.white = white;
+			this.splithalf = splithalf;
 
 			_block.Invalidate();
 		}
 
 		public override void Setup()
 		{
-			new HistogramSetup(num, black, white, UpdateValue);
+			new HistogramSetup(num, black, white, splithalf, UpdateValue);
 		}
 
 		public override void Work()
@@ -92,13 +94,49 @@ namespace Eithne
 			IImage[] img = socket.Images;
 			IImage[] ret = new IImage[img.Length];
 
-			for(int i=0; i<img.Length; i++)
-				ret[i] = Histogram(img[i]);
+			if(splithalf)
+				for(int i=0; i<img.Length; i++)
+					ret[i] = SplitHistogram(img[i]);
+			else
+				for(int i=0; i<img.Length; i++)
+					ret[i] = Histogram(img[i]);
 
 			_out = new CommSocket(1);
 			_out[0] = new ICommImage(ret, socket.OriginalImages, socket.Categories);
 
 			_workdone = true;
+		}
+
+		private IImage SplitHistogram(IImage img)
+		{
+			if(img.BPP != 1)
+				throw new PluginException(Catalog.GetString("Image is not in greyscale."));
+
+			int sh = img.H/2;
+
+			IImage img1 = new IImage(1, img.W, sh);
+			IImage img2 = new IImage(1, img.W, img.H-sh);
+
+			for(int y=0; y<sh; y++)
+				for(int x=0; x<img.W; x++)
+					img1[x, y] = img[x, y];
+
+			for(int y=0; y<img.H-sh; y++)
+				for(int x=0; x<img.W; x++)
+					img2[x, y] = img[x, y+sh];
+
+			IImage h1 = Histogram(img1);
+			IImage h2 = Histogram(img2);
+
+			IImage ret = new IImage(1, h1.W+h2.W, 1);
+
+			for(int i=0; i<h1.W; i++)
+				ret[i, 0] = h1[i, 0];
+
+			for(int i=0; i<h2.W; i++)
+				ret[i+h1.W, 0] = h2[i, 0];
+
+			return ret;
 		}
 
 		private IImage Histogram(IImage img)
@@ -187,6 +225,13 @@ namespace Eithne
 			else
 				n.InnerText = "false";
 			root.AppendChild(n);
+
+			n = _xmldoc.CreateNode(XmlNodeType.Element, "splithalf", "");
+			if(splithalf)
+				n.InnerText = "true";
+			else
+				n.InnerText = "false";
+			root.AppendChild(n);
 			
 			return root;
 		}
@@ -195,11 +240,11 @@ namespace Eithne
 		{
 			// kompatybilność ze starszymi wersjami wtyczki
 			if(root.FirstChild is XmlText)
-				UpdateValue(Int32.Parse(root.InnerText), false, false);
+				UpdateValue(Int32.Parse(root.InnerText), false, false, false);
 			else
 			{
 				int num;
-				bool black, white;
+				bool black, white, splithalf;
 
 				XmlNode n = root.SelectSingleNode("num");
 				num = Int32.Parse(n.InnerText);
@@ -216,7 +261,13 @@ namespace Eithne
 				else
 					white = false;
 
-				UpdateValue(num, black, white);
+				n = root.SelectSingleNode("splithalf");
+				if(n.InnerText == "true")
+					splithalf = true;
+				else
+					splithalf = false;
+
+				UpdateValue(num, black, white, splithalf);
 			}
 		}
 

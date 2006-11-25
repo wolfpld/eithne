@@ -12,13 +12,14 @@ namespace Eithne
 		[Widget] Button		CloseButton;
 		[Widget] CheckButton	BlackButton;
 		[Widget] CheckButton	WhiteButton;
+		[Widget] CheckButton	SplitHalfButton;
 
 		private int num;
 		private Callback c;
 
-		public delegate void Callback(int n, bool black, bool white);
+		public delegate void Callback(int n, bool black, bool white, bool splithalf);
 
-		public HistogramSetup(int num, bool black, bool white, Callback c)
+		public HistogramSetup(int num, bool black, bool white, bool splithalf, Callback c)
 		{
 			this.c = c;
 
@@ -33,9 +34,11 @@ namespace Eithne
 			Spin.ValueChanged += SpinChanged;
 
 			BlackButton.Active = black;
-			BlackButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active); };
+			BlackButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
 			WhiteButton.Active = white;
-			WhiteButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active); };
+			WhiteButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
+			SplitHalfButton.Active = splithalf;
+			SplitHalfButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
 
 			HistogramWindow.ShowAll();
 		}
@@ -68,7 +71,7 @@ namespace Eithne
 			}
 
 			num = val;
-			c(val, BlackButton.Active, WhiteButton.Active);
+			c(val, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active);
 		}
 
 		private void CloseWindow(object o, EventArgs args)
