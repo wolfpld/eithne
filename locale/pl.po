@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-26 21:18+0100\n"
+"POT-Creation-Date: 2006-11-26 21:28+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -617,6 +617,7 @@ msgid "Calculate energy of difference"
 msgstr "Oblicz energię różnic"
 
 #: Plugins/Edge/resources/Edge.glade:57
+#: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
 #: resources/Preferences.glade:102
 msgid "gtk-close"
@@ -727,11 +728,11 @@ msgstr "Podgląd obrazów"
 msgid "This plugin displays images it receives on input."
 msgstr "Ta wtyczka wyświetla obrazy otrzymane na wejściu."
 
-#: Plugins/ImageView/ImageView.cs:72
+#: Plugins/ImageView/ImageView.cs:96
 msgid "Plugin is not ready to display images."
 msgstr "Wtyczka nie jest gotowa wyświetlać obrazy."
 
-#: Plugins/ImageView/ImageView.cs:117
+#: Plugins/ImageView/ImageView.cs:165
 msgid "Images to be viewed."
 msgstr "Obrazy, które będą oglądane."
 
@@ -748,9 +749,15 @@ msgstr[2] "<i>{0} obrazów</i>"
 msgid "Image category: {0}"
 msgstr "Kategoria obrazu: {0}"
 
+#: Plugins/ImageView/resources/ImageSetup.glade:16
 #: Plugins/ImageView/resources/ImageView.glade:33
 msgid "<big><big><b>Image View</b></big></big>"
 msgstr "<big><big><b>Podgląd Obrazów</b></big></big>"
+
+#: Plugins/ImageView/resources/ImageSetup.glade:26
+#: Plugins/SimpleResultView/resources/ResultSetup.glade:26
+msgid "Invert images"
+msgstr "Odwróć obrazy"
 
 #: Plugins/ImageView/resources/ImageView.glade:117
 #: Plugins/SimpleResultView/resources/ResultView.glade:376
@@ -1074,10 +1081,6 @@ msgstr "Brak podobnego obrazu"
 #: Plugins/SimpleResultView/resources/ResultView.glade:33
 msgid "<big><big><b>Simple Result View</b></big></big>"
 msgstr "<big><big><b>Prosty Podgląd Wyników</b></big></big>"
-
-#: Plugins/SimpleResultView/resources/ResultSetup.glade:26
-msgid "Invert images"
-msgstr "Odwróć obrazy"
 
 #: Plugins/SimpleResultView/resources/ResultView.glade:67
 msgid "<b>Most similar image:</b>"

@@ -3,10 +3,12 @@ MCS = mcs
 TARGET = ImageView.dll
 
 SRC = \
+	ImageSetup.cs \
 	ImageView.cs \
 	ImageViewWindow.cs
 
 RESOURCES = \
+	ImageSetup.glade \
 	ImageView.glade
 
 RESFILES = $(addprefix resources/,$(RESOURCES))

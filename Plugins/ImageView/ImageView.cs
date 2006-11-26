@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.2"; }
+			get { return "0.3"; }
 		}
 
 		public override string Author
@@ -60,10 +60,34 @@ namespace Eithne
 		Gdk.Pixbuf[] images = null;
 		Gdk.Pixbuf[] thumbs = null;
 		int[] cat = null;
+		bool invert = false;
 
 		public ImageViewPlugin()
 		{
 			_info = new ImageViewInfo();
+		}
+
+		public override XmlNode Config
+		{
+			get { return GetConfig(); }
+			set { LoadConfig(value); }
+		}
+
+		private void UpdateValue(bool invert)
+		{
+			this.invert = invert;
+
+			_block.Invalidate();
+		}
+
+		public override void Setup()
+		{
+			new ImageSetup(invert, UpdateValue);
+		}
+
+		public override bool HasSetup
+		{
+			get { return true; }
 		}
 
 		public override void DisplayResults()
@@ -87,14 +111,18 @@ namespace Eithne
 
 			for(int i=0; i<img.Length; i++)
 			{
-				images[i] = Utility.CreatePixbuf(img[i]);
+				IImage _img = new IImage(img[i].BPP, img[i].W, img[i].H, img[i].Data, invert);
+				if(invert)
+					_img.Invert();
 
-				if(img[i].W > img[i].H)
-					scale = img[i].W / 64.0;
+				images[i] = Utility.CreatePixbuf(_img);
+
+				if(_img.W > _img.H)
+					scale = _img.W / 64.0;
 				else
-					scale = img[i].H / 64.0;
+					scale = _img.H / 64.0;
 
-				thumbs[i] = images[i].ScaleSimple(Scale(img[i].W, scale), Scale(img[i].H, scale), Gdk.InterpType.Bilinear);
+				thumbs[i] = images[i].ScaleSimple(Scale(_img.W, scale), Scale(_img.H, scale), Gdk.InterpType.Bilinear);
 			}
 
 			_workdone = true;
@@ -108,6 +136,26 @@ namespace Eithne
 				return 1;
 			else
 				return val;
+		}
+
+		private XmlNode GetConfig()
+		{
+			XmlNode root = _xmldoc.CreateNode(XmlNodeType.Element, "config", "");
+
+			if(invert)
+				root.InnerText = "true";
+			else
+				root.InnerText = "false";
+
+			return root;
+		}
+
+		private void LoadConfig(XmlNode root)
+		{
+			if(root.InnerText == "true")
+				UpdateValue(true);
+			else
+				UpdateValue(false);
 		}
 
 		public override int NumIn		{ get { return 1; } }
