@@ -190,11 +190,21 @@ namespace Eithne
 
 	public class IImage
 	{
-		private readonly int w, h;
-		private readonly byte[] data;
-		private readonly int bpp;
+		private int w, h;
+		private byte[] data;
+		private int bpp;
 
 		public IImage(int bpp, int w, int h, byte[] data)
+		{
+			RecreateImage(bpp, w, h, data, false);
+		}
+
+		public IImage(int bpp, int w, int h, byte[] data, bool copy)
+		{
+			RecreateImage(bpp, w, h, data, copy);
+		}
+
+		private void RecreateImage(int bpp, int w, int h, byte[] data, bool copy)
 		{
 			if(bpp != 1 && bpp != 3 && bpp != 4)
 				throw new Exception(Catalog.GetString("BPP must be 1, 3 or 4"));
@@ -202,7 +212,15 @@ namespace Eithne
 			this.bpp = bpp;
 			this.w = w;
 			this.h = h;
-			this.data = data;
+
+			if(copy)
+			{
+				this.data = new byte[w * h * bpp];
+				for(int i=0; i<w*h*bpp; i++)
+					this.data[i] = data[i];
+			}
+			else
+				this.data = data;
 		}
 
 		public IImage(int bpp, int w, int h)
@@ -215,6 +233,32 @@ namespace Eithne
 			this.h = h;
 
 			data = new byte[w * h * bpp];
+		}
+
+		public void Invert()
+		{
+			if(bpp == 1)
+				for(int x=0; x<w; x++)
+					for(int y=0; y<h; y++)
+						PutPixel(x, y, (byte)(255 - (byte)GetPixel(x, y)));
+			else if(bpp == 3)
+				for(int x=0; x<w; x++)
+					for(int y=0; y<h; y++)
+					{
+						int c = (int)GetPixel(x, y);
+						
+						byte r = (byte)((c & 0xFF0000) >> 16);
+						byte g = (byte)((c & 0x00FF00) >> 8);
+						byte b = (byte)(c & 0x0000FF);
+
+						r = (byte)(255 - r);
+						g = (byte)(255 - g);
+						b = (byte)(255 - b);
+
+						PutPixel(x, y, (r << 16) + (g << 8) + b);
+					}
+			else
+				throw new Exception(Catalog.GetString("Image inversion not supported for floating point data"));
 		}
 
 		// zwracamy object, bo nie wiadomo czy będzie bajt, czy int, czy float, ale wewnątrz wszystko

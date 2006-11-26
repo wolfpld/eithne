@@ -9,9 +9,9 @@ clean:
 	rm -f */LC_MESSAGES/eithne.mo
 
 pl/LC_MESSAGES/eithne.mo: pl.po
-	msgfmt $< -o $@
+	msgfmt -v $< -o $@
 
 update:
 	cd .. && xgettext -F --from-code=UTF-8 -o locale/new.po `find | egrep '[:.:](glade|cs)$$' | cut -b 3-`
-	msgmerge -U pl.po new.po
+	msgmerge -v -U pl.po new.po
 	rm -f new.po

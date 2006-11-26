@@ -18,7 +18,7 @@ namespace Eithne
 
 		public override string Version
 		{
-			get { return "0.3"; }
+			get { return "0.4"; }
 		}
 
 		public override string Author
@@ -64,10 +64,34 @@ namespace Eithne
 		int[] cat1 = null;
 		int[] cat2 = null;
 		bool[] match = null;
+		bool invert = false;
 
 		public ResultViewPlugin()
 		{
 			_info = new ResultViewInfo();
+		}
+
+		public override XmlNode Config
+		{
+			get { return GetConfig(); }
+			set { LoadConfig(value); }
+		}
+
+		private void UpdateValue(bool invert)
+		{
+			this.invert = invert;
+
+			_block.Invalidate();
+		}
+
+		public override void Setup()
+		{
+			new ResultSetup(invert, UpdateValue);
+		}
+
+		public override bool HasSetup
+		{
+			get { return true; }
 		}
 
 		public override void DisplayResults()
@@ -90,7 +114,11 @@ namespace Eithne
 
 			for(int i=0; i<itest.Length; i++)
 			{
-				IImage img = r.OriginalTestImages[i];
+				IImage _img = r.OriginalTestImages[i];
+				IImage img = new IImage(_img.BPP, _img.W, _img.H, _img.Data, invert);
+
+				if(invert)
+					img.Invert();
 
 				if(img.W > img.H)
 					scale = img.W / 256.0;
@@ -110,7 +138,11 @@ namespace Eithne
 
 			for(int i=0; i<ibase.Length; i++)
 			{
-				IImage img = r.OriginalBaseImages[i];
+				IImage _img = r.OriginalBaseImages[i];
+				IImage img = new IImage(_img.BPP, _img.W, _img.H, _img.Data, invert);
+
+				if(invert)
+					img.Invert();
 
 				if(img.W > img.H)
 					scale = img.W / 256.0;
@@ -139,6 +171,26 @@ namespace Eithne
 				return 1;
 			else
 				return val;
+		}
+
+		private XmlNode GetConfig()
+		{
+			XmlNode root = _xmldoc.CreateNode(XmlNodeType.Element, "config", "");
+
+			if(invert)
+				root.InnerText = "true";
+			else
+				root.InnerText = "false";
+
+			return root;
+		}
+
+		private void LoadConfig(XmlNode root)
+		{
+			if(root.InnerText == "true")
+				UpdateValue(true);
+			else
+				UpdateValue(false);
 		}
 
 		public override int NumIn		{ get { return 1; } }

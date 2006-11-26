@@ -3,10 +3,12 @@ MCS = mcs
 TARGET = SimpleResultView.dll
 
 SRC = \
+	ResultSetup.cs \
 	ResultView.cs \
 	ResultViewWindow.cs
 
 RESOURCES = \
+	ResultSetup.glade \
 	ResultView.glade
 
 RESFILES = $(addprefix resources/,$(RESOURCES))

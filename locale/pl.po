@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-25 16:11+0100\n"
+"POT-Creation-Date: 2006-11-26 21:18+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,9 +63,13 @@ msgid ""
 msgstr ""
 "{0} spróbuje zapisać ratunkową kopię schematu do pliku <i>rescue.xml</i>"
 
-#: IPlugin.cs:200 IPlugin.cs:211
+#: IPlugin.cs:210 IPlugin.cs:229
 msgid "BPP must be 1, 3 or 4"
 msgstr "BPP musi wynosić 1, 3 lub 4"
+
+#: IPlugin.cs:261
+msgid "Image inversion not supported for floating point data"
+msgstr "Odwracanie obrazów nie jest wspierane dla danych zmiennoprzecinkowych."
 
 #: LoadError.cs:23
 msgid "Plugin name"
@@ -481,7 +485,7 @@ msgid "This plugin shows correctness of system."
 msgstr "Ta wtyczka pokazuje poprawność systemu."
 
 #: Plugins/Correctness/Correctness.cs:96 Plugins/ResultData/ResultData.cs:73
-#: Plugins/SimpleResultView/ResultView.cs:76
+#: Plugins/SimpleResultView/ResultView.cs:100
 msgid "Plugin is not ready to display results."
 msgstr "Wtyczka nie jest gotowa wyświetlać wyniki."
 
@@ -612,7 +616,9 @@ msgstr "<big><big><b>Wykrywanie Krawędzi</b></big></big>"
 msgid "Calculate energy of difference"
 msgstr "Oblicz energię różnic"
 
-#: Plugins/Edge/resources/Edge.glade:57 resources/Preferences.glade:102
+#: Plugins/Edge/resources/Edge.glade:57
+#: Plugins/SimpleResultView/resources/ResultSetup.glade:55
+#: resources/Preferences.glade:102
 msgid "gtk-close"
 msgstr "gtk-close"
 
@@ -1033,7 +1039,7 @@ msgstr ""
 "Ta wtyczka wyświetla które obrazy z bazy danych zostały rozpoznane dla "
 "danych obrazów testowych."
 
-#: Plugins/SimpleResultView/ResultView.cs:148
+#: Plugins/SimpleResultView/ResultView.cs:200
 msgid "Results to be viewed."
 msgstr "Wyniki, które będą oglądane."
 
@@ -1064,9 +1070,14 @@ msgstr "Nieprawidłowe dopasowanie"
 msgid "No match found"
 msgstr "Brak podobnego obrazu"
 
+#: Plugins/SimpleResultView/resources/ResultSetup.glade:16
 #: Plugins/SimpleResultView/resources/ResultView.glade:33
 msgid "<big><big><b>Simple Result View</b></big></big>"
 msgstr "<big><big><b>Prosty Podgląd Wyników</b></big></big>"
+
+#: Plugins/SimpleResultView/resources/ResultSetup.glade:26
+msgid "Invert images"
+msgstr "Odwróć obrazy"
 
 #: Plugins/SimpleResultView/resources/ResultView.glade:67
 msgid "<b>Most similar image:</b>"
