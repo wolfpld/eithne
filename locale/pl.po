@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-26 21:28+0100\n"
+"POT-Creation-Date: 2006-11-27 18:25+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -685,6 +685,22 @@ msgstr "<big><big><b>FFT</b></big></big>"
 #: Plugins/FFT/resources/FFT.glade:59
 msgid "Zero most significant frequency"
 msgstr "Wyzeruj najbardziej znaczącą częstotliwość"
+
+#: Plugins/Flip/Flip.cs:11
+msgid "Flip"
+msgstr "Odwróć"
+
+#: Plugins/Flip/Flip.cs:31
+msgid "This plugin adds flipped copies of images."
+msgstr "Ta wtyczka dodaje odwrócone kopie obrazów."
+
+#: Plugins/Flip/Flip.cs:112
+msgid "Input images."
+msgstr "Obrazy wejściowe."
+
+#: Plugins/Flip/Flip.cs:117
+msgid "Input images plus flipped images."
+msgstr "Obrazy wejściowe plus odwrócone obrazy."
 
 #: Plugins/Histogram/Histogram.cs:11
 #: Plugins/Histogram/resources/Histogram.glade:7

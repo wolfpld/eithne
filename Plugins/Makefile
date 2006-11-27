@@ -7,6 +7,7 @@ SUBDIRS = \
 	Edge \
 	Euclid \
 	FFT \
+	Flip \
 	Histogram \
 	ImageView \
 	L0Mod \
