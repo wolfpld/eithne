@@ -688,11 +688,11 @@ msgstr "Wyzeruj najbardziej znaczącą częstotliwość"
 
 #: Plugins/Flip/Flip.cs:11
 msgid "Flip"
-msgstr "Odwróć"
+msgstr "Odbicie"
 
 #: Plugins/Flip/Flip.cs:31
 msgid "This plugin adds flipped copies of images."
-msgstr "Ta wtyczka dodaje odwrócone kopie obrazów."
+msgstr "Ta wtyczka dodaje odbite kopie obrazów."
 
 #: Plugins/Flip/Flip.cs:112
 msgid "Input images."
@@ -700,7 +700,7 @@ msgstr "Obrazy wejściowe."
 
 #: Plugins/Flip/Flip.cs:117
 msgid "Input images plus flipped images."
-msgstr "Obrazy wejściowe plus odwrócone obrazy."
+msgstr "Obrazy wejściowe plus odbite obrazy."
 
 #: Plugins/Histogram/Histogram.cs:11
 #: Plugins/Histogram/resources/Histogram.glade:7

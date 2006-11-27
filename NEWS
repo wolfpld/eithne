@@ -8,10 +8,9 @@ eithne x.x.x
 - Show if images are matching in SRV.
 - Preferences window.
 - Ability to ignore pure white or black values in histogram.
-- Edge detection plugin.
+- New plugins: Edge detection, Flip.
 - Ability to calculate separate histograms for bottom and top part of image.
 - Optional image inversion in SRV and ImageView.
-- Flip plugin.
 
 eithne 0.3.0
 ------------
