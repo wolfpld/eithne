@@ -76,19 +76,24 @@ namespace Eithne
 			ICommImage socket = _in[0] as ICommImage;
 			IImage[] img = socket.Images;
 			IImage[] ret = new IImage[img.Length * 2];
+
 			int[] cat = new int[img.Length * 2];
+			IImage[] origimg = new IImage[img.Length * 2];
 
 			for(int i=0; i<img.Length; i++)
 			{
 				ret[i*2] = img[i];
 				ret[i*2 + 1] = FlipImage(img[i]);
 
-				cat[i*2] = socket.Categories[i];
-				cat[i*2 + 1] = socket.Categories[i];
+				cat[i*2] = socket.Category(i);
+				cat[i*2 + 1] = socket.Category(i);
+
+				origimg[i*2] = socket.OriginalImage(i);
+				origimg[i*2 + 1] = socket.OriginalImage(i);
 			}
 
 			_out = new CommSocket(1);
-			_out[0] = new ICommImage(ret, socket.OriginalImages, cat);
+			_out[0] = new ICommImage(ret, origimg, cat);
 
 			_workdone = true;
 		}
