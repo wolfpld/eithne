@@ -15,16 +15,16 @@ namespace Eithne
 			this.fl = fl;
 			this.b = b;
 
-			Model = new ListStore(typeof(string));
+			Model = new ListStore(typeof(string), typeof(Gdk.Pixbuf));
 
 			foreach(string s in fl)
-				(Model as ListStore).AppendValues(s);
+				(Model as ListStore).AppendValues(s, Preview(s));
 
 			HeadersVisible = false;
 			Selection.Mode = SelectionMode.Multiple;
 
-			CellRendererText cr = new CellRendererText();
-			AppendColumn("Name", cr, "text", 0);
+			AppendColumn("Name", new CellRendererText(), "text", 0);
+			AppendColumn("Preview", new CellRendererPixbuf(), "pixbuf", 1);
 		}
 
 		public void Add(string fn)
@@ -33,7 +33,7 @@ namespace Eithne
 			{
 				new Gdk.Pixbuf(fn);
 
-				(Model as ListStore).AppendValues(fn);
+				(Model as ListStore).AppendValues(fn, Preview(fn));
 				fl.Add(fn);
 				b.Invalidate();
 			}
@@ -71,6 +71,33 @@ namespace Eithne
 		public int Count
 		{
 			get { return fl.Count; }
+		}
+
+		private Gdk.Pixbuf Preview(Gdk.Pixbuf img)
+		{
+			double scale;
+
+			if(img.Width > img.Height)
+				scale = img.Width / 24.0;
+			else
+				scale = img.Height / 24.0;
+
+			return img.ScaleSimple(Scale(img.Width, scale), Scale(img.Height, scale), Gdk.InterpType.Bilinear);
+		}
+
+		private Gdk.Pixbuf Preview(string fn)
+		{
+			return Preview(new Gdk.Pixbuf(fn));
+		}
+		
+		private int Scale(int s, double scale)
+		{
+			int val = (int)(s/scale);
+
+			if(val == 0)
+				return 1;
+			else
+				return val;
 		}
 	}
 }
