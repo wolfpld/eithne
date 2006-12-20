@@ -40,17 +40,21 @@ namespace Eithne
 			this.cat = cat;
 			this.b = b;
 
-			Model = new TreeStore(typeof(string), typeof(Gdk.Pixbuf), typeof(bool), typeof(string), typeof(Img));
+			Model = new TreeStore(typeof(string), typeof(Gdk.Pixbuf), typeof(bool), typeof(string), typeof(Img),
+					typeof(Gdk.Pixbuf));
 
 			foreach(Category c in cat)
 			{
 				Gdk.Pixbuf preview = Preview(((Img)c.Files[0]).Name);
 
-				TreeIter iter = (Model as TreeStore).AppendValues(c.Name, preview);
+				TreeIter iter = (Model as TreeStore).AppendValues(c.Name, null, null, null, null, preview);
 
 				foreach(Img img in c.Files)
+				{
+					preview = Preview(img.Name);
 					(Model as TreeStore).AppendValues(iter, System.IO.Path.GetFileName(img.Name),
-									  img.IsTest ? TestIcon : BaseIcon, img.IsTest, img.Name, img);
+							img.IsTest ? TestIcon : BaseIcon, img.IsTest, img.Name, img, preview);
+				}
 			}
 
 			HeadersVisible = false;
@@ -59,6 +63,8 @@ namespace Eithne
 			CellRendererText cr = new CellRendererText();
 			AppendColumn("Name", cr, "text", 0);
 			Columns[0].SetCellDataFunc(cr, RenderCell);
+			// TODO zrobić generowanie miniaturek na żądanie
+			AppendColumn("Preview", new CellRendererPixbuf(), "pixbuf", 5);
 			AppendColumn("Type", new CellRendererPixbuf(), "pixbuf", 1);
 		}
 
@@ -79,11 +85,12 @@ namespace Eithne
 					if(!prv)
 					{
 						prv = true;
-						(Model as TreeStore).SetValue(iter, 1, Preview(tmp));
+						(Model as TreeStore).SetValue(iter, 5, Preview(tmp));
 					}
 
 					Img img = new Img(fn, false);
-					(Model as TreeStore).AppendValues(iter, System.IO.Path.GetFileName(fn), BaseIcon, false, fn, img);
+					(Model as TreeStore).AppendValues(iter, System.IO.Path.GetFileName(fn), BaseIcon, false, fn, img,
+							Preview(tmp));
 					c.Files.Add(img);
 					b.Invalidate();
 				}
@@ -172,7 +179,7 @@ namespace Eithne
 				TreeIter iter;
 				(Model as TreeStore).GetIter(out iter, path);
 
-				if(column.Title == "Name")
+				if(column.Title == "Name" || column.Title == "Preview")
 				{
 					string s = (string)Model.GetValue(iter, 3);
 					new Preview(s);
