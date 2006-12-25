@@ -110,7 +110,7 @@ namespace Eithne
 					if(energy)
 						res[ix, iy] = (byte)Math.Abs(diff);
 					else
-						res[ix, iy] = (byte)(128 + diff/2);
+						res[ix, iy] = (byte)(127 + diff/2);
 				}
 
 			return res;
