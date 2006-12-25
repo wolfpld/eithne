@@ -54,6 +54,7 @@ namespace Eithne
 
 		private void OnAdd(object o, EventArgs args)
 		{
+			ArrayList errors = new ArrayList();
 			string basepath = AppDomain.CurrentDomain.BaseDirectory;
 			FileChooserDialog fs = new FileChooserDialog(Catalog.GetString("Select image to add..."), SimpleDBWindow,
 					FileChooserAction.Open, new object[] {Catalog.GetString("Cancel"), ResponseType.Cancel,
@@ -75,16 +76,26 @@ namespace Eithne
 					if(eargs.ResponseId == ResponseType.Accept)
 						foreach(string fn in fs.Filenames)
 						{
-							if(fn.Length > basepath.Length && fn.Substring(0, basepath.Length) == basepath)
-								filelist.Add(fn.Substring(basepath.Length));
-							else
-								filelist.Add(fn);
+							try
+							{
+								if(fn.Length > basepath.Length && fn.Substring(0, basepath.Length) == basepath)
+									filelist.Add(fn.Substring(basepath.Length));
+								else
+									filelist.Add(fn);
+							}
+							catch(GLib.GException)
+							{
+								errors.Add(fn);
+							}
 						}
 				};
 			fs.Run();
 			fs.Destroy();
 
 			UpdateCount();
+
+			if(errors.Count != 0)
+				new LoadError(errors);
 		}
 
 		private void OnRemove(object o, EventArgs args)

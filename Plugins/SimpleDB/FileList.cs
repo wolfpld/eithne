@@ -29,18 +29,11 @@ namespace Eithne
 
 		public void Add(string fn)
 		{
-			try
-			{
-				new Gdk.Pixbuf(fn);
+			new Gdk.Pixbuf(fn);
 
-				(Model as ListStore).AppendValues(fn, Preview(fn));
-				fl.Add(fn);
-				b.Invalidate();
-			}
-			catch(GLib.GException e)
-			{
-				new DialogMessage(Catalog.GetString("Cannot open specified image.\n<i>") + e.Message + "</i>");
-			}
+			(Model as ListStore).AppendValues(fn, Preview(fn));
+			fl.Add(fn);
+			b.Invalidate();
 		}
 
 		public void TryRemove()
