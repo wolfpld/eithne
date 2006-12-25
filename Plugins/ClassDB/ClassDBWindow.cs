@@ -62,6 +62,7 @@ namespace Eithne
 		private void OnAdd(object o, EventArgs args)
 		{
 			ArrayList errors = new ArrayList();
+			ArrayList errors2 = new ArrayList();
 			string basepath = AppDomain.CurrentDomain.BaseDirectory;
 			FileChooserDialog fs = new FileChooserDialog(Catalog.GetString("Select directory with images to add..."),
 					ClassDBWindow, FileChooserAction.SelectFolder, new object[] {Catalog.GetString("Cancel"),
@@ -81,7 +82,7 @@ namespace Eithne
 							else
 								file = fn;
 
-							if(!filelist.Add(file))
+							if(!filelist.Add(file, errors2))
 								errors.Add(file);
 						}
 				};
@@ -92,6 +93,8 @@ namespace Eithne
 
 			if(errors.Count != 0)
 				new LoadError(errors, Catalog.GetString("<big><b>The following directories were empty:</b></big>"));
+			if(errors2.Count != 0)
+				new LoadError(errors2, null);
 		}
 
 		private void OnRemove(object o, EventArgs args)

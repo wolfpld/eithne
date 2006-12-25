@@ -68,7 +68,7 @@ namespace Eithne
 			AppendColumn("Type", new CellRendererPixbuf(), "pixbuf", 1);
 		}
 
-		public bool Add(string dir)
+		public bool Add(string dir, ArrayList errors)
 		{
 			string[] files = Directory.GetFiles(dir, "*");
 
@@ -94,9 +94,11 @@ namespace Eithne
 					c.Files.Add(img);
 					b.Invalidate();
 				}
-				catch(GLib.GException e)
+				catch(GLib.GException)
 				{
-					new DialogMessage(Catalog.GetString("Cannot open specified image.\n<i>") + e.Message + "</i>");
+					if(errors != null)
+						errors.Add(String.Format(Catalog.GetString("From category <b>{0}</b>: {1}"), dir,
+								       System.IO.Path.GetFileName(fn)));
 				}
 			}
 
