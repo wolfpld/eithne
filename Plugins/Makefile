@@ -8,6 +8,7 @@ SUBDIRS = \
 	Euclid \
 	FFT \
 	Flip \
+	Haar \
 	Histogram \
 	ImageView \
 	L0Mod \
