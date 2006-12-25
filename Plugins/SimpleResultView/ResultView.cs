@@ -16,11 +16,6 @@ namespace Eithne
 			get { return "SRV"; }
 		}
 
-		public override string Version
-		{
-			get { return "0.4"; }
-		}
-
 		public override string Author
 		{
 			get { return "Bartosz Taudul"; }

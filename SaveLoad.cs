@@ -55,7 +55,7 @@ namespace Eithne
 			XmlNode n, root = x.CreateNode(XmlNodeType.Element, "info", "");
 
 			n = x.CreateNode(XmlNodeType.Element, "version", "");
-			n.InnerText = About.Version;
+			n.InnerText = Program.Version;
 			root.AppendChild(n);
 
 			n = x.CreateNode(XmlNodeType.Element, "filename", "");

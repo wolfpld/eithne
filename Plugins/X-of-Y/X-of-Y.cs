@@ -28,11 +28,6 @@ namespace Eithne
 			get { return String.Format("{0}/{1}", X, Y); }
 		}
 
-		public override string Version
-		{
-			get { return "0.1"; }
-		}
-
 		public override string Author
 		{
 			get { return "Bartosz Taudul"; }

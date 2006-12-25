@@ -17,11 +17,6 @@ namespace Eithne
 			get { return "SimpleDB"; }
 		}
 
-		public override string Version
-		{
-			get { return "0.1"; }
-		}
-
 		public override string Author
 		{
 			get { return "Bartosz Taudul"; }

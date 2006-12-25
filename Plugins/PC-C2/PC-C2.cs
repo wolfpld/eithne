@@ -16,11 +16,6 @@ namespace Eithne
 			get { return "C2"; }
 		}
 
-		public override string Version
-		{
-			get { return "0.2"; }
-		}
-
 		public override string Author
 		{
 			get { return "Bartosz Taudul"; }

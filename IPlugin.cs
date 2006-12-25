@@ -10,6 +10,14 @@ namespace Eithne
 		{}
 	}
 
+	public class Program
+	{
+		public static string Version
+		{
+			get { return "0.3.0+"; }
+		}
+	}
+
 	public enum IType
 	{
 		In,
@@ -30,9 +38,13 @@ namespace Eithne
 	{
 		public abstract string Name		{ get; }
 		public abstract string ShortName	{ get; }
-		public abstract string Version		{ get; }
 		public abstract string Author		{ get; }
 		public abstract string Description	{ get; }
+
+		public virtual string Version	
+		{
+			get { return Program.Version; }
+		}
 	}
 
 	public interface IFactory

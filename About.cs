@@ -12,11 +12,6 @@ namespace Eithne
 		[Widget] Label		ProgramVersion;
 		[Widget] Button		CloseButton;
 
-		public static string Version
-		{
-			get { return "0.3.0+"; }
-		}
-
 		public static string Name
 		{
 //			get { return "Eithne"; }
@@ -36,7 +31,7 @@ namespace Eithne
 			CloseButton.Clicked += CloseWindow;
 
 			LogoImage.FromPixbuf = new Gdk.Pixbuf(null, "zsrr.jpg");
-			ProgramVersion.Text = String.Format("<big><big><b>{0} v{1}</b></big></big>", Name, Version);
+			ProgramVersion.Text = String.Format("<big><big><b>{0} v{1}</b></big></big>", Name, Program.Version);
 			ProgramVersion.UseMarkup = true;
 
 			AboutWindow.ShowAll();
