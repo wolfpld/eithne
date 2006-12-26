@@ -5,6 +5,16 @@ namespace Eithne
 {
 	class HarrWavelet
 	{
+		private static byte Clamp(int val)
+		{
+			if(val < 0)
+				val = 0;
+			else if(val > 255)
+				val = 255;
+
+			return (byte)val;
+		}
+
 		public static IImage Merge(ArrayList hw)
 		{
 			return Merge((IImage)hw[0], (IImage)hw[1], (IImage)hw[2], (IImage)hw[3]);
@@ -145,11 +155,11 @@ namespace Eithne
 			for(int y=0; y<tl.H; y++)
 				for(int x=0; x<tl.W; x++)
 				{
-					tmp1[x, y*2] = (byte)((byte)tl[x, y] + ((byte)bl[x, y] - 127));
-					tmp1[x, y*2+1] = (byte)((byte)tl[x, y] - ((byte)bl[x, y] - 127));
+					tmp1[x, y*2] = Clamp((byte)tl[x, y] + ((byte)bl[x, y] - 127));
+					tmp1[x, y*2+1] = Clamp((byte)tl[x, y] - ((byte)bl[x, y] - 127));
 
-					tmp2[x, y*2] = (byte)((byte)tr[x, y] + ((byte)br[x, y] - 127));
-					tmp2[x, y*2+1] = (byte)((byte)tr[x, y] - ((byte)br[x, y] - 127));
+					tmp2[x, y*2] = Clamp((byte)tr[x, y] + ((byte)br[x, y] - 127));
+					tmp2[x, y*2+1] = Clamp((byte)tr[x, y] - ((byte)br[x, y] - 127));
 				}
 
 			IImage ret = new IImage(1, tl.W*2, tl.H*2);
@@ -157,8 +167,8 @@ namespace Eithne
 			for(int y=0; y<tl.H*2; y++)
 				for(int x=0; x<tl.W; x++)
 				{
-					ret[x*2, y] = (byte)((byte)tmp1[x, y] + ((byte)tmp2[x, y] - 127));
-					ret[x*2+1, y] = (byte)((byte)tmp1[x, y] - ((byte)tmp2[x, y] - 127));
+					ret[x*2, y] = Clamp((byte)tmp1[x, y] + ((byte)tmp2[x, y] - 127));
+					ret[x*2+1, y] = Clamp((byte)tmp1[x, y] - ((byte)tmp2[x, y] - 127));
 				}
 			
 			return ret;
