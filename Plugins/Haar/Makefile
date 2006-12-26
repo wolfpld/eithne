@@ -4,7 +4,8 @@ TARGET = Haar.dll
 
 SRC = \
 	Haar.cs \
-	HaarSetup.cs
+	HaarSetup.cs \
+	HaarWavelet.cs
 
 RESOURCES = \
 	Haar.glade
