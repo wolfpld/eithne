@@ -2,9 +2,9 @@
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
 <!--*- mode: xml -*-->
 <glade-interface>
-  <widget class="GtkWindow" id="EdgeWindow">
+  <widget class="GtkWindow" id="HaarWindow">
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">Edge Detection</property>
+    <property name="title" translatable="yes">Haar Wavelet</property>
     <property name="resizable">False</property>
     <property name="default_width">10</property>
     <property name="default_height">10</property>
@@ -14,7 +14,7 @@
         <child>
           <widget class="GtkLabel" id="label1">
             <property name="visible">True</property>
-            <property name="label" translatable="yes">&lt;big&gt;&lt;big&gt;&lt;b&gt;Edge Detection&lt;/b&gt;&lt;/big&gt;&lt;/big&gt;</property>
+            <property name="label" translatable="yes">&lt;big&gt;&lt;big&gt;&lt;b&gt;Haar Wavelet&lt;/b&gt;&lt;/big&gt;&lt;/big&gt;</property>
             <property name="use_markup">True</property>
           </widget>
           <packing>
@@ -23,14 +23,47 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkCheckButton" id="EnergyButton">
+          <widget class="GtkLabel" id="label2">
             <property name="visible">True</property>
-            <property name="label" translatable="yes">Calculate energy of difference</property>
-            <property name="draw_indicator">True</property>
+            <property name="label" translatable="yes">Number of wavelet levels:</property>
           </widget>
           <packing>
-            <property name="expand">False</property>
+            <property name="padding">5</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHBox" id="hbox2">
+            <property name="visible">True</property>
+            <child>
+              <widget class="GtkFixed" id="fixed3">
+                <property name="visible">True</property>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkSpinButton" id="HaarSpin">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="adjustment">3 1 8 1 10 10</property>
+                <property name="snap_to_ticks">True</property>
+                <property name="numeric">True</property>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkFixed" id="fixed4">
+                <property name="visible">True</property>
+              </widget>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -40,7 +73,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="padding">5</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -73,7 +106,7 @@
           </widget>
           <packing>
             <property name="expand">False</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </widget>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-27 18:25+0100\n"
+"POT-Creation-Date: 2006-12-26 16:37+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
 
-#: About.cs:33
+#: About.cs:28
 #, csharp-format
 msgid "About {0}"
 msgstr "O {0}"
@@ -27,15 +27,15 @@ msgstr "O {0}"
 msgid "Connector"
 msgstr "Łącznik"
 
-#: Connector.cs:31
+#: Connector.cs:26
 msgid "Connector between blocks."
 msgstr "Łącznik między blokami."
 
-#: Connector.cs:88 Plugins/Multiplier/Multiplier.cs:113
+#: Connector.cs:83 Plugins/Multiplier/Multiplier.cs:108
 msgid "Input signal."
 msgstr "Sygnał wejściowy."
 
-#: Connector.cs:93
+#: Connector.cs:88
 msgid "Copied signal."
 msgstr "Skopiowany sygnał."
 
@@ -63,11 +63,11 @@ msgid ""
 msgstr ""
 "{0} spróbuje zapisać ratunkową kopię schematu do pliku <i>rescue.xml</i>"
 
-#: IPlugin.cs:210 IPlugin.cs:229
+#: IPlugin.cs:222 IPlugin.cs:241
 msgid "BPP must be 1, 3 or 4"
 msgstr "BPP musi wynosić 1, 3 lub 4"
 
-#: IPlugin.cs:261
+#: IPlugin.cs:273
 msgid "Image inversion not supported for floating point data"
 msgstr "Odwracanie obrazów nie jest wspierane dla danych zmiennoprzecinkowych."
 
@@ -109,8 +109,8 @@ msgstr "Nowy schemat systemu gotowy"
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:124 MainWindow.cs:158 Plugins/ClassDB/ClassDBWindow.cs:67
-#: Plugins/SimpleDB/SimpleDBWindow.cs:59
+#: MainWindow.cs:124 MainWindow.cs:158 Plugins/ClassDB/ClassDBWindow.cs:68
+#: Plugins/SimpleDB/SimpleDBWindow.cs:60
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -123,7 +123,7 @@ msgstr "Ładuj"
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:132 MainWindow.cs:166 Plugins/SimpleDB/SimpleDBWindow.cs:67
+#: MainWindow.cs:132 MainWindow.cs:166 Plugins/SimpleDB/SimpleDBWindow.cs:68
 msgid "All files"
 msgstr "Wszystkie pliki"
 
@@ -274,20 +274,20 @@ msgstr "O wtyczce"
 msgid "Best-of"
 msgstr "Najlepsze-z"
 
-#: Plugins/Best/Best.cs:31
+#: Plugins/Best/Best.cs:26
 msgid "This plugin selects best of results."
 msgstr "Ta wtyczka wybiera najlepsze wyniki."
 
-#: Plugins/Best/Best.cs:104 Plugins/X-of-Y/X-of-Y.cs:121
+#: Plugins/Best/Best.cs:99 Plugins/X-of-Y/X-of-Y.cs:116
 msgid "Incompatible data on input."
 msgstr "Niekompatybilne ze sobą dane na wejściach"
 
-#: Plugins/Best/Best.cs:152 Plugins/X-of-Y/X-of-Y.cs:204
+#: Plugins/Best/Best.cs:147 Plugins/X-of-Y/X-of-Y.cs:199
 #, csharp-format
 msgid "{0}. input signal."
 msgstr "{0}. sygnał wejściowy."
 
-#: Plugins/Best/Best.cs:157 Plugins/X-of-Y/X-of-Y.cs:209
+#: Plugins/Best/Best.cs:152 Plugins/X-of-Y/X-of-Y.cs:204
 msgid "Best results."
 msgstr "Najlepsze wyniki."
 
@@ -304,7 +304,7 @@ msgstr "Liczba gniazd wejściowych:"
 msgid "Categorised Image Database"
 msgstr "Baza Obrazów z Kategoriami"
 
-#: Plugins/ClassDB/ClassDB.cs:32
+#: Plugins/ClassDB/ClassDB.cs:27
 msgid ""
 "This plugin allows categorization of images and splitting them into base and "
 "test images."
@@ -312,32 +312,32 @@ msgstr ""
 "Ta wtyczka umożliwia kategoryzację obrazów i ich podział na obrazy bazowe i "
 "testowe."
 
-#: Plugins/ClassDB/ClassDB.cs:227
+#: Plugins/ClassDB/ClassDB.cs:222
 msgid "No categories in list"
 msgstr "Brak kategorii na liście"
 
-#: Plugins/ClassDB/ClassDB.cs:251
+#: Plugins/ClassDB/ClassDB.cs:246
 msgid "There are no test images selected"
 msgstr "Brak obrazów testowych"
 
-#: Plugins/ClassDB/ClassDB.cs:253
+#: Plugins/ClassDB/ClassDB.cs:248
 msgid "There are no base images selected"
 msgstr "Brak obrazów bazowych"
 
-#: Plugins/ClassDB/ClassDB.cs:340
+#: Plugins/ClassDB/ClassDB.cs:335 Plugins/ClassDB/FileList.cs:100
 #, csharp-format
 msgid "From category <b>{0}</b>: {1}"
 msgstr "Kategoria <b>{0}</b>: {1}"
 
-#: Plugins/ClassDB/ClassDB.cs:358 Plugins/Euclid/Euclid.cs:136
-#: Plugins/L0Mod/L0Mod.cs:162 Plugins/PC-C1/PC-C1.cs:140
-#: Plugins/PC-C2/PC-C2.cs:146
+#: Plugins/ClassDB/ClassDB.cs:353 Plugins/Euclid/Euclid.cs:131
+#: Plugins/L0Mod/L0Mod.cs:157 Plugins/PC-C1/PC-C1.cs:135
+#: Plugins/PC-C2/PC-C2.cs:141
 msgid "Base images."
 msgstr "Obrazy bazowe."
 
-#: Plugins/ClassDB/ClassDB.cs:360 Plugins/Euclid/Euclid.cs:138
-#: Plugins/L0Mod/L0Mod.cs:164 Plugins/PC-C1/PC-C1.cs:142
-#: Plugins/PC-C2/PC-C2.cs:148
+#: Plugins/ClassDB/ClassDB.cs:355 Plugins/Euclid/Euclid.cs:133
+#: Plugins/L0Mod/L0Mod.cs:159 Plugins/PC-C1/PC-C1.cs:137
+#: Plugins/PC-C2/PC-C2.cs:143
 msgid "Test images."
 msgstr "Obrazy testowe."
 
@@ -361,25 +361,17 @@ msgstr[0] " w {0} kategorii"
 msgstr[1] " w {0} kategoriach"
 msgstr[2] " w {0} kategoriach"
 
-#: Plugins/ClassDB/ClassDBWindow.cs:66
+#: Plugins/ClassDB/ClassDBWindow.cs:67
 msgid "Select directory with images to add..."
 msgstr "Wybór katalogu z obrazami do dodania..."
 
-#: Plugins/ClassDB/ClassDBWindow.cs:68 Plugins/SimpleDB/SimpleDBWindow.cs:60
+#: Plugins/ClassDB/ClassDBWindow.cs:69 Plugins/SimpleDB/SimpleDBWindow.cs:61
 msgid "Add"
 msgstr "Dodaj"
 
-#: Plugins/ClassDB/ClassDBWindow.cs:94
+#: Plugins/ClassDB/ClassDBWindow.cs:95
 msgid "<big><b>The following directories were empty:</b></big>"
 msgstr "<big><b>Następujące katalogi są puste:</b></big>"
-
-#: Plugins/ClassDB/FileList.cs:92 Plugins/SimpleDB/FileList.cs:42
-msgid ""
-"Cannot open specified image.\n"
-"<i>"
-msgstr ""
-"Nie można otworzyć podanego obrazu.\n"
-"<i>"
 
 #: Plugins/ClassDB/Preview.cs:28 Plugins/SimpleDB/Preview.cs:28
 msgid "Image <i>"
@@ -480,16 +472,16 @@ msgstr "Podział"
 msgid "System Correctness"
 msgstr "Poprawność Systemu"
 
-#: Plugins/Correctness/Correctness.cs:32
+#: Plugins/Correctness/Correctness.cs:27
 msgid "This plugin shows correctness of system."
 msgstr "Ta wtyczka pokazuje poprawność systemu."
 
-#: Plugins/Correctness/Correctness.cs:96 Plugins/ResultData/ResultData.cs:73
-#: Plugins/SimpleResultView/ResultView.cs:100
+#: Plugins/Correctness/Correctness.cs:91 Plugins/ResultData/ResultData.cs:68
+#: Plugins/SimpleResultView/ResultView.cs:95
 msgid "Plugin is not ready to display results."
 msgstr "Wtyczka nie jest gotowa wyświetlać wyniki."
 
-#: Plugins/Correctness/Correctness.cs:211
+#: Plugins/Correctness/Correctness.cs:206
 msgid "Results."
 msgstr "Wyniki."
 
@@ -530,20 +522,20 @@ msgstr "Ostatni obraz w kategorii"
 msgid "Crop"
 msgstr "Przycięcie"
 
-#: Plugins/Crop/Crop.cs:31
+#: Plugins/Crop/Crop.cs:26
 msgid "This plugin crops image."
 msgstr "Ta wtyczka przycina obrazy."
 
-#: Plugins/Crop/Crop.cs:183 Plugins/Desaturate/Desaturate.cs:116
-#: Plugins/Edge/Edge.cs:149 Plugins/FFT/DCT.cs:157 Plugins/FFT/FFT.cs:183
-#: Plugins/Histogram/Histogram.cs:279
-#: Plugins/NewSourceImages/NewSourceImages.cs:89
-#: Plugins/RGBSplit/RGBSplit.cs:143 Plugins/Random/Random.cs:152
-#: Plugins/Resize/Resize.cs:111
+#: Plugins/Crop/Crop.cs:178 Plugins/Desaturate/Desaturate.cs:111
+#: Plugins/Edge/Edge.cs:144 Plugins/FFT/DCT.cs:152 Plugins/FFT/FFT.cs:178
+#: Plugins/Haar/Haar.cs:123 Plugins/Histogram/Histogram.cs:274
+#: Plugins/NewSourceImages/NewSourceImages.cs:84
+#: Plugins/RGBSplit/RGBSplit.cs:138 Plugins/Random/Random.cs:147
+#: Plugins/Resize/Resize.cs:106
 msgid "Input image."
 msgstr "Obraz wejściowy."
 
-#: Plugins/Crop/Crop.cs:188
+#: Plugins/Crop/Crop.cs:183
 msgid "Cropped image."
 msgstr "Przycięte obrazy."
 
@@ -575,15 +567,15 @@ msgstr "x"
 msgid "Desaturate"
 msgstr "Desaturacja"
 
-#: Plugins/Desaturate/Desaturate.cs:31
+#: Plugins/Desaturate/Desaturate.cs:26
 msgid "This plugin converts color image to greyscale."
 msgstr "Ta wtyczka konwertuje kolorowe obrazy do skali szarości."
 
-#: Plugins/Desaturate/Desaturate.cs:95
+#: Plugins/Desaturate/Desaturate.cs:90
 msgid "Cannot desaturate floating point data"
 msgstr "Nie można przeprowadzić desaturacji dla danych zmiennoprzecinkowych"
 
-#: Plugins/Desaturate/Desaturate.cs:121
+#: Plugins/Desaturate/Desaturate.cs:116
 msgid "Desaturated version of image."
 msgstr "Zdesaturowana wersja obrazu."
 
@@ -591,16 +583,17 @@ msgstr "Zdesaturowana wersja obrazu."
 msgid "Edge detection"
 msgstr "Wykrywanie krawędzi"
 
-#: Plugins/Edge/Edge.cs:31
+#: Plugins/Edge/Edge.cs:26
 msgid "This plugin detects edges in images."
 msgstr "Ta wtyczka wykrywa krawędzie na obrazach."
 
-#: Plugins/Edge/Edge.cs:103 Plugins/FFT/DCT.cs:104 Plugins/FFT/FFT.cs:119
-#: Plugins/Histogram/Histogram.cs:113 Plugins/Histogram/Histogram.cs:145
+#: Plugins/Edge/Edge.cs:98 Plugins/FFT/DCT.cs:99 Plugins/FFT/FFT.cs:114
+#: Plugins/Haar/Haar.cs:99 Plugins/Histogram/Histogram.cs:108
+#: Plugins/Histogram/Histogram.cs:140
 msgid "Image is not in greyscale."
 msgstr "Obraz nie jest w skali szarości."
 
-#: Plugins/Edge/Edge.cs:154
+#: Plugins/Edge/Edge.cs:149
 msgid "Detected edges."
 msgstr "Wykryte krawędzie."
 
@@ -616,7 +609,7 @@ msgstr "<big><big><b>Wykrywanie Krawędzi</b></big></big>"
 msgid "Calculate energy of difference"
 msgstr "Oblicz energię różnic"
 
-#: Plugins/Edge/resources/Edge.glade:57
+#: Plugins/Edge/resources/Edge.glade:57 Plugins/Haar/resources/Haar.glade:90
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
 #: resources/Preferences.glade:102
@@ -627,26 +620,26 @@ msgstr "gtk-close"
 msgid "Euclid metric"
 msgstr "Metryka Euklidesa"
 
-#: Plugins/Euclid/Euclid.cs:31
+#: Plugins/Euclid/Euclid.cs:26
 msgid "This plugin calculates Euclid metric between images."
 msgstr "Ta wtyczka oblicza metrykę Euklidesa pomiędzy obrazami."
 
-#: Plugins/Euclid/Euclid.cs:104 Plugins/L0Mod/L0Mod.cs:115
-#: Plugins/PC-C1/PC-C1.cs:105 Plugins/PC-C2/PC-C2.cs:105
+#: Plugins/Euclid/Euclid.cs:99 Plugins/L0Mod/L0Mod.cs:110
+#: Plugins/PC-C1/PC-C1.cs:100 Plugins/PC-C2/PC-C2.cs:100
 msgid "Image is not greyscale or floating point."
 msgstr "Obraz nie jest w skali szarości lub zmiennoprzecinkowy."
 
-#: Plugins/Euclid/Euclid.cs:106 Plugins/L0Mod/L0Mod.cs:117
-#: Plugins/PC-C1/PC-C1.cs:107 Plugins/PC-C2/PC-C2.cs:107
+#: Plugins/Euclid/Euclid.cs:101 Plugins/L0Mod/L0Mod.cs:112
+#: Plugins/PC-C1/PC-C1.cs:102 Plugins/PC-C2/PC-C2.cs:102
 msgid "Images BPP do not match."
 msgstr "Głębie kolorów obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:108 Plugins/L0Mod/L0Mod.cs:119
-#: Plugins/PC-C1/PC-C1.cs:109 Plugins/PC-C2/PC-C2.cs:109
+#: Plugins/Euclid/Euclid.cs:103 Plugins/L0Mod/L0Mod.cs:114
+#: Plugins/PC-C1/PC-C1.cs:104 Plugins/PC-C2/PC-C2.cs:104
 msgid "Images dimensions do not match."
 msgstr "Wymiary obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:143
+#: Plugins/Euclid/Euclid.cs:138
 msgid "Calculated Euclid metric."
 msgstr "Obliczona metryka Euklidesa."
 
@@ -654,11 +647,11 @@ msgstr "Obliczona metryka Euklidesa."
 msgid "Discrete Cosine Transform"
 msgstr "Dyskretna Transformata Kosinusowa"
 
-#: Plugins/FFT/DCT.cs:31
+#: Plugins/FFT/DCT.cs:26
 msgid "This plugin performs discrete cosine transform."
 msgstr "Ta wtyczka przeprowadza dyskretną transformatę kosinusową."
 
-#: Plugins/FFT/DCT.cs:162
+#: Plugins/FFT/DCT.cs:157
 msgid "DCT of image."
 msgstr "DCT obrazu."
 
@@ -666,11 +659,11 @@ msgstr "DCT obrazu."
 msgid "Fast Fourier Transform"
 msgstr "Szybka Transformata Fouriera"
 
-#: Plugins/FFT/FFT.cs:31
+#: Plugins/FFT/FFT.cs:26
 msgid "This plugin performs fast fourier transform."
 msgstr "Ta wtyczka przeprowadza szybką transformatę Fouriera."
 
-#: Plugins/FFT/FFT.cs:188
+#: Plugins/FFT/FFT.cs:183
 msgid "FFT of image."
 msgstr "FFT obrazu."
 
@@ -690,7 +683,7 @@ msgstr "Wyzeruj najbardziej znaczącą częstotliwość"
 msgid "Flip"
 msgstr "Odbicie"
 
-#: Plugins/Flip/Flip.cs:31
+#: Plugins/Flip/Flip.cs:26
 msgid "This plugin adds flipped copies of images."
 msgstr "Ta wtyczka dodaje odbite kopie obrazów."
 
@@ -702,16 +695,36 @@ msgstr "Obrazy wejściowe."
 msgid "Input images plus flipped images."
 msgstr "Obrazy wejściowe plus odbite obrazy."
 
+#: Plugins/Haar/Haar.cs:12 Plugins/Haar/resources/Haar.glade:7
+msgid "Haar Wavelet"
+msgstr "Falka Haara"
+
+#: Plugins/Haar/Haar.cs:27
+msgid "This plugin calculates Haar wavelet."
+msgstr "Ta wtyczka oblicza falkę Haara."
+
+#: Plugins/Haar/Haar.cs:128
+msgid "Haar wavelet."
+msgstr "Falka Haara."
+
+#: Plugins/Haar/resources/Haar.glade:17
+msgid "<big><big><b>Haar Wavelet</b></big></big>"
+msgstr "<big><big><b>Falka Haara</b></big></big>"
+
+#: Plugins/Haar/resources/Haar.glade:28
+msgid "Number of wavelet levels:"
+msgstr "Liczba poziomów falki:"
+
 #: Plugins/Histogram/Histogram.cs:11
 #: Plugins/Histogram/resources/Histogram.glade:7
 msgid "Histogram"
 msgstr "Histogram"
 
-#: Plugins/Histogram/Histogram.cs:31
+#: Plugins/Histogram/Histogram.cs:26
 msgid "This plugin calculates histogram of image."
 msgstr "Ta wtyczka oblicza histogram obrazu."
 
-#: Plugins/Histogram/Histogram.cs:284
+#: Plugins/Histogram/Histogram.cs:279
 msgid "Histogram of image."
 msgstr "Histogram obrazu."
 
@@ -740,15 +753,15 @@ msgstr "Obliczanie oddzielnych histogramów dla górnej i dolnej połowy obrazu"
 msgid "Image View"
 msgstr "Podgląd obrazów"
 
-#: Plugins/ImageView/ImageView.cs:31
+#: Plugins/ImageView/ImageView.cs:26
 msgid "This plugin displays images it receives on input."
 msgstr "Ta wtyczka wyświetla obrazy otrzymane na wejściu."
 
-#: Plugins/ImageView/ImageView.cs:96
+#: Plugins/ImageView/ImageView.cs:91
 msgid "Plugin is not ready to display images."
 msgstr "Wtyczka nie jest gotowa wyświetlać obrazy."
 
-#: Plugins/ImageView/ImageView.cs:165
+#: Plugins/ImageView/ImageView.cs:160
 msgid "Images to be viewed."
 msgstr "Obrazy, które będą oglądane."
 
@@ -788,12 +801,12 @@ msgstr "x"
 msgid "Modified L<sub>0</sub> metric"
 msgstr "Zmodyfikowana metryka L<sub>0</sub>"
 
-#: Plugins/L0Mod/L0Mod.cs:31
+#: Plugins/L0Mod/L0Mod.cs:26
 msgid "This plugin calculates modified L<sub>0</sub> metric between images."
 msgstr ""
 "Ta wtyczka oblicza zmodyfikowaną metrykę L<sub>0</sub> pomiędzy obrazami."
 
-#: Plugins/L0Mod/L0Mod.cs:169
+#: Plugins/L0Mod/L0Mod.cs:164
 msgid "Calculated modified L0 metric."
 msgstr "Obliczona zmodyfikowana metryka L0."
 
@@ -814,11 +827,11 @@ msgstr "δ odcięcia:"
 msgid "Multiplier"
 msgstr "Powielacz"
 
-#: Plugins/Multiplier/Multiplier.cs:31
+#: Plugins/Multiplier/Multiplier.cs:26
 msgid "This plugin multiplies input signal on several output sockets."
 msgstr "Ta wtyczka powiela sygnał wejściowy na kilku gniazdach wyjściowych."
 
-#: Plugins/Multiplier/Multiplier.cs:118
+#: Plugins/Multiplier/Multiplier.cs:113
 #, csharp-format
 msgid "{0}. copy of signal."
 msgstr "{0}. kopia sygnału."
@@ -835,14 +848,14 @@ msgstr "Liczba gniazd wyjściowych:"
 msgid "New Source Images"
 msgstr "Nowe Źródłowe Obrazy"
 
-#: Plugins/NewSourceImages/NewSourceImages.cs:31
+#: Plugins/NewSourceImages/NewSourceImages.cs:26
 msgid ""
 "This plugin sets source images of data stream to current images in stream."
 msgstr ""
 "Ta wtyczka ustawia źródłowe obrazy strumienia danych na aktualne obrazy w "
 "strumieniu."
 
-#: Plugins/NewSourceImages/NewSourceImages.cs:94
+#: Plugins/NewSourceImages/NewSourceImages.cs:89
 msgid "Copy of image with original image changed."
 msgstr "Kopia obrazu ze zmienionym obrazem źródłowym."
 
@@ -850,14 +863,14 @@ msgstr "Kopia obrazu ze zmienionym obrazem źródłowym."
 msgid "Pseudo-correlative C<sub>1</sub> metric"
 msgstr "Pseudokorel. metryka C<sub>1</sub>"
 
-#: Plugins/PC-C1/PC-C1.cs:31
+#: Plugins/PC-C1/PC-C1.cs:26
 msgid ""
 "This plugin calculates pseudo-correlative C<sub>1</sub> metric between "
 "images."
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>1</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C1/PC-C1.cs:147
+#: Plugins/PC-C1/PC-C1.cs:142
 msgid "Calculated C1 metric."
 msgstr "Obliczone metryka C1."
 
@@ -865,14 +878,14 @@ msgstr "Obliczone metryka C1."
 msgid "Pseudo-correlative C<sub>2</sub> metric"
 msgstr "Pseudokorel. metryka C<sub>2</sub>"
 
-#: Plugins/PC-C2/PC-C2.cs:31
+#: Plugins/PC-C2/PC-C2.cs:26
 msgid ""
 "This plugin calculates pseudo-correlative C<sub>2</sub> metric between "
 "images."
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>2</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C2/PC-C2.cs:153
+#: Plugins/PC-C2/PC-C2.cs:148
 msgid "Calculated C2 metric."
 msgstr "Obliczona metryka C2."
 
@@ -880,21 +893,21 @@ msgstr "Obliczona metryka C2."
 msgid "RGB Split"
 msgstr "Rozbicie RGB"
 
-#: Plugins/RGBSplit/RGBSplit.cs:31
+#: Plugins/RGBSplit/RGBSplit.cs:26
 msgid "This plugin splits image to 3 color subchannels. (Red, Green, Blue)"
 msgstr ""
 "Ta wtyczka wykonuje rozbicie obrazu na 3 podkanały. (czerwony, zielony, "
 "niebieski)"
 
-#: Plugins/RGBSplit/RGBSplit.cs:149
+#: Plugins/RGBSplit/RGBSplit.cs:144
 msgid "Red subchannel."
 msgstr "Podkanał czerwony."
 
-#: Plugins/RGBSplit/RGBSplit.cs:151
+#: Plugins/RGBSplit/RGBSplit.cs:146
 msgid "Green subchannel."
 msgstr "Podkanał zielony."
 
-#: Plugins/RGBSplit/RGBSplit.cs:153
+#: Plugins/RGBSplit/RGBSplit.cs:148
 msgid "Blue subchannel."
 msgstr "Podkanał niebieski."
 
@@ -902,12 +915,12 @@ msgstr "Podkanał niebieski."
 msgid "Random pixels"
 msgstr "Losowe piksele"
 
-#: Plugins/Random/Random.cs:31
+#: Plugins/Random/Random.cs:26
 msgid "This plugin gets random pixels from image and forms a new one."
 msgstr ""
 "Ten plugin losuje piksele z obrazu i na ich podstawie tworzy nowy obraz."
 
-#: Plugins/Random/Random.cs:157
+#: Plugins/Random/Random.cs:152
 msgid "Random pixels."
 msgstr "Losowe piksele."
 
@@ -939,11 +952,11 @@ msgstr "x"
 msgid "Resize Image"
 msgstr "Skalowanie Obrazu"
 
-#: Plugins/Resize/Resize.cs:31
+#: Plugins/Resize/Resize.cs:26
 msgid "This plugin changes size of images"
 msgstr "Ta wtyczka zmienia rozmiar obrazów."
 
-#: Plugins/Resize/Resize.cs:116
+#: Plugins/Resize/Resize.cs:111
 msgid "Scaled image."
 msgstr "Przeskalowane obrazy."
 
@@ -1000,12 +1013,12 @@ msgstr "Hyper"
 msgid "Result Data"
 msgstr "Dane Wynikowe"
 
-#: Plugins/ResultData/ResultData.cs:31
+#: Plugins/ResultData/ResultData.cs:26
 msgid "This plugin shows raw data coming to block's input socket."
 msgstr ""
 "Wtyczka wyświetla surowe dane przychodzące do gniazda wejściowego bloku."
 
-#: Plugins/ResultData/ResultData.cs:140
+#: Plugins/ResultData/ResultData.cs:135
 msgid "Results to be displayed in raw form."
 msgstr "Wyniki do wyświetlenia w surowej formie."
 
@@ -1017,16 +1030,16 @@ msgstr "<big><big><b>Dane Wynikowe</b></big></big>"
 msgid "Simple Image Database"
 msgstr "Prosta Baza Obrazów"
 
-#: Plugins/SimpleDB/SimpleDB.cs:32
+#: Plugins/SimpleDB/SimpleDB.cs:27
 msgid "This plugin allows to pass images to image recognition system."
 msgstr ""
 "Ta wtyczka umożliwia przekazanie obrazów do systemu rozpoznawania obrazów."
 
-#: Plugins/SimpleDB/SimpleDB.cs:82
+#: Plugins/SimpleDB/SimpleDB.cs:77
 msgid "No images in list"
 msgstr "Brak obrazów na liście"
 
-#: Plugins/SimpleDB/SimpleDB.cs:145
+#: Plugins/SimpleDB/SimpleDB.cs:140
 msgid "Images."
 msgstr "Obrazy."
 
@@ -1034,7 +1047,7 @@ msgstr "Obrazy."
 msgid "No images"
 msgstr "Brak obrazów"
 
-#: Plugins/SimpleDB/SimpleDBWindow.cs:58
+#: Plugins/SimpleDB/SimpleDBWindow.cs:59
 msgid "Select image to add..."
 msgstr "Wybór obrazu do dodania..."
 
@@ -1054,7 +1067,7 @@ msgstr "<big><big><b>Prosta Baza Obrazów</b></big></big>"
 msgid "Simple Result View"
 msgstr "Prosty Podgląd Wyników"
 
-#: Plugins/SimpleResultView/ResultView.cs:31
+#: Plugins/SimpleResultView/ResultView.cs:26
 msgid ""
 "This plugin displays which images from database were recognized for given "
 "test images."
@@ -1062,7 +1075,7 @@ msgstr ""
 "Ta wtyczka wyświetla które obrazy z bazy danych zostały rozpoznane dla "
 "danych obrazów testowych."
 
-#: Plugins/SimpleResultView/ResultView.cs:200
+#: Plugins/SimpleResultView/ResultView.cs:195
 msgid "Results to be viewed."
 msgstr "Wyniki, które będą oglądane."
 
@@ -1119,7 +1132,7 @@ msgstr "x"
 msgid "X of Y"
 msgstr "X z Y"
 
-#: Plugins/X-of-Y/X-of-Y.cs:43
+#: Plugins/X-of-Y/X-of-Y.cs:38
 msgid "This plugin selects images when X of Y match."
 msgstr "Ta wtyczka wybiera obrazy gdy X z Y jest takich samych."
 

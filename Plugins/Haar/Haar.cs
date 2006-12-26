@@ -53,7 +53,7 @@ namespace Eithne
 
 	public class HaarPlugin : IImgProcPlugin
 	{
-		private bool energy = false;
+		private int levels = 3;
 
 		public HaarPlugin()
 		{
@@ -66,16 +66,16 @@ namespace Eithne
 			set { LoadConfig(value); }
 		}
 
-		private void UpdateValue(bool energy)
+		private void UpdateValue(int levels)
 		{
-			this.energy = energy;
+			this.levels = levels;
 
 			_block.Invalidate();
 		}
 
 		public override void Setup()
 		{
-			new EdgeSetup(energy, UpdateValue);
+			new HaarSetup(levels, UpdateValue);
 		}
 
 		public override void Work()
@@ -98,27 +98,21 @@ namespace Eithne
 			if(img.BPP != 1)
                                 throw new PluginException(Catalog.GetString("Image is not in greyscale."));
 
-			return HarrWavelet.Merge(HarrWavelet.Transform(img));
+			return HarrWavelet.Transform(img, levels-1);
 		}
 
 		private XmlNode GetConfig()
 		{
 			XmlNode root = _xmldoc.CreateNode(XmlNodeType.Element, "config", "");
-
-			if(energy)
-				root.InnerText = "true";
-			else
-				root.InnerText = "false";
-
+			root.InnerText = levels.ToString();
 			return root;
 		}
 
 		private void LoadConfig(XmlNode root)
 		{
-			if(root.InnerText == "true")
-				UpdateValue(true);
-			else
-				UpdateValue(false);
+			levels = Int32.Parse(root.InnerText);
+
+			UpdateValue(levels);
 		}
 
 		public override int NumIn		{ get { return 1; } }

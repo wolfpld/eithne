@@ -65,5 +65,15 @@ namespace Eithne
 
 			return ret;
 		}
+
+		public static IImage Transform(IImage img, int levels)
+		{
+			ArrayList hw = Transform(img);
+
+			if(levels == 0)
+				return Merge(hw);
+			else
+				return Merge(Transform((IImage)hw[0], levels - 1), (IImage)hw[1], (IImage)hw[2], (IImage)hw[3]);
+		}
 	}
 }
