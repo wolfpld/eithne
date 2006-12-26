@@ -3,6 +3,7 @@ MCS = mcs
 TARGET = Haar.dll
 
 SRC = \
+	DeHaar.cs \
 	Haar.cs \
 	HaarSetup.cs \
 	HaarWavelet.cs

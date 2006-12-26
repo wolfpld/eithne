@@ -75,5 +75,79 @@ namespace Eithne
 			else
 				return Merge(Transform((IImage)hw[0], levels - 1), (IImage)hw[1], (IImage)hw[2], (IImage)hw[3]);
 		}
+
+		public static IImage Inverse(IImage img, int levels)
+		{
+			int w = img.W/2;
+			int h = img.H/2;
+
+			IImage tl = new IImage(1, w, h);
+			IImage tr = new IImage(1, w, h);
+			IImage bl = new IImage(1, w, h);
+			IImage br = new IImage(1, w, h);
+
+			for(int y=0; y<h; y++)
+				for(int x=0; x<w; x++)
+				{
+					tl[x, y] = img[x, y];
+					tr[x, y] = img[x+w, y];
+					bl[x, y] = img[x, y+h];
+					br[x, y] = img[x+w, y+h];
+				}
+
+			if(levels == 0)
+				return Inverse(tl, tr, bl, br);
+			else
+				return Inverse(Inverse(tl, levels - 1), tr, bl, br);
+		}
+
+		public static IImage Inverse(IImage img)
+		{
+			int w = img.W/2;
+			int h = img.H/2;
+
+			IImage tl = new IImage(1, w, h);
+			IImage tr = new IImage(1, w, h);
+			IImage bl = new IImage(1, w, h);
+			IImage br = new IImage(1, w, h);
+
+			for(int y=0; y<h; y++)
+				for(int x=0; x<w; x++)
+				{
+					tl[x, y] = img[x, y];
+					tr[x, y] = img[x+w, y];
+					bl[x, y] = img[x, y+h];
+					br[x, y] = img[x+w, y+h];
+				}
+
+			return Inverse(tl, tr, bl, br);
+		}
+
+		public static IImage Inverse(IImage tl, IImage tr, IImage bl, IImage br)
+		{
+			IImage tmp1 = new IImage(1, tl.W, tl.H*2);
+			IImage tmp2 = new IImage(1, tl.W, tl.H*2);
+
+			for(int y=0; y<tl.H; y++)
+				for(int x=0; x<tl.W; x++)
+				{
+					tmp1[x, y*2] = (byte)((byte)tl[x, y] + ((byte)bl[x, y] - 127)/2);
+					tmp1[x, y*2+1] = (byte)((byte)tl[x, y] - ((byte)bl[x, y] - 127)/2);
+
+					tmp2[x, y*2] = (byte)((byte)tr[x, y] + ((byte)br[x, y] - 127)/2);
+					tmp2[x, y*2+1] = (byte)((byte)tr[x, y] - ((byte)br[x, y] - 127)/2);
+				}
+
+			IImage ret = new IImage(1, tl.W*2, tl.H*2);
+
+			for(int y=0; y<tl.H*2; y++)
+				for(int x=0; x<tl.W; x++)
+				{
+					ret[x*2, y] = (byte)((byte)tmp1[x, y] + ((byte)tmp2[x, y] - 127)/2);
+					ret[x*2+1, y] = (byte)((byte)tmp1[x, y] - ((byte)tmp2[x, y] - 127)/2);
+				}
+			
+			return ret;
+		}
 	}
 }

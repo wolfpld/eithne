@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-26 16:37+0100\n"
+"POT-Creation-Date: 2006-12-26 19:57+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -528,7 +528,8 @@ msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:178 Plugins/Desaturate/Desaturate.cs:111
 #: Plugins/Edge/Edge.cs:144 Plugins/FFT/DCT.cs:152 Plugins/FFT/FFT.cs:178
-#: Plugins/Haar/Haar.cs:123 Plugins/Histogram/Histogram.cs:274
+#: Plugins/Haar/DeHaar.cs:123 Plugins/Haar/Haar.cs:123
+#: Plugins/Histogram/Histogram.cs:274
 #: Plugins/NewSourceImages/NewSourceImages.cs:84
 #: Plugins/RGBSplit/RGBSplit.cs:138 Plugins/Random/Random.cs:147
 #: Plugins/Resize/Resize.cs:106
@@ -588,8 +589,8 @@ msgid "This plugin detects edges in images."
 msgstr "Ta wtyczka wykrywa krawędzie na obrazach."
 
 #: Plugins/Edge/Edge.cs:98 Plugins/FFT/DCT.cs:99 Plugins/FFT/FFT.cs:114
-#: Plugins/Haar/Haar.cs:99 Plugins/Histogram/Histogram.cs:108
-#: Plugins/Histogram/Histogram.cs:140
+#: Plugins/Haar/DeHaar.cs:99 Plugins/Haar/Haar.cs:99
+#: Plugins/Histogram/Histogram.cs:108 Plugins/Histogram/Histogram.cs:140
 msgid "Image is not in greyscale."
 msgstr "Obraz nie jest w skali szarości."
 
@@ -695,6 +696,18 @@ msgstr "Obrazy wejściowe."
 msgid "Input images plus flipped images."
 msgstr "Obrazy wejściowe plus odbite obrazy."
 
+#: Plugins/Haar/DeHaar.cs:12
+msgid "Inverse Haar Wavelet"
+msgstr "Odwrotna Falka Haara"
+
+#: Plugins/Haar/DeHaar.cs:27
+msgid "This plugin calculates inverse of Haar wavelet."
+msgstr "Ta wtyczka oblicza odwrotną falkę Haara."
+
+#: Plugins/Haar/DeHaar.cs:128 Plugins/Haar/Haar.cs:128
+msgid "Haar wavelet."
+msgstr "Falka Haara."
+
 #: Plugins/Haar/Haar.cs:12 Plugins/Haar/resources/Haar.glade:7
 msgid "Haar Wavelet"
 msgstr "Falka Haara"
@@ -702,10 +715,6 @@ msgstr "Falka Haara"
 #: Plugins/Haar/Haar.cs:27
 msgid "This plugin calculates Haar wavelet."
 msgstr "Ta wtyczka oblicza falkę Haara."
-
-#: Plugins/Haar/Haar.cs:128
-msgid "Haar wavelet."
-msgstr "Falka Haara."
 
 #: Plugins/Haar/resources/Haar.glade:17
 msgid "<big><big><b>Haar Wavelet</b></big></big>"
