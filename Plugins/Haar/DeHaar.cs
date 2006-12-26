@@ -75,7 +75,7 @@ namespace Eithne
 
 		public override void Setup()
 		{
-			new HaarSetup(levels, UpdateValue);
+			new DeHaarSetup(levels, UpdateValue);
 		}
 
 		public override void Work()
@@ -120,12 +120,12 @@ namespace Eithne
 
 		public override string DescIn(int n)
 		{
-			return Catalog.GetString("Input image.");
+			return Catalog.GetString("Haar wavelet.");
 		}
 
 		public override string DescOut(int n)
 		{
-			return Catalog.GetString("Haar wavelet.");
+			return Catalog.GetString("Output image.");
 		}
 	}
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 
 namespace Eithne
@@ -28,7 +29,7 @@ namespace Eithne
 			return ret;
 		}
 
-		public static ArrayList Transform(IImage img)
+		public static ArrayList Transform(IImage img, int cutoff)
 		{
 			// transformata po wierszach
 			IImage tmp1 = new IImage(1, img.W/2, img.H);
@@ -57,6 +58,19 @@ namespace Eithne
 					br[x, y] = (byte)(127 + ((byte)tmp2[x, y*2] - (byte)tr[x, y]));
 				}
 
+			// kompresja
+			if(cutoff != 0)
+				for(int y=0; y<tl.H; y++)
+					for(int x=0; x<tl.W; x++)
+					{
+						if(Math.Abs((byte)tr[x, y] - 127) <= cutoff)
+							tr[x, y] = (byte)127;
+						if(Math.Abs((byte)bl[x, y] - 127) <= cutoff)
+							bl[x, y] = (byte)127;
+						if(Math.Abs((byte)br[x, y] - 127) <= cutoff)
+							br[x, y] = (byte)127;
+					}
+
 			ArrayList ret = new ArrayList();
 			ret.Add(tl);
 			ret.Add(tr);
@@ -66,14 +80,14 @@ namespace Eithne
 			return ret;
 		}
 
-		public static IImage Transform(IImage img, int levels)
+		public static IImage Transform(IImage img, int levels, int cutoff)
 		{
-			ArrayList hw = Transform(img);
+			ArrayList hw = Transform(img, cutoff);
 
 			if(levels == 0)
 				return Merge(hw);
 			else
-				return Merge(Transform((IImage)hw[0], levels - 1), (IImage)hw[1], (IImage)hw[2], (IImage)hw[3]);
+				return Merge(Transform((IImage)hw[0], levels - 1, cutoff), (IImage)hw[1], (IImage)hw[2], (IImage)hw[3]);
 		}
 
 		public static IImage Inverse(IImage img, int levels)

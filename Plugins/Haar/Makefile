@@ -4,11 +4,13 @@ TARGET = Haar.dll
 
 SRC = \
 	DeHaar.cs \
+	DeHaarSetup.cs \
 	Haar.cs \
 	HaarSetup.cs \
 	HaarWavelet.cs
 
 RESOURCES = \
+	DeHaar.glade \
 	Haar.glade
 
 RESFILES = $(addprefix resources/,$(RESOURCES))

@@ -54,6 +54,7 @@ namespace Eithne
 	public class HaarPlugin : IImgProcPlugin
 	{
 		private int levels = 3;
+		private int cutoff = 0;
 
 		public HaarPlugin()
 		{
@@ -66,16 +67,17 @@ namespace Eithne
 			set { LoadConfig(value); }
 		}
 
-		private void UpdateValue(int levels)
+		private void UpdateValue(int levels, int cutoff)
 		{
 			this.levels = levels;
+			this.cutoff = cutoff;
 
 			_block.Invalidate();
 		}
 
 		public override void Setup()
 		{
-			new HaarSetup(levels, UpdateValue);
+			new HaarSetup(levels, cutoff, UpdateValue);
 		}
 
 		public override void Work()
@@ -98,21 +100,30 @@ namespace Eithne
 			if(img.BPP != 1)
                                 throw new PluginException(Catalog.GetString("Image is not in greyscale."));
 
-			return HarrWavelet.Transform(img, levels-1);
+			return HarrWavelet.Transform(img, levels-1, cutoff);
 		}
 
 		private XmlNode GetConfig()
 		{
 			XmlNode root = _xmldoc.CreateNode(XmlNodeType.Element, "config", "");
-			root.InnerText = levels.ToString();
+
+			XmlNode n = _xmldoc.CreateNode(XmlNodeType.Element, "levels", "");
+                        n.InnerText = levels.ToString();
+                        root.AppendChild(n);
+
+			n = _xmldoc.CreateNode(XmlNodeType.Element, "cutoff", "");
+                        n.InnerText = cutoff.ToString();
+                        root.AppendChild(n);
+
 			return root;
 		}
 
 		private void LoadConfig(XmlNode root)
 		{
-			levels = Int32.Parse(root.InnerText);
+			levels = Int32.Parse(root.SelectSingleNode("levels").InnerText);
+			cutoff = Int32.Parse(root.SelectSingleNode("cutoff").InnerText);
 
-			UpdateValue(levels);
+			UpdateValue(levels, cutoff);
 		}
 
 		public override int NumIn		{ get { return 1; } }

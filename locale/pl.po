@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-26 19:57+0100\n"
+"POT-Creation-Date: 2006-12-26 21:06+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -528,8 +528,7 @@ msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:178 Plugins/Desaturate/Desaturate.cs:111
 #: Plugins/Edge/Edge.cs:144 Plugins/FFT/DCT.cs:152 Plugins/FFT/FFT.cs:178
-#: Plugins/Haar/DeHaar.cs:123 Plugins/Haar/Haar.cs:123
-#: Plugins/Histogram/Histogram.cs:274
+#: Plugins/Haar/Haar.cs:134 Plugins/Histogram/Histogram.cs:274
 #: Plugins/NewSourceImages/NewSourceImages.cs:84
 #: Plugins/RGBSplit/RGBSplit.cs:138 Plugins/Random/Random.cs:147
 #: Plugins/Resize/Resize.cs:106
@@ -589,7 +588,7 @@ msgid "This plugin detects edges in images."
 msgstr "Ta wtyczka wykrywa krawędzie na obrazach."
 
 #: Plugins/Edge/Edge.cs:98 Plugins/FFT/DCT.cs:99 Plugins/FFT/FFT.cs:114
-#: Plugins/Haar/DeHaar.cs:99 Plugins/Haar/Haar.cs:99
+#: Plugins/Haar/DeHaar.cs:99 Plugins/Haar/Haar.cs:101
 #: Plugins/Histogram/Histogram.cs:108 Plugins/Histogram/Histogram.cs:140
 msgid "Image is not in greyscale."
 msgstr "Obraz nie jest w skali szarości."
@@ -610,7 +609,8 @@ msgstr "<big><big><b>Wykrywanie Krawędzi</b></big></big>"
 msgid "Calculate energy of difference"
 msgstr "Oblicz energię różnic"
 
-#: Plugins/Edge/resources/Edge.glade:57 Plugins/Haar/resources/Haar.glade:90
+#: Plugins/Edge/resources/Edge.glade:57 Plugins/Haar/resources/DeHaar.glade:90
+#: Plugins/Haar/resources/Haar.glade:135
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
 #: resources/Preferences.glade:102
@@ -696,7 +696,7 @@ msgstr "Obrazy wejściowe."
 msgid "Input images plus flipped images."
 msgstr "Obrazy wejściowe plus odbite obrazy."
 
-#: Plugins/Haar/DeHaar.cs:12
+#: Plugins/Haar/DeHaar.cs:12 Plugins/Haar/resources/DeHaar.glade:7
 msgid "Inverse Haar Wavelet"
 msgstr "Odwrotna Falka Haara"
 
@@ -704,9 +704,13 @@ msgstr "Odwrotna Falka Haara"
 msgid "This plugin calculates inverse of Haar wavelet."
 msgstr "Ta wtyczka oblicza odwrotną falkę Haara."
 
-#: Plugins/Haar/DeHaar.cs:128 Plugins/Haar/Haar.cs:128
+#: Plugins/Haar/DeHaar.cs:123 Plugins/Haar/Haar.cs:139
 msgid "Haar wavelet."
 msgstr "Falka Haara."
+
+#: Plugins/Haar/DeHaar.cs:128
+msgid "Output image."
+msgstr "Obraz wyjściowy."
 
 #: Plugins/Haar/Haar.cs:12 Plugins/Haar/resources/Haar.glade:7
 msgid "Haar Wavelet"
@@ -716,13 +720,21 @@ msgstr "Falka Haara"
 msgid "This plugin calculates Haar wavelet."
 msgstr "Ta wtyczka oblicza falkę Haara."
 
+#: Plugins/Haar/resources/DeHaar.glade:17
+msgid "<big><big><b>Inverse Haar Wavelet</b></big></big>"
+msgstr "<big><big><b>Odwrotna Falka Haara</b></big></big>"
+
+#: Plugins/Haar/resources/DeHaar.glade:28 Plugins/Haar/resources/Haar.glade:28
+msgid "Number of wavelet levels:"
+msgstr "Liczba poziomów falki:"
+
 #: Plugins/Haar/resources/Haar.glade:17
 msgid "<big><big><b>Haar Wavelet</b></big></big>"
 msgstr "<big><big><b>Falka Haara</b></big></big>"
 
-#: Plugins/Haar/resources/Haar.glade:28
-msgid "Number of wavelet levels:"
-msgstr "Liczba poziomów falki:"
+#: Plugins/Haar/resources/Haar.glade:72
+msgid "Cutoff δ:"
+msgstr "δ odcięcia:"
 
 #: Plugins/Histogram/Histogram.cs:11
 #: Plugins/Histogram/resources/Histogram.glade:7
