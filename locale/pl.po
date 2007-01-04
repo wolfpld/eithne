@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-04 21:25+0100\n"
+"POT-Creation-Date: 2007-01-04 22:11+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,65 +96,65 @@ msgstr ""
 "Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
 "dostępne:"
 
-#: MainWindow.cs:61
+#: MainWindow.cs:62
 #, csharp-format
 msgid "Welcome to {0}!"
 msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:112
+#: MainWindow.cs:118
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:120
+#: MainWindow.cs:126
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:126
+#: MainWindow.cs:132
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:127 MainWindow.cs:161 Plugins/ClassDB/ClassDBWindow.cs:68
+#: MainWindow.cs:133 MainWindow.cs:167 Plugins/ClassDB/ClassDBWindow.cs:68
 #: Plugins/SimpleDB/SimpleDBWindow.cs:60
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:128
+#: MainWindow.cs:134
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:131 MainWindow.cs:165
+#: MainWindow.cs:137 MainWindow.cs:171
 #, csharp-format
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:135 MainWindow.cs:169 Plugins/SimpleDB/SimpleDBWindow.cs:68
+#: MainWindow.cs:141 MainWindow.cs:175 Plugins/SimpleDB/SimpleDBWindow.cs:68
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:150
+#: MainWindow.cs:156
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:160
+#: MainWindow.cs:166
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:161
+#: MainWindow.cs:167
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:185 MainWindow.cs:201
+#: MainWindow.cs:191 MainWindow.cs:207
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
 
-#: MainWindow.cs:219
+#: MainWindow.cs:225 resources/MainWindow.glade:112
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: MainWindow.cs:225 resources/MainWindow.glade:95
-#: resources/MainWindow.glade:184
+#: MainWindow.cs:234 resources/MainWindow.glade:95
+#: resources/MainWindow.glade:201
 msgid "Run"
 msgstr "Uruchom"
 
@@ -1269,8 +1269,8 @@ msgid "Extensible Image Recognition Systems modelling program"
 msgstr "Rozszerzalny program modelujący systemy rozpoznawania obrazów"
 
 #: resources/About.glade:99
-msgid "<small>Copyright © 2005 - 2007 Bartosz Taudul</small>"
-msgstr "<small>Copyright © 2005 - 2007 Bartosz Taudul</small>"
+msgid "<small>Copyright © 2005 – 2007 Bartosz Taudul</small>"
+msgstr "<small>Copyright © 2005 – 2007 Bartosz Taudul</small>"
 
 #: resources/FatalError.glade:8
 msgid "Fatal error encountered"
@@ -1322,19 +1322,19 @@ msgstr "gtk-preferences"
 msgid "System"
 msgstr "System"
 
-#: resources/MainWindow.glade:115
+#: resources/MainWindow.glade:132
 msgid "Help"
 msgstr "Pomoc"
 
-#: resources/MainWindow.glade:122
+#: resources/MainWindow.glade:139
 msgid "Plugin list"
 msgstr "Lista wtyczek"
 
-#: resources/MainWindow.glade:230
+#: resources/MainWindow.glade:247
 msgid "System schematic"
 msgstr "Schemat systemu"
 
-#: resources/MainWindow.glade:271
+#: resources/MainWindow.glade:288
 msgid "Plugin toolbox"
 msgstr "Narzędziówka"
 
