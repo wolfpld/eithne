@@ -134,16 +134,24 @@ namespace Eithne
 		private ArrayList Threads = new ArrayList();
 		private bool stop = false;
 		private bool running = false;
+		private FinishCallback finish;
 
-		public Engine2(Schematic s)
+		public delegate void FinishCallback();
+
+		public Engine2(Schematic s, FinishCallback finish)
 		{
 			this.s = s;
+			this.finish = finish;
 		}
 
 		private bool Tick()
 		{
 			if(stop)
+			{
+				running = false;
+				finish();
 				return false;
+			}
 
 			// sprawdzenie, czy jakiś wątek nie skończył pracy
 			for(int i=Threads.Count-1; i>=0; i--)
@@ -153,6 +161,7 @@ namespace Eithne
 					if(stop)
 					{
 						running = false;
+						finish();
 						return false;
 					}
 
@@ -181,6 +190,7 @@ namespace Eithne
 			if(Threads.Count == 0)
 			{
 				running = false;
+				finish();
 				return false;
 			}
 
@@ -229,6 +239,11 @@ namespace Eithne
 		public static void CheckGConf()
 		{
 			ConfigThreads = Config.Get("engine/threads", 1);
+		}
+
+		public bool Running
+		{
+			get { return running; }
 		}
 	}
 }

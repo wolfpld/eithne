@@ -18,6 +18,7 @@ namespace Eithne
 		[Widget] ImageMenuItem	MenuFilePreferences;
 		[Widget] ImageMenuItem	MenuFileQuit;
 		[Widget] ImageMenuItem	MenuSystemRun;
+		[Widget] ImageMenuItem	MenuSystemStop;
 		[Widget] ImageMenuItem	MenuHelpPluginList;
 		[Widget] ImageMenuItem	MenuHelpAbout;
 		[Widget] ScrolledWindow	PluginToolboxSocket;
@@ -74,6 +75,8 @@ namespace Eithne
 			MenuFileQuit.Activated += OnWindowDelete;
 			MenuSystemRun.Image = new Image(null, "media-playback-start.png");
 			MenuSystemRun.Activated += OnRun;
+			MenuSystemStop.Image = new Image(null, "media-playback-stop.png");
+			MenuSystemStop.Activated += OnRun;
 			MenuHelpPluginList.Image = new Image(null, "plugin-16.png");
 			MenuHelpPluginList.Activated += delegate(object o, EventArgs eargs) { new PluginList(); };
 			MenuHelpAbout.Image = new Image(null, "help-browser.png");
@@ -92,7 +95,7 @@ namespace Eithne
 			PluginToolboxSocket.AddWithViewport(new PluginToolbox(StatusBar, schematic));
 			SchematicSocket.AddWithViewport(schematic);
 
-			engine = new Engine2(schematic);
+			engine = new Engine2(schematic, SetRunToStart);
 		}
 
 		private void Run()
@@ -104,6 +107,9 @@ namespace Eithne
 
 		private void OnWindowDelete(object o, EventArgs args)
 		{
+			if(engine.Running)
+				engine.Stop();
+
 			Application.Quit();
 		}
 
@@ -204,7 +210,31 @@ namespace Eithne
 
 		private void OnRun(object o, EventArgs args)
 		{
-			engine.Start();
+			if(engine.Running)
+				engine.Stop();
+			else
+			{
+				SetRunToStop();
+				engine.Start();
+			}
+		}
+
+		private void SetRunToStop()
+		{
+			((Image)ToolbarRun.IconWidget).Pixbuf = new Gdk.Pixbuf(null, "media-playback-stop-22.png");
+			ToolbarRun.Label = Catalog.GetString("Stop");
+
+			MenuSystemRun.Sensitive = false;
+			MenuSystemStop.Sensitive = true;
+		}
+
+		private void SetRunToStart()
+		{
+			((Image)ToolbarRun.IconWidget).Pixbuf = new Gdk.Pixbuf(null, "media-playback-start-22.png");
+			ToolbarRun.Label = Catalog.GetString("Run");
+
+			MenuSystemRun.Sensitive = true;
+			MenuSystemStop.Sensitive = false;
 		}
 
 		public void EmergencySave()

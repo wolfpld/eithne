@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-04 20:52+0100\n"
+"POT-Creation-Date: 2007-01-04 21:25+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr "Pytanie"
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
 
-#: Engine.cs:194
+#: Engine.cs:204
 msgid "Engine is already running."
 msgstr "Silnik już jest uruchomiony."
 
@@ -148,6 +148,15 @@ msgstr "Zapisz"
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
+
+#: MainWindow.cs:219
+msgid "Stop"
+msgstr "Zatrzymaj"
+
+#: MainWindow.cs:225 resources/MainWindow.glade:95
+#: resources/MainWindow.glade:184
+msgid "Run"
+msgstr "Uruchom"
 
 #: PluginAbout.cs:25
 #, csharp-format
@@ -1312,10 +1321,6 @@ msgstr "gtk-preferences"
 #: resources/MainWindow.glade:88
 msgid "System"
 msgstr "System"
-
-#: resources/MainWindow.glade:95 resources/MainWindow.glade:184
-msgid "Run"
-msgstr "Uruchom"
 
 #: resources/MainWindow.glade:115
 msgid "Help"

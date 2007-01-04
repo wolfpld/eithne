@@ -72,6 +72,8 @@ RESOURCES = \
 	pixmaps/list-remove.png \
 	pixmaps/media-playback-start-22.png \
 	pixmaps/media-playback-start.png \
+	pixmaps/media-playback-stop-22.png \
+	pixmaps/media-playback-stop.png \
 	pixmaps/no-base.png \
 	pixmaps/plugin-16.png \
 	pixmaps/plugin-48.png \
