@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-01 00:36+0100\n"
+"POT-Creation-Date: 2007-01-04 20:52+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,9 +43,13 @@ msgstr "Skopiowany sygnał."
 msgid "Question"
 msgstr "Pytanie"
 
-#: Engine.cs:68
+#: Engine.cs:61
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
+
+#: Engine.cs:194
+msgid "Engine is already running."
+msgstr "Silnik już jest uruchomiony."
 
 #: FatalError.cs:39
 #, csharp-format
@@ -92,55 +96,55 @@ msgstr ""
 "Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
 "dostępne:"
 
-#: MainWindow.cs:60
+#: MainWindow.cs:61
 #, csharp-format
 msgid "Welcome to {0}!"
 msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:109
+#: MainWindow.cs:112
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:117
+#: MainWindow.cs:120
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:123
+#: MainWindow.cs:126
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:124 MainWindow.cs:158 Plugins/ClassDB/ClassDBWindow.cs:68
+#: MainWindow.cs:127 MainWindow.cs:161 Plugins/ClassDB/ClassDBWindow.cs:68
 #: Plugins/SimpleDB/SimpleDBWindow.cs:60
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:125
+#: MainWindow.cs:128
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:128 MainWindow.cs:162
+#: MainWindow.cs:131 MainWindow.cs:165
 #, csharp-format
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:132 MainWindow.cs:166 Plugins/SimpleDB/SimpleDBWindow.cs:68
+#: MainWindow.cs:135 MainWindow.cs:169 Plugins/SimpleDB/SimpleDBWindow.cs:68
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:147
+#: MainWindow.cs:150
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:157
+#: MainWindow.cs:160
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:158
+#: MainWindow.cs:161
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:182 MainWindow.cs:198
+#: MainWindow.cs:185 MainWindow.cs:201
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
@@ -613,7 +617,7 @@ msgstr "Oblicz energię różnic"
 #: Plugins/Haar/resources/Haar.glade:135
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
-#: resources/Preferences.glade:102
+#: resources/Preferences.glade:153
 msgid "gtk-close"
 msgstr "gtk-close"
 
@@ -1401,6 +1405,14 @@ msgstr "Antyaliasing"
 #: resources/Preferences.glade:81
 msgid "Look and feel"
 msgstr "Wygląd"
+
+#: resources/Preferences.glade:100
+msgid "Maximum number of threads"
+msgstr "Maksymalna liczba wątków"
+
+#: resources/Preferences.glade:131
+msgid "Engine"
+msgstr "Silnik"
 
 #: resources/Splash.glade:8
 msgid "Searching for plugins"
