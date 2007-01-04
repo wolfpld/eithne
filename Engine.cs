@@ -6,10 +6,14 @@ using Mono.Unix;
 
 namespace Eithne
 {
-	class Engine
+	class EngineThread
 	{
-		private static IPlugin Plugin;
-		private static Exception Error;
+		private IPlugin Plugin;
+		private Block b;
+		private Thread t;
+		private Exception Error;
+		private Engine2 engine;
+		private bool finished = false;
 
 		private static void ProcessEvents()
 		{
@@ -17,7 +21,7 @@ namespace Eithne
 				Application.RunIteration();
 		}
 
-		private static void ThreadedWork()
+		private void ThreadedWork()
 		{
 			Error = null;
 
@@ -31,77 +35,200 @@ namespace Eithne
 			}
 		}
 
-		public static void Work(Schematic s)
+		public EngineThread(Engine2 engine, Block b)
 		{
-			ArrayList l = s.Blocks;
-			bool changes = true;
-			Block b;
+			this.b = b;
+			this.engine = engine;
 
-			while(changes)
+			b.Working = true;
+			MainWindow.RedrawSchematic();
+			ProcessEvents();
+
+			try
 			{
-				changes = false;
-
-				for(int j=0; j<l.Count; j++)
+				if(b.Plugin.NumIn != 0)
 				{
-					b = (Block)l[j];
+					CommSocket cs = new CommSocket(b.Plugin.NumIn);
 
-					if(b.CheckState() == Block.State.Ready)
+					for(int i=0; i<b.Plugin.NumIn; i++)
 					{
-						b.Working = true;
+						Socket other = b.SocketIn[i].Other;
+
+						if(other.Parent.Plugin.Out == null)
+						{
+							b.Working = false;
+							b = other.Parent;
+							throw new PluginException(Catalog.GetString("Plugin has no data on output sockets."));
+						}
+
+						cs[i] = other.Parent.Plugin.Out[other.Num];
+					}
+
+					b.Plugin.In = cs;
+				}
+
+				Plugin = b.Plugin;
+				t = new Thread(ThreadedWork);
+				t.Start();
+			}
+			catch(Exception e)
+			{
+				engine.Stop();
+
+				b.ShowError = true;
+				MainWindow.RedrawSchematic();
+				new PluginError(e, b, false);
+			}
+		}
+
+		public void Stop()
+		{
+			if(!finished)
+				t.Abort();
+
+			b.Working = false;
+			MainWindow.RedrawSchematic();
+			ProcessEvents();
+		}
+
+		public bool Finished
+		{
+			get
+			{
+				if(finished)
+					return true;
+
+				try
+				{
+					if(t.Join(0))
+					{
+						finished = true;
+						b.Working = false;
+
+						if(Error != null)
+							throw Error;
+
 						MainWindow.RedrawSchematic();
 						ProcessEvents();
-						
-						try
-						{
-							if(b.Plugin.NumIn != 0)
-							{
-								CommSocket cs = new CommSocket(b.Plugin.NumIn);
-
-								for(int i=0; i<b.Plugin.NumIn; i++)
-								{
-									Socket other = b.SocketIn[i].Other;
-
-									if(other.Parent.Plugin.Out == null)
-									{
-										b.Working = false;
-										b = other.Parent;
-										throw new PluginException(Catalog.GetString("Plugin has no data on output sockets."));
-									}
-
-									cs[i] = other.Parent.Plugin.Out[other.Num];
-								}
-
-								b.Plugin.In = cs;
-							}
-
-							Plugin = b.Plugin;
-							Thread t = new Thread(ThreadedWork);
-							t.Start();
-
-							while(!t.Join(25))
-								ProcessEvents();
-
-							if(Error != null)
-								throw Error;
-
-							b.Working = false;
-							MainWindow.RedrawSchematic();
-							ProcessEvents();
-						}
-						catch(Exception e)
-						{
-							b.Working = false;
-							b.ShowError = true;
-							MainWindow.RedrawSchematic();
-							new PluginError(e, b, false);
-							return;
-						}
-
-						if(b.CheckState() == Block.State.Good)
-							changes = true;
 					}
 				}
+				catch(Exception e)
+				{
+					engine.Stop();
+
+					b.ShowError = true;
+					MainWindow.RedrawSchematic();
+					new PluginError(e, b, false);
+					finished = true;
+				}
+
+				return finished;
 			}
+		}
+	}
+
+	class Engine2
+	{
+		private static int ConfigThreads = Config.Get("engine/threads", 1);
+		private Schematic s;
+		private ArrayList Threads = new ArrayList();
+		private bool stop = false;
+		private bool running = false;
+
+		public Engine2(Schematic s)
+		{
+			this.s = s;
+		}
+
+		private bool Tick()
+		{
+			if(stop)
+				return false;
+
+			// sprawdzenie, czy jakiś wątek nie skończył pracy
+			for(int i=Threads.Count-1; i>=0; i--)
+				if(((EngineThread)Threads[i]).Finished)
+				{
+					// w przypadku błędu praca jest skończona
+					if(stop)
+					{
+						running = false;
+						return false;
+					}
+
+					Threads.RemoveAt(i);
+				}
+
+			// jeżeli są jakieś wolne sloty na wątki, to trzeba spróbować je wypełnić
+			if(Threads.Count < ConfigThreads)
+			{
+				ArrayList Blocks = s.Blocks;
+
+				for(int i=0; i<Blocks.Count; i++)
+				{
+					// sprawdzenie czy są wolne wątki
+					if(Threads.Count >= ConfigThreads)
+						break;
+
+					Block b = (Block)Blocks[i];
+
+					if(b.CheckState() == Block.State.Ready && b.Working != true)
+						Threads.Add(new EngineThread(this, b));
+				}
+			}
+
+			// sprawdzenie czy zostały jakieś wątki
+			if(Threads.Count == 0)
+			{
+				running = false;
+				return false;
+			}
+
+			return true;
+		}
+
+		public void Start()
+		{
+			// nie powinno nigdy się zdarzyć
+			if(running)
+				throw new Exception(Catalog.GetString("Engine is already running."));
+
+			ArrayList Blocks = s.Blocks;
+
+			stop = false;
+			running = true;
+
+			// przejrzenie wszystkich bloków i dodanie gotowych do pracy do listy wątków
+			for(int i=0; i<Blocks.Count; i++)
+			{
+				// sprawdzenie czy są wolne wątki
+				if(Threads.Count >= ConfigThreads)
+					break;
+
+				Block b = (Block)Blocks[i];
+
+				if(b.CheckState() == Block.State.Ready)
+					Threads.Add(new EngineThread(this, b));
+			}
+
+			// sprawdzanie stanu wątków co 50 ms
+			GLib.Timeout.Add(50, new GLib.TimeoutHandler(Tick));
+		}
+
+		// zatrzymuje wszystkie wątki
+		public void Stop()
+		{
+			stop = true;
+
+			foreach(EngineThread t in Threads)
+				t.Stop();
+
+			Threads.RemoveRange(0, Threads.Count);
+		}
+
+		public static void CheckGConf()
+		{
+			ConfigThreads = Config.Get("engine/threads", 1);
 		}
 	}
 }

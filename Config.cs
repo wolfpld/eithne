@@ -302,6 +302,7 @@ namespace Eithne
 		{
 			Block.CheckGConf();
 			Schematic.CheckGConf();
+			Engine2.CheckGConf();
 		}
 	}
 }

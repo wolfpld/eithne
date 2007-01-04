@@ -28,6 +28,7 @@ namespace Eithne
 		[Widget] ToolButton	ToolbarRun;
 
 		private Schematic schematic;
+		private Engine2 engine;
 		private string filename = "";
 
 		private static MainWindow mw = null;
@@ -90,6 +91,8 @@ namespace Eithne
 			schematic = new Schematic(StatusBar);
 			PluginToolboxSocket.AddWithViewport(new PluginToolbox(StatusBar, schematic));
 			SchematicSocket.AddWithViewport(schematic);
+
+			engine = new Engine2(schematic);
 		}
 
 		private void Run()
@@ -201,7 +204,7 @@ namespace Eithne
 
 		private void OnRun(object o, EventArgs args)
 		{
-			Engine.Work(schematic);
+			engine.Start();
 		}
 
 		public void EmergencySave()
