@@ -15,12 +15,6 @@ namespace Eithne
 		private Engine2 engine;
 		private bool finished = false;
 
-		private static void ProcessEvents()
-		{
-			while(Application.EventsPending())
-				Application.RunIteration();
-		}
-
 		private void ThreadedWork()
 		{
 			Error = null;
@@ -42,7 +36,6 @@ namespace Eithne
 
 			b.Working = true;
 			MainWindow.RedrawSchematic();
-			ProcessEvents();
 
 			try
 			{
@@ -88,7 +81,6 @@ namespace Eithne
 
 			b.Working = false;
 			MainWindow.RedrawSchematic();
-			ProcessEvents();
 		}
 
 		public bool Finished
@@ -109,7 +101,6 @@ namespace Eithne
 							throw Error;
 
 						MainWindow.RedrawSchematic();
-						ProcessEvents();
 					}
 				}
 				catch(Exception e)
