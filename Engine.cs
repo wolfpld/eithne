@@ -126,6 +126,7 @@ namespace Eithne
 		private bool stop = false;
 		private bool running = false;
 		private FinishCallback finish;
+		private DateTime start, end;
 
 		public delegate void FinishCallback();
 
@@ -140,6 +141,7 @@ namespace Eithne
 			if(stop)
 			{
 				running = false;
+				end = DateTime.Now;
 				finish();
 				return false;
 			}
@@ -152,6 +154,7 @@ namespace Eithne
 					if(stop)
 					{
 						running = false;
+						end = DateTime.Now;
 						finish();
 						return false;
 					}
@@ -181,6 +184,7 @@ namespace Eithne
 			if(Threads.Count == 0)
 			{
 				running = false;
+				end = DateTime.Now;
 				finish();
 				return false;
 			}
@@ -193,6 +197,8 @@ namespace Eithne
 			// nie powinno nigdy się zdarzyć
 			if(running)
 				throw new Exception(Catalog.GetString("Engine is already running."));
+
+			start = DateTime.Now;
 
 			ArrayList Blocks = s.Blocks;
 
@@ -235,6 +241,25 @@ namespace Eithne
 		public bool Running
 		{
 			get { return running; }
+		}
+
+		public string ElapsedTime
+		{
+			get
+			{
+				TimeSpan ts = end - start;
+
+				if(ts.Days == 0)
+					if(ts.Hours == 0)
+						if(ts.Minutes == 0)
+							return String.Format("{0:00}.{1}", ts.Seconds, ts.Milliseconds);
+						else
+							return String.Format("{0:00}:{1:00}.{2}", ts.Minutes, ts.Seconds, ts.Milliseconds);
+					else
+						return String.Format("{0:00}:{1:00}:{2:00}.{3}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+				else
+					return String.Format("{0}.{1:00}:{2:00}:{3:00}.{4}", ts.Days, ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+			}
 		}
 	}
 }

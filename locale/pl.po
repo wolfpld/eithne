@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-04 22:11+0100\n"
+"POT-Creation-Date: 2007-01-08 23:36+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,11 +43,11 @@ msgstr "Skopiowany sygnał."
 msgid "Question"
 msgstr "Pytanie"
 
-#: Engine.cs:61
+#: Engine.cs:54
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
 
-#: Engine.cs:204
+#: Engine.cs:199
 msgid "Engine is already running."
 msgstr "Silnik już jest uruchomiony."
 
@@ -157,6 +157,11 @@ msgstr "Zatrzymaj"
 #: resources/MainWindow.glade:201
 msgid "Run"
 msgstr "Uruchom"
+
+#: MainWindow.cs:240
+#, csharp-format
+msgid "Elapsed time: {0}"
+msgstr "Upłynęło czasu: {0}"
 
 #: PluginAbout.cs:25
 #, csharp-format

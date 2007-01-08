@@ -235,6 +235,9 @@ namespace Eithne
 
 			MenuSystemRun.Sensitive = true;
 			MenuSystemStop.Sensitive = false;
+
+			StatusBar.Pop(1);
+			StatusBar.Push(1, String.Format(Catalog.GetString("Elapsed time: {0}"), engine.ElapsedTime));
 		}
 
 		public void EmergencySave()
