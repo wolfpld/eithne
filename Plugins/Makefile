@@ -12,6 +12,7 @@ SUBDIRS = \
 	Histogram \
 	ImageView \
 	L0Mod \
+	Mirror \
 	Multiplier \
 	NewSourceImages \
 	PC-C1 \

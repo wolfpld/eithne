@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-08 23:36+0100\n"
+"POT-Creation-Date: 2007-01-08 23:55+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -706,7 +706,7 @@ msgstr "Odbicie"
 msgid "This plugin adds flipped copies of images."
 msgstr "Ta wtyczka dodaje odbite kopie obrazów."
 
-#: Plugins/Flip/Flip.cs:112
+#: Plugins/Flip/Flip.cs:112 Plugins/Mirror/Mirror.cs:116
 msgid "Input images."
 msgstr "Obrazy wejściowe."
 
@@ -860,6 +860,20 @@ msgstr "<big><big><b>Zmodyfikowana metryka L<sub>0</sub></b></big></big>"
 #: Plugins/L0Mod/resources/L0Mod.glade:58
 msgid "Cut-off δ:"
 msgstr "δ odcięcia:"
+
+#: Plugins/Mirror/Mirror.cs:11
+msgid "Mirror"
+msgstr "Lustrzane obrazy"
+
+#: Plugins/Mirror/Mirror.cs:26
+msgid ""
+"This plugin adds copies of images which have left half mirrored to the right "
+"half."
+msgstr "Ta wtyczka dodaje kopie obrazów, które mają lewą połowę lustrzanie odbitą na prawej połowie."
+
+#: Plugins/Mirror/Mirror.cs:121
+msgid "Input images plus mirror images."
+msgstr "Obrazy wejściowe plus lustrzane obrazy."
 
 #: Plugins/Multiplier/Multiplier.cs:11
 #: Plugins/Multiplier/resources/Multiplier.glade:8
