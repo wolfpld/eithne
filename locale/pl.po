@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-08 23:55+0100\n"
+"POT-Creation-Date: 2007-01-20 21:50+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -707,6 +707,7 @@ msgid "This plugin adds flipped copies of images."
 msgstr "Ta wtyczka dodaje odbite kopie obrazów."
 
 #: Plugins/Flip/Flip.cs:112 Plugins/Mirror/Mirror.cs:116
+#: Plugins/ResizeWavelet/ResizeWavelet.cs:105
 msgid "Input images."
 msgstr "Obrazy wejściowe."
 
@@ -869,7 +870,9 @@ msgstr "Lustrzane obrazy"
 msgid ""
 "This plugin adds copies of images which have left half mirrored to the right "
 "half."
-msgstr "Ta wtyczka dodaje kopie obrazów, które mają lewą połowę lustrzanie odbitą na prawej połowie."
+msgstr ""
+"Ta wtyczka dodaje kopie obrazów, które mają lewą połowę lustrzanie odbitą na "
+"prawej połowie."
 
 #: Plugins/Mirror/Mirror.cs:121
 msgid "Input images plus mirror images."
@@ -1060,6 +1063,18 @@ msgstr "Dwuliniowa"
 #: Plugins/Resize/resources/ResizeSetup.glade:449
 msgid "Hyper"
 msgstr "Hyper"
+
+#: Plugins/ResizeWavelet/ResizeWavelet.cs:11
+msgid "Wavelet Resize"
+msgstr "Przeskalowanie falkowe"
+
+#: Plugins/ResizeWavelet/ResizeWavelet.cs:26
+msgid "This plugin scales down image using wavelet averages."
+msgstr "Ta wtyczka zmniejsza obrazy używając średnich falkowych."
+
+#: Plugins/ResizeWavelet/ResizeWavelet.cs:110
+msgid "Resized images."
+msgstr "Zmniejszone obrazy."
 
 #: Plugins/ResultData/ResultData.cs:11
 #: Plugins/ResultData/resources/ResultData.glade:8

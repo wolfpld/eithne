@@ -19,6 +19,7 @@ SUBDIRS = \
 	PC-C2 \
 	Random \
 	Resize \
+	ResizeWavelet \
 	ResultData \
 	RGBSplit \
 	SimpleDB \
