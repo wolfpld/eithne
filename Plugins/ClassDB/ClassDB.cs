@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Threading;
 using System.Xml;
 using Mono.Unix;
 
@@ -196,6 +197,22 @@ namespace Eithne
 		}
 	}
 
+	public class TaskInfo
+	{
+		public IImage[] a_out;
+		public ArrayList a_in;
+		public int start;
+		public int end;
+
+		public TaskInfo(IImage[] a_out, ArrayList a_in, int start, int end)
+		{
+			this.a_out = a_out;
+			this.a_in = a_in;
+			this.start = start;
+			this.end = end;
+		}
+	}
+
 	public class ClassDBPlugin : IInPlugin
 	{
 		private ArrayList cat = new ArrayList();
@@ -216,10 +233,24 @@ namespace Eithne
 			new ClassDBSetup(cat, _block);
 		}
 
+		private void TaskWork(object _info)
+		{
+			TaskInfo info = (TaskInfo)_info;
+
+			for(int i=info.start; i<info.end; i++)
+			{
+				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)info.a_in[i]);
+
+				info.a_out[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? 1 : 3);
+			}
+		}
+
 		public override void Work()
 		{
 			if(cat.Count == 0)
 				throw new PluginException(Catalog.GetString("No categories in list"));
+
+			bool MultiThreading = Eithne.Config.Get("engine/blockthreads", false);
 
 			ArrayList test_cl = new ArrayList();
 			ArrayList test_il = new ArrayList();
@@ -248,23 +279,37 @@ namespace Eithne
 				throw new PluginException(Catalog.GetString("There are no base images selected"));
 
 			int[] test_categories = (int[])test_cl.ToArray(typeof(int));
-			IImage[] test_imgarray = new IImage[test_il.Count];
-
 			int[] base_categories = (int[])base_cl.ToArray(typeof(int));
+
+			IImage[] test_imgarray = new IImage[test_il.Count];
 			IImage[] base_imgarray = new IImage[base_il.Count];
 
-			for(int i=0; i<test_il.Count; i++)
+			if(MultiThreading)
 			{
-				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)test_il[i]);
+				// test
+				Thread t1 = new Thread(TaskWork);
+				Thread t2 = new Thread(TaskWork);
 
-				test_imgarray[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? 1 : 3);
+				t1.Start(new TaskInfo(test_imgarray, test_il, 0, test_il.Count/2));
+				t2.Start(new TaskInfo(test_imgarray, test_il, test_il.Count/2, test_il.Count));
+
+				t1.Join();
+				t2.Join();
+
+				// base
+				t1 = new Thread(TaskWork);
+				t2 = new Thread(TaskWork);
+
+				t1.Start(new TaskInfo(base_imgarray, base_il, 0, base_il.Count/2));
+				t2.Start(new TaskInfo(base_imgarray, base_il, base_il.Count/2, base_il.Count));
+
+				t1.Join();
+				t2.Join();
 			}
-
-			for(int i=0; i<base_il.Count; i++)
+			else
 			{
-				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)base_il[i]);
-
-				base_imgarray[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? 1 : 3);
+				TaskWork(new TaskInfo(test_imgarray, test_il, 0, test_il.Count));
+				TaskWork(new TaskInfo(base_imgarray, base_il, 0, base_il.Count));
 			}
 
 			_out = new CommSocket(2);

@@ -14,6 +14,8 @@ eithne x.x.x
 - Multithreaded engine (more than one block can be calculated at once).
 - Ability to stop engine at any time.
 - Display how much time did engine used.
+- Multithreading inside blocks.
+- Requires .NET 2.0.
 
 eithne 0.3.0
 ------------
