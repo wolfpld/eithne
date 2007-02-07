@@ -17,8 +17,8 @@ eithne x.x.x
 - Multithreading inside blocks: ClassDB, Euclid, L0Mod, PC-C1, PC-C2.
 - Requires .NET 2.0.
 
-eithne 0.3.0
-------------
+eithne 0.3.0 (2006-05-09)
+-------------------------
 
 - New result processing plugin: X of Y.
 - New image processing plugins: FFT and DCT.
@@ -28,14 +28,14 @@ eithne 0.3.0
 - Persistent configuration possibility (gconf or registry).
 - Ability to speed up drawing by reducing eyecandy of schematic.
 
-eithne 0.2.1
-------------
+eithne 0.2.1 (2006-02-17)
+-------------------------
 
 - Blocks are now displayed much fancier than before.
 - Plugin choosing best results.
 
-eithne 0.2.0
-------------
+eithne 0.2.0 (2006-02-14)
+-------------------------
 
 - Support for image categories.
 - Plugin showing correctness of system.
@@ -43,15 +43,15 @@ eithne 0.2.0
 - Possibility for output plugin to have settings.
 - Changed test image icon to more distinct one.
 
-eithne 0.1.1
-------------
+eithne 0.1.1 (2006-02-09)
+-------------------------
 
 - Visual indication of blocks ready for work.
 - Blocks' work is done in separate thread, so GUI is responsive when system is
   running.
 - Be more friendly for garbage collector.
 
-eithne 0.1.0
-------------
+eithne 0.1.0 (2006-02-04)
+-------------------------
 
 - Initial release.
