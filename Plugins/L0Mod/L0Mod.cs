@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Xml;
 using Mono.Unix;
 
@@ -50,6 +51,24 @@ namespace Eithne
 		}
 	}
 
+	public class TaskInfo
+	{
+		public IResult[] a_out;
+		public IImage[] a_in1;
+		public IImage[] a_in2;
+		public int start;
+		public int end;
+
+		public TaskInfo(IResult[] a_out, IImage[] a_in1, IImage[] a_in2, int start, int end)
+		{
+			this.a_out = a_out;
+			this.a_in1 = a_in1;
+			this.a_in2 = a_in2;
+			this.start = start;
+			this.end = end;
+		}
+	}
+
 	public class L0ModPlugin : IComparatorPlugin
 	{
 		private int delta = 20;
@@ -76,8 +95,25 @@ namespace Eithne
 			new L0ModSetup(delta, UpdateValue);
 		}
 
+		private void TaskWork(object _info)
+		{
+			TaskInfo info = (TaskInfo)_info;
+
+			for(int i=info.start; i<info.end; i++)
+			{
+				double[] data = new double[info.a_in1.Length];
+
+				for(int j=0; j<info.a_in1.Length; j++)
+					data[j] = Compare(info.a_in1[j], info.a_in2[i]);
+
+				info.a_out[i] = new IResult(data);
+			}
+		}
+
 		public override void Work()
 		{
+			bool MultiThreading = Eithne.Config.Get("engine/blockthreads", false);
+
 			ICommImage socket1 = _in[0] as ICommImage;
 			ICommImage socket2 = _in[1] as ICommImage;
 
@@ -88,15 +124,19 @@ namespace Eithne
 
 			IResult[] res = new IResult[img2.Length];
 
-			for(int i=0; i<img2.Length; i++)
+			if(MultiThreading)
 			{
-				double[] data = new double[img1.Length];
+				Thread t1 = new Thread(TaskWork);
+				Thread t2 = new Thread(TaskWork);
 
-				for(int j=0; j<img1.Length; j++)
-					data[j] = Compare(img1[j], img2[i]);
+				t1.Start(new TaskInfo(res, img1, img2, 0, img2.Length/2));
+				t2.Start(new TaskInfo(res, img1, img2, img2.Length/2, img2.Length));
 
-				res[i] = new IResult(data);
+				t1.Join();
+				t2.Join();
 			}
+			else
+				TaskWork(new TaskInfo(res, img1, img2, 0, img2.Length));
 
 			_out[0] = new ICommResult(res, 0, socket1.OriginalImages, socket2.OriginalImages,
 					socket1.Categories, socket2.Categories);

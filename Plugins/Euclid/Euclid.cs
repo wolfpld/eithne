@@ -102,7 +102,7 @@ namespace Eithne
 
 		public override void Work()
 		{
-			bool MultiThreading = Eithne.Config.Get("engine/blockthreads", false);			
+			bool MultiThreading = Eithne.Config.Get("engine/blockthreads", false);
 
 			ICommImage socket1 = _in[0] as ICommImage;
 			ICommImage socket2 = _in[1] as ICommImage;
