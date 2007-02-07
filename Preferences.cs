@@ -9,12 +9,17 @@ namespace Eithne
 	{
 		[Widget] Window		PreferencesWindow;
 		[Widget] Button		CloseButton;
+
+		// Look and feel
 		[Widget] CheckButton	RoundButton;
 		[Widget] CheckButton	InnerPathButton;
 		[Widget] CheckButton	GradientButton;
 		[Widget] CheckButton	SmoothConnectionsButton;
 		[Widget] CheckButton	AntialiasingButton;
+
+		// Engine
 		[Widget] SpinButton	ThreadSpin;
+		[Widget] CheckButton	BlockThreadButton;
 
 		public Preferences()
 		{
@@ -43,6 +48,9 @@ namespace Eithne
 
 			ThreadSpin.Value = Config.Get("engine/threads", 1);
 			ThreadSpin.ValueChanged += delegate(object o, EventArgs args) { Config.Set("engine/threads", ThreadSpin.ValueAsInt); };
+
+			BlockThreadButton.Active = Config.Get("engine/blockthreads", false);
+			BlockThreadButton.Toggled += delegate(object o, EventArgs args) { Config.Set("engine/blockthreads", BlockThreadButton.Active); };
 
 			PreferencesWindow.ShowAll();
 		}

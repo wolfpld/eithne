@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-20 21:50+0100\n"
+"POT-Creation-Date: 2007-02-07 22:18+0100\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -631,7 +631,7 @@ msgstr "Oblicz energię różnic"
 #: Plugins/Haar/resources/Haar.glade:135
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
-#: resources/Preferences.glade:153
+#: resources/Preferences.glade:164
 msgid "gtk-close"
 msgstr "gtk-close"
 
@@ -1449,7 +1449,11 @@ msgstr "Wygląd"
 msgid "Maximum number of threads"
 msgstr "Maksymalna liczba wątków"
 
-#: resources/Preferences.glade:131
+#: resources/Preferences.glade:125
+msgid "Allow multithreading inside blocks"
+msgstr "Pozwól na wielowątkowość wewnątrz bloków"
+
+#: resources/Preferences.glade:142
 msgid "Engine"
 msgstr "Silnik"
 

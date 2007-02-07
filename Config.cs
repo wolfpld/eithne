@@ -249,11 +249,11 @@ namespace Eithne
 
 	public class Config
 	{
-		internal delegate void Callback();
+		public delegate void Callback();
 
 		private static IConfig cfg = null;
 
-		public static void Init()
+		public static void Init(Callback UpdateHandler)
 		{
 			try
 			{
@@ -296,13 +296,6 @@ namespace Eithne
 		public static bool Get(string key, bool def)
 		{
 			return cfg.Get(key, def);
-		}
-
-		private static void UpdateHandler()
-		{
-			Block.CheckGConf();
-			Schematic.CheckGConf();
-			Engine2.CheckGConf();
 		}
 	}
 }

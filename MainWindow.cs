@@ -257,7 +257,7 @@ namespace Eithne
 			Application.Init();
 			Splash s = new Splash();
 
-			Config.Init();
+			Config.Init(UpdateHandler);
 
 			PluginDB.LoadPlugins(s);
 
@@ -274,6 +274,13 @@ namespace Eithne
 
 				new FatalError(e, mw);
 			}
+		}
+
+		private static void UpdateHandler()
+		{
+			Block.CheckGConf();
+			Schematic.CheckGConf();
+			Engine2.CheckGConf();
 		}
 	}
 }
