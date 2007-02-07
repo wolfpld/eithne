@@ -1,4 +1,4 @@
-MCS = mcs
+MCS = gmcs
 
 TARGET = Flip.dll
 

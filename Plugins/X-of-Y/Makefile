@@ -1,4 +1,4 @@
-MCS = mcs
+MCS = gmcs
 
 TARGET = X-of-Y.dll
 
