@@ -1,4 +1,4 @@
-MCS = gmcs
+MCS = mcs
 
 TARGET = SimpleResultView.dll
 

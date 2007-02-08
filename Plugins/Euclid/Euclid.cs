@@ -53,11 +53,11 @@ namespace Eithne
 
 	public class TaskInfo
 	{
-		public IResult[] a_out;
-		public IImage[] a_in1;
-		public IImage[] a_in2;
-		public int start;
-		public int end;
+		private IResult[] a_out;
+		private IImage[] a_in1;
+		private IImage[] a_in2;
+		private int start;
+		private int end;
 
 		public TaskInfo(IResult[] a_out, IImage[] a_in1, IImage[] a_in2, int start, int end)
 		{
@@ -67,70 +67,18 @@ namespace Eithne
 			this.start = start;
 			this.end = end;
 		}
-	}
 
-	public class EuclidPlugin : IComparatorPlugin
-	{
-		public EuclidPlugin()
+		public void TaskWork()
 		{
-			_info = new EuclidInfo();
-		}
-
-		public override void Setup()
-		{
-		}
-
-		public override bool HasSetup
-		{
-			get { return false; }
-		}
-
-		private void TaskWork(object _info)
-		{
-			TaskInfo info = (TaskInfo)_info;
-
-			for(int i=info.start; i<info.end; i++)
+			for(int i=start; i<end; i++)
 			{
-				double[] data = new double[info.a_in1.Length];
+				double[] data = new double[a_in1.Length];
 
-				for(int j=0; j<info.a_in1.Length; j++)
-					data[j] = Compare(info.a_in1[j], info.a_in2[i]);
+				for(int j=0; j<a_in1.Length; j++)
+					data[j] = Compare(a_in1[j], a_in2[i]);
 
-				info.a_out[i] = new IResult(data);
+				a_out[i] = new IResult(data);
 			}
-		}
-
-		public override void Work()
-		{
-			bool MultiThreading = Eithne.Config.Get("engine/blockthreads", false);
-
-			ICommImage socket1 = _in[0] as ICommImage;
-			ICommImage socket2 = _in[1] as ICommImage;
-
-			IImage[] img1 = socket1.Images;
-			IImage[] img2 = socket2.Images;
-
-			_out = new CommSocket(1);
-
-			IResult[] res = new IResult[img2.Length];
-
-			if(MultiThreading)
-			{
-				Thread t1 = new Thread(TaskWork);
-				Thread t2 = new Thread(TaskWork);
-
-				t1.Start(new TaskInfo(res, img1, img2, 0, img2.Length/2));
-				t2.Start(new TaskInfo(res, img1, img2, img2.Length/2, img2.Length));
-
-				t1.Join();
-				t2.Join();
-			}
-			else
-				TaskWork(new TaskInfo(res, img1, img2, 0, img2.Length));
-
-			_out[0] = new ICommResult(res, 0, socket1.OriginalImages, socket2.OriginalImages, socket1.Categories, socket2.Categories);
-
-			_workdone = true;
 		}
 
 		private double Compare(IImage img1, IImage img2)
@@ -160,6 +108,62 @@ namespace Eithne
 
 
 			return Math.Sqrt(sum);
+		}
+	}
+
+	public class EuclidPlugin : IComparatorPlugin
+	{
+		public EuclidPlugin()
+		{
+			_info = new EuclidInfo();
+		}
+
+		public override void Setup()
+		{
+		}
+
+		public override bool HasSetup
+		{
+			get { return false; }
+		}
+
+		public override void Work()
+		{
+			bool MultiThreading = Eithne.Config.Get("engine/blockthreads", false);
+
+			ICommImage socket1 = _in[0] as ICommImage;
+			ICommImage socket2 = _in[1] as ICommImage;
+
+			IImage[] img1 = socket1.Images;
+			IImage[] img2 = socket2.Images;
+
+			_out = new CommSocket(1);
+
+			IResult[] res = new IResult[img2.Length];
+
+			if(MultiThreading)
+			{
+				TaskInfo ti1 = new TaskInfo(res, img1, img2, 0, img2.Length/2);
+				TaskInfo ti2 = new TaskInfo(res, img1, img2, img2.Length/2, img2.Length);
+				
+				Thread t1 = new Thread(ti1.TaskWork);
+				Thread t2 = new Thread(ti2.TaskWork);
+
+				t1.Start();
+				t2.Start();
+
+				t1.Join();
+				t2.Join();
+			}
+			else
+			{
+				TaskInfo t = new TaskInfo(res, img1, img2, 0, img2.Length);
+				t.TaskWork();
+			}
+
+			_out[0] = new ICommResult(res, 0, socket1.OriginalImages, socket2.OriginalImages, socket1.Categories, socket2.Categories);
+
+			_workdone = true;
 		}
 
 		public override int NumIn		{ get { return 2; } }

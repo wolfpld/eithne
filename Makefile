@@ -1,4 +1,4 @@
-MCS = gmcs
+MCS = mcs
 
 IPLUGIN = \
 	Config.cs \

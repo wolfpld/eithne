@@ -199,10 +199,10 @@ namespace Eithne
 
 	public class TaskInfo
 	{
-		public IImage[] a_out;
-		public ArrayList a_in;
-		public int start;
-		public int end;
+		private IImage[] a_out;
+		private ArrayList a_in;
+		private int start;
+		private int end;
 
 		public TaskInfo(IImage[] a_out, ArrayList a_in, int start, int end)
 		{
@@ -210,6 +210,16 @@ namespace Eithne
 			this.a_in = a_in;
 			this.start = start;
 			this.end = end;
+		}
+
+		public void TaskWork()
+		{
+			for(int i=start; i<end; i++)
+			{
+				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)a_in[i]);
+
+				a_out[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? 1 : 3);
+			}
 		}
 	}
 
@@ -233,17 +243,6 @@ namespace Eithne
 			new ClassDBSetup(cat, _block);
 		}
 
-		private void TaskWork(object _info)
-		{
-			TaskInfo info = (TaskInfo)_info;
-
-			for(int i=info.start; i<info.end; i++)
-			{
-				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)info.a_in[i]);
-
-				info.a_out[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? 1 : 3);
-			}
-		}
 
 		public override void Work()
 		{
@@ -287,29 +286,37 @@ namespace Eithne
 			if(MultiThreading)
 			{
 				// test
-				Thread t1 = new Thread(TaskWork);
-				Thread t2 = new Thread(TaskWork);
+				TaskInfo ti1 = new TaskInfo(test_imgarray, test_il, 0, test_il.Count/2);
+				TaskInfo ti2 = new TaskInfo(test_imgarray, test_il, test_il.Count/2, test_il.Count);
 
-				t1.Start(new TaskInfo(test_imgarray, test_il, 0, test_il.Count/2));
-				t2.Start(new TaskInfo(test_imgarray, test_il, test_il.Count/2, test_il.Count));
+				Thread t1 = new Thread(ti1.TaskWork);
+				Thread t2 = new Thread(ti2.TaskWork);
+
+				t1.Start();
+				t2.Start();
 
 				t1.Join();
 				t2.Join();
 
 				// base
-				t1 = new Thread(TaskWork);
-				t2 = new Thread(TaskWork);
+				ti1 = new TaskInfo(base_imgarray, base_il, 0, base_il.Count/2);
+				ti2 = new TaskInfo(base_imgarray, base_il, base_il.Count/2, base_il.Count);
 
-				t1.Start(new TaskInfo(base_imgarray, base_il, 0, base_il.Count/2));
-				t2.Start(new TaskInfo(base_imgarray, base_il, base_il.Count/2, base_il.Count));
+				t1 = new Thread(ti1.TaskWork);
+				t2 = new Thread(ti2.TaskWork);
+
+				t1.Start();
+				t2.Start();
 
 				t1.Join();
 				t2.Join();
 			}
 			else
 			{
-				TaskWork(new TaskInfo(test_imgarray, test_il, 0, test_il.Count));
-				TaskWork(new TaskInfo(base_imgarray, base_il, 0, base_il.Count));
+				TaskInfo t = new TaskInfo(test_imgarray, test_il, 0, test_il.Count);
+				t.TaskWork();
+				t = new TaskInfo(base_imgarray, base_il, 0, base_il.Count);
+				t.TaskWork();
 			}
 
 			_out = new CommSocket(2);

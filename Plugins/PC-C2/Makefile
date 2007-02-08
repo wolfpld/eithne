@@ -1,4 +1,4 @@
-MCS = gmcs
+MCS = mcs
 
 TARGET = PC-C2.dll
 
