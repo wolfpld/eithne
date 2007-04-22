@@ -17,6 +17,16 @@ namespace Eithne
 		[Widget] CheckButton	SmoothConnectionsButton;
 		[Widget] CheckButton	AntialiasingButton;
 
+		[Widget] CheckButton	ChangeBackgroundButton;
+		[Widget] Label		RedLabel;
+		[Widget] Label		GreenLabel;
+		[Widget] Label		BlueLabel;
+		[Widget] Label		AlphaLabel;
+		[Widget] Scale		RedSlider;
+		[Widget] Scale		GreenSlider;
+		[Widget] Scale		BlueSlider;
+		[Widget] Scale		AlphaSlider;
+
 		// Engine
 		[Widget] SpinButton	ThreadSpin;
 		[Widget] CheckButton	BlockThreadButton;
@@ -52,12 +62,42 @@ namespace Eithne
 			BlockThreadButton.Active = Config.Get("engine/blockthreads", false);
 			BlockThreadButton.Toggled += delegate(object o, EventArgs args) { Config.Set("engine/blockthreads", BlockThreadButton.Active); };
 
+			ChangeBackgroundButton.Active = Config.Get("schematic/changebackground", false);
+			SetBackgroundControlsStatus(ChangeBackgroundButton.Active);
+			ChangeBackgroundButton.Toggled += delegate(object o, EventArgs args) { Config.Set("schematic/changebackground", ChangeBackgroundButton.Active); SetBackgroundControlsStatus(ChangeBackgroundButton.Active); };
+
+			RedSlider.Value = Config.Get("schematic/red", 128);
+			RedSlider.ValueChanged += delegate(object o, EventArgs args) { Config.Set("schematic/red", (int)RedSlider.Value); };
+
+			GreenSlider.Value = Config.Get("schematic/green", 128);
+			GreenSlider.ValueChanged += delegate(object o, EventArgs args) { Config.Set("schematic/green", (int)GreenSlider.Value); };
+
+			BlueSlider.Value = Config.Get("schematic/blue", 128);
+			BlueSlider.ValueChanged += delegate(object o, EventArgs args) { Config.Set("schematic/blue", (int)BlueSlider.Value); };
+
+			AlphaSlider.Value = Config.Get("schematic/alpha", 255);
+			AlphaSlider.ValueChanged += delegate(object o, EventArgs args) { Config.Set("schematic/alpha", (int)AlphaSlider.Value); };
+
+
 			PreferencesWindow.ShowAll();
 		}
 
 		private void CloseWindow(object o, EventArgs args)
 		{
 			PreferencesWindow.Destroy();
+		}
+
+		private void SetBackgroundControlsStatus(bool status)
+		{
+			RedLabel.Sensitive = status;
+			GreenLabel.Sensitive = status;
+			BlueLabel.Sensitive = status;
+			AlphaLabel.Sensitive = status;
+
+			RedSlider.Sensitive = status;
+			GreenSlider.Sensitive = status;
+			BlueSlider.Sensitive = status;
+			AlphaSlider.Sensitive = status;
 		}
 	}
 }

@@ -9,6 +9,11 @@ namespace Eithne
 	class Schematic : DrawingArea
 	{
 		private static bool Antialias = Config.Get("schematic/antialias", true);
+		private static bool ChangeBackground = Config.Get("schematic/changebackground", false);
+		private static int BackgroundRed = Config.Get("schematic/red", 128);
+		private static int BackgroundGreen = Config.Get("schematic/green", 128);
+		private static int BackgroundBlue = Config.Get("schematic/blue", 128);
+		private static int BackgroundAlpha = Config.Get("schematic/alpha", 255);
 
 		internal new class Action
 		{
@@ -44,11 +49,26 @@ namespace Eithne
 		public static void CheckGConf()
 		{
 			bool NewAntialias = Config.Get("schematic/antialias", true);
+			bool NewChangeBackground = Config.Get("schematic/changebackground", false);
+			int NewRed = Config.Get("schematic/red", 128);
+			int NewGreen = Config.Get("schematic/green", 128);
+			int NewBlue = Config.Get("schematic/blue", 128);
+			int NewAlpha = Config.Get("schematic/alpha", 255);
 
 			bool redraw =
-				Antialias != NewAntialias;
+				Antialias != NewAntialias ||
+				ChangeBackground != NewChangeBackground ||
+				BackgroundRed != NewRed ||
+				BackgroundGreen != NewGreen ||
+				BackgroundBlue != NewBlue ||
+				BackgroundAlpha != NewAlpha;
 
 			Antialias = NewAntialias;
+			ChangeBackground = NewChangeBackground;
+			BackgroundRed = NewRed;
+			BackgroundGreen = NewGreen;
+			BackgroundBlue = NewBlue;
+			BackgroundAlpha = NewAlpha;
 
 			if(redraw)
 				MainWindow.RedrawSchematic();
@@ -487,6 +507,14 @@ namespace Eithne
 
 		private void Draw(Context c)
 		{
+			if(ChangeBackground)
+			{
+				c.Color = new Color(BackgroundRed/255.0, BackgroundGreen/255.0, BackgroundBlue/255.0, BackgroundAlpha/255.0);
+				c.Operator = Operator.Source;
+				c.Paint();
+				c.Operator = Operator.Over;
+			}
+
 			foreach(Block b in blocks)
 				b.Draw(c, selected);
 
