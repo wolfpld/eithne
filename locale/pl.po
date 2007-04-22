@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-07 22:18+0100\n"
+"POT-Creation-Date: 2007-04-23 00:28+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -284,7 +284,7 @@ msgstr "Wtyczka \"{0}\" wybrana"
 msgid "A_dd"
 msgstr "_Dodaj"
 
-#: PluginToolbox.cs:84 Schematic.cs:331
+#: PluginToolbox.cs:84 Schematic.cs:351
 msgid "_About"
 msgstr "O wtyczce"
 
@@ -318,11 +318,11 @@ msgstr "<big><big><b>Najlepsze-z</b></big></big>"
 msgid "Number of input sockets:"
 msgstr "Liczba gniazd wejściowych:"
 
-#: Plugins/ClassDB/ClassDB.cs:12 Plugins/ClassDB/resources/ClassDB.glade:8
+#: Plugins/ClassDB/ClassDB.cs:13 Plugins/ClassDB/resources/ClassDB.glade:8
 msgid "Categorised Image Database"
 msgstr "Baza Obrazów z Kategoriami"
 
-#: Plugins/ClassDB/ClassDB.cs:27
+#: Plugins/ClassDB/ClassDB.cs:28
 msgid ""
 "This plugin allows categorization of images and splitting them into base and "
 "test images."
@@ -330,32 +330,32 @@ msgstr ""
 "Ta wtyczka umożliwia kategoryzację obrazów i ich podział na obrazy bazowe i "
 "testowe."
 
-#: Plugins/ClassDB/ClassDB.cs:222
+#: Plugins/ClassDB/ClassDB.cs:250
 msgid "No categories in list"
 msgstr "Brak kategorii na liście"
 
-#: Plugins/ClassDB/ClassDB.cs:246
+#: Plugins/ClassDB/ClassDB.cs:276
 msgid "There are no test images selected"
 msgstr "Brak obrazów testowych"
 
-#: Plugins/ClassDB/ClassDB.cs:248
+#: Plugins/ClassDB/ClassDB.cs:278
 msgid "There are no base images selected"
 msgstr "Brak obrazów bazowych"
 
-#: Plugins/ClassDB/ClassDB.cs:335 Plugins/ClassDB/FileList.cs:100
+#: Plugins/ClassDB/ClassDB.cs:387 Plugins/ClassDB/FileList.cs:100
 #, csharp-format
 msgid "From category <b>{0}</b>: {1}"
 msgstr "Kategoria <b>{0}</b>: {1}"
 
-#: Plugins/ClassDB/ClassDB.cs:353 Plugins/Euclid/Euclid.cs:131
-#: Plugins/L0Mod/L0Mod.cs:157 Plugins/PC-C1/PC-C1.cs:135
-#: Plugins/PC-C2/PC-C2.cs:141
+#: Plugins/ClassDB/ClassDB.cs:405 Plugins/Euclid/Euclid.cs:175
+#: Plugins/L0Mod/L0Mod.cs:203 Plugins/PC-C1/PC-C1.cs:179
+#: Plugins/PC-C2/PC-C2.cs:185
 msgid "Base images."
 msgstr "Obrazy bazowe."
 
-#: Plugins/ClassDB/ClassDB.cs:355 Plugins/Euclid/Euclid.cs:133
-#: Plugins/L0Mod/L0Mod.cs:159 Plugins/PC-C1/PC-C1.cs:137
-#: Plugins/PC-C2/PC-C2.cs:143
+#: Plugins/ClassDB/ClassDB.cs:407 Plugins/Euclid/Euclid.cs:177
+#: Plugins/L0Mod/L0Mod.cs:205 Plugins/PC-C1/PC-C1.cs:181
+#: Plugins/PC-C2/PC-C2.cs:187
 msgid "Test images."
 msgstr "Obrazy testowe."
 
@@ -631,34 +631,34 @@ msgstr "Oblicz energię różnic"
 #: Plugins/Haar/resources/Haar.glade:135
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
-#: resources/Preferences.glade:164
+#: resources/Preferences.glade:324
 msgid "gtk-close"
 msgstr "gtk-close"
 
-#: Plugins/Euclid/Euclid.cs:11
+#: Plugins/Euclid/Euclid.cs:12
 msgid "Euclid metric"
 msgstr "Metryka Euklidesa"
 
-#: Plugins/Euclid/Euclid.cs:26
+#: Plugins/Euclid/Euclid.cs:27
 msgid "This plugin calculates Euclid metric between images."
 msgstr "Ta wtyczka oblicza metrykę Euklidesa pomiędzy obrazami."
 
-#: Plugins/Euclid/Euclid.cs:99 Plugins/L0Mod/L0Mod.cs:110
-#: Plugins/PC-C1/PC-C1.cs:100 Plugins/PC-C2/PC-C2.cs:100
+#: Plugins/Euclid/Euclid.cs:87 Plugins/L0Mod/L0Mod.cs:89
+#: Plugins/PC-C1/PC-C1.cs:87 Plugins/PC-C2/PC-C2.cs:87
 msgid "Image is not greyscale or floating point."
 msgstr "Obraz nie jest w skali szarości lub zmiennoprzecinkowy."
 
-#: Plugins/Euclid/Euclid.cs:101 Plugins/L0Mod/L0Mod.cs:112
-#: Plugins/PC-C1/PC-C1.cs:102 Plugins/PC-C2/PC-C2.cs:102
+#: Plugins/Euclid/Euclid.cs:89 Plugins/L0Mod/L0Mod.cs:91
+#: Plugins/PC-C1/PC-C1.cs:89 Plugins/PC-C2/PC-C2.cs:89
 msgid "Images BPP do not match."
 msgstr "Głębie kolorów obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:103 Plugins/L0Mod/L0Mod.cs:114
-#: Plugins/PC-C1/PC-C1.cs:104 Plugins/PC-C2/PC-C2.cs:104
+#: Plugins/Euclid/Euclid.cs:91 Plugins/L0Mod/L0Mod.cs:93
+#: Plugins/PC-C1/PC-C1.cs:91 Plugins/PC-C2/PC-C2.cs:91
 msgid "Images dimensions do not match."
 msgstr "Wymiary obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:138
+#: Plugins/Euclid/Euclid.cs:182
 msgid "Calculated Euclid metric."
 msgstr "Obliczona metryka Euklidesa."
 
@@ -837,16 +837,16 @@ msgstr "x"
 msgid "label3"
 msgstr "x"
 
-#: Plugins/L0Mod/L0Mod.cs:11
+#: Plugins/L0Mod/L0Mod.cs:12
 msgid "Modified L<sub>0</sub> metric"
 msgstr "Zmodyfikowana metryka L<sub>0</sub>"
 
-#: Plugins/L0Mod/L0Mod.cs:26
+#: Plugins/L0Mod/L0Mod.cs:27
 msgid "This plugin calculates modified L<sub>0</sub> metric between images."
 msgstr ""
 "Ta wtyczka oblicza zmodyfikowaną metrykę L<sub>0</sub> pomiędzy obrazami."
 
-#: Plugins/L0Mod/L0Mod.cs:164
+#: Plugins/L0Mod/L0Mod.cs:210
 msgid "Calculated modified L0 metric."
 msgstr "Obliczona zmodyfikowana metryka L0."
 
@@ -915,33 +915,33 @@ msgstr ""
 msgid "Copy of image with original image changed."
 msgstr "Kopia obrazu ze zmienionym obrazem źródłowym."
 
-#: Plugins/PC-C1/PC-C1.cs:11
+#: Plugins/PC-C1/PC-C1.cs:12
 msgid "Pseudo-correlative C<sub>1</sub> metric"
 msgstr "Pseudokorel. metryka C<sub>1</sub>"
 
-#: Plugins/PC-C1/PC-C1.cs:26
+#: Plugins/PC-C1/PC-C1.cs:27
 msgid ""
 "This plugin calculates pseudo-correlative C<sub>1</sub> metric between "
 "images."
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>1</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C1/PC-C1.cs:142
+#: Plugins/PC-C1/PC-C1.cs:186
 msgid "Calculated C1 metric."
 msgstr "Obliczone metryka C1."
 
-#: Plugins/PC-C2/PC-C2.cs:11
+#: Plugins/PC-C2/PC-C2.cs:12
 msgid "Pseudo-correlative C<sub>2</sub> metric"
 msgstr "Pseudokorel. metryka C<sub>2</sub>"
 
-#: Plugins/PC-C2/PC-C2.cs:26
+#: Plugins/PC-C2/PC-C2.cs:27
 msgid ""
 "This plugin calculates pseudo-correlative C<sub>2</sub> metric between "
 "images."
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>2</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C2/PC-C2.cs:148
+#: Plugins/PC-C2/PC-C2.cs:192
 msgid "Calculated C2 metric."
 msgstr "Obliczona metryka C2."
 
@@ -1217,76 +1217,76 @@ msgstr "Minimalna liczba pasujących obrazów:"
 msgid "File <i>{0}</i> is not an eithne system schematic!"
 msgstr "Plik <i>{0}</i> nie jest schematem systemu eithne!"
 
-#: Schematic.cs:150
+#: Schematic.cs:170
 #, csharp-format
 msgid "{0} block selected"
 msgstr "Blok \"{0}\" wybrany"
 
-#: Schematic.cs:157
+#: Schematic.cs:177
 #, csharp-format
 msgid "{0} block, input socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wejściowe {1}. {2}"
 
-#: Schematic.cs:160
+#: Schematic.cs:180
 #, csharp-format
 msgid "{0} block, output socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wyjściowe {1}. {2}"
 
-#: Schematic.cs:215
+#: Schematic.cs:235
 msgid "Move block to desired location"
 msgstr "Przenoszenie bloku na porządaną pozycję"
 
-#: Schematic.cs:265
+#: Schematic.cs:285
 #, csharp-format
 msgid "{0} menu"
 msgstr "Menu bloku \"{0}\""
 
-#: Schematic.cs:273
+#: Schematic.cs:293
 msgid "Display _results"
 msgstr "Wyświetl _wyniki"
 
-#: Schematic.cs:283
+#: Schematic.cs:303
 msgid "_Setup"
 msgstr "U_stawienia"
 
-#: Schematic.cs:292
+#: Schematic.cs:312
 msgid "D_isconnect all"
 msgstr "Rozłącz wszystk_ie"
 
-#: Schematic.cs:299
+#: Schematic.cs:319
 msgid "Removed all block's connections"
 msgstr "Usunięto wszystkie połączenia bloku"
 
-#: Schematic.cs:303
+#: Schematic.cs:323
 msgid "In_validate"
 msgstr "Unieważnij"
 
-#: Schematic.cs:312
+#: Schematic.cs:332
 msgid "Invalidated results"
 msgstr "Unieważniono wyniki"
 
-#: Schematic.cs:316
+#: Schematic.cs:336
 msgid "_Delete"
 msgstr "Usuń"
 
-#: Schematic.cs:325
+#: Schematic.cs:345
 #, csharp-format
 msgid "Deleted {0} block"
 msgstr "Usunięto blok \"{0}\""
 
-#: Schematic.cs:349
+#: Schematic.cs:369
 msgid "Connect block with another"
 msgstr "Łączenie bloku z innym blokiem"
 
-#: Schematic.cs:361 Schematic.cs:376
+#: Schematic.cs:381 Schematic.cs:396
 msgid "Removed connection"
 msgstr "Usunięto połączenie"
 
-#: Schematic.cs:368
+#: Schematic.cs:388
 msgid "_Disconnect"
 msgstr "Rozłącz"
 
-#: Schematic.cs:446
+#: Schematic.cs:466
 msgid "Connected blocks"
 msgstr "Połączono bloki"
 
@@ -1441,19 +1441,39 @@ msgstr "Rysuj gładkie połączenia"
 msgid "Antialiasing"
 msgstr "Antyaliasing"
 
-#: resources/Preferences.glade:81
+#: resources/Preferences.glade:89
+msgid "Change background color"
+msgstr "Zmiana koloru tła"
+
+#: resources/Preferences.glade:107
+msgid "Red"
+msgstr "Czerwony"
+
+#: resources/Preferences.glade:120
+msgid "Green"
+msgstr "Zielony"
+
+#: resources/Preferences.glade:135
+msgid "Blue"
+msgstr "Niebieski"
+
+#: resources/Preferences.glade:150
+msgid "Alpha"
+msgstr "Alfa"
+
+#: resources/Preferences.glade:241
 msgid "Look and feel"
 msgstr "Wygląd"
 
-#: resources/Preferences.glade:100
+#: resources/Preferences.glade:260
 msgid "Maximum number of threads"
 msgstr "Maksymalna liczba wątków"
 
-#: resources/Preferences.glade:125
+#: resources/Preferences.glade:285
 msgid "Allow multithreading inside blocks"
 msgstr "Pozwól na wielowątkowość wewnątrz bloków"
 
-#: resources/Preferences.glade:142
+#: resources/Preferences.glade:302
 msgid "Engine"
 msgstr "Silnik"
 
