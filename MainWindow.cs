@@ -34,6 +34,8 @@ namespace Eithne
 
 		private static MainWindow mw = null;
 
+		private static bool AlphaChannel = false;
+
 		private string Filename
 		{
 			get { return filename; }
@@ -52,6 +54,12 @@ namespace Eithne
 		{
 			Glade.XML gxml = new Glade.XML("MainWindow.glade", "EithneWindow");
 			gxml.BindFields(this);
+
+			if(EithneWindow.Screen.RgbaColormap != null)
+			{
+				AlphaChannel = true;
+				EithneWindow.Colormap = EithneWindow.Screen.RgbaColormap;
+			}
 
 			EithneWindow.IconList = new Gdk.Pixbuf[2] {new Gdk.Pixbuf(null, "icon-48.png"), new Gdk.Pixbuf(null, "icon-16.png")};
 
@@ -281,6 +289,11 @@ namespace Eithne
 			Block.CheckGConf();
 			Schematic.CheckGConf();
 			Engine2.CheckGConf();
+		}
+
+		public static bool HaveAlpha
+		{
+			get { return AlphaChannel; }
 		}
 	}
 }

@@ -92,12 +92,21 @@ namespace Eithne
 			RedLabel.Sensitive = status;
 			GreenLabel.Sensitive = status;
 			BlueLabel.Sensitive = status;
-			AlphaLabel.Sensitive = status;
 
 			RedSlider.Sensitive = status;
 			GreenSlider.Sensitive = status;
 			BlueSlider.Sensitive = status;
-			AlphaSlider.Sensitive = status;
+
+			if(MainWindow.HaveAlpha)
+			{
+				AlphaLabel.Sensitive = status;
+				AlphaSlider.Sensitive = status;
+			}
+			else
+			{
+				AlphaLabel.Sensitive = false;
+				AlphaSlider.Sensitive = false;
+			}
 		}
 	}
 }

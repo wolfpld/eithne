@@ -509,7 +509,11 @@ namespace Eithne
 		{
 			if(ChangeBackground)
 			{
-				c.Color = new Color(BackgroundRed/255.0, BackgroundGreen/255.0, BackgroundBlue/255.0, BackgroundAlpha/255.0);
+				if(MainWindow.HaveAlpha)
+					c.Color = new Color(BackgroundRed/255.0, BackgroundGreen/255.0, BackgroundBlue/255.0, BackgroundAlpha/255.0);
+				else
+					c.Color = new Color(BackgroundRed/255.0, BackgroundGreen/255.0, BackgroundBlue/255.0, 1.0);
+
 				c.Operator = Operator.Source;
 				c.Paint();
 				c.Operator = Operator.Over;
