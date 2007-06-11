@@ -8,7 +8,8 @@ eithne x.x.x
 - Show if images are matching in SRV.
 - Preferences window.
 - Ability to ignore pure white or black values in histogram.
-- New plugins: Edge detection, Flip, Haar, DeHaar, Mirror, Wavelet Resize.
+- New plugins: Edge detection, Flip, Haar, DeHaar, Mirror, Wavelet Resize,
+  Badness.
 - Ability to calculate separate histograms for bottom and top part of image.
 - Optional image inversion in SRV and ImageView.
 - Multithreaded engine (more than one block can be calculated at once).

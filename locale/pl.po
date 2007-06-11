@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-23 00:28+0200\n"
+"POT-Creation-Date: 2007-06-11 23:22+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,69 +96,69 @@ msgstr ""
 "Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
 "dostępne:"
 
-#: MainWindow.cs:62
+#: MainWindow.cs:70
 #, csharp-format
 msgid "Welcome to {0}!"
 msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:118
+#: MainWindow.cs:126
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:126
+#: MainWindow.cs:134
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:132
+#: MainWindow.cs:140
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:133 MainWindow.cs:167 Plugins/ClassDB/ClassDBWindow.cs:68
+#: MainWindow.cs:141 MainWindow.cs:175 Plugins/ClassDB/ClassDBWindow.cs:68
 #: Plugins/SimpleDB/SimpleDBWindow.cs:60
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:134
+#: MainWindow.cs:142
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:137 MainWindow.cs:171
+#: MainWindow.cs:145 MainWindow.cs:179
 #, csharp-format
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:141 MainWindow.cs:175 Plugins/SimpleDB/SimpleDBWindow.cs:68
+#: MainWindow.cs:149 MainWindow.cs:183 Plugins/SimpleDB/SimpleDBWindow.cs:68
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:156
+#: MainWindow.cs:164
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:166
+#: MainWindow.cs:174
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:167
+#: MainWindow.cs:175
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:191 MainWindow.cs:207
+#: MainWindow.cs:199 MainWindow.cs:215
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
 
-#: MainWindow.cs:225 resources/MainWindow.glade:112
+#: MainWindow.cs:233 resources/MainWindow.glade:112
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: MainWindow.cs:234 resources/MainWindow.glade:95
+#: MainWindow.cs:242 resources/MainWindow.glade:95
 #: resources/MainWindow.glade:201
 msgid "Run"
 msgstr "Uruchom"
 
-#: MainWindow.cs:240
+#: MainWindow.cs:248
 #, csharp-format
 msgid "Elapsed time: {0}"
 msgstr "Upłynęło czasu: {0}"
@@ -288,6 +288,72 @@ msgstr "_Dodaj"
 msgid "_About"
 msgstr "O wtyczce"
 
+#: Plugins/Badness/Badness.cs:12 Plugins/Badness/resources/Badness.glade:7
+msgid "System Badness"
+msgstr "Niepoprawność Systemu"
+
+#: Plugins/Badness/Badness.cs:27
+msgid "This plugin shows badness of system."
+msgstr "Ta wtyczka pokazuje niepoprawność systemu."
+
+#: Plugins/Badness/Badness.cs:91 Plugins/Correctness/Correctness.cs:91
+#: Plugins/ResultData/ResultData.cs:68
+#: Plugins/SimpleResultView/ResultView.cs:95
+msgid "Plugin is not ready to display results."
+msgstr "Wtyczka nie jest gotowa wyświetlać wyniki."
+
+#: Plugins/Badness/Badness.cs:206 Plugins/Correctness/Correctness.cs:206
+msgid "Results."
+msgstr "Wyniki."
+
+#: Plugins/Badness/BadnessWindow.cs:24
+#: Plugins/Correctness/CorrectnessWindow.cs:24
+msgid "Category"
+msgstr "Kategoria"
+
+#: Plugins/Badness/BadnessWindow.cs:25
+msgid "Badness"
+msgstr "Niepoprawność"
+
+#: Plugins/Badness/BadnessWindow.cs:45
+#, csharp-format
+msgid "Incorrectly recognized <b>{0}</b> image out of <b>{1}</b>. ({2:p})"
+msgid_plural ""
+"Incorrectly recognized <b>{0}</b> images out of <b>{1}</b>. ({2:p})"
+msgstr[0] "Niepoprawnie rozpoznano <b>{0}</b> obraz z <b>{1}</b>. ({2:p})"
+msgstr[1] "Niepoprawnie rozpoznano <b>{0}</b> obrazy z <b>{1}</b>. ({2:p})"
+msgstr[2] "Niepoprawnie rozpoznano <b>{0}</b> obrazów z <b>{1}</b>. ({2:p})"
+
+#: Plugins/Badness/resources/Badness.glade:19
+#: Plugins/ClassDB/resources/ClassDB.glade:58
+#: Plugins/ClassDB/resources/Preview.glade:33
+#: Plugins/Correctness/resources/Correctness.glade:33
+#: Plugins/SimpleDB/resources/Preview.glade:33
+#: Plugins/SimpleDB/resources/SimpleDB.glade:58
+#: resources/DialogMessage.glade:54 resources/DialogQuestion.glade:54
+msgid "label1"
+msgstr "x"
+
+#: Plugins/Badness/resources/Setup.glade:8
+#: Plugins/Correctness/resources/Setup.glade:8
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: Plugins/Badness/resources/Setup.glade:33
+#: Plugins/Correctness/resources/Setup.glade:33
+msgid "<b>Choose which image will represent category</b>"
+msgstr "<b>Który obraz będzie reprezentował kategorię</b>"
+
+#: Plugins/Badness/resources/Setup.glade:59
+#: Plugins/Correctness/resources/Setup.glade:59
+msgid "First image in category"
+msgstr "Pierwszy obraz w kategorii"
+
+#: Plugins/Badness/resources/Setup.glade:78
+#: Plugins/Correctness/resources/Setup.glade:78
+msgid "Last image in category"
+msgstr "Ostatni obraz w kategorii"
+
 #: Plugins/Best/Best.cs:11 Plugins/Best/resources/Best.glade:8
 msgid "Best-of"
 msgstr "Najlepsze-z"
@@ -399,15 +465,6 @@ msgstr "Obraz <i>"
 msgid "<big><big><b>Categorised Image Database</b></big></big>"
 msgstr "<big><big><b>Baza Obrazów z Kategoriami</b></big></big>"
 
-#: Plugins/ClassDB/resources/ClassDB.glade:58
-#: Plugins/ClassDB/resources/Preview.glade:33
-#: Plugins/Correctness/resources/Correctness.glade:33
-#: Plugins/SimpleDB/resources/Preview.glade:33
-#: Plugins/SimpleDB/resources/SimpleDB.glade:58
-#: resources/DialogMessage.glade:54 resources/DialogQuestion.glade:54
-msgid "label1"
-msgstr "x"
-
 #: Plugins/ClassDB/resources/ClassDB.glade:150
 msgid "Modify images partition"
 msgstr "Zmiana podziału obrazów"
@@ -494,19 +551,6 @@ msgstr "Poprawność Systemu"
 msgid "This plugin shows correctness of system."
 msgstr "Ta wtyczka pokazuje poprawność systemu."
 
-#: Plugins/Correctness/Correctness.cs:91 Plugins/ResultData/ResultData.cs:68
-#: Plugins/SimpleResultView/ResultView.cs:95
-msgid "Plugin is not ready to display results."
-msgstr "Wtyczka nie jest gotowa wyświetlać wyniki."
-
-#: Plugins/Correctness/Correctness.cs:206
-msgid "Results."
-msgstr "Wyniki."
-
-#: Plugins/Correctness/CorrectnessWindow.cs:24
-msgid "Category"
-msgstr "Kategoria"
-
 #: Plugins/Correctness/CorrectnessWindow.cs:25
 msgid "Correctness"
 msgstr "Poprawność"
@@ -519,22 +563,6 @@ msgid_plural ""
 msgstr[0] "Poprawnie rozpoznano <b>{0}</b> obraz z <b>{1}</b>. ({2:p})"
 msgstr[1] "Poprawnie rozpoznano <b>{0}</b> obrazy z <b>{1}</b>. ({2:p})"
 msgstr[2] "Poprawnie rozpoznano <b>{0}</b> obrazów z <b>{1}</b>. ({2:p})"
-
-#: Plugins/Correctness/resources/Setup.glade:8
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: Plugins/Correctness/resources/Setup.glade:33
-msgid "<b>Choose which image will represent category</b>"
-msgstr "<b>Który obraz będzie reprezentował kategorię</b>"
-
-#: Plugins/Correctness/resources/Setup.glade:59
-msgid "First image in category"
-msgstr "Pierwszy obraz w kategorii"
-
-#: Plugins/Correctness/resources/Setup.glade:78
-msgid "Last image in category"
-msgstr "Ostatni obraz w kategorii"
 
 #: Plugins/Crop/Crop.cs:11 Plugins/Crop/resources/Crop.glade:8
 msgid "Crop"
