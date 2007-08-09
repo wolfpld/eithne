@@ -34,11 +34,11 @@ namespace Eithne
 			Spin.ValueChanged += SpinChanged;
 
 			BlackButton.Active = black;
-			BlackButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
+			BlackButton.Toggled += delegate(object o, EventArgs args) { c(this.num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
 			WhiteButton.Active = white;
-			WhiteButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
+			WhiteButton.Toggled += delegate(object o, EventArgs args) { c(this.num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
 			SplitHalfButton.Active = splithalf;
-			SplitHalfButton.Toggled += delegate(object o, EventArgs args) { c(num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
+			SplitHalfButton.Toggled += delegate(object o, EventArgs args) { c(this.num, BlackButton.Active, WhiteButton.Active, SplitHalfButton.Active); };
 
 			HistogramWindow.ShowAll();
 		}
