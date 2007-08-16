@@ -147,11 +147,11 @@ namespace Eithne
 		private bool working = false;
 		private bool showerror = false;
 
-		private static ImageSurface StateBad = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-bad.png"));
-		private static ImageSurface StateGood = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-good.png"));
-		private static ImageSurface StateNotReady = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-not-ready.png"));
-		private static ImageSurface StateReady = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-ready.png"));
-		private static ImageSurface Clock = new ImageSurface(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/clock.png"));
+		private static ImageSurface StateBad = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-bad.png"));
+		private static ImageSurface StateGood = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-good.png"));
+		private static ImageSurface StateNotReady = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-not-ready.png"));
+		private static ImageSurface StateReady = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-ready.png"));
+		private static ImageSurface Clock = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/clock.png"));
 
 		private static bool ConfigGradient = Config.Get("block/gradient", true);
 		private static bool ConfigInner = Config.Get("block/innerpath", true);
