@@ -1,0 +1,29 @@
+<Project name="L0Mod" fileversion="2.0" language="C#" clr-version="Net_1_1" ctype="DotNetProject">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="DotNetProjectConfiguration">
+      <Output directory="../../../Plugins/" assemblyKeyFile="./" assembly="L0Mod" />
+      <Build debugmode="True" target="Library" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_1_1" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+    <Configuration name="Release" ctype="DotNetProjectConfiguration">
+      <Output directory="../../../Plugins/" assembly="L0Mod" />
+      <Build debugmode="False" target="Library" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_1_1" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+  </Configurations>
+  <Contents>
+    <File name="../../../Plugins/L0Mod/L0Mod.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../../Plugins/L0Mod/L0ModSetup.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../../Plugins/L0Mod/resources/L0Mod.glade" subtype="Code" buildaction="EmbedAsResource" />
+  </Contents>
+  <References>
+    <ProjectReference type="Project" localcopy="True" refto="IPlugin" />
+    <ProjectReference type="Project" localcopy="True" refto="Utility" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Gac" localcopy="True" refto="glade-sharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+  </References>
+</Project>

@@ -3,18 +3,118 @@
     <Configuration name="Debug" ctype="CombineConfiguration">
       <Entry build="True" name="Badness" configuration="Debug" />
       <Entry build="True" name="Best" configuration="Debug" />
+      <Entry build="True" name="ClassDB" configuration="Debug" />
+      <Entry build="True" name="Correctness" configuration="Debug" />
+      <Entry build="True" name="Crop" configuration="Debug" />
+      <Entry build="True" name="Desaturate" configuration="Debug" />
+      <Entry build="True" name="Edge" configuration="Debug" />
+      <Entry build="True" name="Euclid" configuration="Debug" />
+      <Entry build="True" name="FFT" configuration="Debug" />
+      <Entry build="True" name="Flip" configuration="Debug" />
+      <Entry build="True" name="Haar" configuration="Debug" />
+      <Entry build="True" name="Histogram" configuration="Debug" />
+      <Entry build="True" name="ImageView" configuration="Debug" />
+      <Entry build="True" name="L0Mod" configuration="Debug" />
+      <Entry build="True" name="Mirror" configuration="Debug" />
+      <Entry build="True" name="Multiplier" configuration="Debug" />
+      <Entry build="True" name="NewSourceImages" configurtion="Debug" />
+      <Entry build="True" name="PC-C1" configuration="Debug" />
+      <Entry build="True" name="PC-C2" configuration="Debug" />
+      <Entry build="True" name="RGBSplit" configuration="Debug" />
+      <Entry build="True" name="Random" configuration="Debug" />
+      <Entry build="True" name="Resize" configuration="Debug" />
+      <Entry build="True" name="ResizeWavelet" configuration="Debug" />
+      <Entry build="True" name="ResultData" configuration="Debug" />
+      <Entry build="True" name="SimpleDB" configuration="Debug" />
+      <Entry build="True" name="SimpleResultView" configuration="Debug" />
+      <Entry build="True" name="X-of-Y" configuration="Debug" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
       <Entry build="True" name="Badness" configuration="Release" />
       <Entry build="True" name="Best" configuration="Release" />
+      <Entry build="True" name="ClassDB" configuration="Release" />
+      <Entry build="True" name="Correctness" configuration="Release" />
+      <Entry build="True" name="Crop" configuration="Release" />
+      <Entry build="True" name="Desaturate" configuration="Release" />
+      <Entry build="True" name="Edge" configuration="Release" />
+      <Entry build="True" name="Euclid" configuration="Release" />
+      <Entry build="True" name="FFT" configuration="Release" />
+      <Entry build="True" name="Flip" configuration="Release" />
+      <Entry build="True" name="Haar" configuration="Release" />
+      <Entry build="True" name="Histogram" configuration="Release" />
+      <Entry build="True" name="ImageView" configuration="Release" />
+      <Entry build="True" name="L0Mod" configuration="Release" />
+      <Entry build="True" name="Mirror" configuration="Release" />
+      <Entry build="True" name="Multiplier" configuration="Release" />
+      <Entry build="True" name="NewSourceImages" configurtion="Release" />
+      <Entry build="True" name="PC-C1" configuration="Release" />
+      <Entry build="True" name="PC-C2" configuration="Release" />
+      <Entry build="True" name="RGBSplit" configuration="Release" />
+      <Entry build="True" name="Random" configuration="Release" />
+      <Entry build="True" name="Resize" configuration="Release" />
+      <Entry build="True" name="ResizeWavelet" configuration="Release" />
+      <Entry build="True" name="ResultData" configuration="Release" />
+      <Entry build="True" name="SimpleDB" configuration="Release" />
+      <Entry build="True" name="SimpleResultView" configuration="Release" />
+      <Entry build="True" name="X-of-Y" configuration="Release" />
     </Configuration>
   </Configurations>
   <StartMode startupentry="Badness" single="True">
     <Execute type="None" entry="Badness" />
     <Execute type="None" entry="Best" />
+    <Execute type="None" entry="ClassDB" />
+    <Execute type="None" entry="Correctness" />
+    <Execute type="None" entry="Crop" />
+    <Execute type="None" entry="Desaturate" />
+    <Execute type="None" entry="Edge" />
+    <Execute type="None" entry="Euclid" />
+    <Execute type="None" entry="FFT" />
+    <Execute type="None" entry="Flip" />
+    <Execute type="None" entry="Haar" />
+    <Execute type="None" entry="Histogram" />
+    <Execute type="None" entry="ImageView" />
+    <Execute type="None" entry="L0Mod" />
+    <Execute type="None" entry="Mirror" />
+    <Execute type="None" entry="Multiplier" />
+    <Execute type="None" entry="NewSourceImages" />
+    <Execute type="None" entry="PC-C1" />
+    <Execute type="None" entry="PC-C2" />
+    <Execute type="None" entry="RGBSplit" />
+    <Execute type="None" entry="Random" />
+    <Execute type="None" entry="Resize" />
+    <Execute type="None" entry="ResizeWavelet" />
+    <Execute type="None" entry="ResultData" />
+    <Execute type="None" entry="SimpleDB" />
+    <Execute type="None" entry="SimpleResultView" />
+    <Execute type="None" entry="X-of-Y" />
   </StartMode>
   <Entries>
     <Entry filename="./Badness/Badness.mdp" />
     <Entry filename="./Best/Best.mdp" />
+    <Entry filename="./ClassDB/ClassDB.mdp" />
+    <Entry filename="./Correctness/Correctness.mdp" />
+    <Entry filename="./Crop/Crop.mdp" />
+    <Entry filename="./Desaturate/Desaturate.mdp" />
+    <Entry filename="./Edge/Edge.mdp" />
+    <Entry filename="./Euclid/Euclid.mdp" />
+    <Entry filename="./FFT/FFT.mdp" />
+    <Entry filename="./Flip/Flip.mdp" />
+    <Entry filename="./Haar/Haar.mdp" />
+    <Entry filename="./Histogram/Histogram.mdp" />
+    <Entry filename="./ImageView/ImageView.mdp" />
+    <Entry filename="./L0Mod/L0Mod.mdp" />
+    <Entry filename="./Mirror/Mirror.mdp" />
+    <Entry filename="./Multiplier/Multiplier.mdp" />
+    <Entry filename="./NewSourceImages/NewSourceImages.mdp" />
+    <Entry filename="./PC-C1/PC-C1.mdp" />
+    <Entry filename="./PC-C2/PC-C2.mdp" />
+    <Entry filename="./RGBSplit/RGBSplit.mdp" />
+    <Entry filename="./Random/Random.mdp" />
+    <Entry filename="./Resize/Resize.mdp" />
+    <Entry filename="./ResizeWavelet/ResizeWavelet.mdp" />
+    <Entry filename="./ResultData/ResultData.mdp" />
+    <Entry filename="./SimpleDB/SimpleDB.mdp" />
+    <Entry filename="./SimpleResultView/SimpleResultView.mdp" />
+    <Entry filename="./X-of-Y/X-of-Y.mdp" />
   </Entries>
 </Combine>
