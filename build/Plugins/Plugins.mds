@@ -1,0 +1,20 @@
+<Combine name="Plugins" fileversion="2.0">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="Badness" configuration="Debug" />
+      <Entry build="True" name="Best" configuration="Debug" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry build="True" name="Badness" configuration="Release" />
+      <Entry build="True" name="Best" configuration="Release" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="Badness" single="True">
+    <Execute type="None" entry="Badness" />
+    <Execute type="None" entry="Best" />
+  </StartMode>
+  <Entries>
+    <Entry filename="./Badness/Badness.mdp" />
+    <Entry filename="./Best/Best.mdp" />
+  </Entries>
+</Combine>
