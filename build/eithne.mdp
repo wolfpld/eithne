@@ -1,0 +1,92 @@
+<Project name="eithne" fileversion="2.0" language="C#" clr-version="Net_1_1" ctype="DotNetProject">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="DotNetProjectConfiguration">
+      <Output directory="../" assemblyKeyFile="./" assembly="eithne" />
+      <Build debugmode="True" target="WinExe" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_1_1" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" win32Icon="../resources/pixmaps/icon.ico" ctype="CSharpCompilerParameters" />
+    </Configuration>
+    <Configuration name="Release" ctype="DotNetProjectConfiguration">
+      <Output directory="../" assembly="eithne" />
+      <Build debugmode="False" target="WinExe" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_1_1" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" win32Icon="../resources/pixmaps/icon.ico" ctype="CSharpCompilerParameters" />
+    </Configuration>
+  </Configurations>
+  <Contents>
+    <File name="../About.cs" subtype="Code" buildaction="Compile" />
+    <File name="../Block.cs" subtype="Code" buildaction="Compile" />
+    <File name="../Connector.cs" subtype="Code" buildaction="Compile" />
+    <File name="../Engine.cs" subtype="Code" buildaction="Compile" />
+    <File name="../FatalError.cs" subtype="Code" buildaction="Compile" />
+    <File name="../LoadError.cs" subtype="Code" buildaction="Compile" />
+    <File name="../MainWindow.cs" subtype="Code" buildaction="Compile" />
+    <File name="../PluginAbout.cs" subtype="Code" buildaction="Compile" />
+    <File name="../PluginDB.cs" subtype="Code" buildaction="Compile" />
+    <File name="../PluginError.cs" subtype="Code" buildaction="Compile" />
+    <File name="../PluginList.cs" subtype="Code" buildaction="Compile" />
+    <File name="../PluginToolbox.cs" subtype="Code" buildaction="Compile" />
+    <File name="../Preferences.cs" subtype="Code" buildaction="Compile" />
+    <File name="../ReverseIterator.cs" subtype="Code" buildaction="Compile" />
+    <File name="../SaveLoad.cs" subtype="Code" buildaction="Compile" />
+    <File name="../Schematic.cs" subtype="Code" buildaction="Compile" />
+    <File name="../Splash.cs" subtype="Code" buildaction="Compile" />
+    <File name="../resources/About.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/FatalError.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/LoadError.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/MainWindow.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/PluginAbout.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/PluginError.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/PluginList.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/Preferences.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/Splash.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/dialog-error.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/dialog-error-16.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/dialog-information.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/dialog-information-16.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/dialog-warning.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/dialog-warning-16.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/document-new.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/document-new-22.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/document-open.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/document-open-22.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/document-save.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/document-save-22.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/document-save-as.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/edit-cut.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/edit-delete.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/help-browser.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/help-browser-48.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/icon-16.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/icon-48.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/image-base.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/image-base-22.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/image-test.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/image-test-22.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/list-add.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/list-remove.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/media-playback-start.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/media-playback-start-22.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/media-playback-stop.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/media-playback-stop-22.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/no-base.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/plugin-16.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/plugin-48.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/preferences-desktop.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/preferences-desktop-48.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/system-log-out.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/system-search.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/user-trash-full.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="../resources/pixmaps/zsrr.jpg" subtype="Code" buildaction="EmbedAsResource" />
+  </Contents>
+  <References>
+    <ProjectReference type="Project" localcopy="True" refto="IPlugin" />
+    <ProjectReference type="Project" localcopy="True" refto="gdk-cairo" />
+    <ProjectReference type="Project" localcopy="True" refto="Utility" />
+    <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Gac" localcopy="True" refto="glade-sharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Gac" localcopy="True" refto="Mono.Cairo, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  </References>
+</Project>
