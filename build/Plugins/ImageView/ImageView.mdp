@@ -14,11 +14,11 @@
     </Configuration>
   </Configurations>
   <Contents>
+    <File name="../../../Plugins/ImageView/ImageSetup.cs" subtype="Code" buildaction="Compile" />
     <File name="../../../Plugins/ImageView/ImageView.cs" subtype="Code" buildaction="Compile" />
-    <File name="../../../Plugins/ImageView/ImageViewSetup.cs" subtype="Code" buildaction="Compile" />
     <File name="../../../Plugins/ImageView/ImageViewWindow.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../../Plugins/ImageView/resources/ImageSetup.glade" subtype="Code" buildaction="EmbedAsResource" />
     <File name="../../../Plugins/ImageView/resources/ImageView.glade" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="../../../Plugins/ImageView/resources/ImageViewSetup.glade" subtype="Code" buildaction="EmbedAsResource" />
   </Contents>
   <References>
     <ProjectReference type="Project" localcopy="True" refto="IPlugin" />
