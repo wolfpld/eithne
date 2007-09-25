@@ -1,5 +1,5 @@
-<Combine name="Plugins" fileversion="2.0">
-  <Configurations active="Debug">
+<Combine name="Plugins" fileversion="2.0" outputpath="./build/bin/">
+  <Configurations>
     <Configuration name="Debug" ctype="CombineConfiguration">
       <Entry build="True" name="Badness" configuration="Debug" />
       <Entry build="True" name="Best" configuration="Debug" />
@@ -17,7 +17,7 @@
       <Entry build="True" name="L0Mod" configuration="Debug" />
       <Entry build="True" name="Mirror" configuration="Debug" />
       <Entry build="True" name="Multiplier" configuration="Debug" />
-      <Entry build="True" name="NewSourceImages" configurtion="Debug" />
+      <Entry build="True" name="NewSourceImages" configuration="Debug" />
       <Entry build="True" name="PC-C1" configuration="Debug" />
       <Entry build="True" name="PC-C2" configuration="Debug" />
       <Entry build="True" name="RGBSplit" configuration="Debug" />
@@ -46,7 +46,7 @@
       <Entry build="True" name="L0Mod" configuration="Release" />
       <Entry build="True" name="Mirror" configuration="Release" />
       <Entry build="True" name="Multiplier" configuration="Release" />
-      <Entry build="True" name="NewSourceImages" configurtion="Release" />
+      <Entry build="True" name="NewSourceImages" configuration="Release" />
       <Entry build="True" name="PC-C1" configuration="Release" />
       <Entry build="True" name="PC-C2" configuration="Release" />
       <Entry build="True" name="RGBSplit" configuration="Release" />
@@ -59,7 +59,7 @@
       <Entry build="True" name="X-of-Y" configuration="Release" />
     </Configuration>
   </Configurations>
-  <StartMode startupentry="Badness" single="True">
+  <StartMode startupentry="Badness" single="False">
     <Execute type="None" entry="Badness" />
     <Execute type="None" entry="Best" />
     <Execute type="None" entry="ClassDB" />
