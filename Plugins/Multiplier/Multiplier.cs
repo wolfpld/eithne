@@ -112,5 +112,11 @@ namespace Eithne
 		{
 			return String.Format(Catalog.GetString("{0}. copy of signal."), n+1);
 		}
+
+		private static string[] matchin  = new string[] { "" };
+		private static string[] matchout = new string[] { "image/rgb", "image/grayscale", "image/float", "result" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

@@ -110,5 +110,11 @@ namespace Eithne
 		{
 			return Catalog.GetString("Scaled image.");
 		}
+
+		private static string[] matchin   = new string[] { "image" };
+		private static string[] matchout  = new string[] { "image/rgb", "image/grayscale", "image/float" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

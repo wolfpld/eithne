@@ -134,5 +134,8 @@ namespace Eithne
 		{
 			return Catalog.GetString("Results to be displayed in raw form.");
 		}
+
+		private static string[] matchin   = new string[] { "result" };
+		public override string[] MatchIn	{ get { return matchin; } }
 	}
 }

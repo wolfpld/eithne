@@ -185,5 +185,11 @@ namespace Eithne
 		{
 			return Catalog.GetString("Calculated C1 metric.");
 		}
+
+		private static string[] matchin   = new string[] { "image/grayscale", "image/float" };
+		private static string[] matchout  = new string[] { "result" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

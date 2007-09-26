@@ -147,5 +147,11 @@ namespace Eithne
 			else
 				return Catalog.GetString("Blue subchannel.");
 		}
+
+		private static string[] matchin   = new string[] { "image/rgb" };
+		private static string[] matchout  = new string[] { "image/grayscale" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

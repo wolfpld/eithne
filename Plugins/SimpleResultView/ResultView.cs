@@ -194,5 +194,8 @@ namespace Eithne
 		{
 			return Catalog.GetString("Results to be viewed.");
 		}
+
+		private static string[] matchin   = new string[] { "result" };
+		public override string[] MatchIn	{ get { return matchin; } }
 	}
 }

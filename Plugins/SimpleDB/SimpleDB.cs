@@ -139,5 +139,8 @@ namespace Eithne
 		{
 			return Catalog.GetString("Images.");
 		}
+
+		private static string[] matchout  = new string[] { "image/rgb", "image/grayscale" };
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

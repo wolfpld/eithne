@@ -159,5 +159,8 @@ namespace Eithne
 		{
 			return Catalog.GetString("Images to be viewed.");
 		}
+
+		private static string[] matchin   = new string[] { "image" };
+		public override string[] MatchIn	{ get { return matchin; } }
 	}
 }

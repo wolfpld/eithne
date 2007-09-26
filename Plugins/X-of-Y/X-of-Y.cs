@@ -203,5 +203,11 @@ namespace Eithne
 		{
 			return Catalog.GetString("Best results.");
 		}
+
+		private static string[] matchin   = new string[] { "result" };
+		private static string[] matchout  = new string[] { "result/processed" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

@@ -52,9 +52,6 @@ namespace Eithne
 
 	public class ConnectorPlugin : IOtherPlugin
 	{
-		private static string[] matchin  = new string[] { "" };
-		private static string[] matchout = new string[] { "" };
-
 		public ConnectorPlugin()
 		{
 			_info = new ConnectorInfo();
@@ -90,6 +87,9 @@ namespace Eithne
 		{
 			return Catalog.GetString("Copied signal.");
 		}
+
+		private static string[] matchin  = new string[] { "" };
+		private static string[] matchout = new string[] { "image/rgb", "image/grayscale", "image/float", "result" };
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
