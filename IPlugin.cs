@@ -140,12 +140,16 @@ namespace Eithne
 
 		public abstract string DescIn(int n);
 		public abstract string DescOut(int n);
+		
+		public abstract string[] MatchIn	{ get; }
+		public abstract string[] MatchOut	{ get; }
 	}
 
 	public abstract class IInPlugin : IPlugin
 	{
 		public override int NumIn			{ get { return 0; } }
 		public override string DescIn(int n)		{ return null; }
+		public override string[] MatchIn		{ get {return null; } }
 	}
 
 	public abstract class IOutPlugin : IPlugin
@@ -162,6 +166,7 @@ namespace Eithne
 
 		public override int NumOut			{ get { return 0; } }
 		public override string DescOut(int n)		{ return null; }
+		public override string[] MatchOut		{ get { return null; } }
 	}
 
 	public abstract class IImgProcPlugin : IPlugin
