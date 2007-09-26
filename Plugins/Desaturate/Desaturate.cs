@@ -115,5 +115,11 @@ namespace Eithne
 		{
 			return Catalog.GetString("Desaturated version of image.");
 		}
+
+		private static string[] matchin   = new string[] { "image/rgb", "image/grayscale" };
+		private static string[] matchout  = new string[] { "image/grayscale" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

@@ -406,5 +406,8 @@ namespace Eithne
 			else
 				return Catalog.GetString("Test images.");
 		}
+
+		private static string[] matchout  = new string[] { "image/rgb", "image/grayscale" };
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

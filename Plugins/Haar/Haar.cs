@@ -138,5 +138,11 @@ namespace Eithne
 		{
 			return Catalog.GetString("Haar wavelet.");
 		}
+
+		private static string[] matchin   = new string[] { "image/grayscale" };
+		private static string[] matchout  = new string[] { "image/grayscale" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }

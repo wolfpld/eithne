@@ -156,5 +156,11 @@ namespace Eithne
 		{
 			return Catalog.GetString("DCT of image.");
 		}
+
+		private static string[] matchin   = new string[] { "image/grayscale" };
+		private static string[] matchout  = new string[] { "image/float" };
+
+		public override string[] MatchIn	{ get { return matchin; } }
+		public override string[] MatchOut	{ get { return matchout; } }
 	}
 }
