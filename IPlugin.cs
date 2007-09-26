@@ -14,7 +14,7 @@ namespace Eithne
 	{
 		public static string Version
 		{
-			get { return "0.4.0"; }
+			get { return "0.4.0+"; }
 		}
 	}
 
