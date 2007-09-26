@@ -137,21 +137,29 @@ namespace Eithne
 
 			IPlugin fp = from.Parent.Plugin;
 			IPlugin tp = to.Parent.Plugin;
-			// ograniczenia co do typu przesyłanych danych
-			if(fp is IOtherPlugin || tp is IOtherPlugin)
-				return true;
-			if(fp is IInPlugin && !(tp is IImgProcPlugin || tp is IComparatorPlugin || tp is IOutPlugin))
-				return false;
-			if(fp is IImgProcPlugin && !(tp is IImgProcPlugin || tp is IComparatorPlugin || tp is IOutPlugin))
-				return false;
-			if(fp is IComparatorPlugin && !(tp is IResProcPlugin || tp is IOutPlugin))
-				return false;
-			if(fp is IResProcPlugin && !(tp is IResProcPlugin || tp is IOutPlugin))
-				return false;
-			if(fp is IOutPlugin)
-				return false;
 
-			return true;
+			foreach(string mOut in fp.MatchOut)
+			{
+				string tmp = mOut;
+				ArrayList matches = new ArrayList();
+				matches.Add(tmp);
+
+				while(tmp.LastIndexOf('/') != -1)
+				{
+					int lastIndex = tmp.LastIndexOf('/');
+					tmp = tmp.Substring(0, lastIndex);
+					matches.Add(tmp);
+				}
+				matches.Add("");
+
+				foreach(string mIn in tp.MatchIn)
+				{
+					if(matches.Contains(mIn))
+						return true;
+				}
+			}
+
+			return false;
 		}
 
 		protected override bool OnMotionNotifyEvent(Gdk.EventMotion args)
