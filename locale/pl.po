@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-11 23:22+0200\n"
+"POT-Creation-Date: 2007-09-27 00:46+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,11 +67,11 @@ msgid ""
 msgstr ""
 "{0} spróbuje zapisać ratunkową kopię schematu do pliku <i>rescue.xml</i>"
 
-#: IPlugin.cs:222 IPlugin.cs:241
+#: IPlugin.cs:227 IPlugin.cs:246
 msgid "BPP must be 1, 3 or 4"
 msgstr "BPP musi wynosić 1, 3 lub 4"
 
-#: IPlugin.cs:273
+#: IPlugin.cs:278
 msgid "Image inversion not supported for floating point data"
 msgstr "Odwracanie obrazów nie jest wspierane dla danych zmiennoprzecinkowych."
 
@@ -163,36 +163,44 @@ msgstr "Uruchom"
 msgid "Elapsed time: {0}"
 msgstr "Upłynęło czasu: {0}"
 
-#: PluginAbout.cs:25
+#: PluginAbout.cs:27
 #, csharp-format
 msgid "About plugin {0}"
 msgstr "O wtyczce \"{0}\""
 
-#: PluginAbout.cs:30 PluginList.cs:84
+#: PluginAbout.cs:32 PluginList.cs:84
 msgid "Author: "
 msgstr "Autor: "
 
-#: PluginAbout.cs:46 PluginAbout.cs:68 PluginToolbox.cs:104
+#: PluginAbout.cs:48
+msgid "Input matches"
+msgstr "Dopasowania wejściowe"
+
+#: PluginAbout.cs:49
+msgid "Output matches"
+msgstr "Dopasowania wyjściowe"
+
+#: PluginAbout.cs:65 PluginAbout.cs:88 PluginToolbox.cs:104
 msgid "Input"
 msgstr "Wejście"
 
-#: PluginAbout.cs:48 PluginAbout.cs:72 PluginToolbox.cs:116
+#: PluginAbout.cs:67 PluginAbout.cs:92 PluginToolbox.cs:116
 msgid "Output"
 msgstr "Wyjście"
 
-#: PluginAbout.cs:50 PluginAbout.cs:76 PluginToolbox.cs:107
+#: PluginAbout.cs:69 PluginAbout.cs:96 PluginToolbox.cs:107
 msgid "Image processing"
 msgstr "Obróbka obrazów"
 
-#: PluginAbout.cs:52 PluginAbout.cs:80 PluginToolbox.cs:113
+#: PluginAbout.cs:71 PluginAbout.cs:100 PluginToolbox.cs:113
 msgid "Result processing"
 msgstr "Obróbka wyników"
 
-#: PluginAbout.cs:54 PluginAbout.cs:84 PluginToolbox.cs:110
+#: PluginAbout.cs:73 PluginAbout.cs:104 PluginToolbox.cs:110
 msgid "Comparator"
 msgstr "Komparator"
 
-#: PluginAbout.cs:56 PluginAbout.cs:88 PluginToolbox.cs:119
+#: PluginAbout.cs:75 PluginAbout.cs:108 PluginToolbox.cs:119
 msgid "Other"
 msgstr "Inne"
 
@@ -284,7 +292,7 @@ msgstr "Wtyczka \"{0}\" wybrana"
 msgid "A_dd"
 msgstr "_Dodaj"
 
-#: PluginToolbox.cs:84 Schematic.cs:351
+#: PluginToolbox.cs:84 Schematic.cs:359
 msgid "_About"
 msgstr "O wtyczce"
 
@@ -1245,76 +1253,76 @@ msgstr "Minimalna liczba pasujących obrazów:"
 msgid "File <i>{0}</i> is not an eithne system schematic!"
 msgstr "Plik <i>{0}</i> nie jest schematem systemu eithne!"
 
-#: Schematic.cs:170
+#: Schematic.cs:178
 #, csharp-format
 msgid "{0} block selected"
 msgstr "Blok \"{0}\" wybrany"
 
-#: Schematic.cs:177
+#: Schematic.cs:185
 #, csharp-format
 msgid "{0} block, input socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wejściowe {1}. {2}"
 
-#: Schematic.cs:180
+#: Schematic.cs:188
 #, csharp-format
 msgid "{0} block, output socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wyjściowe {1}. {2}"
 
-#: Schematic.cs:235
+#: Schematic.cs:243
 msgid "Move block to desired location"
 msgstr "Przenoszenie bloku na porządaną pozycję"
 
-#: Schematic.cs:285
+#: Schematic.cs:293
 #, csharp-format
 msgid "{0} menu"
 msgstr "Menu bloku \"{0}\""
 
-#: Schematic.cs:293
+#: Schematic.cs:301
 msgid "Display _results"
 msgstr "Wyświetl _wyniki"
 
-#: Schematic.cs:303
+#: Schematic.cs:311
 msgid "_Setup"
 msgstr "U_stawienia"
 
-#: Schematic.cs:312
+#: Schematic.cs:320
 msgid "D_isconnect all"
 msgstr "Rozłącz wszystk_ie"
 
-#: Schematic.cs:319
+#: Schematic.cs:327
 msgid "Removed all block's connections"
 msgstr "Usunięto wszystkie połączenia bloku"
 
-#: Schematic.cs:323
+#: Schematic.cs:331
 msgid "In_validate"
 msgstr "Unieważnij"
 
-#: Schematic.cs:332
+#: Schematic.cs:340
 msgid "Invalidated results"
 msgstr "Unieważniono wyniki"
 
-#: Schematic.cs:336
+#: Schematic.cs:344
 msgid "_Delete"
 msgstr "Usuń"
 
-#: Schematic.cs:345
+#: Schematic.cs:353
 #, csharp-format
 msgid "Deleted {0} block"
 msgstr "Usunięto blok \"{0}\""
 
-#: Schematic.cs:369
+#: Schematic.cs:377
 msgid "Connect block with another"
 msgstr "Łączenie bloku z innym blokiem"
 
-#: Schematic.cs:381 Schematic.cs:396
+#: Schematic.cs:389 Schematic.cs:404
 msgid "Removed connection"
 msgstr "Usunięto połączenie"
 
-#: Schematic.cs:388
+#: Schematic.cs:396
 msgid "_Disconnect"
 msgstr "Rozłącz"
 
-#: Schematic.cs:466
+#: Schematic.cs:474
 msgid "Connected blocks"
 msgstr "Połączono bloki"
 
@@ -1400,19 +1408,19 @@ msgstr "Schemat systemu"
 msgid "Plugin toolbox"
 msgstr "Narzędziówka"
 
-#: resources/PluginAbout.glade:40
+#: resources/PluginAbout.glade:23
 msgid "name version"
 msgstr "x"
 
-#: resources/PluginAbout.glade:65
+#: resources/PluginAbout.glade:35
 msgid "type"
 msgstr "x"
 
-#: resources/PluginAbout.glade:108
+#: resources/PluginAbout.glade:62
 msgid "author"
 msgstr "x"
 
-#: resources/PluginAbout.glade:133
+#: resources/PluginAbout.glade:76
 msgid "desc"
 msgstr "x"
 
