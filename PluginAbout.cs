@@ -13,6 +13,8 @@ namespace Eithne
 		[Widget] Label		Desc;
 		[Widget] Label		Type;
 		[Widget] Button		CloseButton;
+		[Widget] TreeView	MatchIn;
+		[Widget] TreeView	MatchOut;
 
 		private void CommonTasks(IInfo info, string type)
 		{
@@ -38,6 +40,23 @@ namespace Eithne
 			PluginAboutWindow.ShowAll();
 		}
 
+		private void FillMatchInfo(IPlugin p)
+		{
+			MatchIn.Model = new ListStore(typeof(string));
+			MatchOut.Model = new ListStore(typeof(string));
+
+			MatchIn.AppendColumn(Catalog.GetString("Input matches"), new CellRendererText(), "text", 0);
+			MatchOut.AppendColumn(Catalog.GetString("Output matches"), new CellRendererText(), "text", 0);
+
+			if(p.MatchIn != null)
+				foreach(string s in p.MatchIn)
+					(MatchIn.Model as ListStore).AppendValues(s);
+
+			if(p.MatchOut != null)
+				foreach(string s in p.MatchOut)
+					(MatchOut.Model as ListStore).AppendValues(s);
+		}
+
 		public PluginAbout(IPlugin p)
 		{
 			string type;
@@ -56,6 +75,7 @@ namespace Eithne
 				type = Catalog.GetString("Other");
 
 			CommonTasks(p.Info, type);
+			FillMatchInfo(p);
 		}
 
 		public PluginAbout(IFactory f)
@@ -90,6 +110,9 @@ namespace Eithne
 			}
 
 			CommonTasks(f.Info, type);
+
+			IPlugin tmp = f.Create();
+			FillMatchInfo(tmp);
 		}
 
 		private void CloseWindow(object o, EventArgs args)
