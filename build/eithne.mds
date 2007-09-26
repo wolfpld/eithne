@@ -1,4 +1,4 @@
-<Combine name="eithne" fileversion="2.0">
+<Combine name="eithne" fileversion="2.0" outputpath="./build/bin/">
   <Configurations active="Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">
       <Entry build="True" name="eithne" configuration="Debug" />
@@ -22,6 +22,7 @@
     <Execute type="None" entry="Utility" />
     <Execute type="None" entry="Plugins" />
   </StartMode>
+  <MonoDevelop.ChangeLogAddIn.ChangeLogInfo policy="NoChangeLog" />
   <Entries>
     <Entry filename="./eithne.mdp" />
     <Entry filename="./IPlugin/IPlugin.mdp" />
