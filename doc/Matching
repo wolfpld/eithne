@@ -1,6 +1,7 @@
 image
 image/rgb
 image/grayscale
+image/grayscale/histogram
 image/float
 result
 result/processed

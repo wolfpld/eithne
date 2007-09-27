@@ -280,7 +280,7 @@ namespace Eithne
 		}
 
 		private static string[] matchin   = new string[] { "image/grayscale" };
-		private static string[] matchout  = new string[] { "image/grayscale" };
+		private static string[] matchout  = new string[] { "image/grayscale/histogram" };
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
