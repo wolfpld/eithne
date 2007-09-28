@@ -30,9 +30,9 @@ all: $(SUBDIRS)
 
 .PHONY: $(SUBDIRS)
 $(SUBDIRS):
-	make -C $@
+	+make -C $@
 
 clean: $(SUBDIRS:%=%-clean)
 
 $(SUBDIRS:%=%-clean):
-	make -C $(@:%-clean=%) clean
+	+make -C $(@:%-clean=%) clean
