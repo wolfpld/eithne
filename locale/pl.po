@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-27 00:46+0200\n"
+"POT-Creation-Date: 2007-09-30 01:06+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -824,6 +824,52 @@ msgstr "Ignoruj zupełnie białe wartości"
 msgid "Calculate separate histograms for top and bottom part of image"
 msgstr "Obliczanie oddzielnych histogramów dla górnej i dolnej połowy obrazu"
 
+#: Plugins/HistogramView/HistogramView.cs:11
+#: Plugins/HistogramView/resources/HistogramView.glade:7
+msgid "Histogram View"
+msgstr "Widok Histogramu"
+
+#: Plugins/HistogramView/HistogramView.cs:26
+msgid "This plugin displays histogram graphs."
+msgstr "Ta wtyczka wyświetla wykresy histogramów."
+
+#: Plugins/HistogramView/HistogramView.cs:67 Plugins/ImageView/ImageView.cs:91
+msgid "Plugin is not ready to display images."
+msgstr "Wtyczka nie jest gotowa wyświetlać obrazy."
+
+#: Plugins/HistogramView/HistogramView.cs:136
+msgid "Histograms to be viewed."
+msgstr "Histogramy, które będą oglądane."
+
+#: Plugins/HistogramView/HistogramViewWindow.cs:47
+#, csharp-format
+msgid "<i>Viewing {0} image histogram</i>"
+msgid_plural "<i>Viewing {0} image histograms</i>"
+msgstr[0] "<i>{0} histogram obrazu</i>"
+msgstr[1] "<i>{0} histogramy obrazów</i>"
+msgstr[2] "<i>{0} histogramów obrazów</i>"
+
+#: Plugins/HistogramView/HistogramViewWindow.cs:70
+#: Plugins/ImageView/ImageViewWindow.cs:70
+#, csharp-format
+msgid "Image category: {0}"
+msgstr "Kategoria obrazu: {0}"
+
+#: Plugins/HistogramView/resources/HistogramView.glade:18
+msgid "<big><big><b>Histogram View</b></big></big>"
+msgstr "<big><big><b>Widok Histogramu</b></big></big>"
+
+#: Plugins/HistogramView/resources/HistogramView.glade:74
+#: Plugins/ImageView/resources/ImageView.glade:117
+#: Plugins/SimpleResultView/resources/ResultView.glade:376
+msgid "label2"
+msgstr "x"
+
+#: Plugins/HistogramView/resources/HistogramView.glade:82
+#: Plugins/ImageView/resources/ImageView.glade:142
+msgid "label3"
+msgstr "x"
+
 #: Plugins/ImageView/ImageView.cs:11
 #: Plugins/ImageView/resources/ImageView.glade:8
 msgid "Image View"
@@ -832,10 +878,6 @@ msgstr "Podgląd obrazów"
 #: Plugins/ImageView/ImageView.cs:26
 msgid "This plugin displays images it receives on input."
 msgstr "Ta wtyczka wyświetla obrazy otrzymane na wejściu."
-
-#: Plugins/ImageView/ImageView.cs:91
-msgid "Plugin is not ready to display images."
-msgstr "Wtyczka nie jest gotowa wyświetlać obrazy."
 
 #: Plugins/ImageView/ImageView.cs:160
 msgid "Images to be viewed."
@@ -849,11 +891,6 @@ msgstr[0] "<i>{0} obraz</i>"
 msgstr[1] "<i>{0} obrazy</i>"
 msgstr[2] "<i>{0} obrazów</i>"
 
-#: Plugins/ImageView/ImageViewWindow.cs:70
-#, csharp-format
-msgid "Image category: {0}"
-msgstr "Kategoria obrazu: {0}"
-
 #: Plugins/ImageView/resources/ImageSetup.glade:16
 #: Plugins/ImageView/resources/ImageView.glade:33
 msgid "<big><big><b>Image View</b></big></big>"
@@ -863,15 +900,6 @@ msgstr "<big><big><b>Podgląd Obrazów</b></big></big>"
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:26
 msgid "Invert images"
 msgstr "Odwróć obrazy"
-
-#: Plugins/ImageView/resources/ImageView.glade:117
-#: Plugins/SimpleResultView/resources/ResultView.glade:376
-msgid "label2"
-msgstr "x"
-
-#: Plugins/ImageView/resources/ImageView.glade:142
-msgid "label3"
-msgstr "x"
 
 #: Plugins/L0Mod/L0Mod.cs:12
 msgid "Modified L<sub>0</sub> metric"
