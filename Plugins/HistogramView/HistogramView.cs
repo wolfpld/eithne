@@ -112,7 +112,7 @@ namespace Eithne
 
 		private Gdk.Pixbuf HistogramGraph(IImage img)
 		{
-			IImage graph = new IImage(1, img.W, 256);
+			IImage graph = new IImage(1, img.W, 260);
 
 			graph.Clear((byte)255);
 
@@ -123,6 +123,11 @@ namespace Eithne
 				for(int j=0; j<hval; j++)
 				{
 					graph[i, 255-j] = (byte)0;
+				}
+
+				for(int j=0; j<3; j++)
+				{
+					graph[i, 259-j] = (byte)((i*255)/img.W);
 				}
 			}
 
