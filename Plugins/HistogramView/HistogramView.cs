@@ -115,20 +115,20 @@ namespace Eithne
 			IImage graph = new IImage(1, img.W, 256);
 
 			graph.Clear((byte)255);
-			
+
 			for(int i=0; i<img.W; i++)
 			{
 				int hval = (byte)img[i, 0];
-				
+
 				for(int j=0; j<hval; j++)
 				{
 					graph[i, 255-j] = (byte)0;
 				}
 			}
-			
+
 			return Utility.CreatePixbuf(graph);
 		}
-		
+
 		public override int NumIn		{ get { return 1; } }
 
 		public override string DescIn(int n)

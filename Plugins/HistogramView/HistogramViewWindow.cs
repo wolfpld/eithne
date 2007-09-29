@@ -14,7 +14,7 @@ namespace Eithne
 		{
 			this.n = n;
 		}
-		
+
 		public int Num
 		{
 			get { return n; }
