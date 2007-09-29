@@ -10,6 +10,7 @@ SUBDIRS = \
 	Flip \
 	Haar \
 	Histogram \
+	HistogramView \
 	ImageView \
 	L0Mod \
 	Mirror \
