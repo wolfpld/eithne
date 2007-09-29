@@ -13,6 +13,7 @@
       <Entry build="True" name="Flip" configuration="Debug" />
       <Entry build="True" name="Haar" configuration="Debug" />
       <Entry build="True" name="Histogram" configuration="Debug" />
+      <Entry build="True" name="HistogramView" configuration="Debug" />
       <Entry build="True" name="ImageView" configuration="Debug" />
       <Entry build="True" name="L0Mod" configuration="Debug" />
       <Entry build="True" name="Mirror" configuration="Debug" />
@@ -42,6 +43,7 @@
       <Entry build="True" name="Flip" configuration="Release" />
       <Entry build="True" name="Haar" configuration="Release" />
       <Entry build="True" name="Histogram" configuration="Release" />
+      <Entry build="True" name="HistogramView" configuration="Release" />
       <Entry build="True" name="ImageView" configuration="Release" />
       <Entry build="True" name="L0Mod" configuration="Release" />
       <Entry build="True" name="Mirror" configuration="Release" />
@@ -72,6 +74,7 @@
     <Execute type="None" entry="Flip" />
     <Execute type="None" entry="Haar" />
     <Execute type="None" entry="Histogram" />
+    <Execute type="None" entry="HistogramView" />
     <Execute type="None" entry="ImageView" />
     <Execute type="None" entry="L0Mod" />
     <Execute type="None" entry="Mirror" />
@@ -101,6 +104,7 @@
     <Entry filename="./Flip/Flip.mdp" />
     <Entry filename="./Haar/Haar.mdp" />
     <Entry filename="./Histogram/Histogram.mdp" />
+    <Entry filename="./HistogramView/HistogramView.mdp" />
     <Entry filename="./ImageView/ImageView.mdp" />
     <Entry filename="./L0Mod/L0Mod.mdp" />
     <Entry filename="./Mirror/Mirror.mdp" />
