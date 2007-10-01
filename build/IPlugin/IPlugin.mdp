@@ -14,10 +14,23 @@
     </Configuration>
   </Configurations>
   <Contents>
+    <File name="../../IPlugin/CommSocket.cs" subtype="Code" buildaction="Compile" />
     <File name="../../IPlugin/Config.cs" subtype="Code" buildaction="Compile" />
     <File name="../../IPlugin/GConfConfig.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IBlock.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/ICommImage.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/ICommResult.cs" subtype="Code" buildaction="Compile" />
     <File name="../../IPlugin/IConfig.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IFactory.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IImage.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IInfo.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IInPlugin.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IOutPlugin.cs" subtype="Code" buildaction="Compile" />
     <File name="../../IPlugin/IPlugin.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IResult.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/IType.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/PluginException.cs" subtype="Code" buildaction="Compile" />
+    <File name="../../IPlugin/Program.cs" subtype="Code" buildaction="Compile" />
     <File name="../../IPlugin/RegistryConfig.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
