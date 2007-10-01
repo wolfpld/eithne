@@ -99,7 +99,7 @@ namespace Eithne
 			byte[] g = new byte[img.H * img.W];
 			byte[] b = new byte[img.H * img.W];
 
-			if(img.BPP == 1)
+			if(img.BPP == BPP.Grayscale)
 			{
 				for(int y=0; y<img.H; y++)
 					for(int x=0; x<img.W; x++)
@@ -123,9 +123,9 @@ namespace Eithne
 			}
 
 			IImage[] ret = new IImage[3];
-			ret[0] = new IImage(1, img.W, img.H, r);
-			ret[1] = new IImage(1, img.W, img.H, g);
-			ret[2] = new IImage(1, img.W, img.H, b);
+			ret[0] = new IImage(BPP.Grayscale, img.W, img.H, r);
+			ret[1] = new IImage(BPP.Grayscale, img.W, img.H, g);
+			ret[2] = new IImage(BPP.Grayscale, img.W, img.H, b);
 
 			return ret;
 		}

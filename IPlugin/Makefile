@@ -3,6 +3,7 @@ MCS = mcs
 TARGET = ../IPlugin.dll
 
 IPLUGIN = \
+	BPP.cs \
 	CommSocket.cs \
 	Config.cs \
 	GConfConfig.cs \

@@ -104,13 +104,10 @@ namespace Eithne
 
 		private IImage SplitHistogram(IImage img)
 		{
-			if(img.BPP != 1)
-				throw new PluginException(Catalog.GetString("Image is not in greyscale."));
-
 			int sh = img.H/2;
 
-			IImage img1 = new IImage(1, img.W, sh);
-			IImage img2 = new IImage(1, img.W, img.H-sh);
+			IImage img1 = new IImage(BPP.Grayscale, img.W, sh);
+			IImage img2 = new IImage(BPP.Grayscale, img.W, img.H-sh);
 
 			for(int y=0; y<sh; y++)
 				for(int x=0; x<img.W; x++)
@@ -123,7 +120,7 @@ namespace Eithne
 			IImage h1 = Histogram(img1);
 			IImage h2 = Histogram(img2);
 
-			IImage ret = new IImage(1, h1.W+h2.W, 1);
+			IImage ret = new IImage(BPP.Grayscale, h1.W+h2.W, 1);
 
 			for(int i=0; i<h1.W; i++)
 				ret[i, 0] = h1[i, 0];
@@ -136,9 +133,6 @@ namespace Eithne
 
 		private IImage Histogram(IImage img)
 		{
-			if(img.BPP != 1)
-				throw new PluginException(Catalog.GetString("Image is not in greyscale."));
-
 			int div = BinDivisor(num);
 			int max = 0;
 
@@ -160,7 +154,7 @@ namespace Eithne
 					}
 				}
 
-			IImage res = new IImage(1, num, 1);
+			IImage res = new IImage(BPP.Grayscale, num, 1);
 
 			for(int i=0; i<num; i++)
 				res.Data[i] = (byte)(((double)counter[i] / max) * 255);

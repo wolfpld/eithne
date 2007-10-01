@@ -83,8 +83,6 @@ namespace Eithne
 
 		private double Compare(IImage img1, IImage img2)
 		{
-			if(img1.BPP != 1 && img1.BPP != 4)
-				throw new PluginException(Catalog.GetString("Image is not greyscale or floating point."));
 			if(img1.BPP != img2.BPP)
 				throw new PluginException(Catalog.GetString("Images BPP do not match."));
 			if(img1.H != img2.H || img1.W != img2.W)
@@ -93,7 +91,7 @@ namespace Eithne
 			double sum1 = 0;
 			double sum2 = 0;
 
-			if(img1.BPP == 1)
+			if(img1.BPP == BPP.Grayscale)
 				for(int i=0; i<img1.Data.Length; i++)
 				{
 					sum1 += Math.Abs(img1.Data[i] - img2.Data[i]);

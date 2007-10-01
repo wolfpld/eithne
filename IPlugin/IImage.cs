@@ -7,43 +7,37 @@ namespace Eithne
 	{
 		private int w, h;
 		private byte[] data;
-		private int bpp;
+		private BPP bpp;
 
-		public IImage(int bpp, int w, int h, byte[] data)
+		public IImage(BPP bpp, int w, int h, byte[] data)
 		{
 			RecreateImage(bpp, w, h, data, false);
 		}
 
-		public IImage(int bpp, int w, int h, byte[] data, bool copy)
+		public IImage(BPP bpp, int w, int h, byte[] data, bool copy)
 		{
 			RecreateImage(bpp, w, h, data, copy);
 		}
 
-		public IImage(int bpp, int w, int h)
+		public IImage(BPP bpp, int w, int h)
 		{
-			if(bpp != 1 && bpp != 3 && bpp != 4)
-				throw new Exception(Catalog.GetString("BPP must be 1, 3 or 4"));
-
 			this.bpp = bpp;
 			this.w = w;
 			this.h = h;
 
-			data = new byte[w * h * bpp];
+			data = new byte[w * h * (int)bpp];
 		}
 
-		private void RecreateImage(int bpp, int w, int h, byte[] data, bool copy)
+		private void RecreateImage(BPP bpp, int w, int h, byte[] data, bool copy)
 		{
-			if(bpp != 1 && bpp != 3 && bpp != 4)
-				throw new Exception(Catalog.GetString("BPP must be 1, 3 or 4"));
-
 			this.bpp = bpp;
 			this.w = w;
 			this.h = h;
 
 			if(copy)
 			{
-				this.data = new byte[w * h * bpp];
-				for(int i=0; i<w*h*bpp; i++)
+				this.data = new byte[w * h * (int)bpp];
+				for(int i=0; i<w*h*(int)bpp; i++)
 					this.data[i] = data[i];
 			}
 			else
@@ -52,11 +46,11 @@ namespace Eithne
 
 		public void Invert()
 		{
-			if(bpp == 1)
+			if(bpp == BPP.Grayscale)
 				for(int x=0; x<w; x++)
 					for(int y=0; y<h; y++)
 						PutPixel(x, y, (byte)(255 - (byte)GetPixel(x, y)));
-			else if(bpp == 3)
+			else if(bpp == BPP.RGB)
 				for(int x=0; x<w; x++)
 					for(int y=0; y<h; y++)
 					{
@@ -94,7 +88,7 @@ namespace Eithne
 			get { return h; }
 		}
 
-		public int BPP
+		public BPP BPP
 		{
 			get { return bpp; }
 		}
@@ -106,9 +100,9 @@ namespace Eithne
 
 		private unsafe object GetPixel(int x, int y)
 		{
-			if(bpp == 1)
+			if(bpp == BPP.Grayscale)
 				return data[x + w*y];
-			else if(bpp == 3)
+			else if(bpp == BPP.RGB)
 				return (data[(x + w*y)*3] << 16) + (data[(x + w*y)*3 + 1] << 8) + data[(x + w*y)*3 + 2];
 			else
 				fixed(byte *ptr = data)
@@ -119,9 +113,9 @@ namespace Eithne
 
 		private unsafe void PutPixel(int x, int y, object val)
 		{
-			if(bpp == 1)
+			if(bpp == BPP.Grayscale)
 				data[x + w*y] = (byte)val;
-			else if (bpp == 3)
+			else if (bpp == BPP.RGB)
 			{
 				data[(x + w*y)*3] =	(byte)(((int)val & 0xFF0000) >> 16);
 				data[(x + w*y)*3 + 1] =	(byte)(((int)val & 0x00FF00) >> 8);

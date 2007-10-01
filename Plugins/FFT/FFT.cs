@@ -110,9 +110,6 @@ namespace Eithne
 
 		private IImage FFT(IImage img)
 		{
-			if(img.BPP != 1)
-				throw new PluginException(Catalog.GetString("Image is not in greyscale."));
-
 			double[] datain = new double[img.W * img.H * 2];
 			double[] dataout = new double[img.W * img.H * 2];
 
@@ -129,7 +126,7 @@ namespace Eithne
 
 			FFTW.fftw_destroy_plan(plan);
 
-			IImage ret = new IImage(4, img.W, img.H);
+			IImage ret = new IImage(BPP.Float, img.W, img.H);
 
 			for(int y=0; y<img.H; y++)
 				for(int x=0; x<img.W; x++)

@@ -83,10 +83,10 @@ namespace Eithne
 
 		private IImage Desaturate(IImage img)
 		{
-			if(img.BPP == 1)
+			if(img.BPP == BPP.Grayscale)
 				return img;
 
-			if(img.BPP == 4)
+			if(img.BPP == BPP.Float)
 				throw new PluginException(Catalog.GetString("Cannot desaturate floating point data"));
 
 			byte[] data = new byte[img.W * img.H];
@@ -100,7 +100,7 @@ namespace Eithne
 				data[i] = (byte)(0.3 * r + 0.59 * g + 0.11 * b);
 			}
 
-			return new IImage(1, img.W, img.H, data);
+			return new IImage(BPP.Grayscale, img.W, img.H, data);
 		}
 
 		public override int NumIn		{ get { return 1; } }

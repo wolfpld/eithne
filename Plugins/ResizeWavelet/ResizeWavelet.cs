@@ -83,7 +83,7 @@ namespace Eithne
 
 		private IImage Resize(IImage img)
 		{
-			IImage ret = new IImage(1, img.W/2, img.H/2);
+			IImage ret = new IImage(BPP.Grayscale, img.W/2, img.H/2);
 
 			for(int y=0; y<img.H/2; y++)
 				for(int x=0; x<img.W/2; x++)

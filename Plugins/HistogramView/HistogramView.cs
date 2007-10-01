@@ -112,7 +112,7 @@ namespace Eithne
 
 		private Gdk.Pixbuf HistogramGraph(IImage img)
 		{
-			IImage graph = new IImage(1, img.W, 260);
+			IImage graph = new IImage(BPP.Grayscale, img.W, 260);
 
 			graph.Clear((byte)255);
 

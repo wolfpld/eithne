@@ -17,12 +17,12 @@ namespace Eithne
 			return (r << 16) + (g << 8) + b;
 		}
 
-		public static IImage CreateImage(Pixbuf buf, int bpp)
+		public static IImage CreateImage(Pixbuf buf, BPP bpp)
 		{
-			byte[] data = new byte[buf.Height * buf.Width * bpp];
+			byte[] data = new byte[buf.Height * buf.Width * (int)bpp];
 			IImage img = new IImage(bpp, buf.Width, buf.Height, data);
 
-			if(bpp == 1)
+			if(bpp == BPP.Grayscale)
 			{
 				for(int y=0; y<buf.Height; y++)
 					for(int x=0; x<buf.Width; x++)
@@ -59,7 +59,7 @@ namespace Eithne
 		{
 			byte[] data;
 
-			if(img.BPP == 1)
+			if(img.BPP == BPP.Grayscale)
 			{
 				// konwersja na RGB
 				data = new byte[img.H * img.W * 3];
@@ -74,7 +74,7 @@ namespace Eithne
 						data[(x + y*img.W)*3 + 2] = color;
 					}
 			}
-			else if(img.BPP == 3)
+			else if(img.BPP == BPP.RGB)
 			{
 				data = img.Data;
 			}
@@ -102,7 +102,7 @@ namespace Eithne
 			Pixbuf tmp = new Pixbuf(data, false, 8, img.W, img.H, img.W * 3, null);
 
 			// wyżej robiony jest wrapper na dane, dane po konwersji są tymczasowe, więc trzeba zrobić kopię
-			if(img.BPP == 1 || img.BPP == 4)
+			if(img.BPP == BPP.Grayscale || img.BPP == BPP.Float)
 				tmp = tmp.Copy();
 
 			return tmp;

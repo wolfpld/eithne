@@ -94,13 +94,10 @@ namespace Eithne
 
 		private IImage DetectEdges(IImage img)
 		{
-			if(img.BPP != 1)
-				throw new PluginException(Catalog.GetString("Image is not in greyscale."));
-
 			int x = img.W - 1;
 			int y = img.H - 1;
 
-			IImage res = new IImage(1, x, y);
+			IImage res = new IImage(BPP.Grayscale, x, y);
 
 			for(int iy=0; iy<y; iy++)
 				for(int ix=0; ix<x; ix++)

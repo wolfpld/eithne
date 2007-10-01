@@ -25,7 +25,7 @@ namespace Eithne
 			int w = ((IImage)tl).W;
 			int h = ((IImage)tl).H;
 
-			IImage ret = new IImage(1, w*2, h*2);
+			IImage ret = new IImage(BPP.Grayscale, w*2, h*2);
 
 			for(int y=0; y<h; y++)
 				for(int x=0; x<w; x++)
@@ -42,8 +42,8 @@ namespace Eithne
 		public static ArrayList Transform(IImage img, int cutoff)
 		{
 			// transformata po wierszach
-			IImage tmp1 = new IImage(1, img.W/2, img.H);
-			IImage tmp2 = new IImage(1, img.W/2, img.H);
+			IImage tmp1 = new IImage(BPP.Grayscale, img.W/2, img.H);
+			IImage tmp2 = new IImage(BPP.Grayscale, img.W/2, img.H);
 
 			for(int y=0; y<img.H; y++)
 				for(int x=0; x<img.W/2; x++)
@@ -53,10 +53,10 @@ namespace Eithne
 				}
 
 			// transformata po kolumnach
-			IImage tl = new IImage(1, img.W/2, img.H/2);
-			IImage tr = new IImage(1, img.W/2, img.H/2);
-			IImage bl = new IImage(1, img.W/2, img.H/2);
-			IImage br = new IImage(1, img.W/2, img.H/2);
+			IImage tl = new IImage(BPP.Grayscale, img.W/2, img.H/2);
+			IImage tr = new IImage(BPP.Grayscale, img.W/2, img.H/2);
+			IImage bl = new IImage(BPP.Grayscale, img.W/2, img.H/2);
+			IImage br = new IImage(BPP.Grayscale, img.W/2, img.H/2);
 
 			for(int y=0; y<img.H/2; y++)
 				for(int x=0; x<img.W/2; x++)
@@ -105,10 +105,10 @@ namespace Eithne
 			int w = img.W/2;
 			int h = img.H/2;
 
-			IImage tl = new IImage(1, w, h);
-			IImage tr = new IImage(1, w, h);
-			IImage bl = new IImage(1, w, h);
-			IImage br = new IImage(1, w, h);
+			IImage tl = new IImage(BPP.Grayscale, w, h);
+			IImage tr = new IImage(BPP.Grayscale, w, h);
+			IImage bl = new IImage(BPP.Grayscale, w, h);
+			IImage br = new IImage(BPP.Grayscale, w, h);
 
 			for(int y=0; y<h; y++)
 				for(int x=0; x<w; x++)
@@ -130,10 +130,10 @@ namespace Eithne
 			int w = img.W/2;
 			int h = img.H/2;
 
-			IImage tl = new IImage(1, w, h);
-			IImage tr = new IImage(1, w, h);
-			IImage bl = new IImage(1, w, h);
-			IImage br = new IImage(1, w, h);
+			IImage tl = new IImage(BPP.Grayscale, w, h);
+			IImage tr = new IImage(BPP.Grayscale, w, h);
+			IImage bl = new IImage(BPP.Grayscale, w, h);
+			IImage br = new IImage(BPP.Grayscale, w, h);
 
 			for(int y=0; y<h; y++)
 				for(int x=0; x<w; x++)
@@ -149,8 +149,8 @@ namespace Eithne
 
 		public static IImage Inverse(IImage tl, IImage tr, IImage bl, IImage br)
 		{
-			IImage tmp1 = new IImage(1, tl.W, tl.H*2);
-			IImage tmp2 = new IImage(1, tl.W, tl.H*2);
+			IImage tmp1 = new IImage(BPP.Grayscale, tl.W, tl.H*2);
+			IImage tmp2 = new IImage(BPP.Grayscale, tl.W, tl.H*2);
 
 			for(int y=0; y<tl.H; y++)
 				for(int x=0; x<tl.W; x++)
@@ -162,7 +162,7 @@ namespace Eithne
 					tmp2[x, y*2+1] = Clamp((byte)tr[x, y] - ((byte)br[x, y] - 127));
 				}
 
-			IImage ret = new IImage(1, tl.W*2, tl.H*2);
+			IImage ret = new IImage(BPP.Grayscale, tl.W*2, tl.H*2);
 
 			for(int y=0; y<tl.H*2; y++)
 				for(int x=0; x<tl.W; x++)

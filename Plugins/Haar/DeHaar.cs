@@ -95,9 +95,6 @@ namespace Eithne
 
 		private IImage CalcHaar(IImage img)
 		{
-			if(img.BPP != 1)
-                                throw new PluginException(Catalog.GetString("Image is not in greyscale."));
-
 			return HarrWavelet.Inverse(img, levels - 1);
 		}
 
