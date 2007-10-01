@@ -108,4 +108,5 @@ Utility.dll: $(UTILITY) $(URESFILES) IPlugin.dll
 
 clean:
 	rm -f *.dll eithne.exe *.mdb
-	+make -C IPlugin Plugins clean
+	+make -C IPlugin clean
+	+make -C Plugins clean
