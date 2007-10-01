@@ -1,9 +1,5 @@
 MCS = mcs
 
-IPLUGIN = \
-	Config.cs \
-	IPlugin.cs
-
 EITHNE = \
 	About.cs \
 	Block.cs \
