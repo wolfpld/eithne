@@ -1,8 +1,9 @@
 eithne x.x.x
 ------------
 
-- New block input/output matching system
-- New plugin: Histogram view
+- New block input/output matching system.
+- New plugin: Histogram view.
+- Reorganised IPlugin library
 
 eithne 0.4.0 (2007-09-23)
 -------------------------
