@@ -97,8 +97,8 @@ all: eithne.exe
 eithne.exe: IPlugin.dll gdk-cairo.dll Utility.dll $(EITHNE) $(RESFILES)
 	$(MCS) $(EITHNE) -out:eithne.exe -r:IPlugin -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0 -r:Mono.Cairo -r:gdk-cairo -r:Mono.Posix -r:Utility $(RESCMD) -win32icon:resources/pixmaps/icon.ico -debug -target:winexe
 
-IPlugin.dll: $(IPLUGIN)
-	$(MCS) $(IPLUGIN) -out:IPlugin.dll -target:library -r:Mono.Posix -unsafe -debug -pkg:gconf-sharp-2.0
+IPlugin.dll:
+	+make -C IPlugin
 
 gdk-cairo.dll: $(GDKCAIRO)
 	$(MCS) $(GDKCAIRO) -out:gdk-cairo.dll -target:library -r:Mono.Cairo -pkg:gtk-sharp-2.0 -debug
@@ -108,4 +108,4 @@ Utility.dll: $(UTILITY) $(URESFILES) IPlugin.dll
 
 clean:
 	rm -f *.dll eithne.exe *.mdb
-	+make -C Plugins clean
+	+make -C IPlugin Plugins clean
