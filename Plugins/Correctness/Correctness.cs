@@ -108,7 +108,7 @@ namespace Eithne
 		public override void Work()
 		{
 			ICommResult r = _in[0] as ICommResult;
-			int[] res = Utility.FindResultsSimple(r);
+			int[] res = r.FindResultsSimple();
 			int numcat = FindNumCategories(r.TestCategories);
 
 			cat = new Category[numcat+1];
@@ -147,7 +147,7 @@ namespace Eithne
 						else
 							scale = img.H / 48.0;
 
-						Gdk.Pixbuf tmp = Utility.CreatePixbuf(img);
+						Gdk.Pixbuf tmp = img.CreatePixbuf();
 						cat[tc].image = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale),
 								Gdk.InterpType.Bilinear);
 					}

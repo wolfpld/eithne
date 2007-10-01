@@ -21,7 +21,9 @@ IPLUGIN = \
 	IType.cs \
 	PluginException.cs \
 	Program.cs \
-	RegistryConfig.cs
+	RegistryConfig.cs \
+	ResultSorter.cs \
+	Utility.cs
 
 all: $(TARGET)
 

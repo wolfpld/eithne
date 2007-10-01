@@ -120,7 +120,7 @@ namespace Eithne
 				else
 					scale = img.H / 256.0;
 
-				Gdk.Pixbuf tmp = Utility.CreatePixbuf(img);
+				Gdk.Pixbuf tmp = img.CreatePixbuf();
 				itest[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
 
 				if(img.W > img.H)
@@ -144,11 +144,11 @@ namespace Eithne
 				else
 					scale = img.H / 256.0;
 
-				Gdk.Pixbuf tmp = Utility.CreatePixbuf(img);
+				Gdk.Pixbuf tmp = img.CreatePixbuf();
 				ibase[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
 			}
 
-			res = Utility.FindResultsSimple(r);
+			res = r.FindResultsSimple();
 
 			cat1 = r.BaseCategories;
 			cat2 = r.TestCategories;

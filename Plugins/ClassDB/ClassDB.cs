@@ -218,7 +218,7 @@ namespace Eithne
 			{
 				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)a_in[i]);
 
-				a_out[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
+				a_out[i] = IImage.Create(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
 			}
 		}
 	}

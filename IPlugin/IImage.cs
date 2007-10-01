@@ -1,5 +1,6 @@
 ﻿using System;
 using Mono.Unix;
+using Gdk;
 
 namespace Eithne
 {
@@ -133,6 +134,77 @@ namespace Eithne
 			for(int y=0; y<h; y++)
 				for(int x=0; x<w; x++)
 					PutPixel(x, y, val);
+		}
+
+		public static IImage Create(Pixbuf buf, BPP bpp)
+		{
+			byte[] data = new byte[buf.Height * buf.Width * (int)bpp];
+			IImage img = new IImage(bpp, buf.Width, buf.Height, data);
+
+			if(bpp == BPP.Grayscale)
+			{
+				for(int y=0; y<buf.Height; y++)
+					for(int x=0; x<buf.Width; x++)
+						img[x, y] = (byte)Utility.GetPixel(buf, x, y);
+			}
+			else
+				for(int y=0; y<buf.Height; y++)
+					for(int x=0; x<buf.Width; x++)
+						img[x, y] = Utility.GetPixel(buf, x, y);
+
+			return img;
+		}
+
+		public Pixbuf CreatePixbuf()
+		{
+			byte[] data;
+
+			if(BPP == BPP.Grayscale)
+			{
+				// konwersja na RGB
+				data = new byte[H * W * 3];
+
+				for(int y=0; y<H; y++)
+					for(int x=0; x<W; x++)
+					{
+						byte color = (byte)this[x, y];
+
+						data[(x + y*W)*3] = color;
+						data[(x + y*W)*3 + 1] = color;
+						data[(x + y*W)*3 + 2] = color;
+					}
+			}
+			else if(BPP == BPP.RGB)
+			{
+				data = Data;
+			}
+			else
+			{
+				data = new byte[H * W * 3];
+
+				for(int y=0; y<H; y++)
+					for(int x=0; x<W; x++)
+					{
+						float val = (float)this[x, y];
+
+						if(val>255f)
+							val = 255f;
+
+						byte color = (byte)val;
+
+						data[(x + y*W)*3] = color;
+						data[(x + y*W)*3 + 1] = color;
+						data[(x + y*W)*3 + 2] = color;
+					}
+			}
+
+			Pixbuf tmp = new Pixbuf(data, false, 8, W, H, W * 3, null);
+
+			// wyżej robiony jest wrapper na dane, dane po konwersji są tymczasowe, więc trzeba zrobić kopię
+			if(BPP == BPP.Grayscale || BPP == BPP.Float)
+				tmp = tmp.Copy();
+
+			return tmp;
 		}
 	}
 }

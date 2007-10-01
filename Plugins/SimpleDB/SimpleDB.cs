@@ -84,7 +84,7 @@ namespace Eithne
 			{
 				Gdk.Pixbuf buf = new Gdk.Pixbuf(fn);
 
-				imgarray[i] = Utility.CreateImage(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
+				imgarray[i] = IImage.Create(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
 				categories[i] = i;
 
 				i++;

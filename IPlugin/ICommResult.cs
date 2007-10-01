@@ -98,5 +98,45 @@ namespace Eithne
 		{
 			return Math.Abs(identity - this[itest, ibase]);
 		}
+
+		public int[] FindResultsSimple()
+		{
+			int[] res = new int[Length];
+
+			for(int i=0; i<Length; i++)
+			{
+				double min = Difference(i, 0);
+				int n = 0;
+
+				for(int j=1; j<this[i].Length; j++)
+					if(Difference(i, j) < min)
+					{
+						min = Difference(i, j);
+						n = j;
+					}
+
+				res[i] = n;
+			}
+
+			return res;
+		}
+
+		public int[][] FindResults()
+		{
+			int[][] res = new int[Length][];
+
+			for(int i=0; i<Length; i++)
+			{
+				ResultSorter rs = new ResultSorter(Identity, this[i].Data);
+
+				res[i] = new int[this[i].Length];
+				for(int j=0; j<this[i].Length; j++)
+					res[i][j] = j;
+
+				Array.Sort(res[i], rs);
+			}
+
+			return res;
+		}
 	}
 }

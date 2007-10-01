@@ -115,7 +115,7 @@ namespace Eithne
 				if(r.Length != tcount || r[0].Length != bcount)
 					throw new PluginException(Catalog.GetString("Incompatible data on input."));
 
-				res[i] = Utility.FindResultsSimple(r);
+				res[i] = r.FindResultsSimple();
 			}
 
 			bool[] match = new bool[tcount];

@@ -87,7 +87,7 @@ namespace Eithne
 
 				images[i] = HistogramGraph(img[i]);
 
-				Gdk.Pixbuf pixbuf = Utility.CreatePixbuf(_img);
+				Gdk.Pixbuf pixbuf = _img.CreatePixbuf();
 
 				if(_img.W > _img.H)
 					scale = _img.W / 64.0;
@@ -131,7 +131,7 @@ namespace Eithne
 				}
 			}
 
-			return Utility.CreatePixbuf(graph);
+			return graph.CreatePixbuf();
 		}
 
 		public override int NumIn		{ get { return 1; } }

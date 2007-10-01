@@ -99,7 +99,7 @@ namespace Eithne
 					throw new PluginException(Catalog.GetString("Incompatible data on input."));
 
 				// FIXME dorobić konfigurację
-				int[][] res = Utility.FindResults(r);
+				int[][] res = r.FindResults();
 
 				for(int t=0; t<tcount; t++)
 				{

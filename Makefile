@@ -28,8 +28,7 @@ GDKCAIRO = \
 
 UTILITY = \
 	DialogMessage.cs \
-	DialogQuestion.cs \
-	Utility.cs
+	DialogQuestion.cs
 
 UTILITY_RESOURCES = \
 	DialogMessage.glade \

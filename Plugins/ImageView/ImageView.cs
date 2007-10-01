@@ -110,7 +110,7 @@ namespace Eithne
 				if(invert)
 					_img.Invert();
 
-				images[i] = Utility.CreatePixbuf(_img);
+				images[i] = _img.CreatePixbuf();
 
 				if(_img.W > _img.H)
 					scale = _img.W / 64.0;

@@ -16,7 +16,6 @@
   <Contents>
     <File name="../../DialogMessage.cs" subtype="Code" buildaction="Compile" />
     <File name="../../DialogQuestion.cs" subtype="Code" buildaction="Compile" />
-    <File name="../../Utility.cs" subtype="Code" buildaction="Compile" />
     <File name="../../resources/DialogMessage.glade" subtype="Code" buildaction="EmbedAsResource" />
     <File name="../../resources/DialogQuestion.glade" subtype="Code" buildaction="EmbedAsResource" />
   </Contents>
