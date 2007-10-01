@@ -4,7 +4,10 @@ TARGET = ../IPlugin.dll
 
 IPLUGIN = \
 	Config.cs \
-	IPlugin.cs
+	GConfConfig.cs \
+	IConfig.cs \
+	IPlugin.cs \
+	RegistryConfig.cs
 
 all: $(TARGET)
 
