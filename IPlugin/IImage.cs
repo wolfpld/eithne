@@ -19,6 +19,18 @@ namespace Eithne
 			RecreateImage(bpp, w, h, data, copy);
 		}
 
+		public IImage(int bpp, int w, int h)
+		{
+			if(bpp != 1 && bpp != 3 && bpp != 4)
+				throw new Exception(Catalog.GetString("BPP must be 1, 3 or 4"));
+
+			this.bpp = bpp;
+			this.w = w;
+			this.h = h;
+
+			data = new byte[w * h * bpp];
+		}
+
 		private void RecreateImage(int bpp, int w, int h, byte[] data, bool copy)
 		{
 			if(bpp != 1 && bpp != 3 && bpp != 4)
@@ -36,18 +48,6 @@ namespace Eithne
 			}
 			else
 				this.data = data;
-		}
-
-		public IImage(int bpp, int w, int h)
-		{
-			if(bpp != 1 && bpp != 3 && bpp != 4)
-				throw new Exception(Catalog.GetString("BPP must be 1, 3 or 4"));
-
-			this.bpp = bpp;
-			this.w = w;
-			this.h = h;
-
-			data = new byte[w * h * bpp];
 		}
 
 		public void Invert()
