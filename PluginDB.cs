@@ -71,11 +71,14 @@ namespace Eithne
 			for(int i=0; i<tmp.Length; i++)
 				p[i+1] = tmp[i];
 
+			int count = 0;
+
 			foreach(string fn in p)
 			{
 				try
 				{
 					s.Message = Catalog.GetString("Inspecting ") + fn;
+					s.Progress = ++count / (float)(tmp.Length + 1);
 					Assembly a = Assembly.LoadFrom(fn);
 
 					foreach(Type t in a.GetTypes())

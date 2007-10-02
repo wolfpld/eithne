@@ -9,6 +9,7 @@ namespace Eithne
 		[Widget] Window		SplashWindow;
 		[Widget] Image		IconImage;
 		[Widget] Label		Status;
+		[Widget] ProgressBar	ProgressWidget;
 
 		private void ProcessEvents()
 		{
@@ -40,6 +41,14 @@ namespace Eithne
 			{
 			       Status.Text = value;
 			       ProcessEvents();
+			}
+		}
+
+		public float Progress
+		{
+			set
+			{
+				ProgressWidget.Fraction = value;
 			}
 		}
 	}
