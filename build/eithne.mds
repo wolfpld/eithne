@@ -4,14 +4,12 @@
       <Entry build="True" name="eithne" configuration="Debug" />
       <Entry build="True" name="IPlugin" configuration="Debug" />
       <Entry build="True" name="gdk-cairo" configuration="Debug" />
-      <Entry build="True" name="Utility" configuration="Debug" />
       <Entry build="True" name="Plugins" configuration="" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
       <Entry build="True" name="eithne" configuration="Release" />
       <Entry build="True" name="IPlugin" configuration="Release" />
       <Entry build="True" name="gdk-cairo" configuration="Release" />
-      <Entry build="True" name="Utility" configuration="Release" />
       <Entry build="True" name="Plugins" configuration="" />
     </Configuration>
   </Configurations>
@@ -27,7 +25,6 @@
     <Entry filename="./eithne.mdp" />
     <Entry filename="./IPlugin/IPlugin.mdp" />
     <Entry filename="./gdk-cairo/gdk-cairo.mdp" />
-    <Entry filename="./Utility/Utility.mdp" />
     <Entry filename="./Plugins/Plugins.mds" />
   </Entries>
 </Combine>
