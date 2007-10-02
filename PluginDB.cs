@@ -76,7 +76,6 @@ namespace Eithne
 				try
 				{
 					s.Message = Catalog.GetString("Inspecting ") + fn;
-					//Console.WriteLine(Catalog.GetString("Inspecting {0}"), fn);
 					Assembly a = Assembly.LoadFrom(fn);
 
 					foreach(Type t in a.GetTypes())
@@ -85,8 +84,6 @@ namespace Eithne
 						{
 							IFactory f = (IFactory)Activator.CreateInstance(t);
 							f.Initialize();
-
-							//Console.WriteLine(Catalog.GetString("Found {0} plugin {1}"), f.Type, f.Info.Name);
 
 							switch(f.Type)
 							{
