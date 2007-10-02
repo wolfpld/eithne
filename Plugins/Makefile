@@ -1,4 +1,5 @@
 SUBDIRS = \
+	Badness \
 	Best \
 	ClassDB \
 	Correctness \
