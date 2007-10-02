@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-30 01:06+0200\n"
+"POT-Creation-Date: 2007-10-02 19:16+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,10 +39,6 @@ msgstr "Sygnał wejściowy."
 msgid "Copied signal."
 msgstr "Skopiowany sygnał."
 
-#: DialogQuestion.cs:26
-msgid "Question"
-msgstr "Pytanie"
-
 #: Engine.cs:54
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
@@ -67,13 +63,24 @@ msgid ""
 msgstr ""
 "{0} spróbuje zapisać ratunkową kopię schematu do pliku <i>rescue.xml</i>"
 
-#: IPlugin.cs:227 IPlugin.cs:246
-msgid "BPP must be 1, 3 or 4"
-msgstr "BPP musi wynosić 1, 3 lub 4"
+#: IPlugin/DialogQuestion.cs:26
+msgid "Question"
+msgstr "Pytanie"
 
-#: IPlugin.cs:278
+#: IPlugin/IImage.cs:71
 msgid "Image inversion not supported for floating point data"
 msgstr "Odwracanie obrazów nie jest wspierane dla danych zmiennoprzecinkowych."
+
+#: IPlugin/resources/DialogMessage.glade:54
+#: IPlugin/resources/DialogQuestion.glade:54
+#: Plugins/Badness/resources/Badness.glade:19
+#: Plugins/ClassDB/resources/ClassDB.glade:58
+#: Plugins/ClassDB/resources/Preview.glade:33
+#: Plugins/Correctness/resources/Correctness.glade:33
+#: Plugins/SimpleDB/resources/Preview.glade:33
+#: Plugins/SimpleDB/resources/SimpleDB.glade:58
+msgid "label1"
+msgstr "x"
 
 #: LoadError.cs:23
 msgid "Plugin name"
@@ -332,16 +339,6 @@ msgstr[0] "Niepoprawnie rozpoznano <b>{0}</b> obraz z <b>{1}</b>. ({2:p})"
 msgstr[1] "Niepoprawnie rozpoznano <b>{0}</b> obrazy z <b>{1}</b>. ({2:p})"
 msgstr[2] "Niepoprawnie rozpoznano <b>{0}</b> obrazów z <b>{1}</b>. ({2:p})"
 
-#: Plugins/Badness/resources/Badness.glade:19
-#: Plugins/ClassDB/resources/ClassDB.glade:58
-#: Plugins/ClassDB/resources/Preview.glade:33
-#: Plugins/Correctness/resources/Correctness.glade:33
-#: Plugins/SimpleDB/resources/Preview.glade:33
-#: Plugins/SimpleDB/resources/SimpleDB.glade:58
-#: resources/DialogMessage.glade:54 resources/DialogQuestion.glade:54
-msgid "label1"
-msgstr "x"
-
 #: Plugins/Badness/resources/Setup.glade:8
 #: Plugins/Correctness/resources/Setup.glade:8
 msgid "Settings"
@@ -421,15 +418,15 @@ msgstr "Brak obrazów bazowych"
 msgid "From category <b>{0}</b>: {1}"
 msgstr "Kategoria <b>{0}</b>: {1}"
 
-#: Plugins/ClassDB/ClassDB.cs:405 Plugins/Euclid/Euclid.cs:175
-#: Plugins/L0Mod/L0Mod.cs:203 Plugins/PC-C1/PC-C1.cs:179
-#: Plugins/PC-C2/PC-C2.cs:185
+#: Plugins/ClassDB/ClassDB.cs:405 Plugins/Euclid/Euclid.cs:173
+#: Plugins/L0Mod/L0Mod.cs:201 Plugins/PC-C1/PC-C1.cs:177
+#: Plugins/PC-C2/PC-C2.cs:183
 msgid "Base images."
 msgstr "Obrazy bazowe."
 
-#: Plugins/ClassDB/ClassDB.cs:407 Plugins/Euclid/Euclid.cs:177
-#: Plugins/L0Mod/L0Mod.cs:205 Plugins/PC-C1/PC-C1.cs:181
-#: Plugins/PC-C2/PC-C2.cs:187
+#: Plugins/ClassDB/ClassDB.cs:407 Plugins/Euclid/Euclid.cs:175
+#: Plugins/L0Mod/L0Mod.cs:203 Plugins/PC-C1/PC-C1.cs:179
+#: Plugins/PC-C2/PC-C2.cs:185
 msgid "Test images."
 msgstr "Obrazy testowe."
 
@@ -581,8 +578,8 @@ msgid "This plugin crops image."
 msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:178 Plugins/Desaturate/Desaturate.cs:111
-#: Plugins/Edge/Edge.cs:144 Plugins/FFT/DCT.cs:152 Plugins/FFT/FFT.cs:178
-#: Plugins/Haar/Haar.cs:134 Plugins/Histogram/Histogram.cs:274
+#: Plugins/Edge/Edge.cs:141 Plugins/FFT/DCT.cs:149 Plugins/FFT/FFT.cs:175
+#: Plugins/Haar/Haar.cs:131 Plugins/Histogram/Histogram.cs:268
 #: Plugins/NewSourceImages/NewSourceImages.cs:84
 #: Plugins/RGBSplit/RGBSplit.cs:138 Plugins/Random/Random.cs:147
 #: Plugins/Resize/Resize.cs:106
@@ -641,13 +638,7 @@ msgstr "Wykrywanie krawędzi"
 msgid "This plugin detects edges in images."
 msgstr "Ta wtyczka wykrywa krawędzie na obrazach."
 
-#: Plugins/Edge/Edge.cs:98 Plugins/FFT/DCT.cs:99 Plugins/FFT/FFT.cs:114
-#: Plugins/Haar/DeHaar.cs:99 Plugins/Haar/Haar.cs:101
-#: Plugins/Histogram/Histogram.cs:108 Plugins/Histogram/Histogram.cs:140
-msgid "Image is not in greyscale."
-msgstr "Obraz nie jest w skali szarości."
-
-#: Plugins/Edge/Edge.cs:149
+#: Plugins/Edge/Edge.cs:146
 msgid "Detected edges."
 msgstr "Wykryte krawędzie."
 
@@ -681,20 +672,15 @@ msgstr "Ta wtyczka oblicza metrykę Euklidesa pomiędzy obrazami."
 
 #: Plugins/Euclid/Euclid.cs:87 Plugins/L0Mod/L0Mod.cs:89
 #: Plugins/PC-C1/PC-C1.cs:87 Plugins/PC-C2/PC-C2.cs:87
-msgid "Image is not greyscale or floating point."
-msgstr "Obraz nie jest w skali szarości lub zmiennoprzecinkowy."
-
-#: Plugins/Euclid/Euclid.cs:89 Plugins/L0Mod/L0Mod.cs:91
-#: Plugins/PC-C1/PC-C1.cs:89 Plugins/PC-C2/PC-C2.cs:89
 msgid "Images BPP do not match."
 msgstr "Głębie kolorów obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:91 Plugins/L0Mod/L0Mod.cs:93
-#: Plugins/PC-C1/PC-C1.cs:91 Plugins/PC-C2/PC-C2.cs:91
+#: Plugins/Euclid/Euclid.cs:89 Plugins/L0Mod/L0Mod.cs:91
+#: Plugins/PC-C1/PC-C1.cs:89 Plugins/PC-C2/PC-C2.cs:89
 msgid "Images dimensions do not match."
 msgstr "Wymiary obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:182
+#: Plugins/Euclid/Euclid.cs:180
 msgid "Calculated Euclid metric."
 msgstr "Obliczona metryka Euklidesa."
 
@@ -706,7 +692,7 @@ msgstr "Dyskretna Transformata Kosinusowa"
 msgid "This plugin performs discrete cosine transform."
 msgstr "Ta wtyczka przeprowadza dyskretną transformatę kosinusową."
 
-#: Plugins/FFT/DCT.cs:157
+#: Plugins/FFT/DCT.cs:154
 msgid "DCT of image."
 msgstr "DCT obrazu."
 
@@ -718,7 +704,7 @@ msgstr "Szybka Transformata Fouriera"
 msgid "This plugin performs fast fourier transform."
 msgstr "Ta wtyczka przeprowadza szybką transformatę Fouriera."
 
-#: Plugins/FFT/FFT.cs:183
+#: Plugins/FFT/FFT.cs:180
 msgid "FFT of image."
 msgstr "FFT obrazu."
 
@@ -759,11 +745,11 @@ msgstr "Odwrotna Falka Haara"
 msgid "This plugin calculates inverse of Haar wavelet."
 msgstr "Ta wtyczka oblicza odwrotną falkę Haara."
 
-#: Plugins/Haar/DeHaar.cs:123 Plugins/Haar/Haar.cs:139
+#: Plugins/Haar/DeHaar.cs:120 Plugins/Haar/Haar.cs:136
 msgid "Haar wavelet."
 msgstr "Falka Haara."
 
-#: Plugins/Haar/DeHaar.cs:128
+#: Plugins/Haar/DeHaar.cs:125
 msgid "Output image."
 msgstr "Obraz wyjściowy."
 
@@ -800,7 +786,7 @@ msgstr "Histogram"
 msgid "This plugin calculates histogram of image."
 msgstr "Ta wtyczka oblicza histogram obrazu."
 
-#: Plugins/Histogram/Histogram.cs:279
+#: Plugins/Histogram/Histogram.cs:273
 msgid "Histogram of image."
 msgstr "Histogram obrazu."
 
@@ -837,7 +823,7 @@ msgstr "Ta wtyczka wyświetla wykresy histogramów."
 msgid "Plugin is not ready to display images."
 msgstr "Wtyczka nie jest gotowa wyświetlać obrazy."
 
-#: Plugins/HistogramView/HistogramView.cs:136
+#: Plugins/HistogramView/HistogramView.cs:141
 msgid "Histograms to be viewed."
 msgstr "Histogramy, które będą oglądane."
 
@@ -910,7 +896,7 @@ msgid "This plugin calculates modified L<sub>0</sub> metric between images."
 msgstr ""
 "Ta wtyczka oblicza zmodyfikowaną metrykę L<sub>0</sub> pomiędzy obrazami."
 
-#: Plugins/L0Mod/L0Mod.cs:210
+#: Plugins/L0Mod/L0Mod.cs:208
 msgid "Calculated modified L0 metric."
 msgstr "Obliczona zmodyfikowana metryka L0."
 
@@ -990,7 +976,7 @@ msgid ""
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>1</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C1/PC-C1.cs:186
+#: Plugins/PC-C1/PC-C1.cs:184
 msgid "Calculated C1 metric."
 msgstr "Obliczone metryka C1."
 
@@ -1005,7 +991,7 @@ msgid ""
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>2</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C2/PC-C2.cs:192
+#: Plugins/PC-C2/PC-C2.cs:190
 msgid "Calculated C2 metric."
 msgstr "Obliczona metryka C2."
 
@@ -1358,17 +1344,25 @@ msgstr "Połączono bloki"
 msgid "About Eithne"
 msgstr "O Eithne"
 
-#: resources/About.glade:49
+#: resources/About.glade:26
 msgid "<big><big><b>Eithne v1.2.3</b></big></big>"
 msgstr "x"
 
-#: resources/About.glade:74
+#: resources/About.glade:39
 msgid "Extensible Image Recognition Systems modelling program"
 msgstr "Rozszerzalny program modelujący systemy rozpoznawania obrazów"
 
-#: resources/About.glade:99
+#: resources/About.glade:51
+msgid "Home page"
+msgstr "Strona domowa"
+
+#: resources/About.glade:66
 msgid "<small>Copyright © 2005 – 2007 Bartosz Taudul</small>"
 msgstr "<small>Copyright © 2005 – 2007 Bartosz Taudul</small>"
+
+#: resources/About.glade:80
+msgid "<small>Published under the GPL v2 license</small>"
+msgstr "<small>Opublikowano na zasadach licencji GPL v2</small>"
 
 #: resources/FatalError.glade:8
 msgid "Fatal error encountered"
