@@ -126,14 +126,17 @@ namespace Eithne
 		private bool stop = false;
 		private bool running = false;
 		private FinishCallback finish;
+		private Progress progress;
 		private DateTime start, end;
 
 		public delegate void FinishCallback();
+		public delegate void Progress();
 
-		public Engine2(Schematic s, FinishCallback finish)
+		public Engine2(Schematic s, FinishCallback finish, Progress progress)
 		{
 			this.s = s;
 			this.finish = finish;
+			this.progress = progress;
 		}
 
 		private bool Tick()
@@ -188,6 +191,8 @@ namespace Eithne
 				finish();
 				return false;
 			}
+
+			progress();
 
 			return true;
 		}

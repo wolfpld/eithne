@@ -27,9 +27,11 @@ namespace Eithne
 		[Widget] ToolButton	ToolbarOpen;
 		[Widget] ToolButton	ToolbarSave;
 		[Widget] ToolButton	ToolbarRun;
+		[Widget] VBox		SchematicBox;
 
 		private Schematic schematic;
 		private Engine2 engine;
+		private ProgressBar progress = new ProgressBar();
 		private string filename = "";
 
 		private static MainWindow mw = null;
@@ -103,7 +105,9 @@ namespace Eithne
 			PluginToolboxSocket.AddWithViewport(new PluginToolbox(StatusBar, schematic));
 			SchematicSocket.AddWithViewport(schematic);
 
-			engine = new Engine2(schematic, SetRunToStart);
+			engine = new Engine2(schematic, SetRunToStart, progress.Pulse);
+
+			progress.PulseStep = 0.05;
 		}
 
 		private void Run()
@@ -234,6 +238,9 @@ namespace Eithne
 
 			MenuSystemRun.Sensitive = false;
 			MenuSystemStop.Sensitive = true;
+
+			SchematicBox.PackEnd(progress, false, true, 0);
+			SchematicBox.ShowAll();
 		}
 
 		private void SetRunToStart()
@@ -246,6 +253,8 @@ namespace Eithne
 
 			StatusBar.Pop(1);
 			StatusBar.Push(1, String.Format(Catalog.GetString("Elapsed time: {0}"), engine.ElapsedTime));
+
+			SchematicBox.Remove(progress);
 		}
 
 		public void EmergencySave()
