@@ -1,6 +1,6 @@
 MCS = mcs
 
-TARGET = ResiveWavelet.dll
+TARGET = ResizeWavelet.dll
 
 SRC = \
 	ResizeWavelet.cs
