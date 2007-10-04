@@ -54,6 +54,7 @@ namespace Eithne
 	public class SimpleDBPlugin : IInPlugin
 	{
 		private ArrayList _fl = new ArrayList();
+		private float progress;
 
 		public SimpleDBPlugin()
 		{
@@ -73,6 +74,8 @@ namespace Eithne
 
 		public override void Work()
 		{
+			progress = 0;
+
 			if(_fl.Count == 0)
 				throw new PluginException(Catalog.GetString("No images in list"));
 
@@ -88,6 +91,8 @@ namespace Eithne
 				categories[i] = i;
 
 				i++;
+
+				progress = (float)i/_fl.Count;
 			}
 
 			_out = new CommSocket(1);
@@ -139,6 +144,8 @@ namespace Eithne
 		{
 			return Catalog.GetString("Images.");
 		}
+
+		public override float Progress		{ get { return progress; } }
 
 		private static string[] matchout  = new string[] { "image/rgb", "image/grayscale" };
 		public override string[] MatchOut	{ get { return matchout; } }
