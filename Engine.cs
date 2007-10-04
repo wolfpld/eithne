@@ -193,6 +193,7 @@ namespace Eithne
 			}
 
 			progress();
+			s.Redraw();
 
 			return true;
 		}

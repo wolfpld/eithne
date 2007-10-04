@@ -442,17 +442,13 @@ namespace Eithne
 
 		private void DrawClockProgress(Context c, float progress)
 		{
-			// FIXME infinite progress not supported now
-			if(progress == -1)
-				return;
-
 			c.Save();
 			c.Color = new Color(0.5, 0.5, 1, 0.75);
 			c.Translate(x + w/2, y + h/2);
 			c.MoveTo(0, 0);
 			if(progress == -1)
 			{
-				progressTimer += 0.01f;
+				progressTimer += 0.2f;
 				c.Arc(0, 0, 8, progressTimer, progressTimer + 1.5);
 			}
 			else
@@ -462,8 +458,6 @@ namespace Eithne
 			c.ClosePath();
 			c.Fill();
 			c.Restore();
-
-			schematic.QueueDraw();
 		}
 
 		private void DrawState(Context c)
