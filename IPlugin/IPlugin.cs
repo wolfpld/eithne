@@ -91,6 +91,8 @@ namespace Eithne
 		
 		public abstract string[] MatchIn	{ get; }
 		public abstract string[] MatchOut	{ get; }
+
+		public virtual float Progress		{ get { return -1; } }
 	}
 
 	public abstract class IImgProcPlugin : IPlugin

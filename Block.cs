@@ -146,6 +146,7 @@ namespace Eithne
 		private Socket[] socketout = null;
 		private bool working = false;
 		private bool showerror = false;
+		private float progressTimer = 0;
 
 		private static ImageSurface StateBad = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-bad.png"));
 		private static ImageSurface StateGood = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-good.png"));
@@ -376,7 +377,10 @@ namespace Eithne
 
 			DrawState(c);
 			if(working)
+			{
 				DrawClock(c);
+				DrawClockProgress(c, plugin.Progress);
+			}
 
 			if(selected is Socket)
 			{
@@ -434,6 +438,32 @@ namespace Eithne
 			Clock.Show(c, 0, 0);
 			c.Stroke();
 			c.Restore();
+		}
+
+		private void DrawClockProgress(Context c, float progress)
+		{
+			// FIXME infinite progress not supported now
+			if(progress == -1)
+				return;
+
+			c.Save();
+			c.Color = new Color(0.5, 0.5, 1, 0.75);
+			c.Translate(x + w/2, y + h/2);
+			c.MoveTo(0, 0);
+			if(progress == -1)
+			{
+				progressTimer += 0.01f;
+				c.Arc(0, 0, 8, progressTimer, progressTimer + 1.5);
+			}
+			else
+			{
+				c.ArcNegative(0, 0, 8, -90 * Math.PI/180, (-89 + 356 * progress ) * Math.PI/180);
+			}
+			c.ClosePath();
+			c.Fill();
+			c.Restore();
+
+			schematic.QueueDraw();
 		}
 
 		private void DrawState(Context c)
