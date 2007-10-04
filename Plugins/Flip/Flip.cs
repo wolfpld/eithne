@@ -52,6 +52,8 @@ namespace Eithne
 
 	public class FlipPlugin : IImgProcPlugin
 	{
+		private float progress;
+
 		public FlipPlugin()
 		{
 			_info = new FlipInfo();
@@ -68,6 +70,8 @@ namespace Eithne
 
 		public override void Work()
 		{
+			progress = 0;
+
 			ICommImage socket = _in[0] as ICommImage;
 			IImage[] img = socket.Images;
 			IImage[] ret = new IImage[img.Length * 2];
@@ -85,6 +89,8 @@ namespace Eithne
 
 				origimg[i*2] = socket.OriginalImage(i);
 				origimg[i*2 + 1] = socket.OriginalImage(i);
+
+				progress = (float)i/img.Length;
 			}
 
 			_out = new CommSocket(1);
@@ -122,5 +128,7 @@ namespace Eithne
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress { get { return progress; } }
 	}
 }

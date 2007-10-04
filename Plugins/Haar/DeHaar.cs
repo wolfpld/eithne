@@ -54,6 +54,7 @@ namespace Eithne
 	public class DeHaarPlugin : IImgProcPlugin
 	{
 		private int levels = 3;
+		private float progress;
 
 		public DeHaarPlugin()
 		{
@@ -80,12 +81,17 @@ namespace Eithne
 
 		public override void Work()
 		{
+			progress = 0;
+
 			ICommImage socket = _in[0] as ICommImage;
 			IImage[] img = socket.Images;
 			IImage[] ret = new IImage[img.Length];
 
 			for(int i=0; i<img.Length; i++)
+			{
 				ret[i] = CalcHaar(img[i]);
+				progress = (float)i/img.Length;
+			}
 
 			_out = new CommSocket(1);
 			_out[0] = new ICommImage(ret, socket.OriginalImages, socket.Categories);
@@ -130,5 +136,7 @@ namespace Eithne
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress { get { return progress; } }
 	}
 }
