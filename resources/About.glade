@@ -14,6 +14,7 @@
     <child>
       <widget class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
+        <property name="spacing">5</property>
         <child>
           <widget class="GtkImage" id="LogoImage">
             <property name="visible">True</property>
@@ -29,7 +30,7 @@
           </widget>
           <packing>
             <property name="expand">False</property>
-            <property name="padding">10</property>
+            <property name="padding">5</property>
             <property name="position">1</property>
           </packing>
         </child>
@@ -70,7 +71,6 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
-            <property name="padding">10</property>
             <property name="position">4</property>
           </packing>
         </child>
@@ -92,7 +92,6 @@
           </widget>
           <packing>
             <property name="expand">False</property>
-            <property name="padding">5</property>
             <property name="position">6</property>
           </packing>
         </child>
