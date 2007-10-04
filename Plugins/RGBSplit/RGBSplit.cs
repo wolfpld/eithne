@@ -52,6 +52,8 @@ namespace Eithne
 
 	public class RGBSplitPlugin : IImgProcPlugin
 	{
+		private float progress;
+
 		public RGBSplitPlugin()
 		{
 			_info = new RGBSplitInfo();
@@ -68,6 +70,8 @@ namespace Eithne
 
 		public override void Work()
 		{
+			progress = 0;
+
 			ICommImage socket = _in[0] as ICommImage;
 			IImage[] img = socket.Images;
 
@@ -82,6 +86,8 @@ namespace Eithne
 				res1[i] = rgb[0];
 				res2[i] = rgb[1];
 				res3[i] = rgb[2];
+
+				progress = (float)i/img.Length;
 			}
 
 			_out = new CommSocket(3);
@@ -153,5 +159,7 @@ namespace Eithne
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress { get { return progress; } }
 	}
 }

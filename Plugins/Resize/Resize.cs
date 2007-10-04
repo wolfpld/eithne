@@ -56,6 +56,7 @@ namespace Eithne
 		private int x = 128;
 		private int y = 128;
 		private Gdk.InterpType mode = Gdk.InterpType.Bilinear;
+		private float progress;
 
 		public ResizePlugin()
 		{
@@ -69,6 +70,8 @@ namespace Eithne
 
 		public override void Work()
 		{
+			progress = 0;
+
 			ICommImage socket = _in[0] as ICommImage;
 			IImage[] i1 = socket.Images;
 			IImage[] i2 = new IImage[i1.Length];
@@ -80,6 +83,8 @@ namespace Eithne
 				Gdk.Pixbuf bufout = buf.ScaleSimple(i1[i].W/2, i1[i].H/2, mode);
 
 				i2[i] = IImage.Create(bufout, i1[i].BPP);
+
+				progress = (float)i/i1.Length;
 			}
 
 			_out = new CommSocket(1);
@@ -116,5 +121,7 @@ namespace Eithne
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress { get { return progress; } }
 	}
 }
