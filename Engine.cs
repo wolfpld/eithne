@@ -121,6 +121,7 @@ namespace Eithne
 	class Engine2
 	{
 		private static int ConfigThreads = Config.Get("engine/threads", 1);
+		private static bool ConfigProgress = Config.Get("block/progress", true);
 		private Schematic s;
 		private ArrayList Threads = new ArrayList();
 		private bool stop = false;
@@ -128,8 +129,6 @@ namespace Eithne
 		private FinishCallback finish;
 		private Progress progress;
 		private DateTime start, end;
-
-		private static bool ConfigProgress = Config.Get("block/progress", true);
 
 		public delegate void FinishCallback();
 		public delegate void Progress();
