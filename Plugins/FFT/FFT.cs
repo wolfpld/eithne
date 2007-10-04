@@ -53,6 +53,7 @@ namespace Eithne
 	public class FFTPlugin : IImgProcPlugin
 	{
 		private bool zero = true;
+		private float progress = 0;
 
 		public FFTPlugin()
 		{
@@ -78,6 +79,8 @@ namespace Eithne
 
 		public override void Work()
 		{
+			progress = 0;
+
 			ICommImage socket = _in[0] as ICommImage;
 			IImage[] img = socket.Images;
 			IImage[] res = new IImage[img.Length];
@@ -86,7 +89,10 @@ namespace Eithne
 			PreparePlan(img[0].W, img[0].H);
 
 			for(int i=0; i<img.Length; i++)
+			{
 				res[i] = FFT(img[i]);
+				progress = (float)i/img.Length;
+			}
 
 			_out[0] = new ICommImage(res, socket.OriginalImages, socket.Categories);
 
@@ -185,5 +191,7 @@ namespace Eithne
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress { get { return progress; } }
 	}
 }

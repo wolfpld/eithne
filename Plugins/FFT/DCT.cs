@@ -53,6 +53,7 @@ namespace Eithne
 	public class DCTPlugin : IImgProcPlugin
 	{
 		private bool zero = true;
+		private float progress;
 
 		public DCTPlugin()
 		{
@@ -78,13 +79,18 @@ namespace Eithne
 
 		public override void Work()
 		{
+			progress = 0;
+
 			ICommImage socket = _in[0] as ICommImage;
 			IImage[] img = socket.Images;
 			IImage[] res = new IImage[img.Length];
 			_out = new CommSocket(1);
 
 			for(int i=0; i<img.Length; i++)
+			{
 				res[i] = DCT(img[i]);
+				progress = (float)i/img.Length;
+			}
 
 			_out[0] = new ICommImage(res, socket.OriginalImages, socket.Categories);
 
@@ -159,5 +165,7 @@ namespace Eithne
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress { get { return progress; } }
 	}
 }
