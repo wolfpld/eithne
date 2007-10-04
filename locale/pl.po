@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-02 19:16+0200\n"
+"POT-Creation-Date: 2007-10-05 00:34+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "Skopiowany sygnał."
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
 
-#: Engine.cs:199
+#: Engine.cs:209
 msgid "Engine is already running."
 msgstr "Silnik już jest uruchomiony."
 
@@ -103,69 +103,69 @@ msgstr ""
 "Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
 "dostępne:"
 
-#: MainWindow.cs:70
+#: MainWindow.cs:72
 #, csharp-format
 msgid "Welcome to {0}!"
 msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:126
+#: MainWindow.cs:130
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:134
+#: MainWindow.cs:138
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:140
+#: MainWindow.cs:144
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:141 MainWindow.cs:175 Plugins/ClassDB/ClassDBWindow.cs:68
+#: MainWindow.cs:145 MainWindow.cs:179 Plugins/ClassDB/ClassDBWindow.cs:68
 #: Plugins/SimpleDB/SimpleDBWindow.cs:60
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:142
+#: MainWindow.cs:146
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:145 MainWindow.cs:179
+#: MainWindow.cs:149 MainWindow.cs:183
 #, csharp-format
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:149 MainWindow.cs:183 Plugins/SimpleDB/SimpleDBWindow.cs:68
+#: MainWindow.cs:153 MainWindow.cs:187 Plugins/SimpleDB/SimpleDBWindow.cs:68
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:164
+#: MainWindow.cs:168
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:174
+#: MainWindow.cs:178
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:175
+#: MainWindow.cs:179
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:199 MainWindow.cs:215
+#: MainWindow.cs:203 MainWindow.cs:219
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
 
-#: MainWindow.cs:233 resources/MainWindow.glade:112
+#: MainWindow.cs:237 resources/MainWindow.glade:112
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: MainWindow.cs:242 resources/MainWindow.glade:95
-#: resources/MainWindow.glade:201
+#: MainWindow.cs:249 resources/MainWindow.glade:95
+#: resources/MainWindow.glade:214
 msgid "Run"
 msgstr "Uruchom"
 
-#: MainWindow.cs:248
+#: MainWindow.cs:255
 #, csharp-format
 msgid "Elapsed time: {0}"
 msgstr "Upłynęło czasu: {0}"
@@ -211,7 +211,7 @@ msgstr "Komparator"
 msgid "Other"
 msgstr "Inne"
 
-#: PluginDB.cs:78
+#: PluginDB.cs:80
 msgid "Inspecting "
 msgstr "Inspekcja "
 
@@ -579,7 +579,7 @@ msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:178 Plugins/Desaturate/Desaturate.cs:111
 #: Plugins/Edge/Edge.cs:141 Plugins/FFT/DCT.cs:149 Plugins/FFT/FFT.cs:175
-#: Plugins/Haar/Haar.cs:131 Plugins/Histogram/Histogram.cs:268
+#: Plugins/Haar/Haar.cs:131 Plugins/Histogram/Histogram.cs:277
 #: Plugins/NewSourceImages/NewSourceImages.cs:84
 #: Plugins/RGBSplit/RGBSplit.cs:138 Plugins/Random/Random.cs:147
 #: Plugins/Resize/Resize.cs:106
@@ -658,7 +658,7 @@ msgstr "Oblicz energię różnic"
 #: Plugins/Haar/resources/Haar.glade:135
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
-#: resources/Preferences.glade:324
+#: resources/Preferences.glade:338
 msgid "gtk-close"
 msgstr "gtk-close"
 
@@ -786,7 +786,7 @@ msgstr "Histogram"
 msgid "This plugin calculates histogram of image."
 msgstr "Ta wtyczka oblicza histogram obrazu."
 
-#: Plugins/Histogram/Histogram.cs:273
+#: Plugins/Histogram/Histogram.cs:282
 msgid "Histogram of image."
 msgstr "Histogram obrazu."
 
@@ -1153,11 +1153,11 @@ msgid "This plugin allows to pass images to image recognition system."
 msgstr ""
 "Ta wtyczka umożliwia przekazanie obrazów do systemu rozpoznawania obrazów."
 
-#: Plugins/SimpleDB/SimpleDB.cs:77
+#: Plugins/SimpleDB/SimpleDB.cs:80
 msgid "No images in list"
 msgstr "Brak obrazów na liście"
 
-#: Plugins/SimpleDB/SimpleDB.cs:140
+#: Plugins/SimpleDB/SimpleDB.cs:145
 msgid "Images."
 msgstr "Obrazy."
 
@@ -1344,19 +1344,19 @@ msgstr "Połączono bloki"
 msgid "About Eithne"
 msgstr "O Eithne"
 
-#: resources/About.glade:26
+#: resources/About.glade:27
 msgid "<big><big><b>Eithne v1.2.3</b></big></big>"
 msgstr "x"
 
-#: resources/About.glade:39
+#: resources/About.glade:40
 msgid "Extensible Image Recognition Systems modelling program"
 msgstr "Rozszerzalny program modelujący systemy rozpoznawania obrazów"
 
-#: resources/About.glade:51
+#: resources/About.glade:52
 msgid "Home page"
 msgstr "Strona domowa"
 
-#: resources/About.glade:66
+#: resources/About.glade:67
 msgid "<small>Copyright © 2005 – 2007 Bartosz Taudul</small>"
 msgstr "<small>Copyright © 2005 – 2007 Bartosz Taudul</small>"
 
@@ -1422,11 +1422,11 @@ msgstr "Pomoc"
 msgid "Plugin list"
 msgstr "Lista wtyczek"
 
-#: resources/MainWindow.glade:247
+#: resources/MainWindow.glade:269
 msgid "System schematic"
 msgstr "Schemat systemu"
 
-#: resources/MainWindow.glade:288
+#: resources/MainWindow.glade:310
 msgid "Plugin toolbox"
 msgstr "Narzędziówka"
 
@@ -1483,66 +1483,70 @@ msgstr "Preferencje"
 msgid "Draw rounded blocks"
 msgstr "Rysuj zaokrąglone bloki"
 
-#: resources/Preferences.glade:32
+#: resources/Preferences.glade:33
 msgid "Draw blocks with inner path"
 msgstr "Rysuj w blokach wewnętrzną ścieżkę"
 
-#: resources/Preferences.glade:43
+#: resources/Preferences.glade:45
 msgid "Draw blocks with gradient"
 msgstr "Rysuj bloki z gradientem"
 
-#: resources/Preferences.glade:54
+#: resources/Preferences.glade:57
 msgid "Draw smooth connections"
 msgstr "Rysuj gładkie połączenia"
 
-#: resources/Preferences.glade:65
+#: resources/Preferences.glade:69
 msgid "Antialiasing"
 msgstr "Antyaliasing"
 
-#: resources/Preferences.glade:89
+#: resources/Preferences.glade:83
+msgid "Show progress"
+msgstr "Pokaż postęp"
+
+#: resources/Preferences.glade:107
 msgid "Change background color"
 msgstr "Zmiana koloru tła"
 
-#: resources/Preferences.glade:107
-msgid "Red"
-msgstr "Czerwony"
-
-#: resources/Preferences.glade:120
-msgid "Green"
-msgstr "Zielony"
-
-#: resources/Preferences.glade:135
-msgid "Blue"
-msgstr "Niebieski"
-
-#: resources/Preferences.glade:150
+#: resources/Preferences.glade:192
 msgid "Alpha"
 msgstr "Alfa"
 
-#: resources/Preferences.glade:241
+#: resources/Preferences.glade:207
+msgid "Blue"
+msgstr "Niebieski"
+
+#: resources/Preferences.glade:222
+msgid "Green"
+msgstr "Zielony"
+
+#: resources/Preferences.glade:237
+msgid "Red"
+msgstr "Czerwony"
+
+#: resources/Preferences.glade:257
 msgid "Look and feel"
 msgstr "Wygląd"
 
-#: resources/Preferences.glade:260
+#: resources/Preferences.glade:275
 msgid "Maximum number of threads"
 msgstr "Maksymalna liczba wątków"
 
-#: resources/Preferences.glade:285
+#: resources/Preferences.glade:300
 msgid "Allow multithreading inside blocks"
 msgstr "Pozwól na wielowątkowość wewnątrz bloków"
 
-#: resources/Preferences.glade:302
+#: resources/Preferences.glade:317
 msgid "Engine"
 msgstr "Silnik"
 
-#: resources/Splash.glade:8
+#: resources/Splash.glade:7
 msgid "Searching for plugins"
 msgstr "Szukanie wtyczek"
 
-#: resources/Splash.glade:54
+#: resources/Splash.glade:32
 msgid "Searching for plugins..."
 msgstr "Szukanie wtyczek..."
 
-#: resources/Splash.glade:79
+#: resources/Splash.glade:43
 msgid "Initializing..."
 msgstr "Inicjalizacja..."

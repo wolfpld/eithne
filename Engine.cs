@@ -129,6 +129,8 @@ namespace Eithne
 		private Progress progress;
 		private DateTime start, end;
 
+		private static bool ConfigProgress = Config.Get("block/progress", true);
+
 		public delegate void FinishCallback();
 		public delegate void Progress();
 
@@ -193,7 +195,9 @@ namespace Eithne
 			}
 
 			progress();
-			s.Redraw();
+
+			if(ConfigProgress)
+				MainWindow.RedrawSchematic();
 
 			return true;
 		}
@@ -242,6 +246,7 @@ namespace Eithne
 		public static void CheckGConf()
 		{
 			ConfigThreads = Config.Get("engine/threads", 1);
+			ConfigProgress = Config.Get("block/progress", true);
 		}
 
 		public bool Running

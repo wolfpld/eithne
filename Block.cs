@@ -158,6 +158,7 @@ namespace Eithne
 		private static bool ConfigInner = Config.Get("block/innerpath", true);
 		private static bool ConfigRound = Config.Get("block/round", true);
 		private static bool ConfigSmoothConnections = Config.Get("block/smoothconnections", true);
+		private static bool ConfigProgress = Config.Get("block/progress", true);
 
 		public enum State
 		{
@@ -238,17 +239,20 @@ namespace Eithne
 			bool NewConfigInner = Config.Get("block/innerpath", true);
 			bool NewConfigRound = Config.Get("block/round", true);
 			bool NewConfigSmoothConnections = Config.Get("block/smoothconnections", true);
+			bool NewConfigProgress = Config.Get("block/progress", true);
 
 			bool redraw =
 				ConfigGradient != NewConfigGradient ||
 				ConfigInner != NewConfigInner ||
 				ConfigRound != NewConfigRound ||
-				ConfigSmoothConnections != NewConfigSmoothConnections;
+				ConfigSmoothConnections != NewConfigSmoothConnections ||
+				ConfigProgress != NewConfigProgress;
 
 			ConfigGradient = NewConfigGradient;
 			ConfigInner = NewConfigInner;
 			ConfigRound = NewConfigRound;
 			ConfigSmoothConnections = NewConfigSmoothConnections;
+			ConfigProgress = NewConfigProgress;
 
 			if(redraw)
 				MainWindow.RedrawSchematic();
@@ -379,7 +383,8 @@ namespace Eithne
 			if(working)
 			{
 				DrawClock(c);
-				DrawClockProgress(c, plugin.Progress);
+				if(ConfigProgress)
+					DrawClockProgress(c, plugin.Progress);
 			}
 
 			if(selected is Socket)
