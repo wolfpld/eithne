@@ -143,6 +143,8 @@ namespace Eithne
 
 		public override void Work()
 		{
+			tasks.Clear();
+
 			bool MultiThreading = Eithne.Config.Get("engine/blockthreads", false);			
 
 			ICommImage socket1 = _in[0] as ICommImage;
