@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Xml;
 using Mono.Unix;
 
@@ -54,6 +55,7 @@ namespace Eithne
 	{
 		private bool zero = true;
 		private float progress = 0;
+		private static Mutex mutex = new Mutex(false, "Eithne.FFT.PreparePlan");
 
 		public FFTPlugin()
 		{
@@ -109,9 +111,13 @@ namespace Eithne
 			double[] d1 = new double[w * h * 2];
 			double[] d2 = new double[w * h * 2];
 
+			mutex.WaitOne();
+
 			IntPtr plan = FFTW.fftw_plan_dft_2d(h, w, d1, d2, FFTW.Direction.Forward, 0);
 
 			FFTW.fftw_destroy_plan(plan);
+
+			mutex.ReleaseMutex();
 		}
 
 		private IImage FFT(IImage img)
@@ -126,11 +132,15 @@ namespace Eithne
 					datain[(x + y*img.W) * 2 + 1] = 0;
 				}
 
+			mutex.WaitOne();
+
 			IntPtr plan = FFTW.fftw_plan_dft_2d(img.H, img.W, datain, dataout, FFTW.Direction.Forward, 0);
 
 			FFTW.fftw_execute(plan);
 
 			FFTW.fftw_destroy_plan(plan);
+
+			mutex.ReleaseMutex();
 
 			IImage ret = new IImage(BPP.Float, img.W, img.H);
 
