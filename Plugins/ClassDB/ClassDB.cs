@@ -364,6 +364,10 @@ namespace Eithne
 			_out[0] = new ICommImage(base_imgarray, base_imgarray, base_categories);
 			_out[1] = new ICommImage(test_imgarray, test_imgarray, test_categories);
 
+			taskListMutex.WaitOne();
+			tasks.Clear();
+			taskListMutex.ReleaseMutex();
+
 			_workdone = true;
 		}
 
@@ -458,6 +462,12 @@ namespace Eithne
 				int done = 0;
 
 				taskListMutex.WaitOne();
+				if(tasks.Count == 0)
+				{
+					taskListMutex.ReleaseMutex();
+					return 1;
+				}
+
 				for(int i=0; i<tasks.Count; i++)
 				{
 					done += ((TaskInfo)tasks[i]).Progress;

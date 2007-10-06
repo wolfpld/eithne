@@ -186,6 +186,8 @@ namespace Eithne
 			_out[0] = new ICommResult(res, 1, socket1.OriginalImages, socket2.OriginalImages,
 					socket1.Categories, socket2.Categories);
 
+			tasks.Clear();
+
 			_workdone = true;
 		}
 
@@ -216,6 +218,9 @@ namespace Eithne
 			get
 			{
 				int done = 0;
+
+				if(tasks.Count == 0)
+					return 1;
 				
 				for(int i=0; i<tasks.Count; i++)
 				{
