@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Xml;
 using Mono.Unix;
 
@@ -55,7 +54,6 @@ namespace Eithne
 	{
 		private bool zero = true;
 		private float progress = 0;
-		private static Mutex mutex = new Mutex(false, "Eithne.FFT.PreparePlan");
 
 		public FFTPlugin()
 		{
@@ -98,7 +96,7 @@ namespace Eithne
 
 			_out[0] = new ICommImage(res, socket.OriginalImages, socket.Categories);
 
-			FFTW.fftw_cleanup();
+			FFTW.Cleanup();
 
 			_workdone = true;
 		}
@@ -111,13 +109,9 @@ namespace Eithne
 			double[] d1 = new double[w * h * 2];
 			double[] d2 = new double[w * h * 2];
 
-			mutex.WaitOne();
+			IntPtr plan = FFTW.PlanDFT2D(h, w, d1, d2, FFTW.Direction.Forward, 0);
 
-			IntPtr plan = FFTW.fftw_plan_dft_2d(h, w, d1, d2, FFTW.Direction.Forward, 0);
-
-			FFTW.fftw_destroy_plan(plan);
-
-			mutex.ReleaseMutex();
+			FFTW.DestroyPlan(plan);
 		}
 
 		private IImage FFT(IImage img)
@@ -132,15 +126,11 @@ namespace Eithne
 					datain[(x + y*img.W) * 2 + 1] = 0;
 				}
 
-			mutex.WaitOne();
+			IntPtr plan = FFTW.PlanDFT2D(img.H, img.W, datain, dataout, FFTW.Direction.Forward, 0);
 
-			IntPtr plan = FFTW.fftw_plan_dft_2d(img.H, img.W, datain, dataout, FFTW.Direction.Forward, 0);
+			FFTW.Execute(plan);
 
-			FFTW.fftw_execute(plan);
-
-			FFTW.fftw_destroy_plan(plan);
-
-			mutex.ReleaseMutex();
+			FFTW.DestroyPlan(plan);
 
 			IImage ret = new IImage(BPP.Float, img.W, img.H);
 

@@ -94,7 +94,7 @@ namespace Eithne
 
 			_out[0] = new ICommImage(res, socket.OriginalImages, socket.Categories);
 
-			FFTW.fftw_cleanup();
+			FFTW.Cleanup();
 
 			_workdone = true;
 		}
@@ -108,12 +108,12 @@ namespace Eithne
 				for(int x=0; x<img.W; x++)
 					datain[x + y*img.W] = (byte)img[x, y];
 
-			IntPtr plan = FFTW.fftw_plan_r2r_2d(img.H, img.W, datain, dataout, FFTW.Kind.FFTW_REDFT10,
+			IntPtr plan = FFTW.PlanR2R2D(img.H, img.W, datain, dataout, FFTW.Kind.FFTW_REDFT10,
 					FFTW.Kind.FFTW_REDFT10, 0);
 
-			FFTW.fftw_execute(plan);
+			FFTW.Execute(plan);
 
-			FFTW.fftw_destroy_plan(plan);
+			FFTW.DestroyPlan(plan);
 
 			IImage ret = new IImage(BPP.Float, img.W, img.H);
 
