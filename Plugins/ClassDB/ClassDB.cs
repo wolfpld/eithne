@@ -203,6 +203,16 @@ namespace Eithne
 		private ArrayList a_in;
 		private int start;
 		private int end;
+		private int progress = 0;
+
+		public TaskInfo(IImage[] a_out, ArrayList a_in, int start, int end, int progress)
+		{
+			this.a_out = a_out;
+			this.a_in = a_in;
+			this.start = start;
+			this.end = end;
+			this.progress = progress;
+		}
 
 		public TaskInfo(IImage[] a_out, ArrayList a_in, int start, int end)
 		{
@@ -219,13 +229,23 @@ namespace Eithne
 				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)a_in[i]);
 
 				a_out[i] = IImage.Create(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
+
+				progress++;
 			}
+		}
+
+		public int Progress
+		{
+			get { return progress; }
 		}
 	}
 
 	public class ClassDBPlugin : IInPlugin
 	{
 		private ArrayList cat = new ArrayList();
+		private ArrayList tasks = new ArrayList();
+		private int totalImages;
+		private Mutex taskListMutex = new Mutex();
 
 		public ClassDBPlugin()
 		{
@@ -246,6 +266,10 @@ namespace Eithne
 
 		public override void Work()
 		{
+			taskListMutex.WaitOne();
+			tasks.Clear();
+			taskListMutex.ReleaseMutex();
+
 			if(cat.Count == 0)
 				throw new PluginException(Catalog.GetString("No categories in list"));
 
@@ -283,11 +307,18 @@ namespace Eithne
 			IImage[] test_imgarray = new IImage[test_il.Count];
 			IImage[] base_imgarray = new IImage[base_il.Count];
 
+			totalImages = test_il.Count + base_il.Count;
+
 			if(MultiThreading)
 			{
 				// test
 				TaskInfo ti1 = new TaskInfo(test_imgarray, test_il, 0, test_il.Count/2);
 				TaskInfo ti2 = new TaskInfo(test_imgarray, test_il, test_il.Count/2, test_il.Count);
+
+				taskListMutex.WaitOne();
+				tasks.Add(ti1);
+				tasks.Add(ti2);
+				taskListMutex.ReleaseMutex();
 
 				Thread t1 = new Thread(ti1.TaskWork);
 				Thread t2 = new Thread(ti2.TaskWork);
@@ -298,9 +329,18 @@ namespace Eithne
 				t1.Join();
 				t2.Join();
 
+				int t1progress = ti1.Progress;
+				int t2progress = ti2.Progress;
+
 				// base
-				ti1 = new TaskInfo(base_imgarray, base_il, 0, base_il.Count/2);
-				ti2 = new TaskInfo(base_imgarray, base_il, base_il.Count/2, base_il.Count);
+				ti1 = new TaskInfo(base_imgarray, base_il, 0, base_il.Count/2, t1progress);
+				ti2 = new TaskInfo(base_imgarray, base_il, base_il.Count/2, base_il.Count, t2progress);
+
+				taskListMutex.WaitOne();
+				tasks.Clear();
+				tasks.Add(ti1);
+				tasks.Add(ti2);
+				taskListMutex.ReleaseMutex();
 
 				t1 = new Thread(ti1.TaskWork);
 				t2 = new Thread(ti2.TaskWork);
@@ -314,6 +354,7 @@ namespace Eithne
 			else
 			{
 				TaskInfo t = new TaskInfo(test_imgarray, test_il, 0, test_il.Count);
+				tasks.Add(t);
 				t.TaskWork();
 				t = new TaskInfo(base_imgarray, base_il, 0, base_il.Count);
 				t.TaskWork();
@@ -409,5 +450,22 @@ namespace Eithne
 
 		private static string[] matchout  = new string[] { "image/rgb", "image/grayscale" };
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress
+		{
+			get
+			{
+				int done = 0;
+
+				taskListMutex.WaitOne();
+				for(int i=0; i<tasks.Count; i++)
+				{
+					done += ((TaskInfo)tasks[i]).Progress;
+				}
+				taskListMutex.ReleaseMutex();
+
+				return (float)done/totalImages;
+			}
+		}
 	}
 }
