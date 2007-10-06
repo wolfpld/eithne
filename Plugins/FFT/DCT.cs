@@ -127,6 +127,16 @@ namespace Eithne
 			return ret;
 		}
 
+		public override void Lock()
+		{
+			FFTW.mutex.WaitOne();
+		}
+
+		public override void Unlock()
+		{
+			FFTW.mutex.ReleaseMutex();
+		}
+
 		private XmlNode GetConfig()
 		{
 			XmlNode root = _xmldoc.CreateNode(XmlNodeType.Element, "config", "");

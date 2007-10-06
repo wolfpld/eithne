@@ -8,7 +8,7 @@ namespace Eithne
 	{
 		const string dll = "libfftw3-3.dll";
 
-		private static Mutex mutex = new Mutex(false, "FFTW mutex");
+		internal static Mutex mutex = new Mutex(false, "FFTW mutex");
 
 		internal enum Kind
 		{
