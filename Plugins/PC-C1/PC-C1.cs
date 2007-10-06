@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Threading;
 using System.Xml;
 using Mono.Unix;
@@ -58,6 +59,7 @@ namespace Eithne
 		private IImage[] a_in2;
 		private int start;
 		private int end;
+		private int progress = 0;
 
 		public TaskInfo(IResult[] a_out, IImage[] a_in1, IImage[] a_in2, int start, int end)
 		{
@@ -75,7 +77,10 @@ namespace Eithne
 				double[] data = new double[a_in1.Length];
 
 				for(int j=0; j<a_in1.Length; j++)
+				{
 					data[j] = Compare(a_in1[j], a_in2[i]);
+					progress++;
+				}
 
 				a_out[i] = new IResult(data);
 			}
@@ -110,10 +115,18 @@ namespace Eithne
 			else
 				return 1 - sum1 / sum2;
 		}
+
+		public int Progress
+		{
+			get { return progress; }
+		}
 	}
 
 	public class PCC1Plugin : IComparatorPlugin
 	{
+		private ArrayList tasks = new ArrayList();
+		private int totalImages;
+
 		public PCC1Plugin()
 		{
 			_info = new PCC1Info();
@@ -142,10 +155,15 @@ namespace Eithne
 
 			IResult[] res = new IResult[img2.Length];
 
+			totalImages = img1.Length * img2.Length;
+
 			if(MultiThreading)
 			{
 				TaskInfo ti1 = new TaskInfo(res, img1, img2, 0, img2.Length/2);
 				TaskInfo ti2 = new TaskInfo(res, img1, img2, img2.Length/2, img2.Length);
+
+				tasks.Add(ti1);
+				tasks.Add(ti2);
 				
 				Thread t1 = new Thread(ti1.TaskWork);
 				Thread t2 = new Thread(ti2.TaskWork);
@@ -159,6 +177,7 @@ namespace Eithne
 			else
 			{
 				TaskInfo t = new TaskInfo(res, img1, img2, 0, img2.Length);
+				tasks.Add(t);
 				t.TaskWork();
 			}
 
@@ -189,5 +208,20 @@ namespace Eithne
 
 		public override string[] MatchIn	{ get { return matchin; } }
 		public override string[] MatchOut	{ get { return matchout; } }
+
+		public override float Progress
+		{
+			get
+			{
+				int done = 0;
+				
+				for(int i=0; i<tasks.Count; i++)
+				{
+					done += ((TaskInfo)tasks[i]).Progress;
+				}
+
+				return (float)done/totalImages;
+			}
+		}
 	}
 }
