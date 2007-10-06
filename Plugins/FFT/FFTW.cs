@@ -8,7 +8,7 @@ namespace Eithne
 	{
 		const string dll = "libfftw3-3.dll";
 
-		internal static Mutex mutex = new Mutex();
+		private static Mutex mutex = new Mutex(false, "FFTW mutex");
 
 		internal enum Kind
 		{
@@ -24,8 +24,9 @@ namespace Eithne
 
 		internal static void Execute(IntPtr plan)
 		{
-			// fftw_execute is the only thread safe routine in fftw
+			mutex.WaitOne();
 			fftw_execute(plan);
+			mutex.ReleaseMutex();
 		}
 
 		internal static void DestroyPlan(IntPtr plan)
