@@ -77,7 +77,11 @@ namespace Eithne
 		public void Stop()
 		{
 			if(!finished)
+			{
+				Plugin.Lock();
 				t.Abort();
+				Plugin.Unlock();
+			}
 
 			b.Working = false;
 			MainWindow.RedrawSchematic();

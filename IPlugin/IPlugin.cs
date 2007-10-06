@@ -68,6 +68,14 @@ namespace Eithne
 			}
 		}
 
+		public virtual void Lock()
+		{
+		}
+
+		public virtual void Unlock()
+		{
+		}
+
 		public virtual bool HasSetup
 		{
 			get { return true; }
