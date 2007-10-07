@@ -15,6 +15,7 @@ namespace Eithne
 		[Widget] ImageMenuItem	MenuFileOpen;
 		[Widget] ImageMenuItem	MenuFileSave;
 		[Widget] ImageMenuItem	MenuFileSaveAs;
+		[Widget] ImageMenuItem	MenuFilePrint;
 		[Widget] ImageMenuItem	MenuFilePreferences;
 		[Widget] ImageMenuItem	MenuFileQuit;
 		[Widget] ImageMenuItem	MenuSystemRun;
@@ -79,6 +80,7 @@ namespace Eithne
 			MenuFileSave.Activated += OnSave;
 			MenuFileSaveAs.Image = new Image(null, "document-save-as.png");
 			MenuFileSaveAs.Activated += OnSaveAs;
+			MenuFilePrint.Activated += OnPrint;
 			MenuFilePreferences.Image = new Image(null, "preferences-desktop.png");
 			MenuFilePreferences.Activated += delegate(object o, EventArgs eargs) { new Preferences(); };
 			MenuFileQuit.Image = new Image(null, "system-log-out.png");
@@ -218,6 +220,17 @@ namespace Eithne
 				StatusBar.Pop(1);
 				StatusBar.Push(1, String.Format(Catalog.GetString("{0} saved"), Filename));
 			}
+		}
+
+		private void OnPrint(object o, EventArgs args)
+		{
+			Cairo.PdfSurface pdf = new Cairo.PdfSurface("print.pdf", 512, 512);
+			Cairo.Context c = new Cairo.Context(pdf);
+
+			schematic.Draw(c);
+
+			((IDisposable) c.Target).Dispose();
+			((IDisposable) c).Dispose();
 		}
 
 		private void OnRun(object o, EventArgs args)

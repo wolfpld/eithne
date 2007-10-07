@@ -517,7 +517,7 @@ namespace Eithne
 			QueueDraw();
 		}
 
-		private void Draw(Context c)
+		public void Draw(Context c)
 		{
 			if(ChangeBackground)
 			{
