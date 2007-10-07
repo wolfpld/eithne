@@ -535,14 +535,14 @@ namespace Eithne
 
 			if(Action.m == Action.Mode.Connect)
 			{
-				c.Color = new Color(0, 0, 0, 0.5);
-//				c.SetDash(new double[1] {5}, 0);
+				c.Color = new Color(0, 0, 0, 0.75);
+				c.SetDash(new double[2] {4,2}, 0);
 				c.LineWidth = 1.0;
-				c.MoveTo((selected as Socket).PX + 6.5, (selected as Socket).PY + 5);
-				c.LineTo(tmpx, tmpy);
+				c.MoveTo(tmpx, tmpy);
+				c.LineTo((selected as Socket).PX + 6.5, (selected as Socket).PY + 5);
 				c.Stroke();
 
-//				c.SetDash(new double[0] {}, 0);
+				c.SetDash(new double[0] {}, 0);
 				switch((Connection)Action.data)
 				{
 					case Connection.None:
