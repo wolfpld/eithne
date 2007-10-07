@@ -224,8 +224,8 @@ namespace Eithne
 
 		private void OnPrint(object o, EventArgs args)
 		{
-			Cairo.PdfSurface pdf = new Cairo.PdfSurface("print.pdf", 512, 512);
-			Cairo.Context c = new Cairo.Context(pdf);
+			Cairo.SvgSurface svg = new Cairo.SvgSurface("print.svg", 2048, 2048);
+			Cairo.Context c = new Cairo.Context(svg);
 
 			schematic.Draw(c);
 
