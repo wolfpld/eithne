@@ -78,7 +78,7 @@ namespace Eithne
 		{
 			this.status = status;
 
-			// FIXME wpisany na sztywno rozmiar obszaru roboczego
+			// FIXME hardcoded working space size
 			SetSizeRequest(2048, 2048);
 
 			Events |= Gdk.EventMask.PointerMotionMask | Gdk.EventMask.ButtonPressMask | Gdk.EventMask.ButtonReleaseMask
@@ -128,10 +128,10 @@ namespace Eithne
 
 		private bool IsGoodConnection(Socket from, Socket to)
 		{
-			// ten sam blok
+			// the same block
 			if(from.Parent == to.Parent)
 				return false;
-			// do gniazda już jest coś podłączone
+			// something is already connected to the socket
 			if(to.Other != null)
 				return false;
 
@@ -242,7 +242,7 @@ namespace Eithne
 						{
 							status.Push(1, Catalog.GetString("Move block to desired location"));
 
-							// przeniesienie klikniętego bloku na wierzch
+							// move clicked block to the top
 							if(blocks[blocks.Count-1] != selected)
 							{
 								blocks.Remove(selected);

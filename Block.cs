@@ -264,7 +264,7 @@ namespace Eithne
 				return null;
 
 			if(x < this.x + 10)
-				// porty wejściowe
+				// input sockets
 			{
 				int curpos = this.y+10+(h-20-CalcHeight(socketin.Length))/2;
 
@@ -278,7 +278,7 @@ namespace Eithne
 			}
 			else if(x > this.x + w - 10)
 			{
-				// porty wyjściowe
+				// output sockets
 				int curpos = this.y+10+(h-20-CalcHeight(socketout.Length))/2;
 
 				for(int i=0; i<socketout.Length; i++)
@@ -293,7 +293,7 @@ namespace Eithne
 			return this;
 		}
 
-		// FIXME wpisany na sztywno rozmiar obszaru roboczego
+		// FIXME hardcoded working area size
 		public void Move(int dx, int dy)
 		{
 			x += dx;
@@ -310,7 +310,7 @@ namespace Eithne
 				y = 2048-h;
 		}
 
-		// usuwa wszystkie połączenia
+		// removes all connections
 		public void Disconnect()
 		{
 			for(int i=0; i<socketin.Length; i++)
@@ -320,51 +320,51 @@ namespace Eithne
 				socketout[i].Disconnect();
 		}
 
-		// wykonywane po zmianie liczby slotów we wtyczce
+		// called after slot number is changed
 		private void UpdateCoordinates()
 		{
 			int h1 = CalcHeight(plugin.NumIn);
 			int h2 = CalcHeight(plugin.NumOut);
 
-			// rozmiar bloku
+			// block size
 			h = Math.Max(Math.Max(th, h1), h2) + 20;
 
-			// położenie tekstu
+			// text location
 			ty = h/2 + th/2;
 
 			if(ty > h-15)
 				ty = h-15;
 
-			// położenie stanu
+			// status location
 			if(plugin is ConnectorPlugin)
 				sy = h/2 - 4;
 			else
 				sy = h - 11;
 
-			// położenie zegarka
+			// clock location
 			cy = h/2 - 16;
 		}
 
-		// wykonywane tylko raz, przez konstruktor
+		// called only once, by constructor
 		private void UpdateCoordinates(Context c)
 		{
 			TextExtents t = c.TextExtents(plugin.Info.ShortName);
 
 			th = (int)t.Height;
 
-			// rozmiar bloku
+			// block size
 			w = (int)t.Width + 30;
 
-			// położenie tekstu
+			// text location
 			tx = 15;
 
-			// położenie stanu
+			// status location
 			if(plugin is ConnectorPlugin)
 				sx = w/2 - 4;
 			else
 				sx = w/2 - 3;
 
-			// położenie zegarka
+			// clock location
 			cx = w/2 - 16;
 
 			UpdateCoordinates();
@@ -707,7 +707,7 @@ namespace Eithne
 			// 2
 			c.CurveTo(x+w, y, x+w, y, x+w, y+10);
 
-			// gniazda wyjściowe
+			// output sockets
 			if(socketout.Length == 0)
 				c.LineTo(x+w, y+h-10);
 			else
@@ -737,7 +737,7 @@ namespace Eithne
 			// 4
 			c.CurveTo(x, y+h, x, y+h, x, y+h-10);
 
-			// gniazda wejściowe
+			// input sockets
 			if(socketin.Length == 0)
 				c.LineTo(x, y+10);
 			else
@@ -777,7 +777,7 @@ namespace Eithne
 			c.LineTo(x+w, y);
 
 			// 2
-			// gniazda wyjściowe
+			// output sockets
 			if(socketout.Length == 0)
 				c.LineTo(x+w, y+h);
 			else
@@ -808,7 +808,7 @@ namespace Eithne
 			c.LineTo(x, y+h);
 
 			// 4
-			// gniazda wejściowe
+			// input sockets
 			if(socketin.Length == 0)
 				c.LineTo(x, y);
 			else
@@ -863,7 +863,7 @@ namespace Eithne
 			// 2
 			c.CurveTo(x+w-1.5, y+1.5, x+w-1.5, y+1.5, x+w-1.5, y+8.5);
 
-			// gniazda wyjściowe
+			// output sockets
 			if(socketout.Length == 0)
 				c.LineTo(x+w-1.5, y+h-11.5);
 			else
@@ -893,7 +893,7 @@ namespace Eithne
 			// 4
 			c.CurveTo(x+1.5, y+h-1.5, x+1.5, y+h-1.5, x+1.5, y+h-8.5);
 
-			// gniazda wejściowe
+			// input sockets
 			if(socketin.Length == 0)
 				c.LineTo(x+1.5, y+11.5);
 			else

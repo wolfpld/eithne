@@ -154,11 +154,11 @@ namespace Eithne
 				return false;
 			}
 
-			// sprawdzenie, czy jakiś wątek nie skończył pracy
+			// check if any thread has finished work
 			for(int i=Threads.Count-1; i>=0; i--)
 				if(((EngineThread)Threads[i]).Finished)
 				{
-					// w przypadku błędu praca jest skończona
+					// in case of error working is stopped
 					if(stop)
 					{
 						running = false;
@@ -170,14 +170,14 @@ namespace Eithne
 					Threads.RemoveAt(i);
 				}
 
-			// jeżeli są jakieś wolne sloty na wątki, to trzeba spróbować je wypełnić
+			// if there are free slots for threads try to fill them
 			if(Threads.Count < ConfigThreads)
 			{
 				ArrayList Blocks = s.Blocks;
 
 				for(int i=0; i<Blocks.Count; i++)
 				{
-					// sprawdzenie czy są wolne wątki
+					// check if there are free threads
 					if(Threads.Count >= ConfigThreads)
 						break;
 
@@ -188,7 +188,7 @@ namespace Eithne
 				}
 			}
 
-			// sprawdzenie czy zostały jakieś wątki
+			// check if there are some threads left
 			if(Threads.Count == 0)
 			{
 				running = false;
@@ -207,7 +207,7 @@ namespace Eithne
 
 		public void Start()
 		{
-			// nie powinno nigdy się zdarzyć
+			// shouldn't happen
 			if(running)
 				throw new Exception(Catalog.GetString("Engine is already running."));
 
@@ -218,10 +218,10 @@ namespace Eithne
 			stop = false;
 			running = true;
 
-			// przejrzenie wszystkich bloków i dodanie gotowych do pracy do listy wątków
+			// check all blocks and add ones ready to work to the thread list
 			for(int i=0; i<Blocks.Count; i++)
 			{
-				// sprawdzenie czy są wolne wątki
+				// check if there are free threads
 				if(Threads.Count >= ConfigThreads)
 					break;
 
@@ -231,11 +231,11 @@ namespace Eithne
 					Threads.Add(new EngineThread(this, b));
 			}
 
-			// sprawdzanie stanu wątków co 50 ms
+			// check threads status every 50 ms
 			GLib.Timeout.Add(50, new GLib.TimeoutHandler(Tick));
 		}
 
-		// zatrzymuje wszystkie wątki
+		// stops all threads
 		public void Stop()
 		{
 			stop = true;
