@@ -552,12 +552,12 @@ namespace Eithne
 
 					case Connection.Good:
 						c.Color = new Color(0.3, 1, 0.3, 0.8);
-						c.Arc(tmpx, tmpy, 7, 0, 2*Math.PI);
+						c.Arc(tmpx, tmpy, 7 + Math.Sin(DateTime.Now.Ticks/1000000.0d), 0, 2*Math.PI);
 						break;
 
 					case Connection.Bad:
 						c.Color = new Color(1, 0.3, 0.3, 0.8);
-						c.Arc(tmpx, tmpy, 7, 0, 2*Math.PI);
+						c.Arc(tmpx, tmpy, 7 + Math.Sin(DateTime.Now.Ticks/500000.0d) * 1.5f, 0, 2*Math.PI);
 						break;
 				}
 				c.FillPreserve();
@@ -579,12 +579,20 @@ namespace Eithne
 						break;
 				}
 				c.Stroke();
+
+				GLib.Timeout.Add(200, new GLib.TimeoutHandler(AnimTick));
 			}
 		}
 
 		public void Redraw()
 		{
 			QueueDraw();
+		}
+
+		private bool AnimTick()
+		{
+			QueueDraw();
+			return false;
 		}
 	}
 }
