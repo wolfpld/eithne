@@ -1,5 +1,5 @@
-eithne x.x.x
-------------
+eithne 0.4.1 (2007-10-07)
+-------------------------
 
 - New block input/output matching system.
 - New plugin: Histogram view.
