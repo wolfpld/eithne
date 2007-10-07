@@ -224,13 +224,42 @@ namespace Eithne
 
 		private void OnPrint(object o, EventArgs args)
 		{
-			Cairo.SvgSurface svg = new Cairo.SvgSurface("print.svg", 2048, 2048);
-			Cairo.Context c = new Cairo.Context(svg);
+			FileChooserDialog fs = new FileChooserDialog(Catalog.GetString("Export as..."), EithneWindow, FileChooserAction.Save,
+					new object[] {Catalog.GetString("Cancel"), ResponseType.Cancel, Catalog.GetString("Export"),
+					ResponseType.Accept});
 
-			schematic.Draw(c);
+			FileFilter filter = new FileFilter();
+			filter.Name = String.Format(Catalog.GetString("SVG image"), About.Name);
+			filter.AddPattern("*.svg");
+			fs.AddFilter(filter);
+			filter = new FileFilter();
+			filter.Name = Catalog.GetString("All files");
+			filter.AddPattern("*");
+			fs.AddFilter(filter);
 
-			((IDisposable) c.Target).Dispose();
-			((IDisposable) c).Dispose();
+			fs.Response += delegate(object obj, ResponseArgs eargs)
+				{
+					if(eargs.ResponseId == ResponseType.Accept)
+					{
+						Filename = fs.Filename;
+
+						if(!Path.HasExtension(Filename))
+							Filename = Path.ChangeExtension(Filename, ".svg");
+
+						Cairo.SvgSurface svg = new Cairo.SvgSurface(Filename, 2048, 2048);
+						Cairo.Context c = new Cairo.Context(svg);
+
+						schematic.Draw(c);
+
+						((IDisposable) c.Target).Dispose();
+						((IDisposable) c).Dispose();
+
+						StatusBar.Pop(1);
+						StatusBar.Push(1, String.Format(Catalog.GetString("{0} saved"), Filename));
+					}
+				};
+			fs.Run();
+			fs.Destroy();
 		}
 
 		private void OnRun(object o, EventArgs args)

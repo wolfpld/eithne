@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-07 16:11+0200\n"
+"POT-Creation-Date: 2007-10-07 17:29+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,69 +103,82 @@ msgstr ""
 "Plik <i>{0}</i> nie może zostać otwarty, ponieważ następujące wtyczki nie są "
 "dostępne:"
 
-#: MainWindow.cs:72
+#: MainWindow.cs:73
 #, csharp-format
 msgid "Welcome to {0}!"
 msgstr "Witamy w {0}!"
 
-#: MainWindow.cs:130
+#: MainWindow.cs:132
 msgid "Do you really want to discard old schematic?"
 msgstr "Czy na pewno odrzucić stary schemat?"
 
-#: MainWindow.cs:138
+#: MainWindow.cs:140
 msgid "New system schematic ready"
 msgstr "Nowy schemat systemu gotowy"
 
-#: MainWindow.cs:144
+#: MainWindow.cs:146
 msgid "Select file to load..."
 msgstr "Wybór pliku do załadowania..."
 
-#: MainWindow.cs:145 MainWindow.cs:179 Plugins/ClassDB/ClassDBWindow.cs:68
-#: Plugins/SimpleDB/SimpleDBWindow.cs:60
+#: MainWindow.cs:147 MainWindow.cs:181 MainWindow.cs:228
+#: Plugins/ClassDB/ClassDBWindow.cs:68 Plugins/SimpleDB/SimpleDBWindow.cs:60
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: MainWindow.cs:146
+#: MainWindow.cs:148
 msgid "Load"
 msgstr "Ładuj"
 
-#: MainWindow.cs:149 MainWindow.cs:183
+#: MainWindow.cs:151 MainWindow.cs:185
 #, csharp-format
 msgid "{0} system schematic"
 msgstr "Schemat systemu {0}"
 
-#: MainWindow.cs:153 MainWindow.cs:187 Plugins/SimpleDB/SimpleDBWindow.cs:68
+#: MainWindow.cs:155 MainWindow.cs:189 MainWindow.cs:236
+#: Plugins/SimpleDB/SimpleDBWindow.cs:68
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: MainWindow.cs:168
+#: MainWindow.cs:170
 #, csharp-format
 msgid "{0} loaded"
 msgstr "Załadowano {0}"
 
-#: MainWindow.cs:178
+#: MainWindow.cs:180
 msgid "Save as..."
 msgstr "Zapisz jako..."
 
-#: MainWindow.cs:179
+#: MainWindow.cs:181
 msgid "Save"
 msgstr "Zapisz"
 
-#: MainWindow.cs:203 MainWindow.cs:219
+#: MainWindow.cs:205 MainWindow.cs:221 MainWindow.cs:258
 #, csharp-format
 msgid "{0} saved"
 msgstr "Zapisano {0}"
 
-#: MainWindow.cs:237 resources/MainWindow.glade:112
+#: MainWindow.cs:227
+msgid "Export as..."
+msgstr "Eksportuj jako..."
+
+#: MainWindow.cs:228
+msgid "Export"
+msgstr "Eksportuj"
+
+#: MainWindow.cs:232
+msgid "SVG image"
+msgstr "Obraz SVG"
+
+#: MainWindow.cs:279 resources/MainWindow.glade:121
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: MainWindow.cs:249 resources/MainWindow.glade:95
-#: resources/MainWindow.glade:214
+#: MainWindow.cs:291 resources/MainWindow.glade:104
+#: resources/MainWindow.glade:223
 msgid "Run"
 msgstr "Uruchom"
 
-#: MainWindow.cs:255
+#: MainWindow.cs:297
 #, csharp-format
 msgid "Elapsed time: {0}"
 msgstr "Upłynęło czasu: {0}"
@@ -299,7 +312,7 @@ msgstr "Wtyczka \"{0}\" wybrana"
 msgid "A_dd"
 msgstr "_Dodaj"
 
-#: PluginToolbox.cs:84 Schematic.cs:359
+#: PluginToolbox.cs:84 Schematic.cs:363
 msgid "_About"
 msgstr "O wtyczce"
 
@@ -1267,76 +1280,76 @@ msgstr "Minimalna liczba pasujących obrazów:"
 msgid "File <i>{0}</i> is not an eithne system schematic!"
 msgstr "Plik <i>{0}</i> nie jest schematem systemu eithne!"
 
-#: Schematic.cs:178
+#: Schematic.cs:182
 #, csharp-format
 msgid "{0} block selected"
 msgstr "Blok \"{0}\" wybrany"
 
-#: Schematic.cs:185
+#: Schematic.cs:189
 #, csharp-format
 msgid "{0} block, input socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wejściowe {1}. {2}"
 
-#: Schematic.cs:188
+#: Schematic.cs:192
 #, csharp-format
 msgid "{0} block, output socket {1}. {2}"
 msgstr "Blok \"{0}\", gniazdo wyjściowe {1}. {2}"
 
-#: Schematic.cs:243
+#: Schematic.cs:247
 msgid "Move block to desired location"
 msgstr "Przenoszenie bloku na porządaną pozycję"
 
-#: Schematic.cs:293
+#: Schematic.cs:297
 #, csharp-format
 msgid "{0} menu"
 msgstr "Menu bloku \"{0}\""
 
-#: Schematic.cs:301
+#: Schematic.cs:305
 msgid "Display _results"
 msgstr "Wyświetl _wyniki"
 
-#: Schematic.cs:311
+#: Schematic.cs:315
 msgid "_Setup"
 msgstr "U_stawienia"
 
-#: Schematic.cs:320
+#: Schematic.cs:324
 msgid "D_isconnect all"
 msgstr "Rozłącz wszystk_ie"
 
-#: Schematic.cs:327
+#: Schematic.cs:331
 msgid "Removed all block's connections"
 msgstr "Usunięto wszystkie połączenia bloku"
 
-#: Schematic.cs:331
+#: Schematic.cs:335
 msgid "In_validate"
 msgstr "Unieważnij"
 
-#: Schematic.cs:340
+#: Schematic.cs:344
 msgid "Invalidated results"
 msgstr "Unieważniono wyniki"
 
-#: Schematic.cs:344
+#: Schematic.cs:348
 msgid "_Delete"
 msgstr "Usuń"
 
-#: Schematic.cs:353
+#: Schematic.cs:357
 #, csharp-format
 msgid "Deleted {0} block"
 msgstr "Usunięto blok \"{0}\""
 
-#: Schematic.cs:377
+#: Schematic.cs:381
 msgid "Connect block with another"
 msgstr "Łączenie bloku z innym blokiem"
 
-#: Schematic.cs:389 Schematic.cs:404
+#: Schematic.cs:393 Schematic.cs:408
 msgid "Removed connection"
 msgstr "Usunięto połączenie"
 
-#: Schematic.cs:396
+#: Schematic.cs:400
 msgid "_Disconnect"
 msgstr "Rozłącz"
 
-#: Schematic.cs:474
+#: Schematic.cs:478
 msgid "Connected blocks"
 msgstr "Połączono bloki"
 
@@ -1406,27 +1419,31 @@ msgstr "x"
 msgid "File"
 msgstr "Plik"
 
-#: resources/MainWindow.glade:62
+#: resources/MainWindow.glade:58
+msgid "gtk-print"
+msgstr ""
+
+#: resources/MainWindow.glade:71
 msgid "gtk-preferences"
 msgstr "gtk-preferences"
 
-#: resources/MainWindow.glade:88
+#: resources/MainWindow.glade:97
 msgid "System"
 msgstr "System"
 
-#: resources/MainWindow.glade:132
+#: resources/MainWindow.glade:141
 msgid "Help"
 msgstr "Pomoc"
 
-#: resources/MainWindow.glade:139
+#: resources/MainWindow.glade:148
 msgid "Plugin list"
 msgstr "Lista wtyczek"
 
-#: resources/MainWindow.glade:270
+#: resources/MainWindow.glade:279
 msgid "System schematic"
 msgstr "Schemat systemu"
 
-#: resources/MainWindow.glade:311
+#: resources/MainWindow.glade:320
 msgid "Plugin toolbox"
 msgstr "Narzędziówka"
 
