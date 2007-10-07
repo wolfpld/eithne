@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-05 00:34+0200\n"
+"POT-Creation-Date: 2007-10-07 16:11+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "Skopiowany sygnał."
 msgid "Plugin has no data on output sockets."
 msgstr "Wtyczka nie ma danych na gniazdach wyjściowych."
 
-#: Engine.cs:209
+#: Engine.cs:212
 msgid "Engine is already running."
 msgstr "Silnik już jest uruchomiony."
 
@@ -401,32 +401,32 @@ msgstr ""
 "Ta wtyczka umożliwia kategoryzację obrazów i ich podział na obrazy bazowe i "
 "testowe."
 
-#: Plugins/ClassDB/ClassDB.cs:250
+#: Plugins/ClassDB/ClassDB.cs:274
 msgid "No categories in list"
 msgstr "Brak kategorii na liście"
 
-#: Plugins/ClassDB/ClassDB.cs:276
+#: Plugins/ClassDB/ClassDB.cs:300
 msgid "There are no test images selected"
 msgstr "Brak obrazów testowych"
 
-#: Plugins/ClassDB/ClassDB.cs:278
+#: Plugins/ClassDB/ClassDB.cs:302
 msgid "There are no base images selected"
 msgstr "Brak obrazów bazowych"
 
-#: Plugins/ClassDB/ClassDB.cs:387 Plugins/ClassDB/FileList.cs:100
+#: Plugins/ClassDB/ClassDB.cs:432 Plugins/ClassDB/FileList.cs:100
 #, csharp-format
 msgid "From category <b>{0}</b>: {1}"
 msgstr "Kategoria <b>{0}</b>: {1}"
 
-#: Plugins/ClassDB/ClassDB.cs:405 Plugins/Euclid/Euclid.cs:173
-#: Plugins/L0Mod/L0Mod.cs:201 Plugins/PC-C1/PC-C1.cs:177
-#: Plugins/PC-C2/PC-C2.cs:183
+#: Plugins/ClassDB/ClassDB.cs:450 Plugins/Euclid/Euclid.cs:196
+#: Plugins/L0Mod/L0Mod.cs:223 Plugins/PC-C1/PC-C1.cs:200
+#: Plugins/PC-C2/PC-C2.cs:206
 msgid "Base images."
 msgstr "Obrazy bazowe."
 
-#: Plugins/ClassDB/ClassDB.cs:407 Plugins/Euclid/Euclid.cs:175
-#: Plugins/L0Mod/L0Mod.cs:203 Plugins/PC-C1/PC-C1.cs:179
-#: Plugins/PC-C2/PC-C2.cs:185
+#: Plugins/ClassDB/ClassDB.cs:452 Plugins/Euclid/Euclid.cs:198
+#: Plugins/L0Mod/L0Mod.cs:225 Plugins/PC-C1/PC-C1.cs:202
+#: Plugins/PC-C2/PC-C2.cs:208
 msgid "Test images."
 msgstr "Obrazy testowe."
 
@@ -578,11 +578,11 @@ msgid "This plugin crops image."
 msgstr "Ta wtyczka przycina obrazy."
 
 #: Plugins/Crop/Crop.cs:178 Plugins/Desaturate/Desaturate.cs:111
-#: Plugins/Edge/Edge.cs:141 Plugins/FFT/DCT.cs:149 Plugins/FFT/FFT.cs:175
-#: Plugins/Haar/Haar.cs:131 Plugins/Histogram/Histogram.cs:277
+#: Plugins/Edge/Edge.cs:147 Plugins/FFT/DCT.cs:165 Plugins/FFT/FFT.cs:191
+#: Plugins/Haar/Haar.cs:137 Plugins/Histogram/Histogram.cs:277
 #: Plugins/NewSourceImages/NewSourceImages.cs:84
-#: Plugins/RGBSplit/RGBSplit.cs:138 Plugins/Random/Random.cs:147
-#: Plugins/Resize/Resize.cs:106
+#: Plugins/RGBSplit/RGBSplit.cs:144 Plugins/Random/Random.cs:147
+#: Plugins/Resize/Resize.cs:111
 msgid "Input image."
 msgstr "Obraz wejściowy."
 
@@ -638,7 +638,7 @@ msgstr "Wykrywanie krawędzi"
 msgid "This plugin detects edges in images."
 msgstr "Ta wtyczka wykrywa krawędzie na obrazach."
 
-#: Plugins/Edge/Edge.cs:146
+#: Plugins/Edge/Edge.cs:152
 msgid "Detected edges."
 msgstr "Wykryte krawędzie."
 
@@ -658,29 +658,29 @@ msgstr "Oblicz energię różnic"
 #: Plugins/Haar/resources/Haar.glade:135
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
-#: resources/Preferences.glade:338
+#: resources/Preferences.glade:351
 msgid "gtk-close"
 msgstr "gtk-close"
 
-#: Plugins/Euclid/Euclid.cs:12
+#: Plugins/Euclid/Euclid.cs:13
 msgid "Euclid metric"
 msgstr "Metryka Euklidesa"
 
-#: Plugins/Euclid/Euclid.cs:27
+#: Plugins/Euclid/Euclid.cs:28
 msgid "This plugin calculates Euclid metric between images."
 msgstr "Ta wtyczka oblicza metrykę Euklidesa pomiędzy obrazami."
 
-#: Plugins/Euclid/Euclid.cs:87 Plugins/L0Mod/L0Mod.cs:89
-#: Plugins/PC-C1/PC-C1.cs:87 Plugins/PC-C2/PC-C2.cs:87
+#: Plugins/Euclid/Euclid.cs:92 Plugins/L0Mod/L0Mod.cs:94
+#: Plugins/PC-C1/PC-C1.cs:92 Plugins/PC-C2/PC-C2.cs:92
 msgid "Images BPP do not match."
 msgstr "Głębie kolorów obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:89 Plugins/L0Mod/L0Mod.cs:91
-#: Plugins/PC-C1/PC-C1.cs:89 Plugins/PC-C2/PC-C2.cs:89
+#: Plugins/Euclid/Euclid.cs:94 Plugins/L0Mod/L0Mod.cs:96
+#: Plugins/PC-C1/PC-C1.cs:94 Plugins/PC-C2/PC-C2.cs:94
 msgid "Images dimensions do not match."
 msgstr "Wymiary obrazów nie pasują do siebie."
 
-#: Plugins/Euclid/Euclid.cs:180
+#: Plugins/Euclid/Euclid.cs:203
 msgid "Calculated Euclid metric."
 msgstr "Obliczona metryka Euklidesa."
 
@@ -692,7 +692,7 @@ msgstr "Dyskretna Transformata Kosinusowa"
 msgid "This plugin performs discrete cosine transform."
 msgstr "Ta wtyczka przeprowadza dyskretną transformatę kosinusową."
 
-#: Plugins/FFT/DCT.cs:154
+#: Plugins/FFT/DCT.cs:170
 msgid "DCT of image."
 msgstr "DCT obrazu."
 
@@ -704,7 +704,7 @@ msgstr "Szybka Transformata Fouriera"
 msgid "This plugin performs fast fourier transform."
 msgstr "Ta wtyczka przeprowadza szybką transformatę Fouriera."
 
-#: Plugins/FFT/FFT.cs:180
+#: Plugins/FFT/FFT.cs:196
 msgid "FFT of image."
 msgstr "FFT obrazu."
 
@@ -728,12 +728,12 @@ msgstr "Odbicie"
 msgid "This plugin adds flipped copies of images."
 msgstr "Ta wtyczka dodaje odbite kopie obrazów."
 
-#: Plugins/Flip/Flip.cs:112 Plugins/Mirror/Mirror.cs:116
-#: Plugins/ResizeWavelet/ResizeWavelet.cs:105
+#: Plugins/Flip/Flip.cs:118 Plugins/Mirror/Mirror.cs:121
+#: Plugins/ResizeWavelet/ResizeWavelet.cs:112
 msgid "Input images."
 msgstr "Obrazy wejściowe."
 
-#: Plugins/Flip/Flip.cs:117
+#: Plugins/Flip/Flip.cs:123
 msgid "Input images plus flipped images."
 msgstr "Obrazy wejściowe plus odbite obrazy."
 
@@ -745,11 +745,11 @@ msgstr "Odwrotna Falka Haara"
 msgid "This plugin calculates inverse of Haar wavelet."
 msgstr "Ta wtyczka oblicza odwrotną falkę Haara."
 
-#: Plugins/Haar/DeHaar.cs:120 Plugins/Haar/Haar.cs:136
+#: Plugins/Haar/DeHaar.cs:126 Plugins/Haar/Haar.cs:142
 msgid "Haar wavelet."
 msgstr "Falka Haara."
 
-#: Plugins/Haar/DeHaar.cs:125
+#: Plugins/Haar/DeHaar.cs:131
 msgid "Output image."
 msgstr "Obraz wyjściowy."
 
@@ -887,16 +887,16 @@ msgstr "<big><big><b>Podgląd Obrazów</b></big></big>"
 msgid "Invert images"
 msgstr "Odwróć obrazy"
 
-#: Plugins/L0Mod/L0Mod.cs:12
+#: Plugins/L0Mod/L0Mod.cs:13
 msgid "Modified L<sub>0</sub> metric"
 msgstr "Zmodyfikowana metryka L<sub>0</sub>"
 
-#: Plugins/L0Mod/L0Mod.cs:27
+#: Plugins/L0Mod/L0Mod.cs:28
 msgid "This plugin calculates modified L<sub>0</sub> metric between images."
 msgstr ""
 "Ta wtyczka oblicza zmodyfikowaną metrykę L<sub>0</sub> pomiędzy obrazami."
 
-#: Plugins/L0Mod/L0Mod.cs:208
+#: Plugins/L0Mod/L0Mod.cs:230
 msgid "Calculated modified L0 metric."
 msgstr "Obliczona zmodyfikowana metryka L0."
 
@@ -924,7 +924,7 @@ msgstr ""
 "Ta wtyczka dodaje kopie obrazów, które mają lewą połowę lustrzanie odbitą na "
 "prawej połowie."
 
-#: Plugins/Mirror/Mirror.cs:121
+#: Plugins/Mirror/Mirror.cs:126
 msgid "Input images plus mirror images."
 msgstr "Obrazy wejściowe plus lustrzane obrazy."
 
@@ -965,33 +965,33 @@ msgstr ""
 msgid "Copy of image with original image changed."
 msgstr "Kopia obrazu ze zmienionym obrazem źródłowym."
 
-#: Plugins/PC-C1/PC-C1.cs:12
+#: Plugins/PC-C1/PC-C1.cs:13
 msgid "Pseudo-correlative C<sub>1</sub> metric"
 msgstr "Pseudokorel. metryka C<sub>1</sub>"
 
-#: Plugins/PC-C1/PC-C1.cs:27
+#: Plugins/PC-C1/PC-C1.cs:28
 msgid ""
 "This plugin calculates pseudo-correlative C<sub>1</sub> metric between "
 "images."
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>1</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C1/PC-C1.cs:184
+#: Plugins/PC-C1/PC-C1.cs:207
 msgid "Calculated C1 metric."
 msgstr "Obliczone metryka C1."
 
-#: Plugins/PC-C2/PC-C2.cs:12
+#: Plugins/PC-C2/PC-C2.cs:13
 msgid "Pseudo-correlative C<sub>2</sub> metric"
 msgstr "Pseudokorel. metryka C<sub>2</sub>"
 
-#: Plugins/PC-C2/PC-C2.cs:27
+#: Plugins/PC-C2/PC-C2.cs:28
 msgid ""
 "This plugin calculates pseudo-correlative C<sub>2</sub> metric between "
 "images."
 msgstr ""
 "Ta wtyczka oblicza pseudokorelacyjną metrykę C<sub>2</sub> pomiędzy obrazami."
 
-#: Plugins/PC-C2/PC-C2.cs:190
+#: Plugins/PC-C2/PC-C2.cs:213
 msgid "Calculated C2 metric."
 msgstr "Obliczona metryka C2."
 
@@ -1005,15 +1005,15 @@ msgstr ""
 "Ta wtyczka wykonuje rozbicie obrazu na 3 podkanały. (czerwony, zielony, "
 "niebieski)"
 
-#: Plugins/RGBSplit/RGBSplit.cs:144
+#: Plugins/RGBSplit/RGBSplit.cs:150
 msgid "Red subchannel."
 msgstr "Podkanał czerwony."
 
-#: Plugins/RGBSplit/RGBSplit.cs:146
+#: Plugins/RGBSplit/RGBSplit.cs:152
 msgid "Green subchannel."
 msgstr "Podkanał zielony."
 
-#: Plugins/RGBSplit/RGBSplit.cs:148
+#: Plugins/RGBSplit/RGBSplit.cs:154
 msgid "Blue subchannel."
 msgstr "Podkanał niebieski."
 
@@ -1062,7 +1062,7 @@ msgstr "Skalowanie Obrazu"
 msgid "This plugin changes size of images"
 msgstr "Ta wtyczka zmienia rozmiar obrazów."
 
-#: Plugins/Resize/Resize.cs:111
+#: Plugins/Resize/Resize.cs:116
 msgid "Scaled image."
 msgstr "Przeskalowane obrazy."
 
@@ -1122,7 +1122,7 @@ msgstr "Przeskalowanie falkowe"
 msgid "This plugin scales down image using wavelet averages."
 msgstr "Ta wtyczka zmniejsza obrazy używając średnich falkowych."
 
-#: Plugins/ResizeWavelet/ResizeWavelet.cs:110
+#: Plugins/ResizeWavelet/ResizeWavelet.cs:117
 msgid "Resized images."
 msgstr "Zmniejszone obrazy."
 
@@ -1422,11 +1422,11 @@ msgstr "Pomoc"
 msgid "Plugin list"
 msgstr "Lista wtyczek"
 
-#: resources/MainWindow.glade:269
+#: resources/MainWindow.glade:270
 msgid "System schematic"
 msgstr "Schemat systemu"
 
-#: resources/MainWindow.glade:310
+#: resources/MainWindow.glade:311
 msgid "Plugin toolbox"
 msgstr "Narzędziówka"
 
@@ -1503,39 +1503,43 @@ msgstr "Antyaliasing"
 msgid "Show progress"
 msgstr "Pokaż postęp"
 
-#: resources/Preferences.glade:107
+#: resources/Preferences.glade:96
+msgid "Block connection animation"
+msgstr "Animacja łączenia bloków"
+
+#: resources/Preferences.glade:120
 msgid "Change background color"
 msgstr "Zmiana koloru tła"
 
-#: resources/Preferences.glade:192
+#: resources/Preferences.glade:205
 msgid "Alpha"
 msgstr "Alfa"
 
-#: resources/Preferences.glade:207
+#: resources/Preferences.glade:220
 msgid "Blue"
 msgstr "Niebieski"
 
-#: resources/Preferences.glade:222
+#: resources/Preferences.glade:235
 msgid "Green"
 msgstr "Zielony"
 
-#: resources/Preferences.glade:237
+#: resources/Preferences.glade:250
 msgid "Red"
 msgstr "Czerwony"
 
-#: resources/Preferences.glade:257
+#: resources/Preferences.glade:270
 msgid "Look and feel"
 msgstr "Wygląd"
 
-#: resources/Preferences.glade:275
+#: resources/Preferences.glade:288
 msgid "Maximum number of threads"
 msgstr "Maksymalna liczba wątków"
 
-#: resources/Preferences.glade:300
+#: resources/Preferences.glade:313
 msgid "Allow multithreading inside blocks"
 msgstr "Pozwól na wielowątkowość wewnątrz bloków"
 
-#: resources/Preferences.glade:317
+#: resources/Preferences.glade:330
 msgid "Engine"
 msgstr "Silnik"
 

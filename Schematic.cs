@@ -14,6 +14,7 @@ namespace Eithne
 		private static int BackgroundGreen = Config.Get("schematic/green", 128);
 		private static int BackgroundBlue = Config.Get("schematic/blue", 128);
 		private static int BackgroundAlpha = Config.Get("schematic/alpha", 255);
+		private static bool ConnectionAnimation = Config.Get("schematic/connectionanimation", true);
 
 		internal new class Action
 		{
@@ -54,6 +55,7 @@ namespace Eithne
 			int NewGreen = Config.Get("schematic/green", 128);
 			int NewBlue = Config.Get("schematic/blue", 128);
 			int NewAlpha = Config.Get("schematic/alpha", 255);
+			bool NewConnectionAnimation = Config.Get("schematic/connectionanimation", true);
 
 			bool redraw =
 				Antialias != NewAntialias ||
@@ -61,7 +63,8 @@ namespace Eithne
 				BackgroundRed != NewRed ||
 				BackgroundGreen != NewGreen ||
 				BackgroundBlue != NewBlue ||
-				BackgroundAlpha != NewAlpha;
+				BackgroundAlpha != NewAlpha ||
+				ConnectionAnimation != NewConnectionAnimation;
 
 			Antialias = NewAntialias;
 			ChangeBackground = NewChangeBackground;
@@ -69,6 +72,7 @@ namespace Eithne
 			BackgroundGreen = NewGreen;
 			BackgroundBlue = NewBlue;
 			BackgroundAlpha = NewAlpha;
+			ConnectionAnimation = NewConnectionAnimation;
 
 			if(redraw)
 				MainWindow.RedrawSchematic();
@@ -552,12 +556,18 @@ namespace Eithne
 
 					case Connection.Good:
 						c.Color = new Color(0.3, 1, 0.3, 0.8);
-						c.Arc(tmpx, tmpy, 7 + Math.Sin(DateTime.Now.Ticks/1000000.0d), 0, 2*Math.PI);
+						if(ConnectionAnimation)
+							c.Arc(tmpx, tmpy, 7 + Math.Sin(DateTime.Now.Ticks/1000000.0d), 0, 2*Math.PI);
+						else
+							c.Arc(tmpx, tmpy, 7, 0, 2*Math.PI);
 						break;
 
 					case Connection.Bad:
 						c.Color = new Color(1, 0.3, 0.3, 0.8);
-						c.Arc(tmpx, tmpy, 7 + Math.Sin(DateTime.Now.Ticks/500000.0d) * 1.5f, 0, 2*Math.PI);
+						if(ConnectionAnimation)
+							c.Arc(tmpx, tmpy, 7 + Math.Sin(DateTime.Now.Ticks/500000.0d) * 1.5f, 0, 2*Math.PI);
+						else
+							c.Arc(tmpx, tmpy, 7, 0, 2*Math.PI);
 						break;
 				}
 				c.FillPreserve();
@@ -580,7 +590,8 @@ namespace Eithne
 				}
 				c.Stroke();
 
-				GLib.Timeout.Add(200, new GLib.TimeoutHandler(AnimTick));
+				if(ConnectionAnimation)
+					GLib.Timeout.Add(200, new GLib.TimeoutHandler(AnimTick));
 			}
 		}
 

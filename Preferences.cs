@@ -17,6 +17,7 @@ namespace Eithne
 		[Widget] CheckButton	SmoothConnectionsButton;
 		[Widget] CheckButton	AntialiasingButton;
 		[Widget] CheckButton	ProgressButton;
+		[Widget] CheckButton	ConnectionAnimationButton;
 
 		[Widget] CheckButton	ChangeBackgroundButton;
 		[Widget] Label		RedLabel;
@@ -59,6 +60,9 @@ namespace Eithne
 
 			ProgressButton.Active = Config.Get("block/progress", true);
 			ProgressButton.Toggled += delegate(object o, EventArgs args) { Config.Set("block/progress", ProgressButton.Active); };
+
+			ConnectionAnimationButton.Active = Config.Get("schematic/connectionanimation", true);
+			ConnectionAnimationButton.Toggled += delegate(object o, EventArgs args) { Config.Set("schematic/connectionanimation", ConnectionAnimationButton.Active); };
 
 			ThreadSpin.Value = Config.Get("engine/threads", 1);
 			ThreadSpin.ValueChanged += delegate(object o, EventArgs args) { Config.Set("engine/threads", ThreadSpin.ValueAsInt); };
