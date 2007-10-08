@@ -71,8 +71,8 @@ namespace Eithne
 				throw new Exception(Catalog.GetString("Image inversion not supported for floating point data"));
 		}
 
-		// zwracamy object, bo nie wiadomo czy będzie bajt, czy int, czy float, ale wewnątrz wszystko
-		// jest jako int traktowane
+		// object is returned because it is not known whether it is byte, int or float
+		// inside everything is treated as int
 		public object this [int x, int y]
 		{
 			get { return GetPixel(x, y); }
@@ -161,7 +161,7 @@ namespace Eithne
 
 			if(BPP == BPP.Grayscale)
 			{
-				// konwersja na RGB
+				// conversion to RGB
 				data = new byte[H * W * 3];
 
 				for(int y=0; y<H; y++)
@@ -200,7 +200,7 @@ namespace Eithne
 
 			Pixbuf tmp = new Pixbuf(data, false, 8, W, H, W * 3, null);
 
-			// wyżej robiony jest wrapper na dane, dane po konwersji są tymczasowe, więc trzeba zrobić kopię
+			// a wrapper is created for data, which are temporary, so a copy is needed
 			if(BPP == BPP.Grayscale || BPP == BPP.Float)
 				tmp = tmp.Copy();
 

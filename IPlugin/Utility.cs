@@ -15,7 +15,7 @@ namespace Eithne
 			return (r << 16) + (g << 8) + b;
 		}
 
-		// strasznie durna metoda, ale pixbuf tylko rgb umie przechowywać
+		// very dumb method, but pixbuf can only hold rgb data
 		public static bool IsBW(Pixbuf buf)
 		{
 			for(int y=0; y<buf.Height; y++)

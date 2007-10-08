@@ -21,7 +21,7 @@ namespace Eithne
 			Glade.XML gxml = new Glade.XML(Assembly.GetExecutingAssembly(), "DialogQuestion.glade", "DialogQuestionWindow", null);
 			gxml.BindFields(this);
 
-			// FIXME użyc prawidłowych ikon
+			// FIXME use correct icons
 			DialogQuestionWindow.IconList = new Gdk.Pixbuf[2] {new Gdk.Pixbuf(Assembly.GetEntryAssembly(), "dialog-warning.png"), new Gdk.Pixbuf(Assembly.GetEntryAssembly(), "dialog-warning-16.png")};
 			DialogQuestionWindow.Title = Catalog.GetString("Question");
 
@@ -29,7 +29,7 @@ namespace Eithne
 			NoButton.Clicked += CloseWindow;
 			YesButton.Clicked += YesAction;
 
-			// FIXME użyc prawidłowych ikon
+			// FIXME use correct icons
 			DialogImage.FromPixbuf = new Gdk.Pixbuf(Assembly.GetEntryAssembly(), "dialog-warning.png");
 
 			Message.Text = msg;
