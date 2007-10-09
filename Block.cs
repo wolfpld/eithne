@@ -603,18 +603,18 @@ namespace Eithne
 				else
 				{
 					c.LineWidth = 2.0;
-					c.MoveTo(x+w, curpos);
+					c.MoveTo(x+w-1, curpos);
 
 					if(ConfigRound)
-						c.CurveTo(x+w-10, curpos, x+w-10, curpos+10, x+w, curpos+10);
+						c.CurveTo(x+w-10, curpos, x+w-10, curpos+10, x+w-1, curpos+10);
 					else
 					{
 						c.LineTo(x+w-8, curpos);
 						c.LineTo(x+w-8, curpos+10);
-						c.LineTo(x+w, curpos+10);
+						c.LineTo(x+w-1, curpos+10);
 					}
 
-					c.LineTo(x+w, curpos);
+					c.ClosePath();
 					c.Color = new Color(1, 1, 1, 0.8);
 					c.Fill();
 					c.MoveTo(x+w, curpos);
@@ -633,18 +633,18 @@ namespace Eithne
 				if(socketin[i].Other != null)
 				{
 					c.LineWidth = 2.0;
-					c.MoveTo(x, curpos);
+					c.MoveTo(x+1, curpos);
 
 					if(ConfigRound)
-						c.CurveTo(x+10, curpos, x+10, curpos+10, x, curpos+10);
+						c.CurveTo(x+10, curpos, x+10, curpos+10, x+1, curpos+10);
 					else
 					{
 						c.LineTo(x+8, curpos);
 						c.LineTo(x+8, curpos+10);
-						c.LineTo(x, curpos+10);
+						c.LineTo(x+1, curpos+10);
 					}
 
-					c.LineTo(x, curpos);
+					c.ClosePath();
 					c.Color = new Color(1, 1, 1, 0.8);
 					c.Fill();
 					c.MoveTo(x, curpos);
