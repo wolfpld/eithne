@@ -465,22 +465,42 @@ namespace Eithne
 		{
 			State s = CheckState();
 
-			if(s == State.NotReady)
-				c.Color = new Color(0.06, 0.06, 0.06);
-			else if(s == State.Bad)
-				c.Color = new Color(0.627, 0.03, 0.03);
-			else if(s == State.Good)
-				c.Color = new Color(0.25, 0.75, 0.25);
-			else
-				c.Color = new Color(1, 0.5, 0);
+			LinearGradient GradientOutline = new LinearGradient(x+sx-1, y+sy-3, x+sx+1, y+sy+3);
+			GradientOutline.AddColorStopRgb(0, new Color(0.06, 0.06, 0.627));
+			GradientOutline.AddColorStopRgb(1, new Color(0.06, 0.06, 0.25));
 
+			LinearGradient GradientInside = new LinearGradient(x+sx-2, y+sy-2, x+sx-1, y+sy+1);
+
+			if(s == State.NotReady)
+			{
+				GradientInside.AddColorStopRgb(0, new Color(0.5, 0.5, 0.5));
+				GradientInside.AddColorStopRgb(1, new Color(0.06, 0.06, 0.06));
+			}
+			else if(s == State.Bad)
+			{
+				GradientInside.AddColorStopRgb(0, new Color(1, 0.25, 0.25));
+				GradientInside.AddColorStopRgb(1, new Color(0.627, 0.03, 0.03));
+			}
+			else if(s == State.Good)
+			{
+				GradientInside.AddColorStopRgb(0, new Color(0.5, 1, 0.5));
+				GradientInside.AddColorStopRgb(1, new Color(0.25, 0.75, 0.25));
+			}
+			else
+			{
+				GradientInside.AddColorStopRgb(0, new Color(1, 0.75, 0));
+				GradientInside.AddColorStopRgb(1, new Color(1, 0.5, 0));
+			}
+
+			c.Pattern = GradientInside;
 			c.Arc(x+sx, y+sy, 4, 0, 2 * Math.PI);
 			c.FillPreserve();
-			c.Color = new Color(0.06, 0.06, 0.627);
+
+			c.Pattern = GradientOutline;
 			c.Stroke();
 
-			c.Arc(x+sx, y+sy, 3, 0, 2 * Math.PI);
 			c.Color = new Color(1, 1, 1, 0.25);
+			c.Arc(x+sx, y+sy, 3, 0, 2 * Math.PI);
 			c.Stroke();
 		}
 
