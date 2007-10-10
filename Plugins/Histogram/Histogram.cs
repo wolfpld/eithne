@@ -236,7 +236,7 @@ namespace Eithne
 
 		private void LoadConfig(XmlNode root)
 		{
-			// kompatybilność ze starszymi wersjami wtyczki
+			// compatibility with older versions of plugin
 			if(root.FirstChild is XmlText)
 				UpdateValue(Int32.Parse(root.InnerText), false, false, false);
 			else

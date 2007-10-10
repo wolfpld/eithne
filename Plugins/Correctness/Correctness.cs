@@ -93,7 +93,7 @@ namespace Eithne
 			new Correctness(total, matched, cat);
 		}
 
-		// Robimy tu założenie, że kategorie są kolejno numerowane, bez dziur
+		// it is assumed that categories are numbered in order, without holes
 		private int FindNumCategories(int[] c)
 		{
 			int max = 0;

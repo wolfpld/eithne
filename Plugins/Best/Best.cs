@@ -98,7 +98,7 @@ namespace Eithne
 				if(r.Length != tcount || r[0].Length != bcount)
 					throw new PluginException(Catalog.GetString("Incompatible data on input."));
 
-				// FIXME dorobić konfigurację
+				// FIXME add configuration
 				int[][] res = r.FindResults();
 
 				for(int t=0; t<tcount; t++)

@@ -148,7 +148,7 @@ namespace Eithne
 						break;
 					}
 
-				// brak dopasowania
+				// no match
 				if(j == bcount)
 					match[i] = false;
 

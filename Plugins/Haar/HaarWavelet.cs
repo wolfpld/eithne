@@ -41,7 +41,7 @@ namespace Eithne
 
 		public static ArrayList Transform(IImage img, int cutoff)
 		{
-			// transformata po wierszach
+			// transform rows
 			IImage tmp1 = new IImage(BPP.Grayscale, img.W/2, img.H);
 			IImage tmp2 = new IImage(BPP.Grayscale, img.W/2, img.H);
 
@@ -52,7 +52,7 @@ namespace Eithne
 					tmp2[x, y] = (byte)(127 + ((byte)img[x*2, y] - (byte)tmp1[x, y]));
 				}
 
-			// transformata po kolumnach
+			// transform columns
 			IImage tl = new IImage(BPP.Grayscale, img.W/2, img.H/2);
 			IImage tr = new IImage(BPP.Grayscale, img.W/2, img.H/2);
 			IImage bl = new IImage(BPP.Grayscale, img.W/2, img.H/2);
@@ -68,7 +68,7 @@ namespace Eithne
 					br[x, y] = (byte)(127 + ((byte)tmp2[x, y*2] - (byte)tr[x, y]));
 				}
 
-			// kompresja
+			// compression
 			if(cutoff != 0)
 				for(int y=0; y<tl.H; y++)
 					for(int x=0; x<tl.W; x++)

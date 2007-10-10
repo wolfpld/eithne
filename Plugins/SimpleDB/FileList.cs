@@ -46,7 +46,7 @@ namespace Eithne
 				TreeIter iter;
 				(Model as ListStore).GetIter(out iter, t);
 
-				// FIXME usuwa pierwsze wystąpienie elementu w liście, a nie wybrane
+				// FIXME removes first occurence of element in list, not selected
 				fl.Remove(Model.GetValue(iter, 0));
 				(Model as ListStore).Remove(ref iter);
 				b.Invalidate();

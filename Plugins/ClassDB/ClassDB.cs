@@ -177,20 +177,20 @@ namespace Eithne
 				{
 					ArrayList tmp = new ArrayList();
 
-					// ustawienie wszystkich obrazów na bazowe i dodanie ich do listy
+					// set all images to base and add them to list
 					for(int i=0; i<c.Files.Count; i++)
 					{
 						((Img)c.Files[i]).IsTest = false;
 						tmp.Add(i);
 					}
 					
-					// usunięcie z listy (100-p)% obrazów
+					// remove (100-p)% images from list
 					int num = (int)(c.Files.Count * (1 - p));
 
 					while(num-- > 0)
 						tmp.RemoveAt(r.Next(tmp.Count));
 
-					// ustawienie tych które przetrwały na testowe
+					// set the remaining images to test
 					foreach(int i in tmp)
 						((Img)c.Files[i]).IsTest = true;
 				}

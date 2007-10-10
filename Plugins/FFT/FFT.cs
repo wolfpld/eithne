@@ -101,9 +101,9 @@ namespace Eithne
 			_workdone = true;
 		}
 
-		// ta funkcja jest zasadniczo nie wiadomo po co, ale bez niej, gdy pierwszy plan jest tworzony na rzeczywistych
-		// obrazach, dla niektórych parametrów wyjście jest puste dla pierwszego obrazu; potem jest już dobrze, więc
-		// lepiej na wszelki wypadek zrobić tutaj plan który do niczego nie służy.
+		// this function does nothing, but without it, when first plan is created using real images, for some parameters
+		// the first output image is empty and the rest is fine, so it's better to create here this no-use plan just
+		// to be sure that everything works
 		private void PreparePlan(int w, int h)
 		{
 			double[] d1 = new double[w * h * 2];

@@ -63,7 +63,7 @@ namespace Eithne
 			CellRendererText cr = new CellRendererText();
 			AppendColumn("Name", cr, "text", 0);
 			Columns[0].SetCellDataFunc(cr, RenderCell);
-			// TODO zrobić generowanie miniaturek na żądanie
+			// TODO generate thumbnails on demand
 			AppendColumn("Preview", new CellRendererPixbuf(), "pixbuf", 5);
 			AppendColumn("Type", new CellRendererPixbuf(), "pixbuf", 1);
 		}
@@ -124,8 +124,8 @@ namespace Eithne
 				TreeIter iter;
 				(Model as TreeStore).GetIter(out iter, t);
 
-				// FIXME usuwa pierwsze wystąpienie elementu w liście, a nie wybrane
-				// FIXME usunięcie pierwszego elementu powinno zmienić miniaturkę wyświetlaną przy nazwie kategorii
+				// FIXME removes first occurence of element in list, not selected
+				// FIXME removal of first element should change thumbnail displayed next to category name
 				if(HasParent(t))
 				{
 					TreePath parent = t.Copy();
