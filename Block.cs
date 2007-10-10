@@ -148,10 +148,6 @@ namespace Eithne
 		private bool showerror = false;
 		private float progressTimer = 0;
 
-		private static ImageSurface StateBad = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-bad.png"));
-		private static ImageSurface StateGood = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-good.png"));
-		private static ImageSurface StateNotReady = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-not-ready.png"));
-		private static ImageSurface StateReady = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/state-ready.png"));
 		private static ImageSurface Clock = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/clock.png"));
 
 		private static bool ConfigGradient = Config.Get("block/gradient", true);
@@ -337,9 +333,9 @@ namespace Eithne
 
 			// status location
 			if(plugin is ConnectorPlugin)
-				sy = h/2 - 4;
+				sy = h/2;
 			else
-				sy = h - 11;
+				sy = h - 7;
 
 			// clock location
 			cy = h/2 - 16;
@@ -360,9 +356,9 @@ namespace Eithne
 
 			// status location
 			if(plugin is ConnectorPlugin)
-				sx = w/2 - 4;
+				sx = w/2;
 			else
-				sx = w/2 - 3;
+				sx = w/2 + 1;
 
 			// clock location
 			cx = w/2 - 16;
@@ -469,21 +465,23 @@ namespace Eithne
 		{
 			State s = CheckState();
 
-			c.Color = new Color(1, 1, 1);
-			c.Save();
-			c.Translate(x + sx, y + sy);
-
 			if(s == State.NotReady)
-				StateNotReady.Show(c, 0, 0);
+				c.Color = new Color(0.06, 0.06, 0.06);
 			else if(s == State.Bad)
-				StateBad.Show(c, 0, 0);
+				c.Color = new Color(0.627, 0.03, 0.03);
 			else if(s == State.Good)
-				StateGood.Show(c, 0, 0);
+				c.Color = new Color(0.25, 0.75, 0.25);
 			else
-				StateReady.Show(c, 0, 0);
+				c.Color = new Color(1, 0.5, 0);
 
+			c.Arc(x+sx, y+sy, 4, 0, 2 * Math.PI);
+			c.FillPreserve();
+			c.Color = new Color(0.06, 0.06, 0.627);
 			c.Stroke();
-			c.Restore();
+
+			c.Arc(x+sx, y+sy, 3, 0, 2 * Math.PI);
+			c.Color = new Color(1, 1, 1, 0.25);
+			c.Stroke();
 		}
 
 		private void DrawBlockGradient(Context c)
