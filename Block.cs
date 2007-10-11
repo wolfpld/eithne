@@ -148,8 +148,6 @@ namespace Eithne
 		private bool showerror = false;
 		private float progressTimer = 0;
 
-		private static ImageSurface Clock = new ImageSurface(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/clock.png"));
-
 		private static bool ConfigGradient = Config.Get("block/gradient", true);
 		private static bool ConfigInner = Config.Get("block/innerpath", true);
 		private static bool ConfigRound = Config.Get("block/round", true);
@@ -338,7 +336,7 @@ namespace Eithne
 				sy = h - 7;
 
 			// clock location
-			cy = h/2 - 16;
+			cy = h/2;
 		}
 
 		// called only once, by constructor
@@ -361,7 +359,7 @@ namespace Eithne
 				sx = w/2 + 1;
 
 			// clock location
-			cx = w/2 - 16;
+			cx = w/2;
 
 			UpdateCoordinates();
 		}
@@ -434,10 +432,77 @@ namespace Eithne
 
 		private void DrawClock(Context c)
 		{
+			LinearGradient g;
+
+			c.LineWidth = 1;
+
 			c.Save();
 			c.Translate(x + cx, y + cy);
-			Clock.Show(c, 0, 0);
+
+			// background
+			c.Arc(0, 0, 12, 0, 2 * Math.PI);
+			c.Color = new Color(0.525, 0.525, 0.525);
+			c.FillPreserve();
+			c.Color = new Color(0.455, 0.455, 0.455);
 			c.Stroke();
+
+			// outline
+			c.Color = new Color(1, 1, 1, 0.25);
+			c.Arc(0, 0, 11, 0, 2 * Math.PI);
+			c.Stroke();
+
+			// clock face
+			c.Arc(0, 0, 8, 0, 2 * Math.PI);
+			g = new LinearGradient(7, 7, -7, -7);
+			g.AddColorStopRgb(0, new Color(0.796, 0.796, 0.796));
+			g.AddColorStopRgb(1, new Color(1, 1, 1));
+			c.Pattern = g;
+			c.FillPreserve();
+			g = new LinearGradient(7, 7, -7, -7);
+			g.AddColorStopRgb(0, new Color(1, 1, 1));
+			g.AddColorStopRgb(1, new Color(0.627, 0.627, 0.627));
+			c.Pattern = g;
+			c.Stroke();
+
+			// hand center
+			c.LineWidth = 0.5;
+			c.Arc(0.5, 0.5, 1.25, 0, 2 * Math.PI);
+			c.Color = new Color(0.95, 0.95, 0.95);
+			c.FillPreserve();
+			c.Color = new Color(0.1, 0.1, 0.1);
+			c.Stroke();
+
+			// minute hand
+			c.MoveTo(0.5+Math.Sin(-1.15)*1.5, 0.5+Math.Cos(-1.15)*1.5);
+			c.LineTo(0.5+Math.Sin(-1.15)*6.5, 0.5+Math.Cos(-1.15)*6.5);
+			c.Stroke();
+
+			// hour hand
+			c.LineWidth = 0.75;
+
+			c.MoveTo(0.5+Math.Sin(1.15)*1.5, 0.5+Math.Cos(1.15)*1.5);
+			c.LineTo(0.5+Math.Sin(1.15)*5, 0.5+Math.Cos(1.15)*5);
+			c.Stroke();
+
+			// hour markers
+			c.LineWidth = 1;
+
+			c.Arc(0.5, 6.5, 0.75, 0, 2 * Math.PI);
+			c.Color = new Color(0.058, 0.058, 0.058);
+			c.Fill();
+
+			c.Arc(0.5, -5.5, 0.75, 0, 2 * Math.PI);
+			c.Color = new Color(0.44, 0.44, 0.44);
+			c.Fill();
+
+			c.Arc(6.5, 0.5, 0.75, 0, 2 * Math.PI);
+			c.Color = new Color(0.113, 0.113, 0.113);
+			c.Fill();
+
+			c.Arc(-5.5, 0.5, 0.75, 0, 2 * Math.PI);
+			c.Color = new Color(0.38, 0.38, 0.38);
+			c.Fill();
+
 			c.Restore();
 		}
 
