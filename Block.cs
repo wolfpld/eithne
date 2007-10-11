@@ -439,6 +439,13 @@ namespace Eithne
 			c.Save();
 			c.Translate(x + cx, y + cy);
 
+			// shadow
+			c.Color = new Color(0, 0, 0, 0.1);
+			c.Arc(0, 0, 14, 0, 2 * Math.PI);
+			c.Fill();
+			c.Arc(0, 0, 13, 0, 2 * Math.PI);
+			c.Fill();
+
 			// background
 			c.Arc(0, 0, 12, 0, 2 * Math.PI);
 			c.Color = new Color(0.525, 0.525, 0.525);
