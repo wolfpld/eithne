@@ -16,6 +16,13 @@ namespace Eithne
 			return (r << 16) + (g << 8) + b;
 		}
 
+		public static int GetPixel(Bitmap buf, int x, int y)
+		{
+			System.Drawing.Color color = buf.GetPixel(x, y);
+
+			return (color.R << 16) + (color.G << 8) + color.B;
+		}
+
 		// very dumb method, but pixbuf can only hold rgb data
 		public static bool IsBW(Pixbuf buf)
 		{
