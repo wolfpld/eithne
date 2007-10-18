@@ -35,6 +35,20 @@ namespace Eithne
 			return true;
 		}
 
+		public static bool IsBW(Bitmap buf)
+		{
+			for(int y=0; y<buf.Height; y++)
+				for(int x=0; x<buf.Width; x++)
+				{
+					System.Drawing.Color color = buf.GetPixel(x, y);
+
+					if(color.R != color.G || color.R != color.B)
+						return false;
+				}
+
+			return true;
+		}
+
 		public static Bitmap LoadBitmap(string name)
 		{
 			Bitmap tmp = new Bitmap(name);
