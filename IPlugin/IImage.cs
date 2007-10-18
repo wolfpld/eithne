@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using Mono.Unix;
 using Gdk;
 
@@ -137,6 +138,25 @@ namespace Eithne
 		}
 
 		public static IImage Create(Pixbuf buf, BPP bpp)
+		{
+			byte[] data = new byte[buf.Height * buf.Width * (int)bpp];
+			IImage img = new IImage(bpp, buf.Width, buf.Height, data);
+
+			if(bpp == BPP.Grayscale)
+			{
+				for(int y=0; y<buf.Height; y++)
+					for(int x=0; x<buf.Width; x++)
+						img[x, y] = (byte)Utility.GetPixel(buf, x, y);
+			}
+			else
+				for(int y=0; y<buf.Height; y++)
+					for(int x=0; x<buf.Width; x++)
+						img[x, y] = Utility.GetPixel(buf, x, y);
+
+			return img;
+		}
+
+		public static IImage Create(Bitmap buf, BPP bpp)
 		{
 			byte[] data = new byte[buf.Height * buf.Width * (int)bpp];
 			IImage img = new IImage(bpp, buf.Width, buf.Height, data);
