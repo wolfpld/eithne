@@ -125,7 +125,8 @@ namespace Eithne
 			{
 				try
 				{
-					new Gdk.Pixbuf(n.InnerText);
+					Bitmap tmp = new Bitmap(n.InnerText);
+					tmp.Dispose();
 					
 					_fl.Add(n.InnerText);
 				}
