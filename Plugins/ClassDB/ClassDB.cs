@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 using System.Threading;
 using System.Xml;
 using Mono.Unix;
@@ -226,7 +227,7 @@ namespace Eithne
 		{
 			for(int i=start; i<end; i++)
 			{
-				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)a_in[i]);
+				Bitmap buf = new Bitmap((string)a_in[i]);
 
 				a_out[i] = IImage.Create(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
 
@@ -416,7 +417,8 @@ namespace Eithne
 				{
 					try
 					{
-						new Gdk.Pixbuf(file.InnerText);
+						Bitmap tmp = new Bitmap(file.InnerText);
+						tmp.Dispose();
 						
 						bool test;
 
