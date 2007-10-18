@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 using System.Xml;
 using Mono.Unix;
 
@@ -85,7 +86,7 @@ namespace Eithne
 
 			foreach(string fn in _fl)
 			{
-				Gdk.Pixbuf buf = new Gdk.Pixbuf(fn);
+				Bitmap buf = new Bitmap(fn);
 
 				imgarray[i] = IImage.Create(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
 				categories[i] = i;

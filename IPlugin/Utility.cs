@@ -55,16 +55,5 @@ namespace Eithne
 
 			return true;
 		}
-
-		public static Bitmap LoadBitmap(string name)
-		{
-			Bitmap tmp = new Bitmap(name);
-
-			// file is now locked, so create copy of bitmap and release it
-			Bitmap bmp = new Bitmap(tmp);
-			tmp.Dispose();
-
-			return bmp;
-		}
 	}
 }
