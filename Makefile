@@ -74,12 +74,14 @@ RESOURCES = \
 RESFILES = $(addprefix resources/,$(RESOURCES))
 RESCMD = $(addprefix -resource:,$(RESFILES))
 
+EITHNETARGET = winexe
+
 all: eithne.exe
 	+make -C Plugins
 	+make -C locale
 
 eithne.exe: IPlugin.dll gdk-cairo.dll $(EITHNE) $(RESFILES)
-	$(MCS) $(EITHNE) -out:eithne.exe -r:IPlugin -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0 -r:Mono.Cairo -r:gdk-cairo -r:Mono.Posix $(RESCMD) -win32icon:resources/pixmaps/icon.ico -debug -target:winexe
+	$(MCS) $(EITHNE) -out:eithne.exe -r:IPlugin -pkg:gtk-sharp-2.0 -pkg:glade-sharp-2.0 -r:Mono.Cairo -r:gdk-cairo -r:Mono.Posix $(RESCMD) -win32icon:resources/pixmaps/icon.ico -debug -target:$(EITHNETARGET)
 
 IPlugin.dll: IPlugin/*.cs
 	+make -C IPlugin
