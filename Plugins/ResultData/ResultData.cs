@@ -88,8 +88,10 @@ namespace Eithne
 				else
 					scale = img.H / 32.0;
 
+				Gdk.Threads.Enter();
 				Gdk.Pixbuf tmp = img.CreatePixbuf();
 				itest[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
+				Gdk.Threads.Leave();
 			}
 
 			for(int i=0; i<ibase.Length; i++)
@@ -101,8 +103,10 @@ namespace Eithne
 				else
 					scale = img.H / 32.0;
 
+				Gdk.Threads.Enter();
 				Gdk.Pixbuf tmp = img.CreatePixbuf();
 				ibase[i] = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale), Gdk.InterpType.Bilinear);
+				Gdk.Threads.Leave();
 			}
 
 			res = new IResult[r.Length];
