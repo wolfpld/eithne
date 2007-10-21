@@ -85,9 +85,12 @@ namespace Eithne
 
 			foreach(string fn in _fl)
 			{
+				Gdk.Threads.Enter();
 				Gdk.Pixbuf buf = new Gdk.Pixbuf(fn);
 
 				imgarray[i] = IImage.Create(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
+				Gdk.Threads.Leave();
+
 				categories[i] = i;
 
 				i++;
