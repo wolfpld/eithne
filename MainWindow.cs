@@ -313,6 +313,8 @@ namespace Eithne
 		{
 			Catalog.Init("eithne", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "locale"));
 
+			if(!GLib.Thread.Supported)
+				GLib.Thread.Init();
 			Gdk.Threads.Init();
 			Application.Init();
 			Splash s = new Splash();
