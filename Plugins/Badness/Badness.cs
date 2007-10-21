@@ -138,6 +138,7 @@ namespace Eithne
 								break;
 						}
 
+					Gdk.Threads.Enter();
 					if(img == null)
 						cat[tc].image = new Gdk.Pixbuf(Assembly.GetEntryAssembly(), "no-base.png");
 					else
@@ -151,6 +152,7 @@ namespace Eithne
 						cat[tc].image = tmp.ScaleSimple(Scale(img.W, scale), Scale(img.H, scale),
 								Gdk.InterpType.Bilinear);
 					}
+					Gdk.Threads.Leave();
 				}
 
 				if(tc != bc && r.Match[i])
