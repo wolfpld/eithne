@@ -110,6 +110,7 @@ namespace Eithne
 				if(invert)
 					_img.Invert();
 
+				Gdk.Threads.Enter();
 				images[i] = _img.CreatePixbuf();
 
 				if(_img.W > _img.H)
@@ -118,6 +119,7 @@ namespace Eithne
 					scale = _img.H / 64.0;
 
 				thumbs[i] = images[i].ScaleSimple(Scale(_img.W, scale), Scale(_img.H, scale), Gdk.InterpType.Bilinear);
+				Gdk.Threads.Leave();
 			}
 
 			_workdone = true;
