@@ -78,11 +78,13 @@ namespace Eithne
 
 			for(int i=0; i<i1.Length; i++)
 			{
+				Gdk.Threads.Enter();
 				Gdk.Pixbuf buf = i1[i].CreatePixbuf();
 
 				Gdk.Pixbuf bufout = buf.ScaleSimple(i1[i].W/2, i1[i].H/2, mode);
 
 				i2[i] = IImage.Create(bufout, i1[i].BPP);
+				Gdk.Threads.Leave();
 
 				progress = (float)i/i1.Length;
 			}
