@@ -1,5 +1,5 @@
-eithne x.x.x
-------------
+eithne 0.4.2 (2007-10-21)
+-------------------------
 
 - State icons and clock now drawn using vector graphics.
 - Fixed nasty bug that caused crashes when runtime wasn't mono.
