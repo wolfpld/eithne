@@ -2,6 +2,7 @@ eithne x.x.x
 ------------
 
 - State icons and clock now drawn using vector graphics.
+- Fixed nasty bug that caused crashes when runtime wasn't mono.
 
 eithne 0.4.1 (2007-10-07)
 -------------------------
