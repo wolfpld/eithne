@@ -87,6 +87,7 @@ namespace Eithne
 
 				images[i] = HistogramGraph(img[i]);
 
+				Gdk.Threads.Enter();
 				Gdk.Pixbuf pixbuf = _img.CreatePixbuf();
 
 				if(_img.W > _img.H)
@@ -95,6 +96,7 @@ namespace Eithne
 					scale = _img.H / 64.0;
 
 				thumbs[i] = pixbuf.ScaleSimple(Scale(_img.W, scale), Scale(_img.H, scale), Gdk.InterpType.Bilinear);
+				Gdk.Threads.Leave();
 			}
 
 			_workdone = true;
@@ -131,7 +133,10 @@ namespace Eithne
 				}
 			}
 
-			return graph.CreatePixbuf();
+			Gdk.Threads.Enter();
+			Gdk.Pixbuf ret = graph.CreatePixbuf();
+			Gdk.Threads.Leave();
+			return ret;
 		}
 
 		public override int NumIn		{ get { return 1; } }
