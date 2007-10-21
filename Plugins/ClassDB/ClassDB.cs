@@ -226,9 +226,11 @@ namespace Eithne
 		{
 			for(int i=start; i<end; i++)
 			{
+				Gdk.Threads.Enter();
 				Gdk.Pixbuf buf = new Gdk.Pixbuf((string)a_in[i]);
 
 				a_out[i] = IImage.Create(buf, Utility.IsBW(buf) ? BPP.Grayscale : BPP.RGB);
+				Gdk.Threads.Leave();
 
 				progress++;
 			}
