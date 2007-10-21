@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-07 17:29+0200\n"
+"POT-Creation-Date: 2007-10-22 00:13+0200\n"
 "PO-Revision-Date: 2006-01-25 18:12+0100\n"
 "Last-Translator: Bartosz Taudul <bartosz.taudul@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,6 +166,7 @@ msgid "Export"
 msgstr "Eksportuj"
 
 #: MainWindow.cs:232
+#, csharp-format
 msgid "SVG image"
 msgstr "Obraz SVG"
 
@@ -671,7 +672,7 @@ msgstr "Oblicz energię różnic"
 #: Plugins/Haar/resources/Haar.glade:135
 #: Plugins/ImageView/resources/ImageSetup.glade:55
 #: Plugins/SimpleResultView/resources/ResultSetup.glade:55
-#: resources/Preferences.glade:351
+#: resources/Preferences.glade:352
 msgid "gtk-close"
 msgstr "gtk-close"
 
@@ -1496,67 +1497,67 @@ msgstr "<big><big><big><b>Lista Wtyczek</b></big></big></big>"
 msgid "Preferences"
 msgstr "Preferencje"
 
-#: resources/Preferences.glade:22
+#: resources/Preferences.glade:23
 msgid "Draw rounded blocks"
 msgstr "Rysuj zaokrąglone bloki"
 
-#: resources/Preferences.glade:33
+#: resources/Preferences.glade:34
 msgid "Draw blocks with inner path"
 msgstr "Rysuj w blokach wewnętrzną ścieżkę"
 
-#: resources/Preferences.glade:45
+#: resources/Preferences.glade:46
 msgid "Draw blocks with gradient"
 msgstr "Rysuj bloki z gradientem"
 
-#: resources/Preferences.glade:57
+#: resources/Preferences.glade:58
 msgid "Draw smooth connections"
 msgstr "Rysuj gładkie połączenia"
 
-#: resources/Preferences.glade:69
+#: resources/Preferences.glade:70
 msgid "Antialiasing"
 msgstr "Antyaliasing"
 
-#: resources/Preferences.glade:83
+#: resources/Preferences.glade:84
 msgid "Show progress"
 msgstr "Pokaż postęp"
 
-#: resources/Preferences.glade:96
+#: resources/Preferences.glade:97
 msgid "Block connection animation"
 msgstr "Animacja łączenia bloków"
 
-#: resources/Preferences.glade:120
+#: resources/Preferences.glade:121
 msgid "Change background color"
 msgstr "Zmiana koloru tła"
 
-#: resources/Preferences.glade:205
-msgid "Alpha"
-msgstr "Alfa"
-
-#: resources/Preferences.glade:220
-msgid "Blue"
-msgstr "Niebieski"
-
-#: resources/Preferences.glade:235
-msgid "Green"
-msgstr "Zielony"
-
-#: resources/Preferences.glade:250
+#: resources/Preferences.glade:140
 msgid "Red"
 msgstr "Czerwony"
 
-#: resources/Preferences.glade:270
+#: resources/Preferences.glade:153
+msgid "Green"
+msgstr "Zielony"
+
+#: resources/Preferences.glade:168
+msgid "Blue"
+msgstr "Niebieski"
+
+#: resources/Preferences.glade:183
+msgid "Alpha"
+msgstr "Alfa"
+
+#: resources/Preferences.glade:271
 msgid "Look and feel"
 msgstr "Wygląd"
 
-#: resources/Preferences.glade:288
+#: resources/Preferences.glade:289
 msgid "Maximum number of threads"
 msgstr "Maksymalna liczba wątków"
 
-#: resources/Preferences.glade:313
+#: resources/Preferences.glade:314
 msgid "Allow multithreading inside blocks"
 msgstr "Pozwól na wielowątkowość wewnątrz bloków"
 
-#: resources/Preferences.glade:330
+#: resources/Preferences.glade:331
 msgid "Engine"
 msgstr "Silnik"
 
