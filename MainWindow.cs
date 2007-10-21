@@ -317,6 +317,9 @@ namespace Eithne
 				GLib.Thread.Init();
 			Gdk.Threads.Init();
 			Application.Init();
+
+			Gdk.Threads.Enter();
+
 			Splash s = new Splash();
 
 			Config.Init(UpdateHandler);
@@ -336,6 +339,8 @@ namespace Eithne
 
 				new FatalError(e, mw);
 			}
+
+			Gdk.Threads.Leave();
 		}
 
 		private static void UpdateHandler()
