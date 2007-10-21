@@ -124,7 +124,7 @@ namespace Eithne
 
 	class Engine2
 	{
-		private static int ConfigThreads = Config.Get("engine/threads", 1);
+		private static int ConfigThreads = Config.Get("engine/threads", 2);
 		private static bool ConfigProgress = Config.Get("block/progress", true);
 		private Schematic s;
 		private ArrayList Threads = new ArrayList();
@@ -248,7 +248,7 @@ namespace Eithne
 
 		public static void CheckGConf()
 		{
-			ConfigThreads = Config.Get("engine/threads", 1);
+			ConfigThreads = Config.Get("engine/threads", 2);
 			ConfigProgress = Config.Get("block/progress", true);
 		}
 

@@ -64,7 +64,7 @@ namespace Eithne
 			ConnectionAnimationButton.Active = Config.Get("schematic/connectionanimation", true);
 			ConnectionAnimationButton.Toggled += delegate(object o, EventArgs args) { Config.Set("schematic/connectionanimation", ConnectionAnimationButton.Active); };
 
-			ThreadSpin.Value = Config.Get("engine/threads", 1);
+			ThreadSpin.Value = Config.Get("engine/threads", 2);
 			ThreadSpin.ValueChanged += delegate(object o, EventArgs args) { Config.Set("engine/threads", ThreadSpin.ValueAsInt); };
 
 			BlockThreadButton.Active = Config.Get("engine/blockthreads", false);
