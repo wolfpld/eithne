@@ -6,6 +6,6 @@
 		IType Type	{ get; }
 
 		void Initialize();							// TODO: remove?
-		IPlugin Create();
+		Plugin.Base Create();
 	}
 }

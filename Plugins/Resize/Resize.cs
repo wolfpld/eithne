@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new ResizePlugin();
 		}
 	}
 
-	public class ResizePlugin : IImgProcPlugin
+	public class ResizePlugin : Plugin.ImgProc
 	{
 		private bool relative = false;
 		private int x = 128;

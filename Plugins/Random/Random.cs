@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new RandomPlugin();
 		}
 	}
 
-	public class RandomPlugin : IImgProcPlugin
+	public class RandomPlugin : Plugin.ImgProc
 	{
 		private int x = 10, y = 10, seed;
 

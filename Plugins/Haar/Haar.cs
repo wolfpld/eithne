@@ -45,13 +45,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new HaarPlugin();
 		}
 	}
 
-	public class HaarPlugin : IImgProcPlugin
+	public class HaarPlugin : Plugin.ImgProc
 	{
 		private int levels = 3;
 		private int cutoff = 0;

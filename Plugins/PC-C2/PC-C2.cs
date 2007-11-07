@@ -46,7 +46,7 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new PCC2Plugin();
 		}
@@ -128,7 +128,7 @@ namespace Eithne
 		}
 	}
 
-	public class PCC2Plugin : IComparatorPlugin
+	public class PCC2Plugin : Plugin.Comparator
 	{
 		private ArrayList tasks = new ArrayList();
 		private int totalImages;

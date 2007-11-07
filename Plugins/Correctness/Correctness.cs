@@ -45,7 +45,7 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new CorrectnessPlugin();
 		}
@@ -58,7 +58,7 @@ namespace Eithne
 		public int matched = 0;
 	}
 
-	public class CorrectnessPlugin : IOutPlugin
+	public class CorrectnessPlugin : Plugin.Out
 	{
 		int total = 0, matched = 0;
 		Category[] cat = null;

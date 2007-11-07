@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new MultiplierPlugin();
 		}
 	}
 
-	public class MultiplierPlugin : IOtherPlugin
+	public class MultiplierPlugin : Plugin.Other
 	{
 		private int num = 2;
 

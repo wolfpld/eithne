@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new HistogramViewPlugin();
 		}
 	}
 
-	public class HistogramViewPlugin : IOutPlugin
+	public class HistogramViewPlugin : Plugin.Out
 	{
 		Gdk.Pixbuf[] images = null;
 		Gdk.Pixbuf[] thumbs = null;

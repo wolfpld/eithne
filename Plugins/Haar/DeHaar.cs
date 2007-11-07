@@ -45,13 +45,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new DeHaarPlugin();
 		}
 	}
 
-	public class DeHaarPlugin : IImgProcPlugin
+	public class DeHaarPlugin : Plugin.ImgProc
 	{
 		private int levels = 3;
 		private float progress;

@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new BestPlugin();
 		}
 	}
 
-	public class BestPlugin : IResProcPlugin
+	public class BestPlugin : Plugin.ResProc
 	{
 		private int num = 3;
 

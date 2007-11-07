@@ -16,16 +16,16 @@ IPLUGIN = \
 	IFactory.cs \
 	IImage.cs \
 	IInfo.cs \
-	IInPlugin.cs \
-	IOutPlugin.cs \
-	IPlugin.cs \
 	IResult.cs \
 	IType.cs \
 	PluginException.cs \
 	Program.cs \
 	RegistryConfig.cs \
 	ResultSorter.cs \
-	Utility.cs
+	Utility.cs \
+	Plugin/Base.cs \
+	Plugin/In.cs \
+	Plugin/Out.cs
 
 RESOURCES = \
 	DialogMessage.glade \

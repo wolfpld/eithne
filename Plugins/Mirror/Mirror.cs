@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new MirrorPlugin();
 		}
 	}
 
-	public class MirrorPlugin : IImgProcPlugin
+	public class MirrorPlugin : Plugin.ImgProc
 	{
 		private float progress;
 

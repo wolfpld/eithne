@@ -45,7 +45,7 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new BadnessPlugin();
 		}
@@ -58,7 +58,7 @@ namespace Eithne
 		public int notmatched = 0;
 	}
 
-	public class BadnessPlugin : IOutPlugin
+	public class BadnessPlugin : Plugin.Out
 	{
 		int total = 0, notmatched = 0;
 		Category[] cat = null;

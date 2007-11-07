@@ -46,7 +46,7 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new EuclidPlugin();
 		}
@@ -119,7 +119,7 @@ namespace Eithne
 		}
 	}
 
-	public class EuclidPlugin : IComparatorPlugin
+	public class EuclidPlugin : Plugin.Comparator
 	{
 		private ArrayList tasks = new ArrayList();
 		private int totalImages;

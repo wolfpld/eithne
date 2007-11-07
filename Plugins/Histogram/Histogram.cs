@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new HistogramPlugin();
 		}
 	}
 
-	public class HistogramPlugin : IImgProcPlugin
+	public class HistogramPlugin : Plugin.ImgProc
 	{
 		private int num = 256;
 		private bool black = false;

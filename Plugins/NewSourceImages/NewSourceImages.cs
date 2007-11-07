@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new NewSourceImagesPlugin();
 		}
 	}
 
-	public class NewSourceImagesPlugin : IImgProcPlugin
+	public class NewSourceImagesPlugin : Plugin.ImgProc
 	{
 		public NewSourceImagesPlugin()
 		{

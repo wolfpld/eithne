@@ -56,13 +56,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new XofYPlugin();
 		}
 	}
 
-	public class XofYPlugin : IResProcPlugin
+	public class XofYPlugin : Plugin.ResProc
 	{
 		XofYInfo _info = new XofYInfo();
 		private int x = 2;

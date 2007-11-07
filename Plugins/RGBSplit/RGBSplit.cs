@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new RGBSplitPlugin();
 		}
 	}
 
-	public class RGBSplitPlugin : IImgProcPlugin
+	public class RGBSplitPlugin : Plugin.ImgProc
 	{
 		private float progress;
 

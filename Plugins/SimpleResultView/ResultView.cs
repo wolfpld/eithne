@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new ResultViewPlugin();
 		}
 	}
 
-	public class ResultViewPlugin : IOutPlugin
+	public class ResultViewPlugin : Plugin.Out
 	{
 		Gdk.Pixbuf[] itest = null;
 		Gdk.Pixbuf[] ibase = null;

@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new ImageViewPlugin();
 		}
 	}
 
-	public class ImageViewPlugin : IOutPlugin
+	public class ImageViewPlugin : Plugin.Out
 	{
 		Gdk.Pixbuf[] images = null;
 		Gdk.Pixbuf[] thumbs = null;

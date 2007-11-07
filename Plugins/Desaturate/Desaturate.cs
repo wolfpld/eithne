@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new DesaturatePlugin();
 		}
 	}
 
-	public class DesaturatePlugin : IImgProcPlugin
+	public class DesaturatePlugin : Plugin.ImgProc
 	{
 		public DesaturatePlugin()
 		{

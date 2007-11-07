@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new ConnectorPlugin();
 		}
 	}
 
-	public class ConnectorPlugin : IOtherPlugin
+	public class ConnectorPlugin : Plugin.Other
 	{
 		public ConnectorPlugin()
 		{

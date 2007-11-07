@@ -135,7 +135,7 @@ namespace Eithne
 
 	class Block : IBlock
 	{
-		private readonly IPlugin plugin;
+		private readonly Plugin.Base plugin;
 		private readonly Schematic schematic;
 		private int x, y;
 		private int h = 0, w = 0, th = 0;
@@ -167,7 +167,7 @@ namespace Eithne
 			set { showerror = value; }
 		}
 
-		public IPlugin Plugin
+		public Plugin.Base Plugin
 		{
 			get { return plugin; }
 		}
@@ -198,7 +198,7 @@ namespace Eithne
 			set { working = value; }
 		}
 
-		public Block(Schematic s, Context c, IPlugin plugin, int x, int y)
+		public Block(Schematic s, Context c, Plugin.Base plugin, int x, int y)
 		{
 			this.schematic = s;
 			this.plugin = plugin;
@@ -579,37 +579,37 @@ namespace Eithne
 		private void DrawBlockGradient(Context c)
 		{
 			LinearGradient g = new LinearGradient(0, y, 0, y+h);
-			if(plugin is IInPlugin)
+			if(plugin is Plugin.In)
 			{
 				g.AddColorStop(0, new Color(0.65, 0.85, 1.00, 0.85));
 				g.AddColorStop(0.33, new Color(0.45, 0.65, 1.00, 0.85));
 				g.AddColorStop(1, new Color(0.20, 0.50, 0.80, 0.85));
 			}
-			else if(plugin is IOutPlugin)
+			else if(plugin is Plugin.Out)
 			{
 				g.AddColorStop(0, new Color(1.00, 0.85, 1.00, 0.85));
 				g.AddColorStop(0.33, new Color(1.00, 0.65, 1.00, 0.85));
 				g.AddColorStop(1, new Color(0.80, 0.40, 0.80, 0.85));
 			}
-			else if(plugin is IImgProcPlugin)
+			else if(plugin is Plugin.ImgProc)
 			{
 				g.AddColorStop(0, new Color(0.75, 1.00, 0.75, 0.85));
 				g.AddColorStop(0.33, new Color(0.55, 1.00, 0.55, 0.85));
 				g.AddColorStop(1, new Color(0.30, 0.80, 0.30, 0.85));
 			}
-			else if(plugin is IResProcPlugin)
+			else if(plugin is Plugin.ResProc)
 			{
 				g.AddColorStop(0, new Color(1.00, 0.75, 0.75, 0.85));
 				g.AddColorStop(0.33, new Color(1.00, 0.55, 0.55, 0.85));
 				g.AddColorStop(1, new Color(0.80, 0.30, 0.30, 0.85));
 			}
-			else if(plugin is IComparatorPlugin)
+			else if(plugin is Plugin.Comparator)
 			{
 				g.AddColorStop(0, new Color(1.00, 1.00, 0.75, 0.85));
 				g.AddColorStop(0.33, new Color(1.00, 1.00, 0.55, 0.85));
 				g.AddColorStop(1, new Color(0.80, 0.80, 0.30, 0.85));
 			}
-			else if(plugin is IOtherPlugin)
+			else if(plugin is Plugin.Other)
 			{
 				g.AddColorStop(0, new Color(0.7, 0.7, 0.7, 0.85));
 				g.AddColorStop(0.33, new Color(0.5, 0.5, 0.5, 0.85));
@@ -623,17 +623,17 @@ namespace Eithne
 
 		private void DrawBlockNoGradient(Context c)
 		{
-			if(plugin is IInPlugin)
+			if(plugin is Plugin.In)
 				c.Color = new Color(0.35, 0.55, 0.95, 0.85);
-			else if(plugin is IOutPlugin)
+			else if(plugin is Plugin.Out)
 				c.Color = new Color(0.95, 0.55, 0.95, 0.85);
-			else if(plugin is IImgProcPlugin)
+			else if(plugin is Plugin.ImgProc)
 				c.Color = new Color(0.45, 0.95, 0.45, 0.85);
-			else if(plugin is IResProcPlugin)
+			else if(plugin is Plugin.ResProc)
 				c.Color = new Color(0.95, 0.45, 0.45, 0.85);
-			else if(plugin is IComparatorPlugin)
+			else if(plugin is Plugin.Comparator)
 				c.Color = new Color(0.95, 0.95, 0.45, 0.85);
-			else if(plugin is IOtherPlugin)
+			else if(plugin is Plugin.Other)
 				c.Color = new Color(0.5, 0.5, 0.5, 0.85);
 
 			DrawPath(c);

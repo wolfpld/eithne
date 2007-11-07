@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new DCTPlugin();
 		}
 	}
 
-	public class DCTPlugin : IImgProcPlugin
+	public class DCTPlugin : Plugin.ImgProc
 	{
 		private bool zero = true;
 		private float progress;

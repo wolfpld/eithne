@@ -40,7 +40,7 @@ namespace Eithne
 			PluginAboutWindow.ShowAll();
 		}
 
-		private void FillMatchInfo(IPlugin p)
+		private void FillMatchInfo(Plugin.Base p)
 		{
 			MatchIn.Model = new ListStore(typeof(string));
 			MatchOut.Model = new ListStore(typeof(string));
@@ -57,19 +57,19 @@ namespace Eithne
 					(MatchOut.Model as ListStore).AppendValues(s);
 		}
 
-		public PluginAbout(IPlugin p)
+		public PluginAbout(Plugin.Base p)
 		{
 			string type;
 
-			if(p is IInPlugin)
+			if(p is Plugin.In)
 				type = Catalog.GetString("Input");
-			else if (p is IOutPlugin)
+			else if (p is Plugin.Out)
 				type = Catalog.GetString("Output");
-			else if (p is IImgProcPlugin)
+			else if (p is Plugin.ImgProc)
 				type = Catalog.GetString("Image processing");
-			else if (p is IResProcPlugin)
+			else if (p is Plugin.ResProc)
 				type = Catalog.GetString("Result processing");
-			else if (p is IComparatorPlugin)
+			else if (p is Plugin.Comparator)
 				type = Catalog.GetString("Comparator");
 			else
 				type = Catalog.GetString("Other");
@@ -111,7 +111,7 @@ namespace Eithne
 
 			CommonTasks(f.Info, type);
 
-			IPlugin tmp = f.Create();
+			Plugin.Base tmp = f.Create();
 			FillMatchInfo(tmp);
 		}
 

@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new FFTPlugin();
 		}
 	}
 
-	public class FFTPlugin : IImgProcPlugin
+	public class FFTPlugin : Plugin.ImgProc
 	{
 		private bool zero = true;
 		private float progress = 0;

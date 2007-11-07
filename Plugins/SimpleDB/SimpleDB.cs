@@ -45,13 +45,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new SimpleDBPlugin();
 		}
 	}
 
-	public class SimpleDBPlugin : IInPlugin
+	public class SimpleDBPlugin : Plugin.In
 	{
 		private ArrayList _fl = new ArrayList();
 		private float progress;

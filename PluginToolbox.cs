@@ -45,7 +45,7 @@ namespace Eithne
 				TreeIter iter;
 				Selection.GetSelected(out iter);
 				IFactory f = Model.GetValue(iter, 1) as IFactory;
-				IPlugin p = f.Create();
+				Plugin.Base p = f.Create();
 				p.Source = PluginDB.Origin[f];
 				schematic.Add(p);
 			}
@@ -72,7 +72,7 @@ namespace Eithne
 					m1.Image = new Image(null, "list-add.png");
 					m1.Activated += delegate(object sender, EventArgs e)
 						{
-							IPlugin p = f.Create();
+							Plugin.Base p = f.Create();
 							p.Source = PluginDB.Origin[f];
 							schematic.Add(p);
 						};

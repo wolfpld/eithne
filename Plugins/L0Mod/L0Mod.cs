@@ -46,7 +46,7 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new L0ModPlugin();
 		}
@@ -122,7 +122,7 @@ namespace Eithne
 		}
 	}
 
-	public class L0ModPlugin : IComparatorPlugin
+	public class L0ModPlugin : Plugin.Comparator
 	{
 		private int delta = 20;
 		private ArrayList tasks = new ArrayList();

@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new CropPlugin();
 		}
 	}
 
-	public class CropPlugin : IImgProcPlugin
+	public class CropPlugin : Plugin.ImgProc
 	{
 		private int x = 10, y = 10;
 		private bool type = true;		// T - top-left, F - center

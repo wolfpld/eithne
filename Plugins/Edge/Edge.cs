@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new EdgePlugin();
 		}
 	}
 
-	public class EdgePlugin : IImgProcPlugin
+	public class EdgePlugin : Plugin.ImgProc
 	{
 		private bool energy = false;
 		private float progress;

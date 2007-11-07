@@ -202,7 +202,7 @@ namespace Eithne
 			}
 			else
 			{
-				IPlugin p = f.Create();
+				Plugin.Base p = f.Create();
 				p.Source = s;
 
 				b = new Block(schematic, c, p, x, y);

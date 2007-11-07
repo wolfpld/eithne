@@ -139,8 +139,8 @@ namespace Eithne
 			if(to.Other != null)
 				return false;
 
-			IPlugin fp = from.Parent.Plugin;
-			IPlugin tp = to.Parent.Plugin;
+			Plugin.Base fp = from.Parent.Plugin;
+			Plugin.Base tp = to.Parent.Plugin;
 
 			foreach(string mOut in fp.MatchOut)
 			{
@@ -183,7 +183,7 @@ namespace Eithne
 					else if(selected is Socket)
 					{
 						Socket s = selected as Socket;
-						IPlugin p = s.Parent.Plugin;
+						Plugin.Base p = s.Parent.Plugin;
 
 						if(s.Type == Socket.T.In)
 							status.Push(1, String.Format(Catalog.GetString("{0} block, input socket {1}. {2}"),
@@ -262,11 +262,11 @@ namespace Eithne
 						{
 							Action.m = Action.Mode.Normal;
 
-							if(b.Plugin is IOutPlugin && b.Plugin.WorkDone)
+							if(b.Plugin is Plugin.Out && b.Plugin.WorkDone)
 							{
 								try
 								{
-									(b.Plugin as IOutPlugin).DisplayResults();
+									(b.Plugin as Plugin.Out).DisplayResults();
 								}
 								catch(Exception e)
 								{
@@ -300,7 +300,7 @@ namespace Eithne
 
 						Menu m = new Menu();
 
-						if(b.Plugin is IOutPlugin)
+						if(b.Plugin is Plugin.Out)
 						{
 							mi = new ImageMenuItem(Catalog.GetString("Display _results"));
 							mi.Image = new Image(null, "system-search.png");
@@ -318,7 +318,7 @@ namespace Eithne
 							m.Append(mi);
 						}
 
-						if(b.Plugin.HasSetup || b.Plugin is IOutPlugin)
+						if(b.Plugin.HasSetup || b.Plugin is Plugin.Out)
 							m.Append(new SeparatorMenuItem());
 
 						mi = new ImageMenuItem(Catalog.GetString("D_isconnect all"));
@@ -443,7 +443,7 @@ namespace Eithne
 		{
 			try
 			{
-				((selected as Block).Plugin as IOutPlugin).DisplayResults();
+				((selected as Block).Plugin as Plugin.Out).DisplayResults();
 			}
 			catch(Exception e)
 			{
@@ -486,7 +486,7 @@ namespace Eithne
 			return true;
 		}
 
-		public void Add(IPlugin plugin)
+		public void Add(Plugin.Base plugin)
 		{
 			Context c = Gdk.Context.CreateDrawable(this.GdkWindow);
 

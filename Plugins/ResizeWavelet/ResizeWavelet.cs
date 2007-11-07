@@ -44,13 +44,13 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new ResizeWaveletPlugin();
 		}
 	}
 
-	public class ResizeWaveletPlugin : IImgProcPlugin
+	public class ResizeWaveletPlugin : Plugin.ImgProc
 	{
 		private float progress;
 

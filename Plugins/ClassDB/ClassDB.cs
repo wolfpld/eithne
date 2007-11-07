@@ -46,7 +46,7 @@ namespace Eithne
 		{
 		}
 
-		public IPlugin Create()
+		public Plugin.Base Create()
 		{
 			return new ClassDBPlugin();
 		}
@@ -240,7 +240,7 @@ namespace Eithne
 		}
 	}
 
-	public class ClassDBPlugin : IInPlugin
+	public class ClassDBPlugin : Plugin.In
 	{
 		private ArrayList cat = new ArrayList();
 		private ArrayList tasks = new ArrayList();

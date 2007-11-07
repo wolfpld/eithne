@@ -8,7 +8,7 @@ namespace Eithne
 {
 	class EngineThread
 	{
-		private IPlugin Plugin;
+		private Plugin.Base Plugin;
 		private Block b;
 		private Thread t;
 		private Exception Error;
