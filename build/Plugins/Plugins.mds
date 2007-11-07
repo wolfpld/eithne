@@ -1,4 +1,4 @@
-<Combine name="Plugins" fileversion="2.0" outputpath="./build/bin/">
+<Combine name="Plugins" fileversion="2.0" outputpath="build/bin/">
   <Configurations>
     <Configuration name="Debug" ctype="CombineConfiguration">
       <Entry build="True" name="Badness" configuration="Debug" />
@@ -92,33 +92,33 @@
     <Execute type="None" entry="X-of-Y" />
   </StartMode>
   <Entries>
-    <Entry filename="./Badness/Badness.mdp" />
-    <Entry filename="./Best/Best.mdp" />
-    <Entry filename="./ClassDB/ClassDB.mdp" />
-    <Entry filename="./Correctness/Correctness.mdp" />
-    <Entry filename="./Crop/Crop.mdp" />
-    <Entry filename="./Desaturate/Desaturate.mdp" />
-    <Entry filename="./Edge/Edge.mdp" />
-    <Entry filename="./Euclid/Euclid.mdp" />
-    <Entry filename="./FFT/FFT.mdp" />
-    <Entry filename="./Flip/Flip.mdp" />
-    <Entry filename="./Haar/Haar.mdp" />
-    <Entry filename="./Histogram/Histogram.mdp" />
-    <Entry filename="./HistogramView/HistogramView.mdp" />
-    <Entry filename="./ImageView/ImageView.mdp" />
-    <Entry filename="./L0Mod/L0Mod.mdp" />
-    <Entry filename="./Mirror/Mirror.mdp" />
-    <Entry filename="./Multiplier/Multiplier.mdp" />
-    <Entry filename="./NewSourceImages/NewSourceImages.mdp" />
-    <Entry filename="./PC-C1/PC-C1.mdp" />
-    <Entry filename="./PC-C2/PC-C2.mdp" />
-    <Entry filename="./RGBSplit/RGBSplit.mdp" />
-    <Entry filename="./Random/Random.mdp" />
-    <Entry filename="./Resize/Resize.mdp" />
-    <Entry filename="./ResizeWavelet/ResizeWavelet.mdp" />
-    <Entry filename="./ResultData/ResultData.mdp" />
-    <Entry filename="./SimpleDB/SimpleDB.mdp" />
-    <Entry filename="./SimpleResultView/SimpleResultView.mdp" />
-    <Entry filename="./X-of-Y/X-of-Y.mdp" />
+    <Entry filename="Badness/Badness.mdp" />
+    <Entry filename="Best/Best.mdp" />
+    <Entry filename="ClassDB/ClassDB.mdp" />
+    <Entry filename="Correctness/Correctness.mdp" />
+    <Entry filename="Crop/Crop.mdp" />
+    <Entry filename="Desaturate/Desaturate.mdp" />
+    <Entry filename="Edge/Edge.mdp" />
+    <Entry filename="Euclid/Euclid.mdp" />
+    <Entry filename="FFT/FFT.mdp" />
+    <Entry filename="Flip/Flip.mdp" />
+    <Entry filename="Haar/Haar.mdp" />
+    <Entry filename="Histogram/Histogram.mdp" />
+    <Entry filename="HistogramView/HistogramView.mdp" />
+    <Entry filename="ImageView/ImageView.mdp" />
+    <Entry filename="L0Mod/L0Mod.mdp" />
+    <Entry filename="Mirror/Mirror.mdp" />
+    <Entry filename="Multiplier/Multiplier.mdp" />
+    <Entry filename="NewSourceImages/NewSourceImages.mdp" />
+    <Entry filename="PC-C1/PC-C1.mdp" />
+    <Entry filename="PC-C2/PC-C2.mdp" />
+    <Entry filename="RGBSplit/RGBSplit.mdp" />
+    <Entry filename="Random/Random.mdp" />
+    <Entry filename="Resize/Resize.mdp" />
+    <Entry filename="ResizeWavelet/ResizeWavelet.mdp" />
+    <Entry filename="ResultData/ResultData.mdp" />
+    <Entry filename="SimpleDB/SimpleDB.mdp" />
+    <Entry filename="SimpleResultView/SimpleResultView.mdp" />
+    <Entry filename="X-of-Y/X-of-Y.mdp" />
   </Entries>
 </Combine>
