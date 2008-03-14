@@ -21,7 +21,7 @@ namespace Eithne
 
 			CellRendererText cr = new CellRendererText();
 			AppendColumn(Catalog.GetString("Plugin name"), cr, "text", 0);
-			Columns[0].SetCellDataFunc(cr, RenderCell);
+			Columns[0].SetCellDataFunc(cr, new Gtk.TreeCellDataFunc(RenderCell));
 			cr = new CellRendererText();
 			AppendColumn(Catalog.GetString("Source assembly"), cr, "text", 1);
 			cr = new CellRendererText();

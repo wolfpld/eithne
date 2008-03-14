@@ -62,7 +62,7 @@ namespace Eithne
 
 			CellRendererText cr = new CellRendererText();
 			AppendColumn("Name", cr, "text", 0);
-			Columns[0].SetCellDataFunc(cr, RenderCell);
+			Columns[0].SetCellDataFunc(cr, new Gtk.TreeCellDataFunc(RenderCell));
 			// TODO generate thumbnails on demand
 			AppendColumn("Preview", new CellRendererPixbuf(), "pixbuf", 5);
 			AppendColumn("Type", new CellRendererPixbuf(), "pixbuf", 1);

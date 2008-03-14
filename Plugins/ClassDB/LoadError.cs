@@ -27,7 +27,7 @@ namespace Eithne
 
 			CellRendererText cr = new CellRendererText();
 			AppendColumn("Image path", cr, "text", 0);
-			Columns[0].SetCellDataFunc(cr, RenderCell);
+			Columns[0].SetCellDataFunc(cr, new Gtk.TreeCellDataFunc(RenderCell));
 		}
 	}
 
