@@ -86,7 +86,6 @@ namespace Eithne
 						if(t.GetInterface(typeof(IFactory).FullName) != null && !t.IsAbstract)
 						{
 							IFactory f = (IFactory)Activator.CreateInstance(t);
-							f.Initialize();
 
 							switch(f.Type)
 							{
