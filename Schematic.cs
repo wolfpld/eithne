@@ -38,7 +38,7 @@ namespace Eithne
 
 		private Statusbar status;
 		private ArrayList blocks = new ArrayList();
-		private static int aa = 10;
+		private static int offset = 10;
 		private object selected = null;
 		private int tmpx, tmpy;
 
@@ -490,21 +490,21 @@ namespace Eithne
 		{
 			Context c = Gdk.Context.CreateDrawable(this.GdkWindow);
 
-			blocks.Add(new Block(this, c, plugin, 10, aa));
+			blocks.Add(new Block(this, c, plugin, 10, offset));
 
 			((IDisposable) c.Target).Dispose();
 			((IDisposable) c).Dispose();
 
-			aa += 50;
-			if(aa > 400)
-				aa = 10;
+			offset += 50;
+			if(offset > 400)
+				offset = 10;
 			QueueDraw();
 		}
 
 		public void Load(ArrayList blocks)
 		{
 			this.blocks = blocks;
-			aa = 10;
+			offset = 10;
 			selected = null;
 			QueueDraw();
 		}
@@ -512,7 +512,7 @@ namespace Eithne
 		public void Clear()
 		{
 			blocks = new ArrayList();
-			aa = 10;
+			offset = 10;
 			selected = null;
 			QueueDraw();
 		}
